@@ -89,6 +89,14 @@ const tuningGroups: Array<{ title: string; description: string; fields: Array<{ 
     ],
   },
   {
+    title: '领养规则',
+    description: '全对达到要求后解锁下一只猫；领取价从基础价格开始逐只翻倍。',
+    fields: [
+      { key: 'adoptionPerfectRequirement', label: '每只猫解锁所需全对', unit: '次', min: 1, max: 20 },
+      { key: 'adoptionBasePrice', label: '第一只猫领取价格', unit: '分', min: 0, max: 100000 },
+    ],
+  },
+  {
     title: '猫咪商店价格',
     description: '价格即时生效。过低价格可能让积分失去激励作用。',
     fields: [
@@ -951,9 +959,9 @@ function importOldData() {
                 <span class="stat-value">{{ catStore.perfectGames }}</span>
               </div>
               <div class="stat-row">
-                <span class="cat-icon">💎</span>
-                <span>稀有/珍藏:</span>
-                <span class="stat-value">{{ catStore.rarityCounts.rare + catStore.rarityCounts.premium }}</span>
+                <span class="cat-icon">📖</span>
+                <span>图鉴收集:</span>
+                <span class="stat-value">{{ new Set(catStore.cats.map(cat => cat.photoKey)).size }}/7</span>
               </div>
               <div class="stat-row">
                 <span class="cat-icon">🏥</span>

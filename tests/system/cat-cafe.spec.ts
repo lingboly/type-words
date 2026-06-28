@@ -47,20 +47,21 @@ test.describe('cat cafe UI', () => {
   test('empty room lets the user adopt a starter cat and open its care controls', async ({ page }) => {
     await page.goto('./cat-room')
 
-    await expect(page.getByRole('heading', { name: '选择你的第一只猫咪伙伴' })).toBeVisible()
+    await expect(page.getByRole('heading', { name: '按顺序领取猫咪伙伴' })).toBeVisible()
     await expect(page.getByText('7 只可领取猫咪')).toBeVisible()
-    for (const name of ['二妹', '一妹', '一弟', '三妹', '二弟', '三弟', '花奴']) {
+    for (const name of ['三弟', '二弟', '一弟', '一妹', '二妹', '三妹', '花奴']) {
       await expect(page.getByRole('img', { name, exact: true })).toBeVisible()
     }
-    await expect(page.getByText('累计领养 3 只后解锁').first()).toBeVisible()
-    await expect(page.getByText('累计领养 10 只后解锁')).toBeVisible()
-    await page.getByRole('button', { name: '免费领养 二妹' }).click()
-    await expect(page.getByRole('heading', { name: '二妹', level: 2 })).toBeVisible()
+    expect(await page.locator('.starter-card h3').allTextContents()).toEqual(['三弟', '二弟', '一弟', '一妹', '二妹', '三妹', '花奴'])
+    await expect(page.getByText('需要累计 1 次全对')).toBeVisible()
+    await expect(page.getByLabel('猫咖状态')).toContainText('1000')
+    await page.getByRole('button', { name: '领取 三弟 · 1000 积分' }).click()
+    await expect(page.getByRole('heading', { name: '三弟', level: 2 })).toBeVisible()
     await expect(page.getByText('50/100')).toHaveCount(3)
     await expect(page.getByRole('button', { name: /基础猫粮/ })).toBeVisible()
     await expect(page.getByRole('button', { name: /普通药品/ })).toBeDisabled()
     await page.getByRole('button', { name: '关闭猫咪详情' }).click()
-    await expect(page.getByRole('button', { name: /二妹/ })).toBeVisible()
+    await expect(page.getByRole('button', { name: /三弟/ })).toBeVisible()
   })
 
   test('starter adoption works when secure random APIs are unavailable', async ({ page }) => {
@@ -71,9 +72,9 @@ test.describe('cat cafe UI', () => {
       })
     })
     await page.goto('./cat-room')
-    await page.getByRole('button', { name: '免费领养 二妹' }).click()
+    await page.getByRole('button', { name: '领取 三弟 · 1000 积分' }).click()
 
-    await expect(page.getByRole('heading', { name: '二妹', level: 2 })).toBeVisible()
+    await expect(page.getByRole('heading', { name: '三弟', level: 2 })).toBeVisible()
     await expect(page.getByRole('button', { name: /基础猫粮/ })).toBeVisible()
   })
 
@@ -116,6 +117,9 @@ test.describe('cat cafe UI', () => {
     await expect(page.getByRole('heading', { name: '猫咪参数' })).toBeVisible()
     await page.getByLabel('基础猫粮').fill('9')
     await page.getByLabel('基础猫粮').blur()
+    await page.getByLabel('第一只猫领取价格').fill('1500')
+    await page.getByLabel('第一只猫领取价格').blur()
+    await expect(page.getByLabel('第一只猫领取价格')).toHaveValue('1500')
 
     await page.getByRole('switch').last().click()
     await expect(page.getByText('TEST', { exact: true })).toBeVisible()
@@ -155,12 +159,12 @@ test.describe('cat cafe UI', () => {
     await expect(page).toHaveURL(/\/cat-room$/)
   })
 
-  test('cat room exposes collection HUD, rarity, and confirmed care spending', async ({ page }) => {
+  test('cat room exposes collection HUD and confirmed care spending without levels', async ({ page }) => {
     await seedCat(page)
     await page.goto('./cat-room')
 
     await expect(page.getByLabel('猫咖状态')).toContainText('120')
-    await expect(page.getByRole('button', { name: /花奴/ })).toContainText('珍藏')
+    await expect(page.getByRole('button', { name: /花奴/ })).not.toContainText('珍藏')
     await page.getByRole('button', { name: /花奴/ }).click()
     await page.getByRole('button', { name: /基础猫粮/ }).click()
     await expect(page.getByRole('alert')).toContainText('确认花费 20 积分')
@@ -175,9 +179,9 @@ test.describe('cat cafe UI', () => {
 
     await expect(page.getByText('7 只可领取猫咪')).toBeVisible()
     await expect(page.getByText('1 只已收集')).toBeVisible()
-    await expect(page.getByText('4 只已解锁')).toBeVisible()
+    await expect(page.getByText('5 只已解锁')).toBeVisible()
     await expect(page.getByText('✓ 已拥有')).toBeVisible()
-    await expect(page.getByText('✓ 全对练习可领取').first()).toBeVisible()
+    await expect(page.getByRole('button', { name: '领取 三弟 · 1000 积分' })).toBeVisible()
   })
 
   test('healthy cats can play for free with visible feedback and no point charge', async ({ page }) => {

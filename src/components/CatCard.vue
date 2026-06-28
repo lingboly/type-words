@@ -5,7 +5,7 @@
  */
 
 import type { Cat } from '@/types/cat'
-import { CAT_RARITY_LABELS, MAX_DAILY_PET_POINTS, MAX_DAILY_PLAYS } from '@/types/cat'
+import { MAX_DAILY_PET_POINTS, MAX_DAILY_PLAYS } from '@/types/cat'
 
 interface IProps {
   cat: Cat
@@ -68,9 +68,6 @@ const statusClass = $computed(() => `status-${props.cat.status}`)
       </div>
       <!-- Status badge -->
       <span class="status-badge">{{ statusEmoji[cat.status] }} {{ statusLabel[cat.status] }}</span>
-      <span class="rarity-badge" :class="`rarity-${cat.rarity || 'common'}`">
-        {{ CAT_RARITY_LABELS[cat.rarity || 'common'] }}
-      </span>
     </div>
 
     <!-- Info -->
@@ -209,20 +206,6 @@ const statusClass = $computed(() => `status-${props.cat.status}`)
     z-index: 1;
   }
 
-  .rarity-badge {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    padding: 3px 9px;
-    border-radius: 999px;
-    color: #fff;
-    background: var(--color-cat-neutral);
-    font-size: 0.72rem;
-    font-weight: 800;
-
-    &.rarity-rare { background: var(--color-cat-premium); }
-    &.rarity-premium { background: linear-gradient(135deg, #9b88cc, #ffb347); }
-  }
 }
 
 .info {

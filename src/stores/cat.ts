@@ -30,7 +30,6 @@ import {
   MAX_AFFECTION,
   MAX_HUNGER,
   INITIAL_CAT_STAT,
-  rollCatRarity,
   DEFAULT_CAT_TUNING,
   DEFAULT_PARENT_PASSWORD_HASH,
   hashParentPassword,
@@ -134,7 +133,7 @@ export interface CatStoreState {
 export const useCatStore = defineStore('cat', {
   state: (): CatStoreState => ({
     cats: [],
-    points: 0,
+    points: DEFAULT_CAT_TUNING.adoptionBasePrice,
     perfectGames: 0,
     perfectStreak: 0,
     communityHealCount: 0,
@@ -209,6 +208,20 @@ export const useCatStore = defineStore('cat', {
     collectionProgress(state): number {
       const collected = new Set(state.cats.map(cat => cat.photoKey)).size
       return Math.round((collected / CAT_PHOTOS.length) * 100)
+    },
+
+    adoptionUnlockedCount(state): number {
+      return Math.min(CAT_PHOTOS.length, 1 + Math.floor(state.perfectGames / Math.max(1, state.tuning.adoptionPerfectRequirement)))
+    },
+
+    nextAdoptionPhoto(state): CatPhotoEntry | null {
+      const owned = new Set(state.cats.map(cat => cat.photoKey))
+      return CAT_PHOTOS.find(photo => !owned.has(photo.key)) ?? null
+    },
+
+    nextAdoptionPrice(state): number {
+      const owned = new Set(state.cats.map(cat => cat.photoKey)).size
+      return state.tuning.adoptionBasePrice * (2 ** owned)
     },
   },
 
@@ -294,40 +307,24 @@ export const useCatStore = defineStore('cat', {
 
     // ===== Adoption =====
 
-    /**
-     * Randomly adopt a new cat.
-     * Prefers un-owned photos; after all 7 collected, allows duplicates.
-     * Returns the new Cat object.
-     */
-    adoptCat(): Cat {
-      const rarity = rollCatRarity(this.cats.length)
-      const ownedKeys = new Set(this.aliveCats.map(c => c.photoKey))
-      const rarityPool = CAT_PHOTOS.filter(photo => photo.rarity === rarity)
-      const available = rarityPool.filter(p => !ownedKeys.has(p.key))
-      // If all owned, allow duplicates
-      const pool = available.length > 0 ? available : rarityPool.length > 0 ? rarityPool : CAT_PHOTOS
-      const chosen: CatPhotoEntry = pool[Math.floor(Math.random() * pool.length)]
+    /** Claim the next cat in the fixed sequence after earning its unlock. */
+    claimNextCat(photoKey: string): { success: boolean; cat?: Cat; reason?: string; price?: number } {
+      const next = this.nextAdoptionPhoto
+      if (!next) return { success: false, reason: '所有猫咪都已经领取' }
+      if (photoKey !== next.key) return { success: false, reason: `请先领取 ${next.name}` }
+      const ownedCount = new Set(this.cats.map(cat => cat.photoKey)).size
+      if (ownedCount >= this.adoptionUnlockedCount) {
+        const nextUnlockAt = ownedCount * this.tuning.adoptionPerfectRequirement
+        return { success: false, reason: `再完成 ${Math.max(1, nextUnlockAt - this.perfectGames)} 次全对即可解锁` }
+      }
+      const price = this.nextAdoptionPrice
+      if (!this.spendPoints(price)) return { success: false, reason: `积分不足，需要 ${price} 积分`, price }
 
-      const cat = createCatRecord(chosen)
-
-      this.cats.push(cat)
-      this.perfectGames++
-      this.newAdoptedCatId = cat.id
-      this.persist()
-      return cat
-    },
-
-    /** Allow a new family to choose one free common cat before the learning loop starts. */
-    adoptStarterCat(photoKey: string): { success: boolean; cat?: Cat; reason?: string } {
-      if (this.cats.length > 0) return { success: false, reason: '初始领养机会已经使用' }
-      const photo = CAT_PHOTOS.find(item => item.key === photoKey && item.rarity === 'common')
-      if (!photo) return { success: false, reason: '这只猫咪暂时不能作为初始伙伴' }
-
-      const cat = createCatRecord(photo)
+      const cat = createCatRecord(next)
       this.cats.push(cat)
       this.newAdoptedCatId = cat.id
       this.persist()
-      return { success: true, cat }
+      return { success: true, cat, price }
     },
 
     /** Clear the new-adopted notification marker */
@@ -577,15 +574,16 @@ export const useCatStore = defineStore('cat', {
     recordGameSession(accuracy: number, totalCorrect: number, totalQuestions: number) {
       this.lastGameAccuracy = accuracy
 
-      // Only adopt on perfect score (accuracy === 1.0)
+      // Perfect sessions unlock sequential adoption slots; claiming still costs points.
       if (accuracy >= 1.0 && totalCorrect === totalQuestions && totalQuestions > 0) {
+        this.perfectGames++
         this.perfectStreak++
-        const cat = this.adoptCat()
         if (this.perfectStreak >= this.tuning.communityHealStreak) {
           this.healCommunity()
           this.perfectStreak = 0
         }
-        return cat
+        this.persist()
+        return null
       }
       this.perfectStreak = 0
       this.persist()
@@ -629,6 +627,9 @@ export const useCatStore = defineStore('cat', {
     },
 
     updateTuning<K extends keyof CatTuning>(key: K, value: CatTuning[K]) {
+      if (key === 'adoptionBasePrice' && this.cats.length === 0 && this.perfectGames === 0 && this.points === this.tuning.adoptionBasePrice) {
+        this.points = Number(value)
+      }
       this.tuning[key] = value
       this.persist()
     },
@@ -641,7 +642,7 @@ export const useCatStore = defineStore('cat', {
     /** Reset all cat data (destructive, requires confirmation) */
     resetAllData() {
       this.cats = []
-      this.points = 0
+      this.points = this.tuning.adoptionBasePrice
       this.perfectGames = 0
       this.perfectStreak = 0
       this.communityHealCount = 0
