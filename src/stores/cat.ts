@@ -486,11 +486,8 @@ export const useCatStore = defineStore('cat', {
       return { success: true }
     },
 
-    /**
-     * Play with a cat using a toy.
-     * Cost: 50 points, effect: affection +5, health +1.
-     */
-    playWithCat(catId: string, tier: CatSupplyTier = 'basic'): { success: boolean; reason?: string; affectionGain?: number; healthGain?: number } {
+    /** Play is free by default; optional toys increase the effect. */
+    playWithCat(catId: string, tier: CatSupplyTier | 'free' = 'free'): { success: boolean; reason?: string; affectionGain?: number; healthGain?: number } {
       const cat = this.getCatById(catId)
       if (!cat) return { success: false, reason: '没有找到这只猫咪' }
       if (cat.status === 'deceased') return { success: false, reason: '这只猫咪已经离开了' }
@@ -502,8 +499,8 @@ export const useCatStore = defineStore('cat', {
         return { success: false, reason: '今天已经玩累了，明天再来吧' }
       }
 
-      const price = tier === 'premium' ? this.tuning.luxuryToyPrice : this.tuning.basicToyPrice
-      if (!this.spendPoints(price)) {
+      const price = tier === 'free' ? 0 : tier === 'premium' ? this.tuning.luxuryToyPrice : this.tuning.basicToyPrice
+      if (price > 0 && !this.spendPoints(price)) {
         return { success: false, reason: `积分不足，需要 ${price} 积分` }
       }
 
