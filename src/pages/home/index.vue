@@ -3,7 +3,8 @@ import { ProjectName } from "@/config/env.ts";
 import BaseButton from "@/components/BaseButton.vue";
 import BaseIcon from "@/components/BaseIcon.vue";
 import { defineAsyncComponent } from "vue";
-import CatDecorator from "@/components/CatDecorator.vue";
+import CatAvatar from '@/components/CatAvatar.vue'
+import CatHud from '@/components/CatHud.vue'
 import { useCatStore } from "@/stores/cat.ts";
 import { onMounted } from "vue";
 
@@ -34,7 +35,7 @@ onMounted(() => {
       <!-- Cat Café: 猫咖入口 -->
       <div v-if="catStore.catEnabled" class="cat-cafe-section">
         <div class="cat-cafe-header">
-          <CatDecorator pose="happy" size="lg" />
+          <CatAvatar size="large" />
           <h2>🐾 知识猫咖</h2>
           <p class="cat-cafe-subtitle">背单词赚积分，全对领猫咪，积分买猫粮养猫</p>
         </div>
@@ -49,23 +50,10 @@ onMounted(() => {
           🏃 {{ catStore.runawayCatCount }} 只猫咪离家出走了...
         </div>
 
-        <div class="cat-stats">
-          <div class="stat-item">
-            <span class="stat-icon">🐱</span>
-            <span class="stat-value">{{ catStore.catCount }}</span>
-            <span class="stat-label">已领养猫咪</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-icon">⭐</span>
-            <span class="stat-value">{{ catStore.points }}</span>
-            <span class="stat-label">当前积分</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-icon">🎉</span>
-            <span class="stat-value">{{ catStore.perfectGames }}</span>
-            <span class="stat-label">全对次数</span>
-          </div>
-        </div>
+        <CatHud class="cat-stats" />
+        <p class="perfect-streak" v-if="catStore.perfectStreak > 0">
+          连续全对 {{ catStore.perfectStreak }}/5，再坚持就能让所有猫咪恢复健康
+        </p>
         <BaseButton class="cat-cafe-btn" @click="$router.push('/cat-room')">
           去看看猫咪们
         </BaseButton>
@@ -334,34 +322,17 @@ h3:first-child {
   }
 
   .cat-stats {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
     margin: 1.5rem 0;
+    margin-inline: auto;
     position: relative;
     z-index: 1;
+  }
 
-    .stat-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.3rem;
-
-      .stat-icon {
-        font-size: 1.5rem;
-      }
-
-      .stat-value {
-        font-size: 1.8rem;
-        font-weight: bold;
-        color: var(--color-cat-primary);
-      }
-
-      .stat-label {
-        font-size: 0.8rem;
-        color: var(--color-sub-text);
-      }
-    }
+  .perfect-streak {
+    color: var(--color-cat-dark);
+    font-size: 0.82rem;
+    position: relative;
+    z-index: 1;
   }
 
   .cat-cafe-btn {

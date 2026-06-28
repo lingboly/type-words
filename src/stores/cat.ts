@@ -13,13 +13,28 @@
 import { defineStore } from 'pinia'
 import { get as idbGet, set as idbSet } from 'idb-keyval'
 import { nanoid } from 'nanoid'
-import type { Cat, CatPhotoEntry, CatStatus } from '@/types/cat'
+import type { Cat, CatPhotoEntry, CatSupplyTier } from '@/types/cat'
 import {
   CAT_PHOTOS,
   CAT_STORE_DB_KEY,
   CAT_FOOD_PRICE,
   CAT_TOY_PRICE,
+  CAT_MEDICINE_PRICE,
+  COMMUNITY_HEAL_STREAK,
   FEED_HUNGER_REDUCTION,
+  ICU_DAILY_COST,
+  LUXURY_CAT_TOY_PRICE,
+  LUXURY_PLAY_AFFECTION_GAIN,
+  LUXURY_PLAY_HEALTH_GAIN,
+  MAX_DAILY_PET_POINTS,
+  MAX_DAILY_PLAYS,
+  MEDICINE_HEALTH_GAIN,
+  PREMIUM_CAT_FOOD_PRICE,
+  PREMIUM_CAT_MEDICINE_PRICE,
+  PREMIUM_FEED_AFFECTION_GAIN,
+  PREMIUM_FEED_HUNGER_REDUCTION,
+  PREMIUM_MEDICINE_HEALTH_GAIN,
+  RUNAWAY_RECALL_DAYS,
   PLAY_AFFECTION_GAIN,
   PLAY_HEALTH_GAIN,
   PET_AFFECTION_GAIN,
@@ -29,7 +44,30 @@ import {
   SICK_HEALTH_THRESHOLD,
   RUNAWAY_AFFECTION_THRESHOLD,
   HUNGER_HEALTH_DRAIN_THRESHOLD,
+  rollCatRarity,
 } from '@/types/cat'
+
+function dateKey(timestamp = Date.now()): string {
+  return new Date(timestamp).toISOString().slice(0, 10)
+}
+
+function daysBetween(from: string, to: string): number {
+  const fromTime = new Date(`${from}T00:00:00Z`).getTime()
+  const toTime = new Date(`${to}T00:00:00Z`).getTime()
+  return Math.round((toTime - fromTime) / 86_400_000)
+}
+
+function migrateCat(cat: Cat): Cat {
+  return {
+    ...cat,
+    rarity: cat.rarity ?? CAT_PHOTOS.find(photo => photo.key === cat.photoKey)?.rarity ?? 'common',
+    interactionDate: cat.interactionDate ?? dateKey(),
+    dailyPetPoints: cat.dailyPetPoints ?? 0,
+    dailyPlayCount: cat.dailyPlayCount ?? 0,
+    runawayFeedStreak: cat.runawayFeedStreak ?? 0,
+    icuFailedDays: cat.icuFailedDays ?? 0,
+  }
+}
 
 export interface CatStoreState {
   /** All adopted cats (alive or dead) */
@@ -38,6 +76,10 @@ export interface CatStoreState {
   points: number
   /** Perfect game streak count */
   perfectGames: number
+  /** Current consecutive perfect-session streak. */
+  perfectStreak: number
+  /** Number of community-heal celebrations triggered. */
+  communityHealCount: number
   /** Last game accuracy (0-1) */
   lastGameAccuracy: number
   /** Global cat feature toggle */
@@ -57,6 +99,8 @@ export const useCatStore = defineStore('cat', {
     cats: [],
     points: 0,
     perfectGames: 0,
+    perfectStreak: 0,
+    communityHealCount: 0,
     lastGameAccuracy: 0,
     catEnabled: true,
     showPracticeCompanion: true,
@@ -79,7 +123,7 @@ export const useCatStore = defineStore('cat', {
     /** Number of cats that need attention (sick or hungry) */
     warningCatCount(): number {
       return this.aliveCats.filter(c =>
-        c.status === 'sick' || c.hunger >= HUNGER_HEALTH_DRAIN_THRESHOLD,
+        c.status === 'sick' || c.status === 'icu' || c.hunger >= HUNGER_HEALTH_DRAIN_THRESHOLD,
       ).length
     },
 
@@ -108,6 +152,24 @@ export const useCatStore = defineStore('cat', {
     maxHungerCats(): Cat[] {
       return this.aliveCats.filter(c => c.hunger >= MAX_HUNGER)
     },
+
+    /** Cats physically present in the café. */
+    cafeCats(): Cat[] {
+      return this.aliveCats.filter(c => c.status !== 'runaway')
+    },
+
+    rarityCounts(state): Record<string, number> {
+      return state.cats.reduce((result, cat) => {
+        const rarity = cat.rarity ?? 'common'
+        result[rarity] = (result[rarity] ?? 0) + 1
+        return result
+      }, { common: 0, rare: 0, premium: 0 } as Record<string, number>)
+    },
+
+    collectionProgress(state): number {
+      const collected = new Set(state.cats.map(cat => cat.photoKey)).size
+      return Math.round((collected / CAT_PHOTOS.length) * 100)
+    },
   },
 
   actions: {
@@ -120,9 +182,11 @@ export const useCatStore = defineStore('cat', {
         const raw = await idbGet(CAT_STORE_DB_KEY)
         if (raw && typeof raw === 'object') {
           const data = raw as Partial<CatStoreState>
-          if (Array.isArray(data.cats)) this.cats = data.cats
+          if (Array.isArray(data.cats)) this.cats = data.cats.map(migrateCat)
           if (typeof data.points === 'number') this.points = data.points
           if (typeof data.perfectGames === 'number') this.perfectGames = data.perfectGames
+          if (typeof data.perfectStreak === 'number') this.perfectStreak = data.perfectStreak
+          if (typeof data.communityHealCount === 'number') this.communityHealCount = data.communityHealCount
           if (typeof data.lastGameAccuracy === 'number') this.lastGameAccuracy = data.lastGameAccuracy
           if (typeof data.catEnabled === 'boolean') this.catEnabled = data.catEnabled
           if (typeof data.showPracticeCompanion === 'boolean') this.showPracticeCompanion = data.showPracticeCompanion
@@ -143,6 +207,8 @@ export const useCatStore = defineStore('cat', {
           cats: this.cats,
           points: this.points,
           perfectGames: this.perfectGames,
+          perfectStreak: this.perfectStreak,
+          communityHealCount: this.communityHealCount,
           lastGameAccuracy: this.lastGameAccuracy,
           catEnabled: this.catEnabled,
           showPracticeCompanion: this.showPracticeCompanion,
@@ -178,10 +244,12 @@ export const useCatStore = defineStore('cat', {
      * Returns the new Cat object.
      */
     adoptCat(): Cat {
+      const rarity = rollCatRarity(this.cats.length)
       const ownedKeys = new Set(this.aliveCats.map(c => c.photoKey))
-      const available = CAT_PHOTOS.filter(p => !ownedKeys.has(p.key))
+      const rarityPool = CAT_PHOTOS.filter(photo => photo.rarity === rarity)
+      const available = rarityPool.filter(p => !ownedKeys.has(p.key))
       // If all owned, allow duplicates
-      const pool = available.length > 0 ? available : CAT_PHOTOS
+      const pool = available.length > 0 ? available : rarityPool.length > 0 ? rarityPool : CAT_PHOTOS
       const chosen: CatPhotoEntry = pool[Math.floor(Math.random() * pool.length)]
 
       const cat: Cat = {
@@ -190,12 +258,18 @@ export const useCatStore = defineStore('cat', {
         name: chosen.name,
         adoptedAt: Date.now(),
         status: 'healthy',
+        rarity: chosen.rarity,
         health: MAX_HEALTH,
         affection: MAX_AFFECTION,
         hunger: 0,
         feedCount: 0,
         playCount: 0,
         lastLoginCheck: Date.now(),
+        interactionDate: dateKey(),
+        dailyPetPoints: 0,
+        dailyPlayCount: 0,
+        runawayFeedStreak: 0,
+        icuFailedDays: 0,
       }
 
       this.cats.push(cat)
@@ -223,6 +297,12 @@ export const useCatStore = defineStore('cat', {
       for (const cat of this.aliveCats) {
         if (cat.status === 'deceased') continue
 
+        if (cat.status === 'icu') {
+          this.processIcuCharges(cat, now)
+          cat.lastLoginCheck = now
+          continue
+        }
+
         const elapsedHours = (now - cat.lastLoginCheck) / (1000 * 60 * 60)
 
         // Skip if less than 1 hour
@@ -242,15 +322,17 @@ export const useCatStore = defineStore('cat', {
         }
 
         // Status transitions
-        if (cat.health <= 0 && cat.status !== 'icu' as CatStatus) {
-          cat.status = 'sick'
+        if (cat.health <= 0) {
+          cat.status = 'icu'
+          cat.icuLastChargeDate = dateKey(now)
+          cat.icuFailedDays = 0
         }
         if (cat.health < SICK_HEALTH_THRESHOLD && cat.status === 'healthy') {
           cat.status = 'sick'
         }
 
         // Runaway check when affection < 60
-        if (cat.status !== 'runaway' && cat.affection < RUNAWAY_AFFECTION_THRESHOLD) {
+        if ((cat.status === 'healthy' || cat.status === 'sick') && cat.affection < RUNAWAY_AFFECTION_THRESHOLD) {
           const runawayProb = Math.max(0, (RUNAWAY_AFFECTION_THRESHOLD - cat.affection) / RUNAWAY_AFFECTION_THRESHOLD * 0.3)
           if (Math.random() < runawayProb) {
             cat.status = 'runaway'
@@ -260,6 +342,34 @@ export const useCatStore = defineStore('cat', {
         cat.lastLoginCheck = now
       }
       this.persist()
+    },
+
+    processIcuCharges(cat: Cat, now = Date.now()) {
+      const today = dateKey(now)
+      const lastCharge = cat.icuLastChargeDate ?? today
+      const dueDays = Math.max(0, daysBetween(lastCharge, today))
+      for (let day = 0; day < dueDays; day++) {
+        if (this.points >= ICU_DAILY_COST) {
+          this.points -= ICU_DAILY_COST
+          cat.icuFailedDays = 0
+        } else {
+          cat.icuFailedDays = (cat.icuFailedDays ?? 0) + 1
+          if (cat.icuFailedDays >= 7) {
+            cat.status = 'deceased'
+            break
+          }
+        }
+      }
+      cat.icuLastChargeDate = today
+    },
+
+    resetDailyInteraction(cat: Cat, now = Date.now()) {
+      const today = dateKey(now)
+      if (cat.interactionDate !== today) {
+        cat.interactionDate = today
+        cat.dailyPetPoints = 0
+        cat.dailyPlayCount = 0
+      }
     },
 
     /** Get cat by ID */
@@ -273,18 +383,41 @@ export const useCatStore = defineStore('cat', {
      * Feed a cat with basic food.
      * Cost: 20 points, effect: hunger -10.
      */
-    feedCat(catId: string): { success: boolean; reason?: string } {
+    feedCat(catId: string, tier: CatSupplyTier = 'basic'): { success: boolean; reason?: string; recalled?: boolean } {
       const cat = this.getCatById(catId)
-      if (!cat) return { success: false, reason: 'Cat not found' }
-      if (cat.status === 'deceased') return { success: false, reason: 'Cat has passed away' }
-      if (cat.status === 'runaway') return { success: false, reason: 'Cat has run away' }
+      if (!cat) return { success: false, reason: '没有找到这只猫咪' }
+      if (cat.status === 'deceased') return { success: false, reason: '这只猫咪已经离开了' }
+      if (cat.status === 'icu') return { success: false, reason: 'ICU 中请先使用医疗用品' }
 
-      if (!this.spendPoints(CAT_FOOD_PRICE)) {
-        return { success: false, reason: `Not enough points! Need ${CAT_FOOD_PRICE} points` }
+      const price = tier === 'premium' ? PREMIUM_CAT_FOOD_PRICE : CAT_FOOD_PRICE
+      if (!this.spendPoints(price)) {
+        return { success: false, reason: `积分不足，需要 ${price} 积分` }
       }
 
-      cat.hunger = Math.max(0, cat.hunger - FEED_HUNGER_REDUCTION)
+      const reduction = tier === 'premium' ? PREMIUM_FEED_HUNGER_REDUCTION : FEED_HUNGER_REDUCTION
+      cat.hunger = Math.max(0, cat.hunger - reduction)
+      if (tier === 'premium') {
+        cat.affection = Math.min(MAX_AFFECTION, cat.affection + PREMIUM_FEED_AFFECTION_GAIN)
+      }
       cat.feedCount++
+
+      if (cat.status === 'runaway') {
+        const today = dateKey()
+        if (cat.runawayFeedDate !== today) {
+          const gap = cat.runawayFeedDate ? daysBetween(cat.runawayFeedDate, today) : 1
+          cat.runawayFeedStreak = gap === 1 ? (cat.runawayFeedStreak ?? 0) + 1 : 1
+          cat.runawayFeedDate = today
+        }
+        if ((cat.runawayFeedStreak ?? 0) >= RUNAWAY_RECALL_DAYS) {
+          cat.status = 'healthy'
+          cat.affection = 50
+          cat.runawayFeedStreak = 0
+          this.persist()
+          return { success: true, recalled: true }
+        }
+        this.persist()
+        return { success: true, recalled: false }
+      }
 
       // If hunger drops below 50 and cat was sick, begin recovery
       if (cat.hunger < HUNGER_HEALTH_DRAIN_THRESHOLD && cat.status === 'sick' && cat.health >= SICK_HEALTH_THRESHOLD) {
@@ -299,11 +432,6 @@ export const useCatStore = defineStore('cat', {
         }
       }
 
-      // Recover from runaway: feed hungry runaway cat
-      if (cat.status === 'runaway') {
-        cat.health = Math.min(MAX_HEALTH, cat.health + 2)
-      }
-
       this.persist()
       return { success: true }
     },
@@ -312,39 +440,84 @@ export const useCatStore = defineStore('cat', {
      * Play with a cat using a toy.
      * Cost: 50 points, effect: affection +5, health +1.
      */
-    playWithCat(catId: string): { success: boolean; reason?: string } {
+    playWithCat(catId: string, tier: CatSupplyTier = 'basic'): { success: boolean; reason?: string; affectionGain?: number; healthGain?: number } {
       const cat = this.getCatById(catId)
-      if (!cat) return { success: false, reason: 'Cat not found' }
-      if (cat.status === 'deceased') return { success: false, reason: 'Cat has passed away' }
-      if (cat.status === 'runaway') return { success: false, reason: 'Cat has run away' }
-      if (cat.status === 'sick') return { success: false, reason: 'Cat is too weak to play' }
+      if (!cat) return { success: false, reason: '没有找到这只猫咪' }
+      if (cat.status === 'deceased') return { success: false, reason: '这只猫咪已经离开了' }
+      if (cat.status === 'runaway') return { success: false, reason: '猫咪还在外面，请先远程照护召回' }
+      if (cat.status === 'sick' || cat.status === 'icu') return { success: false, reason: '猫咪身体虚弱，暂时不能玩耍' }
 
-      if (!this.spendPoints(CAT_TOY_PRICE)) {
-        return { success: false, reason: `Not enough points! Need ${CAT_TOY_PRICE} points` }
+      this.resetDailyInteraction(cat)
+      if ((cat.dailyPlayCount ?? 0) >= MAX_DAILY_PLAYS) {
+        return { success: false, reason: '今天已经玩累了，明天再来吧' }
       }
 
-      cat.affection = Math.min(MAX_AFFECTION, cat.affection + PLAY_AFFECTION_GAIN)
-      cat.health = Math.min(MAX_HEALTH, cat.health + PLAY_HEALTH_GAIN)
+      const price = tier === 'premium' ? LUXURY_CAT_TOY_PRICE : CAT_TOY_PRICE
+      if (!this.spendPoints(price)) {
+        return { success: false, reason: `积分不足，需要 ${price} 积分` }
+      }
+
+      const affectionGain = tier === 'premium' ? LUXURY_PLAY_AFFECTION_GAIN : PLAY_AFFECTION_GAIN
+      const healthGain = tier === 'premium' ? LUXURY_PLAY_HEALTH_GAIN : PLAY_HEALTH_GAIN
+      cat.affection = Math.min(MAX_AFFECTION, cat.affection + affectionGain)
+      cat.health = Math.min(MAX_HEALTH, cat.health + healthGain)
       cat.playCount++
+      cat.dailyPlayCount = (cat.dailyPlayCount ?? 0) + 1
       this.persist()
-      return { success: true }
+      return { success: true, affectionGain, healthGain }
     },
 
     /**
      * Pet a cat (free).
      * Effect: affection +1 per pet.
      */
-    petCat(catId: string): { success: boolean; affectionGain: number } {
+    petCat(catId: string): { success: boolean; affectionGain: number; reason?: string } {
       const cat = this.getCatById(catId)
       if (!cat) return { success: false, affectionGain: 0 }
       if (cat.status === 'deceased') return { success: false, affectionGain: 0 }
       if (cat.status === 'runaway') return { success: false, affectionGain: 0 }
 
+      this.resetDailyInteraction(cat)
+      if ((cat.dailyPetPoints ?? 0) >= MAX_DAILY_PET_POINTS) {
+        return { success: false, affectionGain: 0, reason: '今天已经摸够了，明天再来吧' }
+      }
+
       // Sick/ICU cats get reduced effect
-      const gain = cat.status === 'sick' ? Math.floor(PET_AFFECTION_GAIN / 2) : PET_AFFECTION_GAIN
+      const gain = cat.status === 'icu' ? Math.floor(PET_AFFECTION_GAIN / 2) : PET_AFFECTION_GAIN
       cat.affection = Math.min(MAX_AFFECTION, cat.affection + gain)
+      cat.dailyPetPoints = (cat.dailyPetPoints ?? 0) + gain
       this.persist()
       return { success: true, affectionGain: gain }
+    },
+
+    healCat(catId: string, tier: CatSupplyTier = 'basic'): { success: boolean; reason?: string; healthGain?: number } {
+      const cat = this.getCatById(catId)
+      if (!cat) return { success: false, reason: '没有找到这只猫咪' }
+      if (cat.status === 'deceased') return { success: false, reason: '这只猫咪已经离开，无法治疗' }
+      if (cat.status !== 'sick' && cat.status !== 'icu') return { success: false, reason: '健康猫咪不需要用药' }
+
+      const price = tier === 'premium' ? PREMIUM_CAT_MEDICINE_PRICE : CAT_MEDICINE_PRICE
+      if (!this.spendPoints(price)) return { success: false, reason: `积分不足，需要 ${price} 积分` }
+      const healthGain = tier === 'premium' ? PREMIUM_MEDICINE_HEALTH_GAIN : MEDICINE_HEALTH_GAIN
+      cat.health = Math.min(MAX_HEALTH, cat.health + healthGain)
+      cat.status = 'healthy'
+      cat.icuFailedDays = 0
+      this.persist()
+      return { success: true, healthGain }
+    },
+
+    healCommunity(): number {
+      let healed = 0
+      for (const cat of this.cats) {
+        if (cat.status === 'healthy' || cat.status === 'sick') {
+          cat.health = MAX_HEALTH
+          cat.status = 'healthy'
+          healed++
+        }
+      }
+      this.communityHealCount++
+      this.persist()
+      return healed
     },
 
     // ===== Game Session =====
@@ -358,8 +531,16 @@ export const useCatStore = defineStore('cat', {
 
       // Only adopt on perfect score (accuracy === 1.0)
       if (accuracy >= 1.0 && totalCorrect === totalQuestions && totalQuestions > 0) {
-        return this.adoptCat()
+        this.perfectStreak++
+        const cat = this.adoptCat()
+        if (this.perfectStreak >= COMMUNITY_HEAL_STREAK) {
+          this.healCommunity()
+          this.perfectStreak = 0
+        }
+        return cat
       }
+      this.perfectStreak = 0
+      this.persist()
       return null
     },
 
@@ -388,6 +569,8 @@ export const useCatStore = defineStore('cat', {
       this.cats = []
       this.points = 0
       this.perfectGames = 0
+      this.perfectStreak = 0
+      this.communityHealCount = 0
       this.lastGameAccuracy = 0
       this.newAdoptedCatId = null
       this.persist()
