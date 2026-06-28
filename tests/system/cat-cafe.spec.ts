@@ -67,6 +67,21 @@ test.describe('cat cafe UI', () => {
     await expect(page.getByText('启用猫咖功能')).toBeVisible()
   })
 
+  test('parent gate works when Web Crypto is unavailable on plain HTTP', async ({ page }) => {
+    await page.addInitScript(() => {
+      Object.defineProperty(Crypto.prototype, 'subtle', {
+        configurable: true,
+        get: () => undefined,
+      })
+    })
+    await page.goto('./setting')
+    await page.getByText('猫咪设置', { exact: true }).click()
+    await page.getByPlaceholder('输入4–8位数字密码').fill('1234')
+    await page.getByRole('button', { name: '确认' }).click()
+
+    await expect(page.getByText('已解锁', { exact: false })).toBeVisible()
+  })
+
   test('parent can tune cat rules, enable test mode, and change the password', async ({ page }) => {
     await page.goto('./setting')
     await page.getByText('猫咪设置', { exact: true }).click()
