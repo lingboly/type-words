@@ -65,6 +65,33 @@ describe('CatDetailDialog UI', () => {
     expect(wrapper.get('.dialog-content').classes()).toContain('is-playing')
   })
 
+  it('keeps the cat still and redirects to study after the daily play limit', async () => {
+    const store = useCatStore()
+    store.cats = [{
+      ...cat,
+      interactionDate: new Date().toISOString().slice(0, 10),
+      dailyPlayCount: store.tuning.dailyPlayLimit,
+    }]
+    const wrapper = mount(CatDetailDialog, {
+      props: { cat: store.cats[0] },
+      global: {
+        stubs: {
+          Teleport: true,
+          Tooltip: { template: '<div><slot /></div>' },
+          IconEosIconsLoading: true,
+        },
+      },
+    })
+
+    wrapper.findAllComponents(BaseButton).find(button => button.text().includes('开始玩耍'))?.vm.$emit('click')
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.get('.dialog-content').classes()).not.toContain('is-playing')
+    expect(wrapper.find('.play-effect').exists()).toBe(false)
+    expect(wrapper.text()).toContain('已经玩够了， 去学习吧')
+    expect(store.cats[0].dailyPlayCount).toBe(store.tuning.dailyPlayLimit)
+  })
+
   it('explains ICU care and disables play supplies', () => {
     const store = useCatStore()
     store.cats = [{ ...cat, status: 'icu', health: 0 }]
