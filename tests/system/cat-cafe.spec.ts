@@ -56,6 +56,20 @@ test.describe('cat cafe UI', () => {
     await expect(page.getByRole('button', { name: /二妹/ })).toBeVisible()
   })
 
+  test('starter adoption works when secure random APIs are unavailable', async ({ page }) => {
+    await page.addInitScript(() => {
+      Object.defineProperty(Crypto.prototype, 'getRandomValues', {
+        configurable: true,
+        value: undefined,
+      })
+    })
+    await page.goto('./cat-room')
+    await page.getByRole('button', { name: '免费领养 二妹' }).click()
+
+    await expect(page.getByRole('heading', { name: '二妹', level: 2 })).toBeVisible()
+    await expect(page.getByRole('button', { name: /基础猫粮/ })).toBeVisible()
+  })
+
   test('parent gate rejects an invalid password and accepts the default password', async ({ page }) => {
     await page.goto('./setting')
     await page.getByText('猫咪设置', { exact: true }).click()
