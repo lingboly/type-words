@@ -82,10 +82,10 @@ function handleFeed(tier: CatSupplyTier) {
 }
 
 function handlePlay(tier: CatSupplyTier | 'free' = 'free') {
-  showPlay = true
-  setTimeout(() => { showPlay = false }, 1200)
   const result = catStore.playWithCat(props.cat.id, tier)
   if (result.success) {
+    showPlay = true
+    setTimeout(() => { showPlay = false }, 1200)
     showFeedback(`玩得真开心！亲昵 +${result.affectionGain}，健康 +${result.healthGain}`, 'heart')
   } else {
     showFeedback(result.reason ?? '无法玩耍')

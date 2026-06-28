@@ -496,7 +496,7 @@ export const useCatStore = defineStore('cat', {
 
       this.resetDailyInteraction(cat)
       if ((cat.dailyPlayCount ?? 0) >= this.tuning.dailyPlayLimit) {
-        return { success: false, reason: '今天已经玩累了，明天再来吧' }
+        return { success: false, reason: '已经玩够了， 去学习吧' }
       }
 
       const price = tier === 'free' ? 0 : tier === 'premium' ? this.tuning.luxuryToyPrice : this.tuning.basicToyPrice

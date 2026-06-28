@@ -173,6 +173,19 @@ test.describe('cat cafe UI', () => {
     await expect(page.getByText('当前积分 ⭐ 120')).toBeVisible()
   })
 
+  test('daily play limit keeps the cat still and points back to study', async ({ page }) => {
+    await seedCat(page, { dailyPlayCount: 5 })
+    await page.goto('./cat-room')
+    await page.getByRole('button', { name: /花奴/ }).click()
+
+    await page.getByRole('button', { name: '开始玩耍' }).click()
+
+    await expect(page.getByText('已经玩够了， 去学习吧')).toBeVisible()
+    await expect(page.locator('.dialog-content')).not.toHaveClass(/is-playing/)
+    await expect(page.locator('.play-effect')).toHaveCount(0)
+    await expect(page.locator('.daily-summary')).toContainText('玩耍 5/5')
+  })
+
   test('runaway cats move to the remote-care station', async ({ page }) => {
     await seedCat(page, { status: 'runaway', runawayFeedStreak: 3 })
     await page.goto('./cat-room')
