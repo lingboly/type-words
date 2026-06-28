@@ -8,17 +8,8 @@
 
 import type { Cat, CatSupplyTier } from '@/types/cat'
 import {
-  CAT_FOOD_PRICE,
-  CAT_MEDICINE_PRICE,
   CAT_PHOTOS,
   CAT_RARITY_LABELS,
-  CAT_TOY_PRICE,
-  LUXURY_CAT_TOY_PRICE,
-  MAX_DAILY_PLAYS,
-  MAX_DAILY_PET_POINTS,
-  PREMIUM_CAT_FOOD_PRICE,
-  PREMIUM_CAT_MEDICINE_PRICE,
-  RUNAWAY_RECALL_DAYS,
 } from '@/types/cat'
 import { useCatStore } from '@/stores/cat.ts'
 import BaseButton from '@/components/BaseButton.vue'
@@ -83,7 +74,7 @@ function confirmPurchase() {
 function handleFeed(tier: CatSupplyTier) {
   const result = catStore.feedCat(props.cat.id, tier)
   if (result.success) {
-    showFeedback(result.recalled ? '欢迎回家！亲昵度恢复到 50' : props.cat.status === 'runaway' ? `远程照护成功，已坚持 ${props.cat.runawayFeedStreak || 0}/${RUNAWAY_RECALL_DAYS} 天` : '喂食成功，饱腹和亲昵都变好了', 'paw')
+    showFeedback(result.recalled ? '欢迎回家！亲昵度恢复到 50' : props.cat.status === 'runaway' ? `远程照护成功，已坚持 ${props.cat.runawayFeedStreak || 0}/${catStore.tuning.runawayRecallDays} 天` : '喂食成功，饱腹和亲昵都变好了', 'paw')
   } else {
     showFeedback(result.reason ?? '喂食失败')
   }
@@ -166,8 +157,8 @@ const diedDate = $computed(() => {
             领养于 {{ new Date(cat.adoptedAt).toLocaleDateString('zh-CN') }}
           </p>
           <p v-if="cat.status === 'deceased'" class="died-text">🌈 {{ diedDate }} 离开了</p>
-          <p v-if="cat.status === 'icu'" class="care-alert">🏥 正在 ICU 抢救，每天需要 {{ 15 }} 积分维持治疗</p>
-          <p v-if="cat.status === 'runaway'" class="care-alert">🏡 远程照护 {{ cat.runawayFeedStreak || 0 }}/{{ RUNAWAY_RECALL_DAYS }} 天，连续照护可召回</p>
+          <p v-if="cat.status === 'icu'" class="care-alert">🏥 正在 ICU 抢救，每天需要 {{ catStore.tuning.icuDailyCost }} 积分维持治疗</p>
+          <p v-if="cat.status === 'runaway'" class="care-alert">🏡 远程照护 {{ cat.runawayFeedStreak || 0 }}/{{ catStore.tuning.runawayRecallDays }} 天，连续照护可召回</p>
 
           <!-- Status bars -->
           <div class="status-bars" v-if="cat.status !== 'deceased'">
@@ -198,7 +189,7 @@ const diedDate = $computed(() => {
           <div v-if="feedResult" class="feedback-msg">{{ feedResult }}</div>
           <div v-if="playResult" class="feedback-msg">{{ playResult }}</div>
           <div class="daily-summary" v-if="cat.status !== 'deceased'">
-            今日抚摸 {{ cat.dailyPetPoints || 0 }}/{{ MAX_DAILY_PET_POINTS }} · 玩耍 {{ cat.dailyPlayCount || 0 }}/{{ MAX_DAILY_PLAYS }}
+            今日抚摸 {{ cat.dailyPetPoints || 0 }}/{{ catStore.tuning.dailyPetLimit }} · 玩耍 {{ cat.dailyPlayCount || 0 }}/{{ catStore.tuning.dailyPlayLimit }}
           </div>
         </div>
 
@@ -207,27 +198,27 @@ const diedDate = $computed(() => {
           <h3>{{ cat.status === 'runaway' ? '远程照护' : '今日照护' }}</h3>
           <p>积分全部来自学习。消费前会再次确认。</p>
           <div class="supply-grid">
-          <BaseButton class="action-btn feed" @click="requestPurchase('feed', 'basic', CAT_FOOD_PRICE, '基础猫粮')">
-            🥫 基础猫粮 <small>{{ CAT_FOOD_PRICE }}分</small>
+          <BaseButton class="action-btn feed" @click="requestPurchase('feed', 'basic', catStore.tuning.basicFoodPrice, '基础猫粮')">
+            🥫 基础猫粮 <small>{{ catStore.tuning.basicFoodPrice }}分</small>
           </BaseButton>
           <BaseButton
             class="action-btn play"
-            @click="requestPurchase('feed', 'premium', PREMIUM_CAT_FOOD_PRICE, '高级猫粮')"
+            @click="requestPurchase('feed', 'premium', catStore.tuning.premiumFoodPrice, '高级猫粮')"
             :disabled="cat.status === 'icu'"
           >
-            🍣 高级猫粮 <small>{{ PREMIUM_CAT_FOOD_PRICE }}分</small>
+            🍣 高级猫粮 <small>{{ catStore.tuning.premiumFoodPrice }}分</small>
           </BaseButton>
-          <BaseButton class="action-btn play" :disabled="cat.status !== 'healthy'" @click="requestPurchase('play', 'basic', CAT_TOY_PRICE, '普通玩具')">
-            🧶 普通玩具 <small>{{ CAT_TOY_PRICE }}分</small>
+          <BaseButton class="action-btn play" :disabled="cat.status !== 'healthy'" @click="requestPurchase('play', 'basic', catStore.tuning.basicToyPrice, '普通玩具')">
+            🧶 普通玩具 <small>{{ catStore.tuning.basicToyPrice }}分</small>
           </BaseButton>
-          <BaseButton class="action-btn play" :disabled="cat.status !== 'healthy'" @click="requestPurchase('play', 'premium', LUXURY_CAT_TOY_PRICE, '豪华玩具')">
-            🧸 豪华玩具 <small>{{ LUXURY_CAT_TOY_PRICE }}分</small>
+          <BaseButton class="action-btn play" :disabled="cat.status !== 'healthy'" @click="requestPurchase('play', 'premium', catStore.tuning.luxuryToyPrice, '豪华玩具')">
+            🧸 豪华玩具 <small>{{ catStore.tuning.luxuryToyPrice }}分</small>
           </BaseButton>
-          <BaseButton class="action-btn heal" :disabled="cat.status !== 'sick' && cat.status !== 'icu'" @click="requestPurchase('heal', 'basic', CAT_MEDICINE_PRICE, '普通药品')">
-            💊 普通药品 <small>{{ CAT_MEDICINE_PRICE }}分</small>
+          <BaseButton class="action-btn heal" :disabled="cat.status !== 'sick' && cat.status !== 'icu'" @click="requestPurchase('heal', 'basic', catStore.tuning.medicinePrice, '普通药品')">
+            💊 普通药品 <small>{{ catStore.tuning.medicinePrice }}分</small>
           </BaseButton>
-          <BaseButton class="action-btn heal" :disabled="cat.status !== 'sick' && cat.status !== 'icu'" @click="requestPurchase('heal', 'premium', PREMIUM_CAT_MEDICINE_PRICE, '高级治疗')">
-            🏥 高级治疗 <small>{{ PREMIUM_CAT_MEDICINE_PRICE }}分</small>
+          <BaseButton class="action-btn heal" :disabled="cat.status !== 'sick' && cat.status !== 'icu'" @click="requestPurchase('heal', 'premium', catStore.tuning.premiumMedicinePrice, '高级治疗')">
+            🏥 高级治疗 <small>{{ catStore.tuning.premiumMedicinePrice }}分</small>
           </BaseButton>
           </div>
 

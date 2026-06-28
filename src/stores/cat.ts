@@ -13,38 +13,27 @@
 import { defineStore } from 'pinia'
 import { get as idbGet, set as idbSet } from 'idb-keyval'
 import { nanoid } from 'nanoid'
-import type { Cat, CatPhotoEntry, CatSupplyTier } from '@/types/cat'
+import type { Cat, CatPhotoEntry, CatSupplyTier, CatTuning } from '@/types/cat'
 import {
   CAT_PHOTOS,
   CAT_STORE_DB_KEY,
-  CAT_FOOD_PRICE,
-  CAT_TOY_PRICE,
-  CAT_MEDICINE_PRICE,
-  COMMUNITY_HEAL_STREAK,
   FEED_HUNGER_REDUCTION,
-  ICU_DAILY_COST,
-  LUXURY_CAT_TOY_PRICE,
   LUXURY_PLAY_AFFECTION_GAIN,
   LUXURY_PLAY_HEALTH_GAIN,
-  MAX_DAILY_PET_POINTS,
-  MAX_DAILY_PLAYS,
   MEDICINE_HEALTH_GAIN,
-  PREMIUM_CAT_FOOD_PRICE,
-  PREMIUM_CAT_MEDICINE_PRICE,
   PREMIUM_FEED_AFFECTION_GAIN,
   PREMIUM_FEED_HUNGER_REDUCTION,
   PREMIUM_MEDICINE_HEALTH_GAIN,
-  RUNAWAY_RECALL_DAYS,
   PLAY_AFFECTION_GAIN,
   PLAY_HEALTH_GAIN,
   PET_AFFECTION_GAIN,
   MAX_HEALTH,
   MAX_AFFECTION,
   MAX_HUNGER,
-  SICK_HEALTH_THRESHOLD,
-  RUNAWAY_AFFECTION_THRESHOLD,
-  HUNGER_HEALTH_DRAIN_THRESHOLD,
   rollCatRarity,
+  DEFAULT_CAT_TUNING,
+  DEFAULT_PARENT_PASSWORD_HASH,
+  hashParentPassword,
 } from '@/types/cat'
 
 function dateKey(timestamp = Date.now()): string {
@@ -88,6 +77,12 @@ export interface CatStoreState {
   showPracticeCompanion: boolean
   /** Whether animations should play */
   showAnimations: boolean
+  /** Parent-managed cat balancing configuration. */
+  tuning: CatTuning
+  /** Password is hashed before local persistence. */
+  parentPasswordHash: string
+  /** Enables parent-only test controls. */
+  testMode: boolean
   /** Newly adopted cat ID (for notification) */
   newAdoptedCatId: string | null
   /** Whether data has been loaded from IndexedDB */
@@ -105,6 +100,9 @@ export const useCatStore = defineStore('cat', {
     catEnabled: true,
     showPracticeCompanion: true,
     showAnimations: true,
+    tuning: { ...DEFAULT_CAT_TUNING },
+    parentPasswordHash: DEFAULT_PARENT_PASSWORD_HASH,
+    testMode: false,
     newAdoptedCatId: null,
     loaded: false,
   }),
@@ -123,7 +121,7 @@ export const useCatStore = defineStore('cat', {
     /** Number of cats that need attention (sick or hungry) */
     warningCatCount(): number {
       return this.aliveCats.filter(c =>
-        c.status === 'sick' || c.status === 'icu' || c.hunger >= HUNGER_HEALTH_DRAIN_THRESHOLD,
+        c.status === 'sick' || c.status === 'icu' || c.hunger >= this.tuning.healthDrainThreshold,
       ).length
     },
 
@@ -191,6 +189,11 @@ export const useCatStore = defineStore('cat', {
           if (typeof data.catEnabled === 'boolean') this.catEnabled = data.catEnabled
           if (typeof data.showPracticeCompanion === 'boolean') this.showPracticeCompanion = data.showPracticeCompanion
           if (typeof data.showAnimations === 'boolean') this.showAnimations = data.showAnimations
+          if (data.tuning && typeof data.tuning === 'object') {
+            this.tuning = { ...DEFAULT_CAT_TUNING, ...data.tuning }
+          }
+          if (typeof data.parentPasswordHash === 'string') this.parentPasswordHash = data.parentPasswordHash
+          if (typeof data.testMode === 'boolean') this.testMode = data.testMode
         }
       } catch {
         // IndexedDB unavailable — use in-memory defaults
@@ -213,6 +216,9 @@ export const useCatStore = defineStore('cat', {
           catEnabled: this.catEnabled,
           showPracticeCompanion: this.showPracticeCompanion,
           showAnimations: this.showAnimations,
+          tuning: this.tuning,
+          parentPasswordHash: this.parentPasswordHash,
+          testMode: this.testMode,
         }
         await idbSet(CAT_STORE_DB_KEY, data)
       } catch {
@@ -232,6 +238,14 @@ export const useCatStore = defineStore('cat', {
     spendPoints(amount: number): boolean {
       if (this.points < amount) return false
       this.points -= amount
+      this.persist()
+      return true
+    },
+
+    /** Test points can only be overwritten while parent-controlled test mode is active. */
+    setTestPoints(amount: number): boolean {
+      if (!this.testMode || !Number.isFinite(amount)) return false
+      this.points = Math.max(0, Math.min(1_000_000, Math.round(amount)))
       this.persist()
       return true
     },
@@ -311,12 +325,12 @@ export const useCatStore = defineStore('cat', {
           continue
         }
 
-        // Hunger increases by 25/hour (capped at 100)
-        cat.hunger = Math.min(MAX_HUNGER, cat.hunger + Math.floor(elapsedHours * 25))
+        cat.hunger = Math.min(MAX_HUNGER, cat.hunger + Math.floor(elapsedHours * this.tuning.hungerDecayPerHour))
+        cat.affection = Math.max(0, cat.affection - Math.floor(elapsedHours * this.tuning.affectionDecayPerHour))
 
-        // Health drains when hunger > 50
-        if (cat.hunger > HUNGER_HEALTH_DRAIN_THRESHOLD) {
-          const drainRate = ((cat.hunger - HUNGER_HEALTH_DRAIN_THRESHOLD) / 50) * 1.0
+        if (cat.hunger > this.tuning.healthDrainThreshold) {
+          const drainRange = Math.max(1, MAX_HUNGER - this.tuning.healthDrainThreshold)
+          const drainRate = (cat.hunger - this.tuning.healthDrainThreshold) / drainRange
           const healthLoss = Math.floor(elapsedHours * drainRate)
           cat.health = Math.max(0, cat.health - healthLoss)
         }
@@ -327,13 +341,13 @@ export const useCatStore = defineStore('cat', {
           cat.icuLastChargeDate = dateKey(now)
           cat.icuFailedDays = 0
         }
-        if (cat.health < SICK_HEALTH_THRESHOLD && cat.status === 'healthy') {
+        if (cat.health < this.tuning.sickHealthThreshold && cat.status === 'healthy') {
           cat.status = 'sick'
         }
 
         // Runaway check when affection < 60
-        if ((cat.status === 'healthy' || cat.status === 'sick') && cat.affection < RUNAWAY_AFFECTION_THRESHOLD) {
-          const runawayProb = Math.max(0, (RUNAWAY_AFFECTION_THRESHOLD - cat.affection) / RUNAWAY_AFFECTION_THRESHOLD * 0.3)
+        if ((cat.status === 'healthy' || cat.status === 'sick') && cat.affection < this.tuning.runawayAffectionThreshold) {
+          const runawayProb = Math.max(0, (this.tuning.runawayAffectionThreshold - cat.affection) / Math.max(1, this.tuning.runawayAffectionThreshold) * (this.tuning.runawayMaxProbability / 100))
           if (Math.random() < runawayProb) {
             cat.status = 'runaway'
           }
@@ -349,12 +363,12 @@ export const useCatStore = defineStore('cat', {
       const lastCharge = cat.icuLastChargeDate ?? today
       const dueDays = Math.max(0, daysBetween(lastCharge, today))
       for (let day = 0; day < dueDays; day++) {
-        if (this.points >= ICU_DAILY_COST) {
-          this.points -= ICU_DAILY_COST
+        if (this.points >= this.tuning.icuDailyCost) {
+          this.points -= this.tuning.icuDailyCost
           cat.icuFailedDays = 0
         } else {
           cat.icuFailedDays = (cat.icuFailedDays ?? 0) + 1
-          if (cat.icuFailedDays >= 7) {
+          if (cat.icuFailedDays >= this.tuning.icuFailedDaysLimit) {
             cat.status = 'deceased'
             break
           }
@@ -389,7 +403,7 @@ export const useCatStore = defineStore('cat', {
       if (cat.status === 'deceased') return { success: false, reason: '这只猫咪已经离开了' }
       if (cat.status === 'icu') return { success: false, reason: 'ICU 中请先使用医疗用品' }
 
-      const price = tier === 'premium' ? PREMIUM_CAT_FOOD_PRICE : CAT_FOOD_PRICE
+      const price = tier === 'premium' ? this.tuning.premiumFoodPrice : this.tuning.basicFoodPrice
       if (!this.spendPoints(price)) {
         return { success: false, reason: `积分不足，需要 ${price} 积分` }
       }
@@ -408,7 +422,7 @@ export const useCatStore = defineStore('cat', {
           cat.runawayFeedStreak = gap === 1 ? (cat.runawayFeedStreak ?? 0) + 1 : 1
           cat.runawayFeedDate = today
         }
-        if ((cat.runawayFeedStreak ?? 0) >= RUNAWAY_RECALL_DAYS) {
+        if ((cat.runawayFeedStreak ?? 0) >= this.tuning.runawayRecallDays) {
           cat.status = 'healthy'
           cat.affection = 50
           cat.runawayFeedStreak = 0
@@ -420,14 +434,14 @@ export const useCatStore = defineStore('cat', {
       }
 
       // If hunger drops below 50 and cat was sick, begin recovery
-      if (cat.hunger < HUNGER_HEALTH_DRAIN_THRESHOLD && cat.status === 'sick' && cat.health >= SICK_HEALTH_THRESHOLD) {
+      if (cat.hunger < this.tuning.healthDrainThreshold && cat.status === 'sick' && cat.health >= this.tuning.sickHealthThreshold) {
         cat.status = 'healthy'
       }
 
       // Feeding helps sick cats recover slightly
       if (cat.status === 'sick') {
         cat.health = Math.min(MAX_HEALTH, cat.health + 2)
-        if (cat.health >= SICK_HEALTH_THRESHOLD) {
+        if (cat.health >= this.tuning.sickHealthThreshold) {
           cat.status = 'healthy'
         }
       }
@@ -448,11 +462,11 @@ export const useCatStore = defineStore('cat', {
       if (cat.status === 'sick' || cat.status === 'icu') return { success: false, reason: '猫咪身体虚弱，暂时不能玩耍' }
 
       this.resetDailyInteraction(cat)
-      if ((cat.dailyPlayCount ?? 0) >= MAX_DAILY_PLAYS) {
+      if ((cat.dailyPlayCount ?? 0) >= this.tuning.dailyPlayLimit) {
         return { success: false, reason: '今天已经玩累了，明天再来吧' }
       }
 
-      const price = tier === 'premium' ? LUXURY_CAT_TOY_PRICE : CAT_TOY_PRICE
+      const price = tier === 'premium' ? this.tuning.luxuryToyPrice : this.tuning.basicToyPrice
       if (!this.spendPoints(price)) {
         return { success: false, reason: `积分不足，需要 ${price} 积分` }
       }
@@ -478,7 +492,7 @@ export const useCatStore = defineStore('cat', {
       if (cat.status === 'runaway') return { success: false, affectionGain: 0 }
 
       this.resetDailyInteraction(cat)
-      if ((cat.dailyPetPoints ?? 0) >= MAX_DAILY_PET_POINTS) {
+      if ((cat.dailyPetPoints ?? 0) >= this.tuning.dailyPetLimit) {
         return { success: false, affectionGain: 0, reason: '今天已经摸够了，明天再来吧' }
       }
 
@@ -496,7 +510,7 @@ export const useCatStore = defineStore('cat', {
       if (cat.status === 'deceased') return { success: false, reason: '这只猫咪已经离开，无法治疗' }
       if (cat.status !== 'sick' && cat.status !== 'icu') return { success: false, reason: '健康猫咪不需要用药' }
 
-      const price = tier === 'premium' ? PREMIUM_CAT_MEDICINE_PRICE : CAT_MEDICINE_PRICE
+      const price = tier === 'premium' ? this.tuning.premiumMedicinePrice : this.tuning.medicinePrice
       if (!this.spendPoints(price)) return { success: false, reason: `积分不足，需要 ${price} 积分` }
       const healthGain = tier === 'premium' ? PREMIUM_MEDICINE_HEALTH_GAIN : MEDICINE_HEALTH_GAIN
       cat.health = Math.min(MAX_HEALTH, cat.health + healthGain)
@@ -533,7 +547,7 @@ export const useCatStore = defineStore('cat', {
       if (accuracy >= 1.0 && totalCorrect === totalQuestions && totalQuestions > 0) {
         this.perfectStreak++
         const cat = this.adoptCat()
-        if (this.perfectStreak >= COMMUNITY_HEAL_STREAK) {
+        if (this.perfectStreak >= this.tuning.communityHealStreak) {
           this.healCommunity()
           this.perfectStreak = 0
         }
@@ -561,6 +575,32 @@ export const useCatStore = defineStore('cat', {
     /** Toggle animations */
     toggleAnimations() {
       this.showAnimations = !this.showAnimations
+      this.persist()
+    },
+
+    async verifyParentPassword(password: string): Promise<boolean> {
+      return await hashParentPassword(password) === this.parentPasswordHash
+    },
+
+    async changeParentPassword(currentPassword: string, nextPassword: string): Promise<boolean> {
+      if (!/^\d{4,8}$/.test(nextPassword) || !await this.verifyParentPassword(currentPassword)) return false
+      this.parentPasswordHash = await hashParentPassword(nextPassword)
+      await this.persist()
+      return true
+    },
+
+    setTestMode(enabled: boolean) {
+      this.testMode = enabled
+      this.persist()
+    },
+
+    updateTuning<K extends keyof CatTuning>(key: K, value: CatTuning[K]) {
+      this.tuning[key] = value
+      this.persist()
+    },
+
+    resetTuning() {
+      this.tuning = { ...DEFAULT_CAT_TUNING }
       this.persist()
     },
 

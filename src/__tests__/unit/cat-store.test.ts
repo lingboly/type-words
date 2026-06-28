@@ -255,4 +255,57 @@ describe('cat store', () => {
     expect(store.perfectStreak).toBe(0)
     expect(store.communityHealCount).toBe(1)
   })
+
+  it('persists and applies parent-managed prices and interaction limits', () => {
+    const store = useCatStore()
+    store.cats = [makeCat({ dailyPlayCount: 1 })]
+    store.points = 12
+
+    store.updateTuning('basicFoodPrice', 12)
+    store.updateTuning('dailyPlayLimit', 1)
+
+    expect(store.feedCat('cat-1')).toEqual({ success: true })
+    expect(store.points).toBe(0)
+    expect(store.playWithCat('cat-1')).toMatchObject({ success: false })
+    expect(storage.set).toHaveBeenCalled()
+  })
+
+  it('only allows direct point adjustment in test mode and clamps unsafe values', () => {
+    const store = useCatStore()
+    store.points = 25
+
+    expect(store.setTestPoints(999)).toBe(false)
+    expect(store.points).toBe(25)
+
+    store.setTestMode(true)
+    expect(store.setTestPoints(1234.4)).toBe(true)
+    expect(store.points).toBe(1234)
+    expect(store.setTestPoints(-10)).toBe(true)
+    expect(store.points).toBe(0)
+  })
+
+  it('changes the parent password only after current-password verification', async () => {
+    const store = useCatStore()
+
+    expect(await store.verifyParentPassword('1234')).toBe(true)
+    expect(await store.changeParentPassword('0000', '5678')).toBe(false)
+    expect(await store.changeParentPassword('1234', '5678')).toBe(true)
+    expect(await store.verifyParentPassword('1234')).toBe(false)
+    expect(await store.verifyParentPassword('5678')).toBe(true)
+  })
+
+  it('migrates older saves with default tuning and restores persisted parent controls', async () => {
+    storage.get.mockResolvedValue({
+      cats: [],
+      tuning: { basicFoodPrice: 7 },
+      testMode: true,
+    })
+    const store = useCatStore()
+
+    await store.loadFromStorage()
+
+    expect(store.tuning.basicFoodPrice).toBe(7)
+    expect(store.tuning.dailyPlayLimit).toBe(MAX_DAILY_PLAYS)
+    expect(store.testMode).toBe(true)
+  })
 })

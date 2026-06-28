@@ -5,17 +5,21 @@
  */
 
 import type { Cat } from '@/types/cat'
-import { CAT_RARITY_LABELS, MAX_DAILY_PLAYS } from '@/types/cat'
+import { CAT_RARITY_LABELS, MAX_DAILY_PET_POINTS, MAX_DAILY_PLAYS } from '@/types/cat'
 
 interface IProps {
   cat: Cat
   photoUrl: string
   breed: string
   isNew?: boolean
+  dailyPetLimit?: number
+  dailyPlayLimit?: number
 }
 
 const props = withDefaults(defineProps<IProps>(), {
   isNew: false,
+  dailyPetLimit: MAX_DAILY_PET_POINTS,
+  dailyPlayLimit: MAX_DAILY_PLAYS,
 })
 
 // Status display helpers
@@ -100,7 +104,7 @@ const statusClass = $computed(() => `status-${props.cat.status}`)
         </div>
       </div>
       <div class="daily-care">
-        今日抚摸 {{ cat.dailyPetPoints || 0 }}/40 · 玩耍 {{ cat.dailyPlayCount || 0 }}/{{ MAX_DAILY_PLAYS }}
+        今日抚摸 {{ cat.dailyPetPoints || 0 }}/{{ dailyPetLimit }} · 玩耍 {{ cat.dailyPlayCount || 0 }}/{{ dailyPlayLimit }}
       </div>
     </div>
   </button>
