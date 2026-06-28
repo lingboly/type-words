@@ -89,6 +89,8 @@ describe('CatDetailDialog UI', () => {
     expect(wrapper.get('.dialog-content').classes()).not.toContain('is-playing')
     expect(wrapper.find('.play-effect').exists()).toBe(false)
     expect(wrapper.text()).toContain('已经玩够了， 去学习吧')
+    expect(wrapper.get('.feedback-msg').classes()).toContain('feedback-attention')
+    expect(wrapper.get('.feedback-msg').attributes('role')).toBe('alert')
     expect(store.cats[0].dailyPlayCount).toBe(store.tuning.dailyPlayLimit)
   })
 

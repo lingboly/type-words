@@ -9,7 +9,7 @@
 
 import { onMounted, defineAsyncComponent } from 'vue'
 import { useCatStore } from '@/stores/cat.ts'
-import { CAT_PHOTOS, type Cat } from '@/types/cat'
+import { CAT_PHOTOS, CAT_RARITY_LABELS, type Cat } from '@/types/cat'
 import CatCard from '@/components/CatCard.vue'
 import CatAvatar from '@/components/CatAvatar.vue'
 import CatHud from '@/components/CatHud.vue'
@@ -31,7 +31,7 @@ onMounted(async () => {
 const cats = $computed(() => catStore.cafeCats)
 const runawayCats = $computed(() => catStore.aliveCats.filter(cat => cat.status === 'runaway'))
 const deceasedCats = $computed(() => catStore.cats.filter(c => c.status === 'deceased'))
-const starterCats = CAT_PHOTOS.filter(photo => photo.rarity === 'common')
+const adoptionCats = CAT_PHOTOS
 const careCats = $computed(() => [
   ...catStore.aliveCats.filter(cat => cat.status === 'icu' || cat.status === 'sick' || cat.status === 'runaway'),
   ...catStore.aliveCats.filter(cat => cat.status === 'healthy'),
@@ -76,6 +76,20 @@ function careActionLabel(cat: Cat): string {
   if (cat.status === 'icu' || cat.status === 'sick') return '前往救治'
   if (cat.status === 'runaway') return '远程照护与召回'
   return '喂养、玩耍与抚摸'
+}
+
+function adoptionUnlockCount(rarity: string): number {
+  if (rarity === 'rare') return 3
+  if (rarity === 'premium') return 10
+  return 0
+}
+
+function isAdoptionUnlocked(rarity: string): boolean {
+  return catStore.cats.length >= adoptionUnlockCount(rarity)
+}
+
+function isPhotoOwned(photoKey: string): boolean {
+  return catStore.cats.some(cat => cat.photoKey === photoKey)
 }
 </script>
 
@@ -136,22 +150,48 @@ function careActionLabel(cat: Cat): string {
         <div class="section-intro">
           <span class="eyebrow">领养中心</span>
           <h2 id="adoption-title">{{ catStore.cats.length ? '学习解锁下一位猫咪伙伴' : '选择你的第一只猫咪伙伴' }}</h2>
-          <p v-if="catStore.cats.length === 0">第一次领养免费。选定后，你可以马上抚摸它；继续学习赚积分来购买猫粮、玩具和药品。</p>
-          <p v-else>每完成一组全对练习，就会随机领养一只猫咪。稀有伙伴会随着累计领养数量逐步解锁。</p>
+          <p v-if="catStore.cats.length === 0">下面展示猫咖中全部可领取伙伴。第一次可从普通猫中免费选择；继续学习会逐步解锁稀有与珍藏猫咪。</p>
+          <p v-else>这里展示全部可领取猫咪。每完成一组全对练习，系统会从当前已解锁的猫咪中随机选择一只入住。</p>
         </div>
 
-        <div v-if="catStore.cats.length === 0" class="starter-grid">
-          <article v-for="photo in starterCats" :key="photo.key" class="starter-card">
+        <div class="adoption-catalog-summary">
+          <span><strong>{{ adoptionCats.length }}</strong> 只可领取猫咪</span>
+          <span><strong>{{ new Set(catStore.cats.map(cat => cat.photoKey)).size }}</strong> 只已收集</span>
+          <span><strong>{{ adoptionCats.filter(photo => isAdoptionUnlocked(photo.rarity)).length }}</strong> 只已解锁</span>
+        </div>
+
+        <div class="starter-grid">
+          <article
+            v-for="photo in adoptionCats"
+            :key="photo.key"
+            class="starter-card"
+            :class="{ locked: !isAdoptionUnlocked(photo.rarity), owned: isPhotoOwned(photo.key) }"
+          >
             <img :src="getPhotoUrl(photo.key)" :alt="photo.name" />
             <div>
-              <span class="starter-label">初始伙伴</span>
+              <div class="catalog-labels">
+                <span class="starter-label" :class="`rarity-${photo.rarity}`">{{ CAT_RARITY_LABELS[photo.rarity] }}</span>
+                <span v-if="isPhotoOwned(photo.key)" class="owned-label">✓ 已拥有</span>
+              </div>
               <h3>{{ photo.name }}</h3>
               <p>{{ photo.breed }}</p>
-              <button type="button" @click="adoptStarter(photo.key)">免费领养 {{ photo.name }}</button>
+              <button
+                v-if="catStore.cats.length === 0 && photo.rarity === 'common'"
+                type="button"
+                @click="adoptStarter(photo.key)"
+              >
+                免费领养 {{ photo.name }}
+              </button>
+              <div v-else-if="!isAdoptionUnlocked(photo.rarity)" class="adoption-state locked-state">
+                🔒 累计领养 {{ adoptionUnlockCount(photo.rarity) }} 只后解锁
+              </div>
+              <div v-else class="adoption-state available-state">
+                {{ isPhotoOwned(photo.key) ? '全对练习可再次领取' : '✓ 全对练习可领取' }}
+              </div>
             </div>
           </article>
         </div>
-        <div v-else class="earned-adoption">
+        <div v-if="catStore.cats.length" class="earned-adoption">
           <div class="adoption-step"><span>1</span><strong>完成一组练习</strong><small>答完当前单词组</small></div>
           <div class="step-arrow">→</div>
           <div class="adoption-step"><span>2</span><strong>全部答对</strong><small>保持 100% 正确率</small></div>
@@ -366,6 +406,16 @@ main {
   gap: 1rem;
 }
 
+.adoption-catalog-summary {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.85rem;
+
+  span { padding: 0.4rem 0.65rem; border-radius: 999px; color: var(--color-cat-neutral); background: #fff; font-size: 0.76rem; }
+  strong { color: var(--color-cat-dark); }
+}
+
 .starter-card {
   overflow: hidden;
   border: 1px solid rgba(255, 107, 107, 0.25);
@@ -387,6 +437,21 @@ main {
     cursor: pointer;
     font-weight: 700;
   }
+
+  &.locked {
+    border-style: dashed;
+    img { filter: grayscale(0.75); opacity: 0.72; }
+  }
+
+  &.owned {
+    border-color: rgba(92, 201, 167, 0.65);
+  }
+}
+
+.catalog-labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.4rem;
 }
 
 .starter-label {
@@ -396,7 +461,26 @@ main {
   background: #fff1d6;
   font-size: 0.68rem;
   font-weight: 700;
+
+  &.rarity-rare { color: #5f4b8b; background: #eee8ff; }
+  &.rarity-premium { color: #8a4f00; background: #fff0c2; }
 }
+
+.owned-label { color: #25876c; font-size: 0.7rem; font-weight: 700; }
+
+.adoption-state {
+  display: grid;
+  place-items: center;
+  min-height: 2.6rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.available-state { color: #25876c; background: rgba(92, 201, 167, 0.12); }
+.locked-state { color: #7c7370; background: #f2efed; }
 
 .earned-adoption {
   display: flex;

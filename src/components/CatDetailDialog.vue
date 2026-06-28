@@ -32,6 +32,8 @@ let showPawPrint = $ref(false)
 let showPlay = $ref(false)
 let feedResult = $ref<string | null>(null)
 let playResult = $ref<string | null>(null)
+let feedbackAttention = $ref(false)
+let feedbackTimer = $ref<ReturnType<typeof setTimeout> | null>(null)
 type PurchaseKind = 'feed' | 'play' | 'heal'
 let pendingPurchase = $ref<{
   kind: PurchaseKind
@@ -48,15 +50,19 @@ function getBreed(photoKey: string): string {
   return CAT_PHOTOS.find(p => p.key === photoKey)?.breed ?? ''
 }
 
-function showFeedback(message: string, effect: 'heart' | 'paw' | 'none' = 'none') {
+function showFeedback(message: string, effect: 'heart' | 'paw' | 'none' = 'none', duration = 1800, attention = false) {
+  if (feedbackTimer) clearTimeout(feedbackTimer)
   feedResult = message
+  feedbackAttention = attention
   showHeart = effect === 'heart'
   showPawPrint = effect === 'paw'
-  setTimeout(() => {
+  feedbackTimer = setTimeout(() => {
     showHeart = false
     showPawPrint = false
     feedResult = null
-  }, 1800)
+    feedbackAttention = false
+    feedbackTimer = null
+  }, duration)
 }
 
 function requestPurchase(kind: PurchaseKind, tier: CatSupplyTier, price: number, label: string) {
@@ -88,7 +94,8 @@ function handlePlay(tier: CatSupplyTier | 'free' = 'free') {
     setTimeout(() => { showPlay = false }, 1200)
     showFeedback(`玩得真开心！亲昵 +${result.affectionGain}，健康 +${result.healthGain}`, 'heart')
   } else {
-    showFeedback(result.reason ?? '无法玩耍')
+    const reachedLimit = result.reason === '已经玩够了， 去学习吧'
+    showFeedback(result.reason ?? '无法玩耍', 'none', reachedLimit ? 5200 : 1800, reachedLimit)
   }
 }
 
@@ -192,7 +199,15 @@ const diedDate = $computed(() => {
           </div>
 
           <!-- Feedback messages -->
-          <div v-if="feedResult" class="feedback-msg">{{ feedResult }}</div>
+          <div
+            v-if="feedResult"
+            class="feedback-msg"
+            :class="{ 'feedback-attention': feedbackAttention }"
+            :role="feedbackAttention ? 'alert' : 'status'"
+          >
+            <span v-if="feedbackAttention" aria-hidden="true">📚</span>
+            {{ feedResult }}
+          </div>
           <div v-if="playResult" class="feedback-msg">{{ playResult }}</div>
           <div class="daily-summary" v-if="cat.status !== 'deceased'">
             今日抚摸 {{ cat.dailyPetPoints || 0 }}/{{ catStore.tuning.dailyPetLimit }} · 玩耍 {{ cat.dailyPlayCount || 0 }}/{{ catStore.tuning.dailyPlayLimit }}
@@ -346,6 +361,33 @@ const diedDate = $computed(() => {
   strong { color: var(--color-cat-dark); font-size: 0.88rem; }
   small { color: var(--color-cat-neutral); font-size: 0.72rem; }
   .free-play-btn { flex: none; background: var(--color-cat-success); color: #fff; }
+}
+
+.feedback-attention {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.8rem 1rem !important;
+  border: 2px solid #f59e0b;
+  border-radius: 12px;
+  color: #7c3f00 !important;
+  background: #fff3c4 !important;
+  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.25);
+  font-size: 1rem !important;
+  font-weight: 800;
+  animation: attentionPulse 0.75s ease-in-out 2;
+
+  span { font-size: 1.25rem; }
+}
+
+@keyframes attentionPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.025); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feedback-attention { animation: none; }
 }
 
 @media (max-width: 420px) {

@@ -48,6 +48,12 @@ test.describe('cat cafe UI', () => {
     await page.goto('./cat-room')
 
     await expect(page.getByRole('heading', { name: '选择你的第一只猫咪伙伴' })).toBeVisible()
+    await expect(page.getByText('7 只可领取猫咪')).toBeVisible()
+    for (const name of ['二妹', '一妹', '一弟', '三妹', '二弟', '三弟', '花奴']) {
+      await expect(page.getByRole('img', { name, exact: true })).toBeVisible()
+    }
+    await expect(page.getByText('累计领养 3 只后解锁').first()).toBeVisible()
+    await expect(page.getByText('累计领养 10 只后解锁')).toBeVisible()
     await page.getByRole('button', { name: '免费领养 二妹' }).click()
     await expect(page.getByRole('heading', { name: '二妹', level: 2 })).toBeVisible()
     await expect(page.getByText('50/100')).toHaveCount(3)
@@ -162,6 +168,18 @@ test.describe('cat cafe UI', () => {
     await expect(page.getByText('当前积分 ⭐ 100')).toBeVisible()
   })
 
+  test('adoption center keeps the complete claimable cat catalog visible', async ({ page }) => {
+    await seedCat(page)
+    await page.goto('./cat-room')
+    await page.getByRole('button', { name: /领养中心/ }).click()
+
+    await expect(page.getByText('7 只可领取猫咪')).toBeVisible()
+    await expect(page.getByText('1 只已收集')).toBeVisible()
+    await expect(page.getByText('4 只已解锁')).toBeVisible()
+    await expect(page.getByText('✓ 已拥有')).toBeVisible()
+    await expect(page.getByText('✓ 全对练习可领取').first()).toBeVisible()
+  })
+
   test('healthy cats can play for free with visible feedback and no point charge', async ({ page }) => {
     await seedCat(page, { health: 80, affection: 70 })
     await page.goto('./cat-room')
@@ -182,9 +200,12 @@ test.describe('cat cafe UI', () => {
     await page.getByRole('button', { name: '开始玩耍' }).click()
 
     await expect(page.getByText('已经玩够了， 去学习吧')).toBeVisible()
+    await expect(page.getByRole('alert')).toHaveClass(/feedback-attention/)
     await expect(page.locator('.dialog-content')).not.toHaveClass(/is-playing/)
     await expect(page.locator('.play-effect')).toHaveCount(0)
     await expect(page.locator('.daily-summary')).toContainText('玩耍 5/5')
+    await page.waitForTimeout(2500)
+    await expect(page.getByText('已经玩够了， 去学习吧')).toBeVisible()
   })
 
   test('runaway cats move to the remote-care station', async ({ page }) => {
