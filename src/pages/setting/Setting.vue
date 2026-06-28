@@ -811,9 +811,12 @@ function importOldData() {
           <p class=" text-xl">
             基于 https://github.com/zyronon/TypeWords 修改,删了一些收集隐私数据内容
           </p>
+          <p class="text-xl">
+            从 https://github.com/pingnas/type-words 修改，增加了猫的设计。
+          </p>
           <p>
-            GitHub地址：<a href="https://github.com/pingnas/type-words"
-              target="_blank">https://github.com/pingnas/type-words</a>
+            GitHub地址：<a href="https://github.com/lingboly/type-words"
+              target="_blank">https://github.com/lingboly/type-words</a>
           </p>
 
           <div class="text-md color-gray mt-10">

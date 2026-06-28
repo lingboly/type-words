@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test'
 
 const routes = [
-  { path: './', landmark: 'Type Words' },
+  { path: './', landmark: '知识猫咖' },
   { path: './words', landmark: '我的词典' },
   { path: './articles', landmark: '我的书籍' },
   { path: './setting', landmark: '设置' },
