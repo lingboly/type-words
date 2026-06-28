@@ -8,7 +8,9 @@ import {
   COMMUNITY_HEAL_STREAK,
   ICU_DAILY_COST,
   MAX_DAILY_PLAYS,
+  LUXURY_CAT_TOY_PRICE,
   PREMIUM_CAT_FOOD_PRICE,
+  PREMIUM_CAT_MEDICINE_PRICE,
   RUNAWAY_RECALL_DAYS,
   rollCatRarity,
   type Cat,
@@ -118,6 +120,15 @@ describe('cat store', () => {
     expect(store.adoptionUnlockedCount).toBe(1)
     store.recordGameSession(1, 10, 10)
     expect(store.adoptionUnlockedCount).toBe(2)
+  })
+
+  it('uses an adjustable internal adoption price multiplier', () => {
+    const store = useCatStore()
+    store.cats = [makeCat({ photoKey: '三弟-穿绿衣服的粽子狸花猫.jpg' })]
+
+    expect(store.nextAdoptionPrice).toBe(2000)
+    store.updateTuning('adoptionPriceMultiplier', 1.5)
+    expect(store.nextAdoptionPrice).toBe(1500)
   })
 
   it('feeds a cat, spends points, and improves its state', () => {
@@ -231,7 +242,7 @@ describe('cat store', () => {
     store.points = PREMIUM_CAT_FOOD_PRICE
 
     expect(store.feedCat('cat-1', 'premium')).toEqual({ success: true })
-    expect(store.cats[0]).toMatchObject({ hunger: 30, affection: 72, feedCount: 1 })
+    expect(store.cats[0]).toMatchObject({ hunger: 0, affection: 72, feedCount: 1 })
     expect(store.points).toBe(0)
     expect(store.feedCat('cat-1')).toMatchObject({ success: false })
   })
@@ -248,6 +259,16 @@ describe('cat store', () => {
     expect(store.points).toBe(CAT_TOY_PRICE)
   })
 
+  it('fills affection to 100 with the luxury toy', () => {
+    const store = useCatStore()
+    store.cats = [makeCat({ affection: 35, health: 80 })]
+    store.points = LUXURY_CAT_TOY_PRICE
+
+    expect(store.playWithCat('cat-1', 'premium')).toEqual({ success: true, affectionGain: 65, healthGain: 2 })
+    expect(store.cats[0]).toMatchObject({ affection: 100, health: 82 })
+    expect(store.points).toBe(0)
+  })
+
   it('heals sick and ICU cats with medicine', () => {
     const store = useCatStore()
     store.cats = [makeCat({ status: 'icu', health: 0 })]
@@ -255,6 +276,28 @@ describe('cat store', () => {
 
     expect(store.healCat('cat-1')).toEqual({ success: true, healthGain: 20 })
     expect(store.cats[0]).toMatchObject({ status: 'healthy', health: 20, icuFailedDays: 0 })
+  })
+
+  it('allows treatment whenever health is below 100 and rejects full-health treatment', () => {
+    const store = useCatStore()
+    store.cats = [makeCat({ health: 80 })]
+    store.points = CAT_MEDICINE_PRICE * 2
+
+    expect(store.healCat('cat-1')).toEqual({ success: true, healthGain: 20 })
+    expect(store.cats[0].health).toBe(100)
+    expect(store.points).toBe(CAT_MEDICINE_PRICE)
+    expect(store.healCat('cat-1')).toEqual({ success: false, reason: '猫咪健康度已满，不需要治疗' })
+    expect(store.points).toBe(CAT_MEDICINE_PRICE)
+  })
+
+  it('fills health to 100 with surgery treatment', () => {
+    const store = useCatStore()
+    store.cats = [makeCat({ health: 15 })]
+    store.points = PREMIUM_CAT_MEDICINE_PRICE
+
+    expect(store.healCat('cat-1', 'premium')).toEqual({ success: true, healthGain: 85 })
+    expect(store.cats[0].health).toBe(100)
+    expect(store.points).toBe(0)
   })
 
   it('charges ICU care by elapsed day and records failed rescue days', () => {
@@ -358,5 +401,28 @@ describe('cat store', () => {
     expect(store.tuning.basicFoodPrice).toBe(7)
     expect(store.tuning.dailyPlayLimit).toBe(MAX_DAILY_PLAYS)
     expect(store.testMode).toBe(true)
+  })
+
+  it('migrates legacy default shop prices and adds the hidden adoption multiplier', async () => {
+    storage.get.mockResolvedValue({
+      cats: [],
+      tuning: {
+        premiumFoodPrice: 40,
+        basicToyPrice: 50,
+        luxuryToyPrice: 200,
+        medicinePrice: 30,
+        premiumMedicinePrice: 50,
+      },
+    })
+    const store = useCatStore()
+
+    await store.loadFromStorage()
+
+    expect(store.tuning.premiumFoodPrice).toBe(200)
+    expect(store.tuning.basicToyPrice).toBe(20)
+    expect(store.tuning.luxuryToyPrice).toBe(500)
+    expect(store.tuning.medicinePrice).toBe(20)
+    expect(store.tuning.premiumMedicinePrice).toBe(500)
+    expect(store.tuning.adoptionPriceMultiplier).toBe(2)
   })
 })

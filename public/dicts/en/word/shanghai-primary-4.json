@@ -1,0 +1,5440 @@
+[
+  {
+    "id": 1,
+    "word": "classroom",
+    "phonetic0": "ˈklɑːsruːm",
+    "phonetic1": "ˈklæsruːm",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "教室"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She'd sent him outside the classroom.",
+        "cn": "她叫他到教室外面去。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "教室",
+        "ws": [
+          "schoolroom",
+          "teaching room"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 2,
+    "word": "library",
+    "phonetic0": "ˈlaɪbrəri",
+    "phonetic1": "ˈlaɪbreri",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "图书馆"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The library is all on one level.",
+        "cn": "图书馆全部在同一层楼上。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "图书馆，[图情]藏书室；文库",
+        "ws": [
+          "athenaeum",
+          "bibliotheca"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 3,
+    "word": "playground",
+    "phonetic0": "ˈpleɪɡraʊnd",
+    "phonetic1": "ˈpleɪɡraʊnd",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "操场"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The girls were skipping in the playground.",
+        "cn": "姑娘们在操场上跳绳。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "运动场，操场",
+        "ws": [
+          "sports ground",
+          "athletic ground"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 4,
+    "word": "computer room",
+    "phonetic0": "kəmˈpjuːtə ruːm",
+    "phonetic1": "kəmˈpjuːtə ruːm",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "电脑房"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The computer room is very big.",
+        "cn": "电脑室很大。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "电脑房",
+        "ws": [
+          "computer lab"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 5,
+    "word": "music room",
+    "phonetic0": "ˈmjuːzɪk ruːm",
+    "phonetic1": "ˈmjuːzɪk ruːm",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "音乐教室"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We are cleaning the music room.",
+        "cn": "我们正在打扫音乐教室。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "音乐教室",
+        "ws": [
+          "music classroom"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 6,
+    "word": "art room",
+    "phonetic0": "ɑːt ruːm",
+    "phonetic1": "ɑːt ruːm",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "美术教室"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "In my school, there is an art room.",
+        "cn": "在我学校里有一个美术教室。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "美术教室",
+        "ws": [
+          "art classroom",
+          "art studio"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 7,
+    "word": "science lab",
+    "phonetic0": "ˈsaɪəns læb",
+    "phonetic1": "ˈsaɪəns læb",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "科学实验室"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We do experiments in the science lab.",
+        "cn": "我们在科学实验室里做实验。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "科学实验室",
+        "ws": [
+          "science laboratory"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 8,
+    "word": "hallway",
+    "phonetic0": "ˈhɔːlweɪ",
+    "phonetic1": "ˈhɔːlweɪ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "走廊"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She walked into the cool of the hallway.",
+        "cn": "她走入了凉爽的过道。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "走廊；门厅；玄关",
+        "ws": [
+          "passage",
+          "corridor"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 9,
+    "word": "noticeboard",
+    "phonetic0": "ˈnəʊtɪsbɔːd",
+    "phonetic1": "ˈnoʊtɪsbɔːrd",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "公告栏"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Can you stick this on the noticeboard?",
+        "cn": "你能不能把这个贴到布告牌上？"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "公告栏",
+        "ws": [
+          "notice board",
+          "bulletin board"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 10,
+    "word": "borrow",
+    "phonetic0": "ˈbɒrəʊ",
+    "phonetic1": "ˈbɔːroʊ",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "借阅"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "May I borrow your newspaper?",
+        "cn": "把你的报纸借我看行吗？"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vt.",
+        "cn": "借；借用",
+        "ws": [
+          "loan",
+          "scunge"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 11,
+    "word": "schedule",
+    "phonetic0": "ˈʃedjuːl",
+    "phonetic1": "ˈskedʒuːl",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "日程表"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We have a very crowded schedule.",
+        "cn": "我们的日程排得满满的。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vt.",
+        "cn": "安排，[计划]计划；编制目录；将……列入计划表",
+        "ws": [
+          "budget",
+          "propose",
+          "design",
+          "map",
+          "make"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 12,
+    "word": "get up",
+    "phonetic0": "ɡet ʌp",
+    "phonetic1": "ɡet ʌp",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "起床"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I generally get up at six.",
+        "cn": "我一般六点钟起床。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "起床，筹备；打扮",
+        "ws": [
+          "dress oneself",
+          "get out of bed"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 13,
+    "word": "brush teeth",
+    "phonetic0": "brʌʃ tiːθ",
+    "phonetic1": "brʌʃ tiːθ",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "刷牙"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I brush my teeth every morning.",
+        "cn": "我每天早上刷牙。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "刷牙",
+        "ws": [
+          "clean one’s teeth"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 14,
+    "word": "wash face",
+    "phonetic0": "wɒʃ feɪs",
+    "phonetic1": "wɒʃ feɪs",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "洗脸"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I wash my face after I get up.",
+        "cn": "我起床后洗脸。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "洗脸",
+        "ws": [
+          "clean one’s face"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 15,
+    "word": "have breakfast",
+    "phonetic0": "hæv ˈbrekfəst",
+    "phonetic1": "hæv ˈbrekfəst",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "吃早饭"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Mother makes me have breakfast.",
+        "cn": "妈妈让我吃早饭。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "吃早餐，吃早饭",
+        "ws": [
+          "eat breakfast"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 16,
+    "word": "have lunch",
+    "phonetic0": "hæv lʌntʃ",
+    "phonetic1": "hæv lʌntʃ",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "吃午饭"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Let's have lunch out on the patio.",
+        "cn": "咱们在外面平台上吃午饭吧。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "吃午饭，吃午餐",
+        "ws": [
+          "eat lunch"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 17,
+    "word": "have dinner",
+    "phonetic0": "hæv ˈdɪnə",
+    "phonetic1": "hæv ˈdɪnə",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "吃晚饭"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She had agreed to have dinner with him in town the following weekend.",
+        "cn": "她同意下周末和他一起到城里吃晚饭。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "吃晚饭",
+        "ws": [
+          "sup on",
+          "to have supper"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 18,
+    "word": "do homework",
+    "phonetic0": "duː ˈhəʊmwɜːk",
+    "phonetic1": "duː ˈhəʊmwɜːk",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "做作业"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "You'd better do homework now.",
+        "cn": "你最好现在做家庭作业。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "做作业，做功课；做家庭作业",
+        "ws": [
+          "do my homework",
+          "do one's lessons"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 19,
+    "word": "go to bed",
+    "phonetic0": "ɡəʊ tuː bed",
+    "phonetic1": "ɡəʊ tuː bed",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "上床睡觉"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "You'd better go to bed and nurse that cold.",
+        "cn": "你最好上床睡觉，把感冒治好。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "上床睡觉",
+        "ws": [
+          "be in bed",
+          "turn in"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 20,
+    "word": "quarter",
+    "phonetic0": "ˈkwɔːtə",
+    "phonetic1": "ˈkwɔːrtər",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "一刻钟"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A quarter of an hour is fifteen minutes.",
+        "cn": "一刻钟是十五分钟。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "季度；[数]四分之一；地区；一刻钟；方向；两角五分",
+        "ws": [
+          "region",
+          "area",
+          "direction",
+          "orientation",
+          "aspect"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 21,
+    "word": "half",
+    "phonetic0": "hɑːf",
+    "phonetic1": "hæf",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "半小时"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Half an hour is thirty minutes.",
+        "cn": "半小时是三十分钟。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "半小时",
+        "ws": [
+          "thirty minutes"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 22,
+    "word": "hobby",
+    "phonetic0": "ˈhɒbi",
+    "phonetic1": "ˈhɑːbi",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "爱好（复数hobbies）"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I only play jazz as a hobby.",
+        "cn": "我弹奏爵士乐只是一种业余爱好。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "嗜好；业余爱好",
+        "ws": [
+          "weakness",
+          "habit",
+          "appetite",
+          "liking"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 23,
+    "word": "reading",
+    "phonetic0": "ˈriːdɪŋ",
+    "phonetic1": "ˈriːdɪŋ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "阅读"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I enjoy reading very much.",
+        "cn": "我非常喜欢阅读。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "阅读，朗读；读物；[计]读数",
+        "ws": [
+          "lire"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 24,
+    "word": "drawing",
+    "phonetic0": "ˈdrɔːɪŋ",
+    "phonetic1": "ˈdrɔːɪŋ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "画画"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She did a drawing of me.",
+        "cn": "她为我画了张素描。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "图画；牵引；素描术",
+        "ws": [
+          "picture",
+          "traction"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 25,
+    "word": "dancing",
+    "phonetic0": "ˈdɑːnsɪŋ",
+    "phonetic1": "ˈdænsɪŋ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "跳舞"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Let's go dancing tonight.",
+        "cn": "我们今晚去跳舞吧。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "跳舞；舞蹈",
+        "ws": [
+          "nautch",
+          "Hip-Pop"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 26,
+    "word": "swimming",
+    "phonetic0": "ˈswɪmɪŋ",
+    "phonetic1": "ˈswɪmɪŋ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "游泳"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She's never liked swimming.",
+        "cn": "她从不喜欢游泳。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "游泳；目眩",
+        "ws": [
+          "natation"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 27,
+    "word": "running",
+    "phonetic0": "ˈrʌnɪŋ",
+    "phonetic1": "ˈrʌnɪŋ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "跑步"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Running is good exercise.",
+        "cn": "跑步是一项很好的运动。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "跑步",
+        "ws": [
+          "jogging"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 28,
+    "word": "cycling",
+    "phonetic0": "ˈsaɪklɪŋ",
+    "phonetic1": "ˈsaɪklɪŋ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "骑自行车"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "For example, you can go cycling or play football more.",
+        "cn": "例如，你可以多骑自行车或踢足球。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "骑自行车运动",
+        "ws": [
+          "bike riding",
+          "bicycling"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 29,
+    "word": "skateboarding",
+    "phonetic0": "ˈskeɪtbɔːdɪŋ",
+    "phonetic1": "ˈskeɪtbɔːrdɪŋ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "滑滑板"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "It is a skateboarding cat.",
+        "cn": "它是一个滑板猫。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "滑滑板",
+        "ws": [
+          "board skating"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 30,
+    "word": "join",
+    "phonetic0": "dʒɔɪn",
+    "phonetic1": "dʒɔɪn",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "加入（社团）"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Can I join the Kung Fu Club?",
+        "cn": "我可以加入武术社吗？"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vi.",
+        "cn": "加入；参加；结合",
+        "ws": [
+          "become one",
+          "couple",
+          "bond",
+          "participate in",
+          "combine"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 31,
+    "word": "club",
+    "phonetic0": "klʌb",
+    "phonetic1": "klʌb",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "兴趣俱乐部"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We had lunch at the golf club.",
+        "cn": "我们在高尔夫球俱乐部吃的午饭。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "俱乐部，社团；夜总会；棍棒；（扑克牌中的）梅花",
+        "ws": [
+          "society",
+          "association",
+          "corporation",
+          "league",
+          "casino"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 32,
+    "word": "classmate",
+    "phonetic0": "ˈklɑːsmeɪt",
+    "phonetic1": "ˈklæsmeɪt",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "同班同学"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "This is my classmate, Andy.",
+        "cn": "安迪，这是我同学。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "同班同学",
+        "ws": [
+          "schoolmate",
+          "class fellow"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 33,
+    "word": "neighbour",
+    "phonetic0": "ˈneɪbə",
+    "phonetic1": "ˈneɪbər",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "邻居"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "This neighbour crewed on a ferryboat.",
+        "cn": "这位邻居在一艘渡船上当船员。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "邻居；仁慈的人",
+        "ws": [
+          "joneses",
+          "vicinage"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 34,
+    "word": "kind",
+    "phonetic0": "kaɪnd",
+    "phonetic1": "kaɪnd",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "友善的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She was a kind, motherly woman.",
+        "cn": "她是一位善良的充满母爱的女人。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "和蔼的；宽容的；令人感激的",
+        "ws": [
+          "nice",
+          "benign",
+          "tolerant"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 35,
+    "word": "helpful",
+    "phonetic0": "ˈhelpfl",
+    "phonetic1": "ˈhelpf(ə)l",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "乐于助人的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Role-play is helpful in developing communication skills.",
+        "cn": "角色扮演有助于提高沟通技巧。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "有帮助的；有益的",
+        "ws": [
+          "useful",
+          "beneficial",
+          "advantageous",
+          "conducive",
+          "assistant"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 36,
+    "word": "polite",
+    "phonetic0": "pəˈlaɪt",
+    "phonetic1": "pəˈlaɪt",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "有礼貌的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We were all too polite to object.",
+        "cn": "我们都太客气了，没有反对。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "有礼貌的，客气的；文雅的；上流的；优雅的",
+        "ws": [
+          "civil",
+          "elegant",
+          "gentle",
+          "mild",
+          "courteous"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 37,
+    "word": "hard-working",
+    "phonetic0": "ˌhɑːd ˈwɜːkɪŋ",
+    "phonetic1": "ˌhɑːrd ˈwɜːrkɪŋ",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "勤奋的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We are looking for someone who is reliable and hard-working.",
+        "cn": "我们在物色可靠而又勤奋的人。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "勤勉的",
+        "ws": [
+          "diligent",
+          "industrious"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 38,
+    "word": "clever",
+    "phonetic0": "ˈklevə",
+    "phonetic1": "ˈklevər",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "聪明的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He's a very clever man.",
+        "cn": "他是个很聪明的人。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "聪明的；机灵的；熟练的",
+        "ws": [
+          "intelligent",
+          "experienced",
+          "wise",
+          "skilled",
+          "smart"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 39,
+    "word": "shy",
+    "phonetic0": "ʃaɪ",
+    "phonetic1": "ʃaɪ",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "害羞的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Their son was painfully shy.",
+        "cn": "他们的儿子非常害羞。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "害羞的；畏缩的，胆怯的",
+        "ws": [
+          "chicken",
+          "blate"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 40,
+    "word": "firefighter",
+    "phonetic0": "ˈfaɪəfaɪtə",
+    "phonetic1": "ˈfaɪərfaɪtər",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "消防员"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I would like to be a firefighter.",
+        "cn": "我想当一名消防员。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "消防队员",
+        "ws": [
+          "pompier"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 41,
+    "word": "police officer",
+    "phonetic0": "pəˈliːs ˈɒfɪsə",
+    "phonetic1": "pəˈlis ˈɔfɪsɚ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "警察"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The police officer radioed for help.",
+        "cn": "警察用无线电呼救。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "警官；警员",
+        "ws": [
+          "policeman",
+          "Irvine"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 42,
+    "word": "doctor",
+    "phonetic0": "ˈdɒktə",
+    "phonetic1": "ˈdɑːktər",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "医生"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The doctor said so himself.",
+        "cn": "是医生本人这么说的。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[医]医生；博士",
+        "ws": [
+          "medical",
+          "hakeem"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 43,
+    "word": "nurse",
+    "phonetic0": "nɜːs",
+    "phonetic1": "nɜːrs",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "护士"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A nurse takes my temperature.",
+        "cn": "一位护士给我量体温。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[医]护士；奶妈，保姆",
+        "ws": [
+          "sister",
+          "amah"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 44,
+    "word": "pilot",
+    "phonetic0": "ˈpaɪlət",
+    "phonetic1": "ˈpaɪlət",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "飞行员"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Someday I'll be a pilot.",
+        "cn": "将来有一天我将成为一名飞行员。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[航]飞行员；[水运]领航员",
+        "ws": [
+          "aviator",
+          "amn"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 45,
+    "word": "cook",
+    "phonetic0": "kʊk",
+    "phonetic1": "kʊk",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "厨师"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The cook makes lunch for us.",
+        "cn": "厨师为我们做午饭。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "厨师",
+        "ws": [
+          "chef"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 46,
+    "word": "farmer",
+    "phonetic0": "ˈfɑːmə",
+    "phonetic1": "ˈfɑːrmər",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "农民"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A farmer is entitled to a certain particularized tax treatment.",
+        "cn": "农民能够享受某种具体的税收待遇。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "农夫，[农]农民",
+        "ws": [
+          "peasant",
+          "sodbuster"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 47,
+    "word": "worker",
+    "phonetic0": "ˈwɜːkə",
+    "phonetic1": "ˈwɜːrkər",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "工人"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Meyers is a diligent and prolific worker.",
+        "cn": "迈耶斯是个勤奋而且出活多的工人。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[劳经]工人；劳动者；职蚁",
+        "ws": [
+          "laborer",
+          "factory hand"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 48,
+    "word": "sick",
+    "phonetic0": "sɪk",
+    "phonetic1": "sɪk",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "生病的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I dread being sick.",
+        "cn": "我特别害怕生病。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "厌恶的；病态的；不舒服；渴望的；恶心的",
+        "ws": [
+          "eager",
+          "hungry",
+          "anxious",
+          "desired",
+          "keen"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 49,
+    "word": "save",
+    "phonetic0": "seɪv",
+    "phonetic1": "seɪv",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "救助"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "It's too late to save her now.",
+        "cn": "现在来拯救她的生命已为时太晚。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vt.",
+        "cn": "节省；保存；储蓄；解救",
+        "ws": [
+          "hold",
+          "economize on"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 50,
+    "word": "subject",
+    "phonetic0": "ˈsʌbdʒɪkt",
+    "phonetic1": "ˈsʌbdʒekt",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "科目"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "English is my best subject.",
+        "cn": "英语是我学得最好的一门科目。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[图情]主题；科目；[语]主语；国民",
+        "ws": [
+          "topic",
+          "theme",
+          "nation",
+          "titles",
+          "motive"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 51,
+    "word": "Chinese",
+    "phonetic0": "ˌtʃaɪˈniːz",
+    "phonetic1": "ˌtʃaɪˈniːz",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "语文"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We read Chinese stories in Chinese class.",
+        "cn": "我们在语文课上读中文故事。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "语文",
+        "ws": [
+          "Chinese language"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 52,
+    "word": "Maths",
+    "phonetic0": "mæθs",
+    "phonetic1": "mæθs",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "数学"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We work with numbers in Maths class.",
+        "cn": "我们在数学课上学习数字。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "数学（等于mathematics）",
+        "ws": [
+          "arith"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 53,
+    "word": "English",
+    "phonetic0": "ˈɪŋɡlɪʃ",
+    "phonetic1": "ˈɪŋɡlɪʃ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "英语"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We speak English in English class.",
+        "cn": "我们在英语课上说英语。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[语]英语；英国人；英文；英格兰人",
+        "ws": [
+          "Anglo",
+          "British person"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 54,
+    "word": "PE",
+    "phonetic0": "ˌpiː ˈiː",
+    "phonetic1": "ˌpiː ˈiː",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "体育"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We run and play ball games in PE class.",
+        "cn": "我们在体育课上跑步和玩球类游戏。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "体育",
+        "ws": [
+          "physical education",
+          "gym class"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 55,
+    "word": "Music",
+    "phonetic0": "ˈmjuːzɪk",
+    "phonetic1": "ˈmjuːzɪk",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "音乐"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We sing songs in Music class.",
+        "cn": "我们在音乐课上唱歌。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "音乐",
+        "ws": [
+          "music class"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 56,
+    "word": "Art",
+    "phonetic0": "ɑːt",
+    "phonetic1": "ɑːrt",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "美术"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We draw pictures in Art class.",
+        "cn": "我们在美术课上画画。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "艺术；美术；艺术品",
+        "ws": [
+          "beaux-arts",
+          "artwork"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 57,
+    "word": "Science",
+    "phonetic0": "ˈsaɪəns",
+    "phonetic1": "ˈsaɪəns",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "科学"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We learn about plants in Science class.",
+        "cn": "我们在科学课上学习植物知识。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "科学；技术；学科；理科",
+        "ws": [
+          "technology",
+          "mechanics",
+          "skill",
+          "knowledge",
+          "discipline"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 58,
+    "word": "IT",
+    "phonetic0": "ˌaɪ ˈtiː",
+    "phonetic1": "ˌaɪ ˈtiː",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "信息技术"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We learn to use computers in IT class.",
+        "cn": "我们在信息技术课上学习使用电脑。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "信息技术",
+        "ws": [
+          "information technology"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 59,
+    "word": "timetable",
+    "phonetic0": "ˈtaɪmteɪbl",
+    "phonetic1": "ˈtaɪmteɪb(ə)l",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "课程表"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The timetable was hopelessly optimistic.",
+        "cn": "这个时间表过于乐观。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[交]时间表；[铁路]时刻表；课程表",
+        "ws": [
+          "kalendar",
+          "milestones"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 60,
+    "word": "musical instrument",
+    "phonetic0": "ˈmjuːzɪkl ˈɪnstrəmənt",
+    "phonetic1": "ˌmjuːzɪkl ˈɪnstrəmənt",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "乐器"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Most pupils learn (to play) a musical instrument.",
+        "cn": "多数小学生都学习演奏乐器。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "[轻]乐器",
+        "ws": [
+          "ax(e)"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 61,
+    "word": "piano",
+    "phonetic0": "piˈænəʊ",
+    "phonetic1": "piˈænoʊ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "钢琴"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The piano was in good condition.",
+        "cn": "这台钢琴状况良好。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "钢琴",
+        "ws": [
+          "pianoforte"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 62,
+    "word": "violin",
+    "phonetic0": "ˌvaɪəˈlɪn",
+    "phonetic1": "ˌvaɪəˈlɪn",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "小提琴"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Lizzie used to play the violin.",
+        "cn": "莉齐过去常拉小提琴。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "小提琴；小提琴手",
+        "ws": [
+          "fiddle"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 63,
+    "word": "guitar",
+    "phonetic0": "ɡɪˈtɑː",
+    "phonetic1": "ɡɪˈtɑːr",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "吉他"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He played some wah-wah guitar.",
+        "cn": "他弹了一会儿哇哇吉他。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "吉他",
+        "ws": [
+          "stringed instrument"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 64,
+    "word": "drum",
+    "phonetic0": "drʌm",
+    "phonetic1": "drʌm",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "鼓"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "When you beat the drum, you feel good.",
+        "cn": "当你击鼓时，你感觉良好。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "鼓；鼓声",
+        "ws": [
+          "kettle"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 65,
+    "word": "flute",
+    "phonetic0": "fluːt",
+    "phonetic1": "fluːt",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "长笛"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "In the interval a blond boy dressed in white serenaded the company on the flute.",
+        "cn": "幕间休息时,一位白衣金发的男孩用长笛为来宾演奏了一支小夜曲。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "长笛",
+        "ws": [
+          "woodwind instrument"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 66,
+    "word": "erhu",
+    "phonetic0": "ˈɜːhuː",
+    "phonetic1": "ˈɜːhuː",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "二胡"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "My grandpa can play the erhu.",
+        "cn": "我爷爷会拉二胡。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "二胡",
+        "ws": [
+          "Chinese two-stringed fiddle"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 67,
+    "word": "pipa",
+    "phonetic0": "ˈpiːpɑː",
+    "phonetic1": "ˈpiːpɑː",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "琵琶"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She is playing the pipa.",
+        "cn": "她正在弹琵琶。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "琵琶",
+        "ws": [
+          "Chinese lute"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 68,
+    "word": "band",
+    "phonetic0": "bænd",
+    "phonetic1": "bænd",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "乐队"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The singer re-formed his band.",
+        "cn": "这名歌手对他的乐队进行了重组。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "带；乐队；松紧带；一帮；传送带",
+        "ws": [
+          "strip",
+          "crowd"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 69,
+    "word": "play together",
+    "phonetic0": "pleɪ təˈɡeðə(r)",
+    "phonetic1": "pleɪ təˈɡeðə(r)",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "合奏"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Let’s play together in the school band.",
+        "cn": "让我们在学校乐队里一起合奏吧。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "合奏",
+        "ws": [
+          "perform together"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 70,
+    "word": "Earth",
+    "phonetic0": "ɜːθ",
+    "phonetic1": "ɜːrθ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "地球"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The earth moves round the sun.",
+        "cn": "地球围绕太阳旋转。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[天]地球；陆地；泥土；尘世；[电]地线",
+        "ws": [
+          "land",
+          "clay",
+          "dirt"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 71,
+    "word": "forest",
+    "phonetic0": "ˈfɒrɪst",
+    "phonetic1": "ˈfɔːrɪst",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "森林"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We need to preserve the forest.",
+        "cn": "我们需要保护森林。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "森林",
+        "ws": [
+          "woodland"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 72,
+    "word": "ocean",
+    "phonetic0": "ˈəʊʃn",
+    "phonetic1": "ˈoʊʃ(ə)n",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "海洋"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "There was a vertical drop to the ocean.",
+        "cn": "至海洋有一段垂直落差。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[海洋]海洋；大量；广阔",
+        "ws": [
+          "sea",
+          "lots of",
+          "wealth",
+          "body",
+          "billion"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 73,
+    "word": "river",
+    "phonetic0": "ˈrɪvə",
+    "phonetic1": "ˈrɪvər",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "河流"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The river gurgled and burbled.",
+        "cn": "河水汩汩流淌。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "河，江",
+        "ws": [
+          "kawa"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 74,
+    "word": "mountain",
+    "phonetic0": "ˈmaʊntən",
+    "phonetic1": "ˈmaʊnt(ə)n",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "高山"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We rode the mountain trails.",
+        "cn": "我们骑着马走在山里的小路上。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[地理]山；山脉",
+        "ws": [
+          "range",
+          "cordillera"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 75,
+    "word": "plant",
+    "phonetic0": "plɑːnt",
+    "phonetic1": "plænt",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "植物"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The plant exudes a sticky fluid.",
+        "cn": "这种植物分泌出一种黏液。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[工经]工厂，车间；[植]植物；设备；庄稼",
+        "ws": [
+          "factory",
+          "equipment",
+          "furniture",
+          "facility",
+          "mill"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 76,
+    "word": "rubbish",
+    "phonetic0": "ˈrʌbɪʃ",
+    "phonetic1": "ˈrʌbɪʃ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "垃圾"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Children scavenge through rubbish.",
+        "cn": "孩子们在垃圾中捡破烂。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[环境]垃圾，废物；废话",
+        "ws": [
+          "refuse",
+          "garbage",
+          "waste",
+          "junk",
+          "trash"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 77,
+    "word": "reuse",
+    "phonetic0": "ˌriːˈjuːz",
+    "phonetic1": "ˌriːˈjuːz",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "重复利用"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Please reuse your envelopes.",
+        "cn": "信封请重复利用。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "重新使用，再用",
+        "ws": [
+          "reemployment"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 78,
+    "word": "recycle",
+    "phonetic0": "ˌriːˈsaɪkl",
+    "phonetic1": "ˌriːˈsaɪk(ə)l",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "回收"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We can recycle plastic bottles.",
+        "cn": "我们可以回收塑胶瓶。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "v.",
+        "cn": "回收",
+        "ws": [
+          "reprocess",
+          "reuse"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 79,
+    "word": "protect",
+    "phonetic0": "prəˈtekt",
+    "phonetic1": "prəˈtekt",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "保护"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Respect, care for and protect animals.",
+        "cn": "尊重、关爱并保护动物。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vt.",
+        "cn": "保护，防卫；警戒",
+        "ws": [
+          "secure",
+          "watch",
+          "preserve"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 80,
+    "word": "touch",
+    "phonetic0": "tʌtʃ",
+    "phonetic1": "tʌtʃ",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "触摸"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She recoiled from his touch.",
+        "cn": "她躲开他的触摸。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vi.",
+        "cn": "触摸；涉及；接近；提到",
+        "ws": [
+          "deal with",
+          "to relate to"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 81,
+    "word": "hard",
+    "phonetic0": "hɑːd",
+    "phonetic1": "hɑːrd",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "坚硬的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He succinctly summed up his manifesto as \"Work hard, train hard and play hard.\"",
+        "cn": "他把自己的宣言简明地概括成了“努力工作，努力训练，努力玩耍。”"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "努力的；硬的；困难的；辛苦的；[医]确实的；严厉的；猛烈的；冷酷无情的",
+        "ws": [
+          "difficult",
+          "severe",
+          "fierce",
+          "tight",
+          "violent"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 82,
+    "word": "soft",
+    "phonetic0": "sɒft",
+    "phonetic1": "sɔːft",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "柔软的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He had rich, soft ebony hair.",
+        "cn": "他曾有一头浓密、柔软的黑发。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "软的，柔软的；温柔的，温和的；软弱的；笨的",
+        "ws": [
+          "pacific",
+          "tender",
+          "moderate",
+          "gentle",
+          "mild"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 83,
+    "word": "rough",
+    "phonetic0": "rʌf",
+    "phonetic1": "rʌf",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "粗糙的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Cathy did a rough calculation.",
+        "cn": "凯茜作了一个粗略的计算。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "[机]粗糙的；粗略的；粗野的；艰苦的；未经加工的",
+        "ws": [
+          "crude",
+          "robust",
+          "tough",
+          "gross",
+          "coarse"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 84,
+    "word": "smooth",
+    "phonetic0": "smuːð",
+    "phonetic1": "smuːð",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "光滑的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Its skin feels really smooth.",
+        "cn": "它的皮摸起来真光滑。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "顺利的；光滑的；平稳的",
+        "ws": [
+          "glabrous",
+          "favourable"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 85,
+    "word": "thick",
+    "phonetic0": "θɪk",
+    "phonetic1": "θɪk",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "厚实的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "They have short, thick stems.",
+        "cn": "它们的茎又短又粗。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adv.",
+        "cn": "密集地；浓浓地，厚厚地",
+        "ws": [
+          "deeply",
+          "densely"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 86,
+    "word": "thin",
+    "phonetic0": "θɪn",
+    "phonetic1": "θɪn",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "薄的；纤细的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The sheets have worn thin.",
+        "cn": "床单已经磨薄了。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "薄的；瘦的；稀薄的；微弱的",
+        "ws": [
+          "rare",
+          "small",
+          "spare",
+          "subtle"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 87,
+    "word": "blanket",
+    "phonetic0": "ˈblæŋkɪt",
+    "phonetic1": "ˈblæŋkɪt",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "毛毯"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I wrapped a blanket around the baby.",
+        "cn": "我用毯子把婴儿裹了起来。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "毛毯，毯子；毯状物，覆盖层",
+        "ws": [
+          "soogan",
+          "sugan"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 88,
+    "word": "scarf",
+    "phonetic0": "skɑːf",
+    "phonetic1": "skɑːrf",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "围巾"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Someone has taken my scarf.",
+        "cn": "有人把我的围巾拿走了。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[服装]围巾；嵌接，嵌接处；头巾领巾",
+        "ws": [
+          "muffler",
+          "neckcloth"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 89,
+    "word": "glove",
+    "phonetic0": "ɡlʌv",
+    "phonetic1": "ɡlʌv",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "手套"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "There is a hole in her glove.",
+        "cn": "她手套上有个洞。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "手套",
+        "ws": [
+          "mittens"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 90,
+    "word": "smell",
+    "phonetic0": "smel",
+    "phonetic1": "smel",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "闻"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Can you smell something burning?",
+        "cn": "你有没有闻到什么东西烧焦了？"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vi.",
+        "cn": "[生理]嗅，闻；有…气味",
+        "ws": [
+          "snuff at",
+          "sniff at"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 91,
+    "word": "taste",
+    "phonetic0": "teɪst",
+    "phonetic1": "teɪst",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "品尝"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The leaves taste rather bitter.",
+        "cn": "这些叶子尝起来相当苦。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[食品]味道；品味；审美",
+        "ws": [
+          "uner",
+          "aesthetic appreciation"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 92,
+    "word": "sweet",
+    "phonetic0": "swiːt",
+    "phonetic1": "swiːt",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "甜的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Would you like some more sweet?",
+        "cn": "你想再吃点甜食吗？"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "[食品]甜的；芳香的；悦耳的；亲切的",
+        "ws": [
+          "harmonious",
+          "friendly",
+          "musical",
+          "fragrant",
+          "benign"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 93,
+    "word": "sour",
+    "phonetic0": "ˈsaʊə",
+    "phonetic1": "ˈsaʊər",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "酸的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The heat turned the milk sour.",
+        "cn": "炎热的天气使得牛奶变酸了。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "[化学]酸的；发酵的；刺耳的；酸臭的；讨厌的",
+        "ws": [
+          "grinding",
+          "acid",
+          "raised",
+          "evil",
+          "sharp"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 94,
+    "word": "juicy",
+    "phonetic0": "ˈdʒuːsi",
+    "phonetic1": "ˈdʒuːsi",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "多汁的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She bit into a ripe juicy pear.",
+        "cn": "她咬了一口熟透了的多汁的梨。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "[食品]多汁的；利润多的；生动的",
+        "ws": [
+          "telling",
+          "live",
+          "vivid"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 95,
+    "word": "crunchy",
+    "phonetic0": "ˈkrʌntʃi",
+    "phonetic1": "ˈkrʌntʃi",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "脆的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Another day and this one would be crunchy.",
+        "cn": "再过一天这个就会变松脆。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "易碎的；发嘎吱嘎吱声的",
+        "ws": [
+          "delicate",
+          "fragile",
+          "brittle"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 96,
+    "word": "strawberry",
+    "phonetic0": "ˈstrɔːbəri",
+    "phonetic1": "ˈstrɔːberi",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "草莓"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Do you like strawberry jam?",
+        "cn": "你喜欢草莓酱么？"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "草莓",
+        "ws": [
+          "garden strawberry"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 97,
+    "word": "grape",
+    "phonetic0": "ɡreɪp",
+    "phonetic1": "ɡreɪp",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "葡萄"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Is it a grape or a plum?",
+        "cn": "这是葡萄还是李子？"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[园艺]葡萄；葡萄酒；葡萄树；葡萄色",
+        "ws": [
+          "wine",
+          "Vitis vinifera"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 98,
+    "word": "pineapple",
+    "phonetic0": "ˈpaɪnæpl",
+    "phonetic1": "ˈpaɪnæp(ə)l",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "菠萝"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Mango and pineapple are yellow.",
+        "cn": "芒果和菠萝是黄色的。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[园艺]菠萝；凤梨；失业救济金",
+        "ws": [
+          "ananas",
+          "unemployment benefit"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 99,
+    "word": "watermelon",
+    "phonetic0": "ˈwɔːtəmelən",
+    "phonetic1": "ˈwɔːtərmelən",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "西瓜"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "They planted some watermelon.",
+        "cn": "他们种了些西瓜。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[园艺]西瓜",
+        "ws": [
+          "sandia"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 100,
+    "word": "shadow",
+    "phonetic0": "ˈʃædəʊ",
+    "phonetic1": "ˈʃædoʊ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "影子"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The ship's sail cast a shadow on the water.",
+        "cn": "船帆在水面上投下一片影子。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[光]阴影；影子；幽灵；庇护；隐蔽处",
+        "ws": [
+          "umbrella",
+          "shelter"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 101,
+    "word": "sun",
+    "phonetic0": "sʌn",
+    "phonetic1": "sʌn",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "太阳"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The sun came out, briefly.",
+        "cn": "太阳出来了，时间很短。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[天]太阳",
+        "ws": [
+          "sonne"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 102,
+    "word": "rise",
+    "phonetic0": "raɪz",
+    "phonetic1": "raɪz",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "（太阳）升起"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The sun rises in the east.",
+        "cn": "太阳从东方升起。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vi.",
+        "cn": "上升；增强；起立；高耸",
+        "ws": [
+          "raise",
+          "arise",
+          "tower",
+          "go up",
+          "climb"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 103,
+    "word": "set",
+    "phonetic0": "set",
+    "phonetic1": "set",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "（太阳）落下"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The sun sets in the west.",
+        "cn": "太阳从西方落下。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "v.",
+        "cn": "（太阳）落下",
+        "ws": [
+          "go down",
+          "sink"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 104,
+    "word": "noon",
+    "phonetic0": "nuːn",
+    "phonetic1": "nuːn",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "正午"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We should be there by noon.",
+        "cn": "我们应该最晚中午到达。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "中午；[天]正午；全盛期",
+        "ws": [
+          "midday",
+          "midnoon"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 105,
+    "word": "evening",
+    "phonetic0": "ˈiːvnɪŋ",
+    "phonetic1": "ˈiːvnɪŋ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "傍晚"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The evening passed enjoyably.",
+        "cn": "这个晚上过得很愉快。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "晚上；傍晚；（联欢性的）晚会；后期",
+        "ws": [
+          "night",
+          "eve",
+          "sunset"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 106,
+    "word": "long",
+    "phonetic0": "lɒŋ",
+    "phonetic1": "lɔːŋ",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "（影子）长的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The long journey tired him.",
+        "cn": "漫长的旅程使他疲倦。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "长的；过长的；做多头的",
+        "ws": [
+          "tall",
+          "full-bottomed"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 107,
+    "word": "short",
+    "phonetic0": "ʃɔːt",
+    "phonetic1": "ʃɔːrt",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "（影子）短的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Short hair really becomes you.",
+        "cn": "你理短发的确很帅。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "短的；不足的；急速的；唐突的",
+        "ws": [
+          "insufficient",
+          "deficient",
+          "lacking"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 108,
+    "word": "hill",
+    "phonetic0": "hɪl",
+    "phonetic1": "hɪl",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "小山"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A hawk hovered over the hill.",
+        "cn": "一只鹰在小山的上空翱翔。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "小山；[地理]丘陵；斜坡；山冈",
+        "ws": [
+          "slope",
+          "rises"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 109,
+    "word": "grow",
+    "phonetic0": "ɡrəʊ",
+    "phonetic1": "ɡroʊ",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "变长；生长"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The shadow grows long in the evening.",
+        "cn": "傍晚，影子变长了。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vi.",
+        "cn": "发展；生长；渐渐变得…",
+        "ws": [
+          "expand",
+          "go way"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 110,
+    "word": "volleyball",
+    "phonetic0": "ˈvɒlibɔːl",
+    "phonetic1": "ˈvɑːlibɔːl",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "排球"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She is playing volleyball.",
+        "cn": "她在打排球。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "排球",
+        "ws": [
+          "center forward"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 111,
+    "word": "basketball",
+    "phonetic0": "ˈbɑːskɪtbɔːl",
+    "phonetic1": "ˈbæskɪtbɔːl",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "篮球"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I enjoy playing basketball.",
+        "cn": "我喜欢打篮球。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "篮球",
+        "ws": [
+          "hoops"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 112,
+    "word": "football",
+    "phonetic0": "ˈfʊtbɔːl",
+    "phonetic1": "ˈfʊtbɔːl",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "足球"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Rick is crazy about football.",
+        "cn": "里克对足球着了迷。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "足球，橄榄球",
+        "ws": [
+          "soccer",
+          "rugby ball"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 113,
+    "word": "badminton",
+    "phonetic0": "ˈbædmɪntən",
+    "phonetic1": "ˈbædmɪntən",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "羽毛球"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Badminton is an Olympic sport.",
+        "cn": "羽毛球是一个奥运会项目。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "羽毛球",
+        "ws": [
+          "bird",
+          "shuttlecock"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 114,
+    "word": "match",
+    "phonetic0": "mætʃ",
+    "phonetic1": "mætʃ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "比赛"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He was watching a football match.",
+        "cn": "他正在看一场英式足球比赛。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vt.",
+        "cn": "使比赛；使相配；敌得过，比得上；相配；与…竞争",
+        "ws": [
+          "equal",
+          "rival"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 115,
+    "word": "team",
+    "phonetic0": "tiːm",
+    "phonetic1": "tiːm",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "队伍"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The team seemed invincible.",
+        "cn": "这个队似乎战无不胜。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "队；组",
+        "ws": [
+          "group",
+          "crew",
+          "suit"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 116,
+    "word": "win",
+    "phonetic0": "wɪn",
+    "phonetic1": "wɪn",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "获胜"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She loves to win an argument.",
+        "cn": "她喜欢在辩论中获胜。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vt.",
+        "cn": "赢得；在…中获胜；劝诱",
+        "ws": [
+          "purchase",
+          "bear off"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 117,
+    "word": "swimsuit",
+    "phonetic0": "ˈswɪmsuːt",
+    "phonetic1": "ˈswɪmsuːt",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "泳衣"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I want to buy a swimsuit.",
+        "cn": "我想买一套泳衣。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "游泳衣（女式）",
+        "ws": [
+          "bathing dress"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 118,
+    "word": "goggles",
+    "phonetic0": "ˈɡɒɡlz",
+    "phonetic1": "ˈɡɑːɡ(ə)lz",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "游泳护目镜"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Instead of waiting to see if tears will help, some people use goggles.",
+        "cn": "有些人不是等着看眼泪是否会起作用，而是用护目镜。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[安全]护目镜；防护眼镜；瞪视（goggle的复数）",
+        "ws": [
+          "blinkers"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 119,
+    "word": "pool",
+    "phonetic0": "puːl",
+    "phonetic1": "puːl",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "泳池"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Does the hotel have a pool?",
+        "cn": "这家旅馆有没有游泳池？"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "泳池",
+        "ws": [
+          "swimming pool"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 120,
+    "word": "Monday",
+    "phonetic0": "ˈmʌndeɪ",
+    "phonetic1": "ˈmʌndeɪ; ˈmʌndi",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "周一"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I work Monday to Friday.",
+        "cn": "我星期一到星期五上班。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "周一",
+        "ws": [
+          "Mon."
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 121,
+    "word": "Tuesday",
+    "phonetic0": "ˈtjuːzdeɪ",
+    "phonetic1": "ˈtuːzdeɪ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "周二"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "It's my birthday a week on Tuesday.",
+        "cn": "一周后的星期二是我的生日。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "周二",
+        "ws": [
+          "Tues."
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 122,
+    "word": "Wednesday",
+    "phonetic0": "ˈwenzdeɪ",
+    "phonetic1": "ˈwenzdeɪ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "周三"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Let's move the meeting to Wednesday.",
+        "cn": "我们把开会时间改到星期三吧。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "周三",
+        "ws": [
+          "Wed."
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 123,
+    "word": "Thursday",
+    "phonetic0": "ˈθɜːzdeɪ",
+    "phonetic1": "ˈθɜːrzdeɪ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "周四"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Thursday is market day.",
+        "cn": "星期四是赶集日。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "周四",
+        "ws": [
+          "Thurs."
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 124,
+    "word": "Friday",
+    "phonetic0": "ˈfraɪdeɪ",
+    "phonetic1": "ˈfraɪdeɪ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "周五"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I work Monday to Friday.",
+        "cn": "我星期一到星期五上班。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "周五",
+        "ws": [
+          "Fri."
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 125,
+    "word": "Saturday",
+    "phonetic0": "ˈsætədeɪ",
+    "phonetic1": "ˈsætərdeɪ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "周六"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Let's go out on Saturday night.",
+        "cn": "我们星期六晚上出去吧。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "周六",
+        "ws": [
+          "Sat."
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 126,
+    "word": "Sunday",
+    "phonetic0": "ˈsʌndeɪ",
+    "phonetic1": "ˈsʌndeɪ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "周日"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The driver was rostered for Sunday.",
+        "cn": "这名司机被安排在星期日值班。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "周日",
+        "ws": [
+          "Sun."
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 127,
+    "word": "weekday",
+    "phonetic0": "ˈwiːkdeɪ",
+    "phonetic1": "ˈwiːkdeɪ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "工作日"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "There are several free hours every weekday.",
+        "cn": "每个工作日都有几个小时的空闲时间。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "平日，工作日",
+        "ws": [
+          "working days",
+          "werktag"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 128,
+    "word": "weekend",
+    "phonetic0": "ˌwiːkˈend",
+    "phonetic1": "ˈwiːkend",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "周末"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Let's go fishing this weekend.",
+        "cn": "咱们这个周末去钓鱼吧。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "周末，周末休假；周末聚会",
+        "ws": [
+          "Saturday-to-Monday"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 129,
+    "word": "every",
+    "phonetic0": "ˈevri",
+    "phonetic1": "ˈevri",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "每一个"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Every individual learns differently.",
+        "cn": "每个人的学习方式都不一样。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "每一个",
+        "ws": [
+          "each"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 130,
+    "word": "healthy",
+    "phonetic0": "ˈhelθi",
+    "phonetic1": "ˈhelθi",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "健康的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He has a healthy appetite.",
+        "cn": "他有健康的胃口。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "健康的，健全的；有益于健康的",
+        "ws": [
+          "robust",
+          "fit",
+          "sound",
+          "fine",
+          "well"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 131,
+    "word": "unhealthy",
+    "phonetic0": "ʌnˈhelθi",
+    "phonetic1": "ʌnˈhelθi",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "不健康的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "His eyeballs were an unhealthy yellow.",
+        "cn": "他的眼球是不健康的蜡黄色。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "不健康的；危险的；有害身心健康的",
+        "ws": [
+          "dangerous",
+          "critical",
+          "risky"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 132,
+    "word": "rice",
+    "phonetic0": "raɪs",
+    "phonetic1": "raɪs",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "米饭"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We eat rice every single day.",
+        "cn": "我们天天吃米饭。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[作物]稻；米饭",
+        "ws": [
+          "nasi"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 133,
+    "word": "noodles",
+    "phonetic0": "ˈnuːdlz",
+    "phonetic1": "ˈnuːd(ə)lz",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "面条"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I cooked noodles yesterday.",
+        "cn": "我昨天做了面条。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "面条",
+        "ws": [
+          "pasta"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 134,
+    "word": "sausage",
+    "phonetic0": "ˈsɒsɪdʒ",
+    "phonetic1": "ˈsɔːsɪdʒ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "香肠"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "That sausage doesn't smell right.",
+        "cn": "这香肠闻起来不对劲。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[食品]香肠；腊肠；装香肠的碎肉",
+        "ws": [
+          "wust",
+          "wurst"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 135,
+    "word": "sandwich",
+    "phonetic0": "ˈsænwɪtʃ",
+    "phonetic1": "ˈsænwɪtʃ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "三明治"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She was eating a sandwich.",
+        "cn": "她正在吃一个三明治。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vt.",
+        "cn": "夹入；挤进；把...[食品]做成三明治",
+        "ws": [
+          "edge in",
+          "pack with"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 136,
+    "word": "hamburger",
+    "phonetic0": "ˈhæmbɜːɡə",
+    "phonetic1": "ˈhæmbɜːrɡər",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "汉堡"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A pound of hamburger, please.",
+        "cn": "请给我一磅汉堡。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "汉堡包，汉堡；牛肉饼，肉饼；碎牛肉",
+        "ws": [
+          "burger",
+          "beefburger"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 137,
+    "word": "vegetable",
+    "phonetic0": "ˈvedʒtəbl",
+    "phonetic1": "ˈvedʒtəb(ə)l",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "蔬菜"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The vegetable harvest is disastrously behind schedule.",
+        "cn": "蔬菜收割灾难性地滞后于计划。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[园艺]蔬菜；[植]植物；植物人",
+        "ws": [
+          "plant",
+          "greenstuff"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 138,
+    "word": "fruit",
+    "phonetic0": "fruːt",
+    "phonetic1": "fruːt",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "水果"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The fruit are small and round.",
+        "cn": "这种水果小而圆。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[食品]水果；产物",
+        "ws": [
+          "child",
+          "creation"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 139,
+    "word": "enough",
+    "phonetic0": "ɪˈnʌf",
+    "phonetic1": "ɪˈnʌf",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "足量的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We have enough fruit for everyone.",
+        "cn": "我们有足够每个人吃的水果。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "足量的",
+        "ws": [
+          "sufficient",
+          "adequate"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 140,
+    "word": "cartoon",
+    "phonetic0": "kɑːˈtuːn",
+    "phonetic1": "kɑːrˈtuːn",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "卡通片"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "They visited the Cartoon Museum.",
+        "cn": "他们参观了卡通博物馆。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "卡通片，[电影]动画片；连环漫画",
+        "ws": [
+          "animated picture",
+          "animated film"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 141,
+    "word": "giant",
+    "phonetic0": "ˈdʒaɪənt",
+    "phonetic1": "ˈdʒaɪənt",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "巨人"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He's a giant of a man.",
+        "cn": "他是个巨人。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "巨人；伟人；[植][动]巨大的动物",
+        "ws": [
+          "Titan",
+          "jotun"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 142,
+    "word": "princess",
+    "phonetic0": "ˌprɪnˈses",
+    "phonetic1": "ˈprɪnses",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "公主"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Princess Anne topped the guest list.",
+        "cn": "安妮公主的名字位于来宾名单之首。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "公主；王妃；女巨头",
+        "ws": [
+          "infanta",
+          "rani"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 143,
+    "word": "brave",
+    "phonetic0": "breɪv",
+    "phonetic1": "breɪv",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "勇敢的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "You're a brave soul.",
+        "cn": "你真勇敢。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "勇敢的；华丽的",
+        "ws": [
+          "game",
+          "magnificent",
+          "gorgeous"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 144,
+    "word": "clever",
+    "phonetic0": "ˈklevə",
+    "phonetic1": "ˈklevər",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "聪慧的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He's a very clever man.",
+        "cn": "他是个很聪明的人。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "聪明的；机灵的；熟练的",
+        "ws": [
+          "intelligent",
+          "experienced",
+          "wise",
+          "skilled",
+          "smart"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 145,
+    "word": "foolish",
+    "phonetic0": "ˈfuːlɪʃ",
+    "phonetic1": "ˈfuːlɪʃ",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "愚蠢的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I felt foolish and a failure.",
+        "cn": "我自觉是个愚蠢的失败者。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "愚蠢的；傻的",
+        "ws": [
+          "stupid",
+          "silly",
+          "mad",
+          "softheaded"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 146,
+    "word": "magic",
+    "phonetic0": "ˈmædʒɪk",
+    "phonetic1": "ˈmædʒɪk",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "有魔力的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "They believe in magic.",
+        "cn": "他们相信魔力。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "不可思议的；有魔力的；魔术的",
+        "ws": [
+          "mysterious",
+          "fantastic",
+          "miraculous"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 147,
+    "word": "cave",
+    "phonetic0": "keɪv",
+    "phonetic1": "keɪv",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "山洞"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The climbers took cover from the storm in a cave.",
+        "cn": "登山运动员在山洞里躲避暴风雨。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[地质]洞穴，窑洞",
+        "ws": [
+          "hole",
+          "grottos"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 148,
+    "word": "sword",
+    "phonetic0": "sɔːd",
+    "phonetic1": "sɔːrd",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "宝剑"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He buckled on his sword.",
+        "cn": "他把剑扣好。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "刀，剑；武力，战争",
+        "ws": [
+          "blade",
+          "knife",
+          "force",
+          "war"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 149,
+    "word": "hero",
+    "phonetic0": "ˈhɪərəʊ",
+    "phonetic1": "ˈhɪroʊ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "英雄"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He was eulogized as a hero.",
+        "cn": "他被赞誉为英雄。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "英雄；男主角，男主人公",
+        "ws": [
+          "chief actor",
+          "starring actor"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 150,
+    "word": "festival",
+    "phonetic0": "ˈfestɪvl",
+    "phonetic1": "ˈfestɪvl; ˈfestəvəl",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "节日"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Not everyone approves of the festival.",
+        "cn": "不是每个人都喜欢这个节日。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "节日；庆祝，纪念活动；欢乐",
+        "ws": [
+          "holiday",
+          "joy",
+          "celebration"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 151,
+    "word": "Spring Festival",
+    "phonetic0": "sprɪŋ ˈfestɪvl",
+    "phonetic1": "sprɪŋ ˈfestɪvl",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "春节"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "It's about Spring Festival.",
+        "cn": "它是关于春节的。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "春节",
+        "ws": [
+          "Chinese New Year",
+          "Lunar New Year"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 152,
+    "word": "Dragon Boat Festival",
+    "phonetic0": "ˈdræɡən bəʊt ˈfestɪvl",
+    "phonetic1": "ˈdræɡən bəʊt ˈfestɪvl",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "端午节"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Happy Dragon Boat Festival!",
+        "cn": "端午节快乐！"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "端午节",
+        "ws": [
+          "Dragon Boat Day"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 153,
+    "word": "Mid-Autumn Festival",
+    "phonetic0": "mɪd ˈɔːtəm ˈfestɪvl",
+    "phonetic1": "mɪd ˈɔːtəm ˈfestɪvl",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "中秋节"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Where are Tom's parents going for the Mid-Autumn Festival?",
+        "cn": "汤姆的父母中秋节要去哪里？"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "中秋节",
+        "ws": [
+          "Mid-Autumn Day",
+          "Mid-autumn"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 154,
+    "word": "mooncake",
+    "phonetic0": "ˈmuːnkeɪk",
+    "phonetic1": "ˈmuːnkeɪk",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "月饼"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "What a delicious mooncake!",
+        "cn": "多么美味的月饼啊！"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "月饼",
+        "ws": [
+          "moon cake"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 155,
+    "word": "dumpling",
+    "phonetic0": "ˈdʌmplɪŋ",
+    "phonetic1": "ˈdʌmplɪŋ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "饺子"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Let's do a dumpling party!",
+        "cn": "我们来办个饺子派对吧！"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "饺子，汤团；面团布丁",
+        "ws": [
+          "jiaozi",
+          "tortellini"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 156,
+    "word": "rice dumpling",
+    "phonetic0": "raɪs ˈdʌmplɪŋ",
+    "phonetic1": "raɪs ˈdʌmplɪŋ",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "粽子"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We eat rice dumplings at the Dragon Boat Festival.",
+        "cn": "我们在端午节吃粽子。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "粽子",
+        "ws": [
+          "zongzi"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 157,
+    "word": "celebrate",
+    "phonetic0": "ˈselɪbreɪt",
+    "phonetic1": "ˈselɪbreɪt",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "庆祝"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I was in a mood to celebrate.",
+        "cn": "我很想庆祝一番。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vt.",
+        "cn": "庆祝；举行；赞美；祝贺",
+        "ws": [
+          "stage",
+          "praise",
+          "bless",
+          "commemorate"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 158,
+    "word": "together",
+    "phonetic0": "təˈɡeðə",
+    "phonetic1": "təˈɡeðər",
+    "trans": [
+      {
+        "pos": "adv.",
+        "cn": "一起"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We went everywhere together.",
+        "cn": "我们到哪里都一起去。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adv.",
+        "cn": "一起；同时；相互；连续地；总共",
+        "ws": [
+          "along",
+          "meanwhile"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "id": 159,
+    "word": "lucky",
+    "phonetic0": "ˈlʌki",
+    "phonetic1": "ˈlʌki",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "幸运的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Other youngsters are not so lucky.",
+        "cn": "其他的年轻人没有这么幸运。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "幸运的；侥幸的",
+        "ws": [
+          "fortunate",
+          "providential"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  }
+]

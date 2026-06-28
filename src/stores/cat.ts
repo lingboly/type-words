@@ -17,12 +17,10 @@ import {
   CAT_PHOTOS,
   CAT_STORE_DB_KEY,
   FEED_HUNGER_REDUCTION,
-  LUXURY_PLAY_AFFECTION_GAIN,
   LUXURY_PLAY_HEALTH_GAIN,
   MEDICINE_HEALTH_GAIN,
   PREMIUM_FEED_AFFECTION_GAIN,
   PREMIUM_FEED_HUNGER_REDUCTION,
-  PREMIUM_MEDICINE_HEALTH_GAIN,
   PLAY_AFFECTION_GAIN,
   PLAY_HEALTH_GAIN,
   PET_AFFECTION_GAIN,
@@ -221,7 +219,7 @@ export const useCatStore = defineStore('cat', {
 
     nextAdoptionPrice(state): number {
       const owned = new Set(state.cats.map(cat => cat.photoKey)).size
-      return state.tuning.adoptionBasePrice * (2 ** owned)
+      return Math.round(state.tuning.adoptionBasePrice * (state.tuning.adoptionPriceMultiplier ** owned))
     },
   },
 
@@ -246,6 +244,12 @@ export const useCatStore = defineStore('cat', {
           if (typeof data.showAnimations === 'boolean') this.showAnimations = data.showAnimations
           if (data.tuning && typeof data.tuning === 'object') {
             this.tuning = { ...DEFAULT_CAT_TUNING, ...data.tuning }
+            // Upgrade untouched legacy shop defaults while preserving custom prices.
+            if (data.tuning.premiumFoodPrice === 40) this.tuning.premiumFoodPrice = DEFAULT_CAT_TUNING.premiumFoodPrice
+            if (data.tuning.basicToyPrice === 50) this.tuning.basicToyPrice = DEFAULT_CAT_TUNING.basicToyPrice
+            if (data.tuning.luxuryToyPrice === 100 || data.tuning.luxuryToyPrice === 200) this.tuning.luxuryToyPrice = DEFAULT_CAT_TUNING.luxuryToyPrice
+            if (data.tuning.medicinePrice === 30) this.tuning.medicinePrice = DEFAULT_CAT_TUNING.medicinePrice
+            if (data.tuning.premiumMedicinePrice === 50) this.tuning.premiumMedicinePrice = DEFAULT_CAT_TUNING.premiumMedicinePrice
           }
           if (typeof data.parentPasswordHash === 'string') this.parentPasswordHash = data.parentPasswordHash
           if (typeof data.testMode === 'boolean') this.testMode = data.testMode
@@ -502,9 +506,9 @@ export const useCatStore = defineStore('cat', {
         return { success: false, reason: `积分不足，需要 ${price} 积分` }
       }
 
-      const affectionGain = tier === 'premium' ? LUXURY_PLAY_AFFECTION_GAIN : PLAY_AFFECTION_GAIN
+      const affectionGain = tier === 'premium' ? MAX_AFFECTION - cat.affection : PLAY_AFFECTION_GAIN
       const healthGain = tier === 'premium' ? LUXURY_PLAY_HEALTH_GAIN : PLAY_HEALTH_GAIN
-      cat.affection = Math.min(MAX_AFFECTION, cat.affection + affectionGain)
+      cat.affection = tier === 'premium' ? MAX_AFFECTION : Math.min(MAX_AFFECTION, cat.affection + affectionGain)
       cat.health = Math.min(MAX_HEALTH, cat.health + healthGain)
       cat.playCount++
       cat.dailyPlayCount = (cat.dailyPlayCount ?? 0) + 1
@@ -539,12 +543,13 @@ export const useCatStore = defineStore('cat', {
       const cat = this.getCatById(catId)
       if (!cat) return { success: false, reason: '没有找到这只猫咪' }
       if (cat.status === 'deceased') return { success: false, reason: '这只猫咪已经离开，无法治疗' }
-      if (cat.status !== 'sick' && cat.status !== 'icu') return { success: false, reason: '健康猫咪不需要用药' }
+      if (cat.status === 'runaway') return { success: false, reason: '猫咪还在外面，请先远程照护召回' }
+      if (cat.health >= MAX_HEALTH) return { success: false, reason: '猫咪健康度已满，不需要治疗' }
 
       const price = tier === 'premium' ? this.tuning.premiumMedicinePrice : this.tuning.medicinePrice
       if (!this.spendPoints(price)) return { success: false, reason: `积分不足，需要 ${price} 积分` }
-      const healthGain = tier === 'premium' ? PREMIUM_MEDICINE_HEALTH_GAIN : MEDICINE_HEALTH_GAIN
-      cat.health = Math.min(MAX_HEALTH, cat.health + healthGain)
+      const healthGain = tier === 'premium' ? MAX_HEALTH - cat.health : MEDICINE_HEALTH_GAIN
+      cat.health = tier === 'premium' ? MAX_HEALTH : Math.min(MAX_HEALTH, cat.health + healthGain)
       cat.status = 'healthy'
       cat.icuFailedDays = 0
       this.persist()

@@ -90,7 +90,7 @@ const tuningGroups: Array<{ title: string; description: string; fields: Array<{ 
   },
   {
     title: '领养规则',
-    description: '全对达到要求后解锁下一只猫；领取价从基础价格开始逐只翻倍。',
+    description: '全对达到要求后解锁下一只猫；领取价格由内部规则自动计算。',
     fields: [
       { key: 'adoptionPerfectRequirement', label: '每只猫解锁所需全对', unit: '次', min: 1, max: 20 },
       { key: 'adoptionBasePrice', label: '第一只猫领取价格', unit: '分', min: 0, max: 100000 },
@@ -101,11 +101,11 @@ const tuningGroups: Array<{ title: string; description: string; fields: Array<{ 
     description: '价格即时生效。过低价格可能让积分失去激励作用。',
     fields: [
       { key: 'basicFoodPrice', label: '基础猫粮', unit: '分', min: 0, max: 100 },
-      { key: 'premiumFoodPrice', label: '高级猫粮', unit: '分', min: 0, max: 200 },
+      { key: 'premiumFoodPrice', label: '美味猫粮', unit: '分', min: 0, max: 200 },
       { key: 'basicToyPrice', label: '普通玩具', unit: '分', min: 0, max: 200 },
-      { key: 'luxuryToyPrice', label: '豪华玩具', unit: '分', min: 0, max: 500 },
+      { key: 'luxuryToyPrice', label: '奢侈玩具', unit: '分', min: 0, max: 500 },
       { key: 'medicinePrice', label: '普通药品', unit: '分', min: 0, max: 200 },
-      { key: 'premiumMedicinePrice', label: '高级治疗', unit: '分', min: 0, max: 500 },
+      { key: 'premiumMedicinePrice', label: '手术治疗', unit: '分', min: 0, max: 500 },
     ],
   },
 ]

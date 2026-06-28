@@ -2867,6 +2867,45 @@
       "translateLanguage": "zh-CN"
     },
     {
+      "id": "shanghai-primary-5-1",
+      "name": "上海新教材五年级上冊",
+      "description": "上海新教材五年级上冊",
+      "category": "青少年英语",
+      "tags": [
+        "上海版"
+      ],
+      "url": "shanghai-primary-5-1.json",
+      "length": 132,
+      "language": "en",
+      "translateLanguage": "zh-CN"
+    },
+    {
+      "id": "shanghai-primary-3",
+      "name": "上海新教材三年级",
+      "description": "上海新教材三年级",
+      "category": "青少年英语",
+      "tags": [
+        "上海版"
+      ],
+      "url": "shanghai-primary-3.json",
+      "length": 160,
+      "language": "en",
+      "translateLanguage": "zh-CN"
+    },
+    {
+      "id": "shanghai-primary-4",
+      "name": "上海新教材四年级",
+      "description": "上海新教材四年级",
+      "category": "青少年英语",
+      "tags": [
+        "上海版"
+      ],
+      "url": "shanghai-primary-4.json",
+      "length": 159,
+      "language": "en",
+      "translateLanguage": "zh-CN"
+    },
+    {
       "id": "Yilin1",
       "name": "高中必修1",
       "description": "译林版高中必修1",

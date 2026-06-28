@@ -162,6 +162,9 @@ const prevWord: Word = $computed(() => {
 const nextWord: Word = $computed(() => {
   return data.words?.[data.index + 1] ?? undefined
 })
+const isLastWord = $computed(() => {
+  return data.words.length > 0 && data.index === data.words.length - 1
+})
 
 function next(isTyping: boolean = true) {
   // showStatDialog = true
@@ -249,6 +252,10 @@ function next(isTyping: boolean = true) {
     // console.log('这个词完了')
   }
   savePracticeData()
+}
+
+function finishCurrentGroup() {
+  next(false)
 }
 
 function onTypeWrong() {
@@ -451,6 +458,15 @@ useEvents([
             </Tooltip>
             <IconFluentArrowRight16Regular class="arrow" width="22"/>
           </div>
+          <button
+              v-else-if="isLastWord"
+              type="button"
+              class="group-complete-button float-right"
+              title="确认完成本组学习"
+              @click="finishCurrentGroup"
+          >
+            完成本组
+          </button>
         </div>
         <TypeWord
             ref="typingRef"
@@ -543,6 +559,29 @@ useEvents([
   align-items: center;
   position: relative;
   width: var(--toolbar-width);
+}
+
+.group-complete-button {
+  min-width: 6rem;
+  min-height: 2.75rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--color-icon-hightlight);
+  border-radius: 0.5rem;
+  color: white;
+  background: var(--color-icon-hightlight);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  touch-action: manipulation;
+
+  &:hover {
+    filter: brightness(1.08);
+  }
+
+  &:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--color-icon-hightlight) 35%, transparent);
+    outline-offset: 2px;
+  }
 }
 
 .word-panel-wrapper {

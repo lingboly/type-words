@@ -12,7 +12,7 @@ import {useCatStore} from "@/stores/cat.ts";
 import {calculatePointsEarned, BASE_POINTS_PER_WORD, MAX_TIME_MS, SPEED_BONUS_CAP} from "@/types/cat";
 import {getDefaultWord} from "@/types/func.ts";
 import {_nextTick, sleep} from "@/utils";
-import CatDecorator from "@/components/CatDecorator.vue";
+import CatAvatar from "@/components/CatAvatar.vue";
 
 interface IProps {
   word: Word,
@@ -44,7 +44,6 @@ let cursor = $ref({
   left: 0,
 })
 // ===== Cat Café: 猫咪反馈状态 =====
-let catPose = $ref<'idle' | 'happy' | 'sleeping' | 'purring' | 'curious' | 'annoyed' | 'sick'>('idle')
 let showPointsGain = $ref(false)
 let pointsGainValue = $ref(0)
 let catAnimClass = $ref('')
@@ -82,7 +81,6 @@ watch(() => props.word, () => {
   wordRepeatCount = 0
   inputLock = false
   wordStartTime = Date.now()
-  catPose = 'idle'
   catAnimClass = ''
   if (settingStore.wordSound) {
     volumeIconRef?.play(400, true)
@@ -246,7 +244,6 @@ function onWordCorrect() {
   totalWordTime = elapsed
 
   // 猫咪开心
-  catPose = 'happy'
   catAnimClass = 'anim-cat-happy'
   showPointsGain = true
   pointsGainValue = pts
@@ -254,7 +251,6 @@ function onWordCorrect() {
 
   // 300ms 后重置猫咪状态
   setTimeout(() => {
-    catPose = 'idle'
     catAnimClass = ''
   }, 600)
 
@@ -266,10 +262,8 @@ function onWordCorrect() {
 
 function onWordWrong() {
   // 猫咪温柔摇头（鼓励）
-  catPose = 'annoyed'
   catAnimClass = 'anim-cat-shake'
   setTimeout(() => {
-    catPose = 'idle'
     catAnimClass = ''
   }, 800)
 }
@@ -345,7 +339,7 @@ function checkCursorPosition() {
   <div class="typing-word" ref="typingWordRef" v-if="props.word.word.length">
     <!-- Cat Café: 猫咪装饰 + 积分反馈 -->
     <div class="cat-feedback-zone">
-      <CatDecorator :pose="catPose" :size="'sm'" :show-animation="false" :class="catAnimClass" />
+      <CatAvatar size="small" label="花奴" class="practice-huanu-avatar" :class="catAnimClass" />
       <Transition name="points-fade">
         <div v-if="showPointsGain" class="points-gain-badge anim-points-gain">
           +{{ pointsGainValue }} ⭐
@@ -370,7 +364,7 @@ function checkCursorPosition() {
 
       <div class="word my-1"
            :class="wrong && 'is-wrong'"
-           :style="{fontSize: settingStore.fontSize.wordForeignFontSize +'px'}"
+           :style="{fontSize: settingStore.fontSize.wordForeignFontSize * 2 +'px'}"
            @mouseenter="showWord"
            @mouseleave="mouseleave"
       >
@@ -386,7 +380,7 @@ function checkCursorPosition() {
       <div class="translate anim flex flex-col gap-2 my-3"
            v-opacity="settingStore.translate || showFullWord"
            :style="{
-      fontSize: settingStore.fontSize.wordTranslateFontSize +'px',
+      fontSize: settingStore.fontSize.wordTranslateFontSize * 2 +'px',
     }"
       >
         <div class="flex" v-for="(v,i) in word.trans">
@@ -481,7 +475,7 @@ function checkCursorPosition() {
       </div>
     </div>
     <div class="cursor"
-         :style="{top:cursor.top+'px',left:cursor.left+'px',height: settingStore.fontSize.wordForeignFontSize +'px'}"></div>
+         :style="{top:cursor.top+'px',left:cursor.left+'px',height: settingStore.fontSize.wordForeignFontSize * 2 +'px'}"></div>
   </div>
 </template>
 
@@ -503,8 +497,14 @@ function checkCursorPosition() {
     flex-direction: column;
     align-items: flex-end;
     gap: 0.3rem;
-    z-index: 10;
+    z-index: 0;
     pointer-events: none;
+
+    .practice-huanu-avatar {
+      width: 1rem;
+      height: 1rem;
+      border-width: 1px;
+    }
 
     .points-gain-badge {
       font-size: 0.85rem;
@@ -517,7 +517,7 @@ function checkCursorPosition() {
   }
 
   .phonetic, .translate {
-    font-size: 1.2rem;
+    font-size: 2.4rem;
   }
 
   .phonetic {

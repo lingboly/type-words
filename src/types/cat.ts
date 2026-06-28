@@ -28,6 +28,8 @@ export interface CatTuning {
   dailyPetLimit: number
   dailyPlayLimit: number
   adoptionBasePrice: number
+  /** Internal-only ratio between consecutive adoption prices. */
+  adoptionPriceMultiplier: number
   adoptionPerfectRequirement: number
   basicFoodPrice: number
   premiumFoodPrice: number
@@ -100,11 +102,12 @@ export const CAT_PHOTOS: CatPhotoEntry[] = [
 /** Cat food price in points */
 export const CAT_FOOD_PRICE = 20
 /** Cat toy price in points */
-export const CAT_TOY_PRICE = 50
-export const PREMIUM_CAT_FOOD_PRICE = 40
-export const LUXURY_CAT_TOY_PRICE = 100
-export const CAT_MEDICINE_PRICE = 30
-export const PREMIUM_CAT_MEDICINE_PRICE = 50
+export const CAT_TOY_PRICE = 20
+export const PREMIUM_CAT_FOOD_PRICE = 200
+export const LUXURY_CAT_TOY_PRICE = 500
+export const CAT_MEDICINE_PRICE = 20
+export const PREMIUM_CAT_MEDICINE_PRICE = 500
+export const CAT_ADOPTION_PRICE_MULTIPLIER = 2
 export const ICU_DAILY_COST = 15
 /** Points per correct answer (base) */
 export const BASE_POINTS_PER_WORD = 1
@@ -130,7 +133,7 @@ export const HUNGER_HEALTH_DRAIN_THRESHOLD = 50
 
 /** Interaction effects */
 export const FEED_HUNGER_REDUCTION = 10
-export const PREMIUM_FEED_HUNGER_REDUCTION = 20
+export const PREMIUM_FEED_HUNGER_REDUCTION = 100
 export const PREMIUM_FEED_AFFECTION_GAIN = 2
 export const PLAY_AFFECTION_GAIN = 5
 export const PLAY_HEALTH_GAIN = 1
@@ -158,6 +161,7 @@ export const DEFAULT_CAT_TUNING: CatTuning = {
   dailyPetLimit: MAX_DAILY_PET_POINTS,
   dailyPlayLimit: MAX_DAILY_PLAYS,
   adoptionBasePrice: 1000,
+  adoptionPriceMultiplier: CAT_ADOPTION_PRICE_MULTIPLIER,
   adoptionPerfectRequirement: 1,
   basicFoodPrice: CAT_FOOD_PRICE,
   premiumFoodPrice: PREMIUM_CAT_FOOD_PRICE,

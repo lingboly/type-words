@@ -14,6 +14,11 @@ import {
   CAT_PHOTOS,
   CAT_FOOD_PRICE,
   CAT_TOY_PRICE,
+  CAT_MEDICINE_PRICE,
+  PREMIUM_CAT_FOOD_PRICE,
+  LUXURY_CAT_TOY_PRICE,
+  PREMIUM_CAT_MEDICINE_PRICE,
+  CAT_ADOPTION_PRICE_MULTIPLIER,
   DEFAULT_PARENT_PASSWORD_HASH,
   hashParentPasswordLocally,
   FEED_HUNGER_REDUCTION,
@@ -82,7 +87,13 @@ describe('Cat type constants', () => {
 
   it('prices are positive', () => {
     expect(CAT_FOOD_PRICE).toBeGreaterThan(0)
-    expect(CAT_TOY_PRICE).toBeGreaterThan(0)
+    expect(CAT_FOOD_PRICE).toBe(20)
+    expect(CAT_TOY_PRICE).toBe(20)
+    expect(PREMIUM_CAT_FOOD_PRICE).toBe(200)
+    expect(LUXURY_CAT_TOY_PRICE).toBe(500)
+    expect(CAT_MEDICINE_PRICE).toBe(20)
+    expect(PREMIUM_CAT_MEDICINE_PRICE).toBe(500)
+    expect(CAT_ADOPTION_PRICE_MULTIPLIER).toBe(2)
   })
 
   it('interaction effects are positive', () => {

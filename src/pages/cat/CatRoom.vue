@@ -148,7 +148,7 @@ function isPhotoOwned(photoKey: string): boolean {
         <div class="section-intro">
           <span class="eyebrow">领养中心</span>
           <h2 id="adoption-title">按顺序领取猫咪伙伴</h2>
-          <p>每完成 {{ catStore.tuning.adoptionPerfectRequirement }} 次全对，解锁下一只猫。领取价格从 {{ catStore.tuning.adoptionBasePrice }} 积分开始，后一只价格翻倍。</p>
+          <p>每完成 1 次全对，解锁下一只猫的领养权限</p>
         </div>
 
         <div class="adoption-catalog-summary">
@@ -254,7 +254,7 @@ function isPhotoOwned(photoKey: string): boolean {
         <div class="section-intro">
           <span class="eyebrow">照护中心</span>
           <h2 id="care-title">所有猫咪操作都在这里</h2>
-          <p>选择猫咪后可进行抚摸、喂食、玩耍、普通救治、高级治疗和远程召回。付费操作会先显示确认信息。</p>
+          <p>选择猫咪后可进行抚摸、喂食、玩耍、普通救治、手术治疗和远程召回。付费操作会先显示确认信息。</p>
         </div>
         <div v-if="careCats.length" class="care-list">
           <button v-for="cat in careCats" :key="cat.id" type="button" class="care-row" :class="`care-${cat.status}`" @click="openDetail(cat)">

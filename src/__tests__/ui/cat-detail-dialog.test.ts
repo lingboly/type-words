@@ -4,7 +4,7 @@ import { createPinia, setActivePinia } from 'pinia'
 import CatDetailDialog from '@/components/CatDetailDialog.vue'
 import BaseButton from '@/components/BaseButton.vue'
 import { useCatStore } from '@/stores/cat'
-import { CAT_FOOD_PRICE, type Cat } from '@/types/cat'
+import { CAT_FOOD_PRICE, PREMIUM_CAT_MEDICINE_PRICE, type Cat } from '@/types/cat'
 
 const cat: Cat = {
   id: 'cat-1', photoKey: '花奴-三花猫.jpg', name: '花奴', adoptedAt: 0,
@@ -92,6 +92,34 @@ describe('CatDetailDialog UI', () => {
     expect(wrapper.get('.feedback-msg').classes()).toContain('feedback-attention')
     expect(wrapper.get('.feedback-msg').attributes('role')).toBe('alert')
     expect(store.cats[0].dailyPlayCount).toBe(store.tuning.dailyPlayLimit)
+  })
+
+  it('shows renamed premium supplies and treats a cat below full health', async () => {
+    const store = useCatStore()
+    store.cats = [{ ...cat, health: 90 }]
+    store.points = PREMIUM_CAT_MEDICINE_PRICE
+    const wrapper = mount(CatDetailDialog, {
+      props: { cat: store.cats[0] },
+      global: {
+        stubs: {
+          Teleport: true,
+          Tooltip: { template: '<div><slot /></div>' },
+          IconEosIconsLoading: true,
+        },
+      },
+    })
+
+    expect(wrapper.text()).toContain('美味猫粮 200分')
+    expect(wrapper.text()).toContain('奢侈玩具 500分')
+    expect(wrapper.text()).toContain('手术治疗 500分')
+    const surgery = wrapper.findAllComponents(BaseButton).find(button => button.text().includes('手术治疗'))
+    expect(surgery?.props('disabled')).toBe(false)
+    surgery?.vm.$emit('click')
+    await wrapper.vm.$nextTick()
+    await wrapper.get('.purchase-confirm .confirm').trigger('click')
+
+    expect(store.points).toBe(0)
+    expect(store.cats[0].health).toBe(100)
   })
 
   it('explains ICU care and disables play supplies', () => {

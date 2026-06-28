@@ -231,22 +231,22 @@ const diedDate = $computed(() => {
           </BaseButton>
           <BaseButton
             class="action-btn play"
-            @click="requestPurchase('feed', 'premium', catStore.tuning.premiumFoodPrice, '高级猫粮')"
+            @click="requestPurchase('feed', 'premium', catStore.tuning.premiumFoodPrice, '美味猫粮')"
             :disabled="cat.status === 'icu'"
           >
-            🍣 高级猫粮 <small>{{ catStore.tuning.premiumFoodPrice }}分</small>
+            🍣 美味猫粮 <small>{{ catStore.tuning.premiumFoodPrice }}分</small>
           </BaseButton>
           <BaseButton class="action-btn play" :disabled="cat.status !== 'healthy'" @click="requestPurchase('play', 'basic', catStore.tuning.basicToyPrice, '普通玩具')">
             🧶 普通玩具 <small>{{ catStore.tuning.basicToyPrice }}分</small>
           </BaseButton>
-          <BaseButton class="action-btn play" :disabled="cat.status !== 'healthy'" @click="requestPurchase('play', 'premium', catStore.tuning.luxuryToyPrice, '豪华玩具')">
-            🧸 豪华玩具 <small>{{ catStore.tuning.luxuryToyPrice }}分</small>
+          <BaseButton class="action-btn play" :disabled="cat.status !== 'healthy'" @click="requestPurchase('play', 'premium', catStore.tuning.luxuryToyPrice, '奢侈玩具')">
+            🧸 奢侈玩具 <small>{{ catStore.tuning.luxuryToyPrice }}分</small>
           </BaseButton>
-          <BaseButton class="action-btn heal" :disabled="cat.status !== 'sick' && cat.status !== 'icu'" @click="requestPurchase('heal', 'basic', catStore.tuning.medicinePrice, '普通药品')">
+          <BaseButton class="action-btn heal" :disabled="cat.health >= 100 || cat.status === 'runaway'" @click="requestPurchase('heal', 'basic', catStore.tuning.medicinePrice, '普通药品')">
             💊 普通药品 <small>{{ catStore.tuning.medicinePrice }}分</small>
           </BaseButton>
-          <BaseButton class="action-btn heal" :disabled="cat.status !== 'sick' && cat.status !== 'icu'" @click="requestPurchase('heal', 'premium', catStore.tuning.premiumMedicinePrice, '高级治疗')">
-            🏥 高级治疗 <small>{{ catStore.tuning.premiumMedicinePrice }}分</small>
+          <BaseButton class="action-btn heal" :disabled="cat.health >= 100 || cat.status === 'runaway'" @click="requestPurchase('heal', 'premium', catStore.tuning.premiumMedicinePrice, '手术治疗')">
+            🏥 手术治疗 <small>{{ catStore.tuning.premiumMedicinePrice }}分</small>
           </BaseButton>
           </div>
 

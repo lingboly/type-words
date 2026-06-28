@@ -1,0 +1,5906 @@
+[
+  {
+    "id": 1,
+    "word": "gardening",
+    "phonetic0": "ˈɡɑːdnɪŋ",
+    "phonetic1": "ˈɡɑːrdnɪŋ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "园艺"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Gardening Club",
+        "cn": "园艺社团"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[园艺]园艺；园林工人的工作",
+        "ws": [
+          "horticulture"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "gardening:",
+        "d": "由 garden（花园；从事园艺）加名词后缀 -ing 构成，表示“园艺活动”。"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "word": "storytelling",
+    "phonetic0": "ˈstɔːritelɪŋ",
+    "phonetic1": "ˈstɔːritelɪŋ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "讲故事"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Shenshen won a prize in a storytelling contest.",
+        "cn": "申申在一次讲故事比赛中获了奖。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "讲故事",
+        "ws": [
+          "narration",
+          "story narration"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "storytelling:",
+        "d": "由 story（故事）和 telling（讲述）组成，表示“讲故事”。"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "word": "photography",
+    "phonetic0": "fəˈtɒɡrəfi",
+    "phonetic1": "fəˈtɑːɡrəfi",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "摄影"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I’m going to join the Photography Club this term.",
+        "cn": "这学期我要加入摄影社。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[摄]摄影；摄影术",
+        "ws": [
+          "photo shoot",
+          "camerawork"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "photography:摄影，摄影术",
+        "d": "词根词缀： -photo-光 + -graph-写,画 + -y名词词尾"
+      },
+      {
+        "t": "photography:摄影，摄影术",
+        "d": "来自photography,照相。"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "word": "join",
+    "phonetic0": "dʒɔɪn",
+    "phonetic1": "dʒɔɪn",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "成为……的一员；参加"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Can I join the Kung Fu Club?",
+        "cn": "我可以加入武术社吗？"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vt.",
+        "cn": "参加；结合；[计]连接",
+        "ws": [
+          "participate in",
+          "become one",
+          "couple",
+          "take part in",
+          "go through"
+        ]
+      },
+      {
+        "pos": "vi.",
+        "cn": "加入；参加；结合",
+        "ws": [
+          "become one",
+          "couple",
+          "bond",
+          "participate in",
+          "combine"
+        ]
+      },
+      {
+        "pos": "n.",
+        "cn": "结合；[计]连接；接合点",
+        "ws": [
+          "combination",
+          "connection",
+          "coupling",
+          "bond",
+          "wedding"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "join:连接",
+        "d": "来自古法语joindre,连接，一体，性交，来自拉丁语iungere,连接，来自PIE*yeug,连接，词源同jugular,joke,yoga."
+      },
+      {
+        "t": "join:参加，加入；接合，连接",
+        "d": "来源于古法语中由拉丁语动词jungere(连接)派生的joindre。  \n -join-连接,加入 → join"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "word": "view",
+    "phonetic0": "vjuː",
+    "phonetic1": "vjuː",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "（从某处看到的）景色"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Wow, the night view of the Huangpu River.",
+        "cn": "哇，黄浦江的夜景。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "观察；视野；意见；风景",
+        "ws": [
+          "observation",
+          "opinion",
+          "scenery",
+          "scope",
+          "comment"
+        ]
+      },
+      {
+        "pos": "vt.",
+        "cn": "观察；考虑；查看",
+        "ws": [
+          "watch",
+          "study",
+          "regard",
+          "think of",
+          "think about"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "view:景色，风景，观点，观察，意见，认为",
+        "d": "来源于拉丁语动词videre(看见),进入古法语为veoir(看见),其阴性过去分词的名词用法为veue,进入英语为view,原始意义为“被看见的”。  \n -vid-看见 → view被看见的"
+      },
+      {
+        "t": "view:看法",
+        "d": "来自法语，来自拉丁语 videre,看，词源同 visit,evident."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "word": "pottery",
+    "phonetic0": "ˈpɒtəri",
+    "phonetic1": "ˈpɑːtəri",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "制陶手艺；制陶技艺"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "At the Pottery Club, Miss Li says, “All the brush pots are dry now.”",
+        "cn": "在陶艺社，李老师说：“所有的笔筒现在都干了。”"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[陶瓷]陶器；陶器厂；陶器制造术",
+        "ws": [
+          "ware",
+          "earthware"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "pottery:陶器",
+        "d": "来自pot,壶，罐子，陶器，-ery,名词后缀。"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "word": "how about",
+    "phonetic0": "haʊ əˈbaʊt",
+    "phonetic1": "haʊ əˈbaʊt",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "（问信息）……怎么样？"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "How about bamboo?",
+        "cn": "画竹子怎么样？"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "（问信息）……怎么样？",
+        "ws": [
+          "what about"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "how about:",
+        "d": "由疑问副词 how 和介词 about 组成，用于提出建议或询问信息。"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "word": "traditional",
+    "phonetic0": "trəˈdɪʃən(ə)l",
+    "phonetic1": "trəˈdɪʃən(ə)l",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "传统的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "There will be all kinds of interesting traditional games on the sports field.",
+        "cn": "运动场上将会有各种有趣的传统游戏。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "传统的；惯例的",
+        "ws": [
+          "conventional",
+          "usual",
+          "classical"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "traditional:传统的，守旧的",
+        "d": "tradition,传统，-al,形容词后缀。"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "word": "Chinese yo-yo",
+    "phonetic0": "ˌtʃaɪniːz ˈjəʊ jəʊ",
+    "phonetic1": "ˌtʃaɪniːz ˈjəʊ jəʊ",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "空竹"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "There will be all kinds of interesting traditional games on the sports field: Chinese yo-yo playing, kite-flying, dragon dance, tug of war, hopscotch and many others.",
+        "cn": "运动场上将会有各种有趣的传统游戏：抖空竹、放风筝、舞龙、拔河、跳房子，还有许多其他游戏。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "空竹",
+        "ws": [
+          "diabolo"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "Chinese yo-yo:",
+        "d": "Chinese 表示“中国的”；yo-yo 指可上下往复运动的玩具，此处特指空竹。"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "word": "kite-flying",
+    "phonetic0": "ˈkaɪt flaɪɪŋ",
+    "phonetic1": "ˈkaɪt flaɪɪŋ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "放风筝"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "There will be all kinds of interesting traditional games on the sports field: Chinese yo-yo playing, kite-flying, dragon dance, tug of war, hopscotch and many others.",
+        "cn": "运动场上将会有各种有趣的传统游戏：抖空竹、放风筝、舞龙、拔河、跳房子，还有许多其他游戏。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "放风筝",
+        "ws": [
+          "flying a kite"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "kite-flying:",
+        "d": "由 kite（风筝）和 flying（放飞）组成，表示“放风筝”。"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "word": "dragon dance",
+    "phonetic0": "ˈdræɡən dɑːns",
+    "phonetic1": "ˈdræɡən dæns",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "舞龙"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "There will be all kinds of interesting traditional games on the sports field: Chinese yo-yo playing, kite-flying, dragon dance, tug of war, hopscotch and many others.",
+        "cn": "运动场上将会有各种有趣的传统游戏：抖空竹、放风筝、舞龙、拔河、跳房子，还有许多其他游戏。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "舞龙",
+        "ws": [
+          "dragon dancing"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "dragon dance:",
+        "d": "由 dragon（龙）和 dance（舞蹈）组成，指中国传统的舞龙表演。"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "word": "tug of war",
+    "phonetic0": "ˌtʌɡ əv ˈwɔː(r)",
+    "phonetic1": "ˌtʌɡ əv ˈwɔː(r)",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "拔河"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I want to play tug of war.",
+        "cn": "我想玩拔河。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "拔河",
+        "ws": [
+          "tug-of-war"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "tug of war:",
+        "d": "tug 表示“用力拉”，war 表示“争斗”，合起来指双方拉绳较力的比赛。"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "word": "hopscotch",
+    "phonetic0": "ˈhɒpskɒtʃ",
+    "phonetic1": "ˈhɒpskɒtʃ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "跳房子"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "There will be all kinds of interesting traditional games on the sports field: Chinese yo-yo playing, kite-flying, dragon dance, tug of war, hopscotch and many others.",
+        "cn": "运动场上将会有各种有趣的传统游戏：抖空竹、放风筝、舞龙、拔河、跳房子，还有许多其他游戏。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "跳房子",
+        "ws": [
+          "potsy"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "hopscotch:",
+        "d": "来自 hop（单脚跳）和 scotch（划线、刻痕），指在划线方格间跳跃的游戏。"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "word": "stamp",
+    "phonetic0": "stæmp",
+    "phonetic1": "stæmp",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "把（字样或图案等）盖在……上"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "After playing each game, you can stamp your card and get a prize.",
+        "cn": "每玩完一个游戏，你都可以在卡片上盖章并获得奖品。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[邮]邮票；印记；标志；跺脚",
+        "ws": [
+          "symbol",
+          "impression",
+          "print",
+          "seal",
+          "flag"
+        ]
+      },
+      {
+        "pos": "vt.",
+        "cn": "铭记；标出；盖章于…；贴邮票于…；用脚踩踏",
+        "ws": [
+          "brand",
+          "heart"
+        ]
+      },
+      {
+        "pos": "vi.",
+        "cn": "跺脚；捣碎；毁掉",
+        "ws": [
+          "break down",
+          "go to sticks and staves"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "stamp:邮票，印章，印花，痕迹，烙印，跺脚，猛踩",
+        "d": "来 自 中 古 英 语 stampen, 踩 踏 ， 捣 ， 来 自 古 英 语 stempan, 捣 ， 碾 碎 ， 来 自 Proto-Germanic*stampijana,踩踏，击打，来自 PIE*stemp,踩踏，践踏，鼻音化自 PIE*stebh, 踩踏，词源同 step,stomp,stump.最终来自 PIE*sta,站立，词源同 stand.引申诸相关词义。"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "word": "prize",
+    "phonetic0": "praɪz",
+    "phonetic1": "praɪz",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "奖励；奖品"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "After playing each game, you can stamp your card and get a prize.",
+        "cn": "每玩完一个游戏，你都可以在卡片上盖章并获得奖品。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[劳经]奖品；奖赏；战利品",
+        "ws": [
+          "award",
+          "capture"
+        ]
+      },
+      {
+        "pos": "vt.",
+        "cn": "珍视；捕获；估价",
+        "ws": [
+          "assess",
+          "acquire",
+          "evaluate",
+          "value",
+          "rate"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "prize:奖金，奖品，奖赏",
+        "d": "词根词缀： priz(-prec-)价值 + -e → 有价值的东西"
+      },
+      {
+        "t": "prize:奖品，奖赏",
+        "d": "来自古法语pris,价格，价值，奖品，词源同price,praise."
+      },
+      {
+        "t": "prize:撬开",
+        "d": "来自古法语prise,抓住，来自（缩写自）拉丁语prehendere,抓住，词源同apprise,comprehend. 引申词义撬开，强力扒开。"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "word": "style",
+    "phonetic0": "staɪl",
+    "phonetic1": "staɪl",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "风格"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "It’s the mother of many kung fu styles.",
+        "cn": "它是许多武术流派之母。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "风格；时尚；类型；字体",
+        "ws": [
+          "mode",
+          "description",
+          "fashion",
+          "type",
+          "colour"
+        ]
+      },
+      {
+        "pos": "vt.",
+        "cn": "设计；称呼；使合潮流",
+        "ws": [
+          "design",
+          "engineer",
+          "project",
+          "frame",
+          "plan"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "style:（风格）：古罗马人用来写字的尖头铁笔。",
+        "d": "古罗马人是用一种叫做stylus的尖头铁笔在蜡板上写字的，要写得好，就需要有驾驭铁笔的能力。英语单词Style一词就是从stylus来的，现在用来指一位作家的\"文体\"、\"文风\"，其实也就是他驾驭钢笔的能力。在现代，style更多指一个人衣着打扮的风格和格调。\nstyle：[staɪl] n.风格，格调，类型，时尚v.设计"
+      },
+      {
+        "t": "style:文体",
+        "d": "古罗马人是用一种叫做stylus的尖头铁笔在蜡板上写字的，要写得好，就需要有驾驭铁笔的能力。Style一词就是从stylus来的，现在用来指一位作家的“文体”、“文风”，其实也就是他驾驭钢笔的能力。"
+      },
+      {
+        "t": "style:风格，举止，头发的造型，样式",
+        "d": "来自中古英语 stile,笔，书写工具，写作风格，举止，行为，来自古法语 estile,风格，举止， 桩，刺，插入，来自拉丁语 stilus,桩，笔，书写工具，写作风格，来自 PIE*steig,刺，插，词 源同 stick,sting.拼写比较 rule,regulate.引申词义头发的造型，设计，样式等。"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "word": "action",
+    "phonetic0": "ˈækʃ(ə)n",
+    "phonetic1": "ˈækʃ(ə)n",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "动作"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I use all my strength for every action.",
+        "cn": "每个动作我都使出全身力气。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "行动；活动；功能；战斗；情节",
+        "ws": [
+          "movement",
+          "function",
+          "doing",
+          "campaign",
+          "working"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "action:行动，行为；活动，动作；作用，生效",
+        "d": "词根词缀： -act-行动 + -ion名词词尾"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "word": "straight",
+    "phonetic0": "streɪt",
+    "phonetic1": "streɪt",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "直的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Look at us. Three straight trees!",
+        "cn": "看看我们，三棵笔直的树！"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "直的；连续的；笔直的；正直的；整齐的",
+        "ws": [
+          "continuing",
+          "endless",
+          "ordered",
+          "regular",
+          "running"
+        ]
+      },
+      {
+        "pos": "adv.",
+        "cn": "直接地；不断地；立即；坦率地",
+        "ws": [
+          "constantly",
+          "directly",
+          "forever",
+          "rapidly",
+          "continually"
+        ]
+      },
+      {
+        "pos": "n.",
+        "cn": "直；直线",
+        "ws": [
+          "beeline",
+          "gerade"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "straight:直的，笔直的；整齐的，端正的；(人)正直的",
+        "d": "来源于史前西日耳曼语strakkjan。straight曾经是stretch的过去分词。  \n 同源词：stretch"
+      },
+      {
+        "t": "straight:直的，正的，正直的，传统的，异性恋的",
+        "d": "来自中古英语 streight,拉直的，过去分词格于 strechen,拉直，展开，来自古英语 streccan,拉 直，展开，词源同 stretch,伸展，延伸。拼写比较 bake,batch.引申词义正的，正直的，以及现 代词义传统的，异性恋的等。"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "word": "keep up with",
+    "phonetic0": "kiːp ʌp wɪð",
+    "phonetic1": "kiːp ʌp wɪð",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "跟上"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We can’t keep up with you!",
+        "cn": "我们跟不上你！"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "跟上",
+        "ws": [
+          "keep pace with",
+          "catch up with"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "keep up with:",
+        "d": "由 keep up（保持同样速度）和 with（与……一起）构成，表示“跟上”。"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "word": "control",
+    "phonetic0": "kənˈtrəʊl",
+    "phonetic1": "kənˈtroʊl",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "控制"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The players at the tail of the dragon lose control of the sticks.",
+        "cn": "龙尾处的队员失去了对棍子的控制。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[自]控制；[管理]管理；抑制；操纵装置",
+        "ws": [
+          "governance",
+          "administration",
+          "management",
+          "supervision",
+          "checking"
+        ]
+      },
+      {
+        "pos": "vt.",
+        "cn": "[自]控制；[管理]管理；抑制",
+        "ws": [
+          "possess",
+          "manage",
+          "regulate",
+          "bottle",
+          "conduct"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "control:控制",
+        "d": "contra-, 相对，相反。-roll, 轮子。本义为中世纪的一种反向复核的帐目检查方法。"
+      },
+      {
+        "t": "control:控制，支配",
+        "d": "词根词缀： contr-(contra-相反) + rol(=roll滚动) → 阻止滚动"
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "word": "pace",
+    "phonetic0": "peɪs",
+    "phonetic1": "peɪs",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "（移动的）速度；步速"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "This time, all the players keep the same pace and the long dragon comes to life.",
+        "cn": "这一次，所有队员保持相同的速度，长龙便活了起来。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "一步；步速；步法",
+        "ws": [
+          "footwork"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "pace:速度，步伐",
+        "d": "来自拉丁语passus,步伐，来自PIE*pete,展开，词源同feather,compete."
+      },
+      {
+        "t": "pace:请原谅",
+        "d": "来自拉丁语pax 的离格形式pace,和平，平和，词源同peace.后引申词义请平静，请息怒，请 原谅等。"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "word": "root",
+    "phonetic0": "ruːt",
+    "phonetic1": "ruːt",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "根；根茎"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The roots hold the plant in place, and take in food and water.",
+        "cn": "根把植物固定在原地，并吸收养分和水。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[数][植]根；根源；词根；祖先",
+        "ws": [
+          "parent",
+          "principle",
+          "father",
+          "radix"
+        ]
+      },
+      {
+        "pos": "vi.",
+        "cn": "生根；根除",
+        "ws": [
+          "radicate"
+        ]
+      },
+      {
+        "pos": "vt.",
+        "cn": "生根，固定；根源在于",
+        "ws": [
+          "fix on",
+          "hold in place"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "root:根，根部，根基",
+        "d": "来自古英语 rot,根，来自 Proto-Germanic*wrot,根，草根，植物，来自 PIE*wrad,根，小枝， 词源同 wort,radish.引申词义根部，根基等。"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "word": "take in",
+    "phonetic0": "teɪk ɪn",
+    "phonetic1": "teɪk ɪn",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "吸入"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The leaves take in the sunlight, and grow bigger and bigger.",
+        "cn": "叶子吸收阳光，越长越大。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "接受；理解；拘留；欺骗；让…进入；改短",
+        "ws": [
+          "adopt",
+          "absorb",
+          "see",
+          "read",
+          "hold"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "take in:",
+        "d": "由 take 和副词 in 构成；in 表示向内，因而引申为“吸入、吸收”。"
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "word": "stem",
+    "phonetic0": "stem",
+    "phonetic1": "stem",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "（花草的）茎"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The stem moves water up the plant, and brings water to the leaves.",
+        "cn": "茎把水分向上输送，并将水带到叶子。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "干；[植]茎；船首；血统",
+        "ws": [
+          "birth",
+          "blood",
+          "stock"
+        ]
+      },
+      {
+        "pos": "vt.",
+        "cn": "阻止；除去…的茎；给…装柄",
+        "ws": [
+          "block",
+          "dispute",
+          "prohibit",
+          "discourage"
+        ]
+      },
+      {
+        "pos": "vi.",
+        "cn": "阻止；起源于某事物；逆行",
+        "ws": [
+          "prevent from",
+          "head off"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "stem:茎，柄，梗，词干",
+        "d": "来自古英语 stemn,植物茎，树干，来自 Proto-Germanic*stamniz,站立，来自 PIE*sta,站立，词 源同 stand,state.引申诸相关词义。"
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "word": "thick",
+    "phonetic0": "θɪk",
+    "phonetic1": "θɪk",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "厚的；粗的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "They have short, thick stems.",
+        "cn": "它们的茎又短又粗。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adv.",
+        "cn": "密集地；浓浓地，厚厚地",
+        "ws": [
+          "deeply",
+          "densely"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "thick:厚的，浓密的",
+        "d": "来自古英语 thicce,厚的，浓密的，来自 Proto-Germanic*thiku,厚的，来自 PIE*tegu,厚的，可 能来自 PIE*teue,膨胀，鼓起，词源同 thigh,thumb.引申诸相关词义。"
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "word": "water lily",
+    "phonetic0": "ˈwɔːtə lɪli",
+    "phonetic1": "ˈwɔːtə lɪli",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "睡莲"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Water lily",
+        "cn": "睡莲"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "睡莲；荷花",
+        "ws": [
+          "pond lily"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "water lily:",
+        "d": "由 water（水）和 lily（百合状花）组成，指生长在水中的睡莲。"
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "word": "react",
+    "phonetic0": "riˈækt",
+    "phonetic1": "riˈækt",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "（对……）作出反应"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Some plants react to weather changes.",
+        "cn": "有些植物会对天气变化作出反应。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vi.",
+        "cn": "反应；影响；反抗；起反作用",
+        "ws": [
+          "impact of",
+          "impact on",
+          "work on"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "react:反应，起作用；",
+        "d": "词根词缀： re-回 + -act-行动"
+      },
+      {
+        "t": "react:反应，反抗",
+        "d": "re-,相反，act,行动，表现。引申词义反应，反抗。"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "word": "pine cone",
+    "phonetic0": "ˈpaɪn kəʊn",
+    "phonetic1": "ˈpaɪn kəʊn",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "松果"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "For example, on sunny days, pine cones’ scales are open.",
+        "cn": "例如，在晴天，松果的鳞片是张开的。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "松果",
+        "ws": [
+          "conifer cone"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "pine cone:",
+        "d": "由 pine（松树）和 cone（球果）组成，表示“松果”。"
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "word": "scale",
+    "phonetic0": "skeɪl",
+    "phonetic1": "skeɪl",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "鳞片"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "On rainy days, they fold their scales to protect their seeds.",
+        "cn": "在雨天，它们会合拢鳞片来保护种子。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "规模；[测][数]比例；[动]鳞；[仪]刻度；天平；数值范围",
+        "ws": [
+          "dimensions",
+          "ratio",
+          "graduation",
+          "calibration"
+        ]
+      },
+      {
+        "pos": "vi.",
+        "cn": "衡量；攀登；剥落；[环境]生水垢",
+        "ws": [
+          "chip",
+          "shell",
+          "climb"
+        ]
+      },
+      {
+        "pos": "vt.",
+        "cn": "测量；攀登；刮鳞；依比例决定",
+        "ws": [
+          "sound",
+          "gauge"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "scale:（规模）：状若鱼鳞的刻度",
+        "d": "英语单词scale的本意是“鳞”，如鱼鳞、蛇鳞等。古代人在标准的度量仪器出现之前，都是使用简单的刻度来进行度量。比如，在一根棍子上刻下不同的刻度来代表不同长度，然后就可以使用这些刻度来度量其他物体的长度了。这些平行的刻度看起来就像鱼鳞一样，所以英语中就用原本表示“鳞”的单词scale来表示刻度。现在单词scale的众多含义都是从“鳞”和“刻度”这两个基本意思衍生出来的。如刻有刻度的度量仪器、刻度所代表的比例和规模、使用刻度进行度量的行为、给鱼刮鳞、梯子（中间的横杠就像刻度一样）、费劲地攀爬（抓着梯子的横杠攀爬）。\nscale： [skeɪl] n.鳞，刻度，比例，规模，天平，数值范围v.测量，刮鳞，攀爬，按比例缩放"
+      },
+      {
+        "t": "scale:标度，刻度；天平，磅秤；标尺，比例尺；音阶；鱼鳞；规模",
+        "d": "作“天平,刻度”时,来源于日耳曼语skal(分开); 作“攀爬”时,来源于拉丁语中由动词scandere(攀爬)派生的scala(攀爬)。"
+      },
+      {
+        "t": "scale:天秤；鳞片；规模",
+        "d": "skill（技能）本义“切，分”，所掌握的技能可以让你与别人拉开差距，从芸芸众生中“分离”出来；scale（鳞片）同源，鳞片从鱼等身上“分离”下来；shell（壳）同源，贝壳从软体动物身上“脱离”下来。scale\"天秤\"，概因天秤托盘最初由贝壳（shell）做成。"
+      },
+      {
+        "t": "scale:水垢，牙石，秤，天平，鳞片",
+        "d": "来自古诺斯语 skel,贝壳，skal,碗，饮水容器，来自 Proto-Germanic*skaela,分开，劈开，来自 PIE*skel,砍，切，分开，词源同 shell,scallop.由贝壳引申词义碗，饮水器具，由贝壳的钙化 性质引申词义水垢，牙石，由碗，饮水容器引申词义秤，天平，即秤的原型，由该印欧语的 词根义引申词义鱼鳞，鳞片等。"
+      },
+      {
+        "t": "scale:梯子，攀登，攀爬，规模，范围，程度，等级，比例",
+        "d": "来自拉丁语 scala,梯子，来自（缩写自）scandere,攀爬，攀登，来自 PIE*skand,爬，上升， 词源同 scan,ascend,descend.字母 d 脱落，类似拼写比较 rule,regulate.引申词义规模，范围， 程度，等级，比例等。"
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "word": "morning glory",
+    "phonetic0": "ˌmɔːnɪŋ ˈɡlɔːri",
+    "phonetic1": "ˌmɔːnɪŋ ˈɡlɔːri",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "牵牛花"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Morning glory petals open during nice days, but close tightly when rain is coming.",
+        "cn": "天气晴好时牵牛花的花瓣会开放，下雨前则会紧紧闭合。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "牵牛花",
+        "ws": [
+          "bindweed"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "morning glory:牵牛花，朝开夕闭",
+        "d": "比喻用法，因其朝开夕闭而得名。"
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "word": "safari park",
+    "phonetic0": "səˈfɑːri pɑːk",
+    "phonetic1": "səˈfɑːri pɑːk",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "野生动物园"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Welcome to the Safari Park.",
+        "cn": "欢迎来到野生动物园。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "野生动物园",
+        "ws": [
+          "wildlife park"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "safari park:",
+        "d": "safari 源自斯瓦希里语，意为“旅行”；与 park 组合后指可乘车观赏动物的野生动物园。"
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "word": "tiger",
+    "phonetic0": "ˈtaɪɡə(r)",
+    "phonetic1": "ˈtaɪɡər",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "虎；老虎"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "You can find out the interesting habits of animals like tigers, lions and elephants.",
+        "cn": "你可以了解老虎、狮子和大象等动物的有趣习性。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "虎；老虎",
+        "ws": [
+          "big cat"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "tiger:老虎",
+        "d": "来自拉丁语 tigris,老虎，来自希腊语 tigris,老虎，其原义为箭，因老虎捕食猎物时箭一般的 速度而得名，该希腊词借自波斯某语言，如古波斯语 tigri,箭，伊拉克巴比伦文明两河流域 发源地其中之一 Tigris River,底格里斯河，字面意思为像箭一样湍急的水流，最终来自 PIE*steig,尖刺，刺穿，词源同 stick."
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "word": "lion",
+    "phonetic0": "ˈlaɪən",
+    "phonetic1": "ˈlaɪən",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "狮子"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "You can find out the interesting habits of animals like tigers, lions and elephants.",
+        "cn": "你可以了解老虎、狮子和大象等动物的有趣习性。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "狮子",
+        "ws": [
+          "big cat"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "lion:狮子",
+        "d": "来自拉丁语leo,狮子。"
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "word": "threat",
+    "phonetic0": "θret",
+    "phonetic1": "θret",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "威胁"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "You can learn about the threats to sea animals like whales and dolphins.",
+        "cn": "你可以了解鲸和海豚等海洋动物面临的威胁。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "威胁，恐吓；凶兆",
+        "ws": [
+          "danger",
+          "intimidation"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "threat:威胁",
+        "d": "来自古英语 threat,胁迫，威胁，来自 Proto-Germanic*thrautam,压迫，促使，来自 PIE*treud, 推，紧压，词源同 thrust,extrude,obtrude."
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "word": "whale",
+    "phonetic0": "weɪl",
+    "phonetic1": "weɪl",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "鲸"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Suddenly, a big whale swims by and eats it up.",
+        "cn": "突然，一头大鲸游过来，把它吞了下去。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vt.",
+        "cn": "猛揍；使惨败",
+        "ws": [
+          "slaughter"
+        ]
+      },
+      {
+        "pos": "n.",
+        "cn": "[脊椎]鲸；巨大的东西",
+        "ws": [
+          "bouncer",
+          "colossus"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "whale:鲸",
+        "d": "来自古英语 hwael,大型海洋生物，鲸，海象等，后用于指鲸。"
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "word": "toe",
+    "phonetic0": "təʊ",
+    "phonetic1": "toʊ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "脚趾"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I held the chalk between the toes of my left foot.",
+        "cn": "我用左脚脚趾夹住粉笔。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[解剖]脚趾；足尖",
+        "ws": [
+          "tootsies",
+          "pettitoes"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "toe:脚趾",
+        "d": "来自古英语 ta,脚趾，缩写自 Proto-Germanic*taihwo,脚趾，来自 PIE*deik,指出，展示，词源 同 digit,手指，数字。"
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "word": "protect",
+    "phonetic0": "prəˈtekt",
+    "phonetic1": "prəˈtekt",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "保护"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Respect, care for and protect animals.",
+        "cn": "尊重、关爱并保护动物。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vt.",
+        "cn": "保护，防卫；警戒",
+        "ws": [
+          "secure",
+          "watch",
+          "preserve"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "protect:保护，保卫",
+        "d": "词根词缀： pro-前 + -tect-掩盖 → 预先盖住"
+      },
+      {
+        "t": "protect:保护",
+        "d": "来自拉丁语protegere,保护，覆盖，来自pro-,向前，-teg,遮盖，覆盖，词源同protege,detective.-ct,过去分词格。"
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "word": "truck tour",
+    "phonetic0": "ˈtrʌk tʊə(r)",
+    "phonetic1": "ˈtrʌk tʊə(r)",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "卡车游览"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I love this safari truck tour.",
+        "cn": "我喜欢这次野生动物园卡车游览。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "卡车游览",
+        "ws": [
+          "truck trip"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "truck tour:",
+        "d": "由 truck（卡车）和 tour（游览）组成，表示乘卡车进行的游览。"
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "word": "giraffe",
+    "phonetic0": "dʒəˈrɑːf",
+    "phonetic1": "dʒəˈræf",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "长颈鹿"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Mommy giraffes are taking care of their babies.",
+        "cn": "长颈鹿妈妈正在照顾它们的宝宝。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "长颈鹿",
+        "ws": [
+          "camelopard"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "giraffe:",
+        "d": "经法语 girafe 进入英语，最终源自阿拉伯语 zarāfa，指“长颈鹿”。"
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "word": "keeper",
+    "phonetic0": "ˈkiːpə(r)",
+    "phonetic1": "ˈkiːpər",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "饲养员"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Is that animal keeper trying to feed the giraffes?",
+        "cn": "那位动物饲养员是想喂长颈鹿吗？"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "监护人；饲养员；看守人；管理人",
+        "ws": [
+          "supervisor",
+          "guardian",
+          "administrator"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "keeper:",
+        "d": "由 keep（照料、看管）加表示人的后缀 -er 构成，指负责照料或看管的人。"
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "word": "get close to",
+    "phonetic0": "ɡet kləʊs tə",
+    "phonetic1": "ɡet kləʊs tə",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "靠近"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He tries to get closer to them with their favourite food.",
+        "cn": "他试着用它们最喜欢的食物靠近它们。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "靠近，接近",
+        "ws": [
+          "draw near",
+          "come near to"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "get close to:",
+        "d": "由 get（变得）、close（接近的）和 to 组成，表示“靠近”。"
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "word": "hair",
+    "phonetic0": "heə(r)",
+    "phonetic1": "her",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "毛发"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She isn’t black and white, but pink with a little bit of white hair.",
+        "cn": "她不是黑白相间的，而是粉红色的，带有一点白色毛发。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "头发；[解剖]毛发；些微",
+        "ws": [
+          "capello",
+          "poil"
+        ]
+      },
+      {
+        "pos": "adj.",
+        "cn": "[解剖]毛发的；护理毛发的；用毛发制成的",
+        "ws": [
+          "pilar"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "hair:头发，毛发",
+        "d": "来自PIE*ghers,挺直，硬毛，词源同horror,hirsute.引申词义毛发，头发。"
+      },
+      {
+        "t": "hair:’s breadth 毫厘之差",
+        "d": "比喻用法。"
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "word": "hippo",
+    "phonetic0": "ˈhɪpəʊ",
+    "phonetic1": "ˈhɪpoʊ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "河马"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Momo, the hippo is one month old.",
+        "cn": "河马默默刚满一个月。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "河马；吐根",
+        "ws": [
+          "river horse",
+          "ipecac"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "hippo:",
+        "d": "是 hippopotamus 的口语简称；hippopotamus 源自希腊语，原意为“河马”。"
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "word": "dive",
+    "phonetic0": "daɪv",
+    "phonetic1": "daɪv",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "跳水"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Momo is learning how to dive.",
+        "cn": "默默正在学习怎样跳水。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vi.",
+        "cn": "[水运]潜水；跳水；[航]俯冲；急剧下降",
+        "ws": [
+          "pitch down"
+        ]
+      },
+      {
+        "pos": "n.",
+        "cn": "[水运]潜水；跳水；[航]俯冲；扑",
+        "ws": [
+          "phreatic water",
+          "underground water"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "dive:跳水",
+        "d": "词源同dip, 浸。用来指跳水。"
+      },
+      {
+        "t": "dive:潜水",
+        "d": "deep（深处）和dip（浸，蘸）来自日耳曼语根*d(e)up-（深的），dive来自语根*d(e)ub-，是前者的变体。三者在词义和读音上都有紧密联系。“浸水”和“潜水”都是进入水的“深处”，而dive的发音更重，所以进得更深。注意v、p音变关系，如seven（七）和词根sept（七）。"
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "word": "treat",
+    "phonetic0": "triːt",
+    "phonetic1": "triːt",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "治疗"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He treats the wound carefully.",
+        "cn": "他仔细地处理伤口。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vt.",
+        "cn": "治疗；对待；探讨；视为",
+        "ws": [
+          "cure",
+          "help"
+        ]
+      },
+      {
+        "pos": "vi.",
+        "cn": "探讨；请客；协商",
+        "ws": [
+          "arrange",
+          "confer with"
+        ]
+      },
+      {
+        "pos": "n.",
+        "cn": "请客；款待",
+        "ws": [
+          "entertainment",
+          "delectation"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "treat:对待，处理；(疾病)治疗；(问题)探讨，论述；款待，请客",
+        "d": "-tract-拉,引 → treat"
+      },
+      {
+        "t": "treat:对待，处理，治疗，款待",
+        "d": "来自古法语 traitier,处理，来自拉丁语 tractare,管理，引导，来自拉丁语 trahere 的反复格动词 形式，词源同 tract,entreat.引申词义对待，治疗，款待等。拼写比较 fact,feat."
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "word": "runny nose",
+    "phonetic0": "ˌrʌni ˈnəʊz",
+    "phonetic1": "ˌrʌni ˈnəʊz",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "流鼻涕"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "My nose is runny and I cough badly, so I come to see Dr Li.",
+        "cn": "我流鼻涕，还咳嗽得很厉害，所以我来找李医生看病。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "流鼻涕",
+        "ws": [
+          "nasal discharge"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "runny nose:",
+        "d": "由 runny（流淌的）和 nose（鼻子）组成，表示“流鼻涕”。"
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "word": "cough",
+    "phonetic0": "kɒf",
+    "phonetic1": "kɔːf",
+    "trans": [
+      {
+        "pos": "n./v.",
+        "cn": "咳嗽"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "My nose is runny and I cough badly, so I come to see Dr Li.",
+        "cn": "我流鼻涕，还咳嗽得很厉害，所以我来找李医生看病。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[临床]咳嗽，咳嗽声；咳嗽病",
+        "ws": [
+          "tussis",
+          "ough"
+        ]
+      },
+      {
+        "pos": "vt.",
+        "cn": "咳出",
+        "ws": [
+          "hawk"
+        ]
+      },
+      {
+        "pos": "vi.",
+        "cn": "[临床]咳嗽",
+        "ws": [
+          "hawk"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "cough:",
+        "d": "来自中世纪英语coughen, coghen, 来自古英语*cohhian (参见古英语cohhetan(\"to shout\")), 来自原始日耳曼语*kuh-. 同源于荷兰语kuchen(\"to cough\"), 德语keuchen(\"to pant\"), sq hukat(\"pant, gasp\")."
+      },
+      {
+        "t": "cough:咳嗽",
+        "d": "拟声词，模仿咳嗽的声音。"
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "word": "nurse",
+    "phonetic0": "nɜːs",
+    "phonetic1": "nɜːrs",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "护士"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A nurse takes my temperature.",
+        "cn": "一位护士给我量体温。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vt.",
+        "cn": "看护，护理；照顾；培养；给…喂奶",
+        "ws": [
+          "cultivate",
+          "plant",
+          "rear"
+        ]
+      },
+      {
+        "pos": "vi.",
+        "cn": "照料，护理；喂奶；当保姆",
+        "ws": [
+          "fend for",
+          "attend on"
+        ]
+      },
+      {
+        "pos": "n.",
+        "cn": "[医]护士；奶妈，保姆",
+        "ws": [
+          "sister",
+          "amah"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "nurse:护理，照料，养育，护士",
+        "d": "来自古法语nurrice,养母，奶妈，来自拉丁语nutrire,滋养，喂奶，词源同nourish,nutriment."
+      },
+      {
+        "t": "nurse:护士，保姆",
+        "d": "词根词缀： nurs(= -nutr- )哺育→照看 + -e"
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "word": "temperature",
+    "phonetic0": "ˈtemprətʃə(r)",
+    "phonetic1": "ˈtemprətʃər; ˈtemprətʃʊr",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "体温"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A nurse takes my temperature.",
+        "cn": "一位护士给我量体温。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "体温",
+        "ws": [
+          "body temperature",
+          "temperature reading"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "temperature:",
+        "d": "源自拉丁语 temperatura，意为“适当调和、温度”，其词根与 temper（调节）同源。"
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "word": "fever",
+    "phonetic0": "ˈfiːvə(r)",
+    "phonetic1": "ˈfiːvər",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "发烧；发热"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "You have a fever.",
+        "cn": "你发烧了。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "发烧；发热",
+        "ws": [
+          "high temperature",
+          "pyrexia"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "fever:",
+        "d": "源自古英语 fēfer，并可追溯至拉丁语 febris，表示“发热、发烧”。"
+      }
+    ]
+  },
+  {
+    "id": 51,
+    "word": "flu",
+    "phonetic0": "fluː",
+    "phonetic1": "fluː",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "流行性感冒；流感"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "And it’s the flu.",
+        "cn": "而且是流感。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "流行性感冒；流感",
+        "ws": [
+          "influenza"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "flu:",
+        "d": "是 influenza 的缩略形式；influenza 经意大利语进入英语，原指疾病的“影响”。"
+      }
+    ]
+  },
+  {
+    "id": 52,
+    "word": "medicine",
+    "phonetic0": "ˈmedsn; ˈmedɪsn",
+    "phonetic1": "ˈmedɪs(ə)n",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "药"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Take some medicine and have a good rest.",
+        "cn": "吃点药，好好休息。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[医学][药物][药]药；医学；[内科]内科；巫术",
+        "ws": [
+          "drug",
+          "pharmacon"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "medicine:药，药物",
+        "d": "来自medical,医疗的，-ine,名词后缀。引申词义药，药物。"
+      },
+      {
+        "t": "medicine:医学，医术，内科学；内服药",
+        "d": "词根词缀： -med-医药 + -ic名词词尾 + -ine名词词尾"
+      }
+    ]
+  },
+  {
+    "id": 53,
+    "word": "take it easy",
+    "phonetic0": "teɪk ɪt ˈiːzi",
+    "phonetic1": "teɪk ɪt ˈiːzi",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "别急；从容点"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "And take it easy.",
+        "cn": "放轻松。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "从容；不急；松懈",
+        "ws": [
+          "relax",
+          "dragged"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "take it easy:",
+        "d": "固定习语，字面义为“轻松地对待它”，引申为“别急、放轻松”。"
+      }
+    ]
+  },
+  {
+    "id": 54,
+    "word": "check",
+    "phonetic0": "tʃek",
+    "phonetic1": "tʃek",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "检查"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Let me check your eyes.",
+        "cn": "让我检查一下你的眼睛。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vt.",
+        "cn": "检查；制止；寄存",
+        "ws": [
+          "examine",
+          "inspect",
+          "review",
+          "park"
+        ]
+      },
+      {
+        "pos": "n.",
+        "cn": "[金融]支票；阻止；阻止物",
+        "ws": [
+          "prevention",
+          "cheque"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "check:（核查）：国际象棋中的“将一军”",
+        "d": "关于国际象棋，大部分历史学者认为起源于古印度，后来流传至波斯，再经过阿拉伯、流传至欧洲。至今见诸于文献最早的记录是在萨珊王朝时期用波斯文写的。国际象棋中向对方的国王“将一军”，英语叫check，它是从古波斯语shah（国王）演变来的，意思是提醒对方我下一步就要吃掉你的国王了。当对手发出check的提醒时，自己就要仔细检查本方棋盘中国王的安全，所以check一词延伸出现在的“检查”、“核查”等含义。\n  另外，古波斯人称象棋中“把对方将死”为shah-mat，mat是“死”的意思。英语单词checkmate（将死）就来源于此。\n  英语单词chess（国际象棋）和check一样，都来自古波斯语shah（国王），是check的复数形式，字面意思就是“连续将军的游戏”。\n check：[tʃek] n.支票，核对，检验v.检查，核查，制止，打勾，将一军\n checkmate：['tʃekmeɪt] n.将死，挫败vt.把……将死，使……彻底失败\n chess：[tʃes] n.国际象棋"
+      },
+      {
+        "t": "check:检查",
+        "d": "来自古法语eschequier, （棋子游戏）将军，来自阿拉伯语shah, 王。原指一种两军对垒的棋子游戏，当逼近对王主帅时，则说：shah mat, 将杀死你的王，请注意，请检查。类似于中国象棋术语将军。其拼写演变较复杂，首先加字母e, 然后将es又当做前缀ex-脱落，参照etude, echelon. 词源同chess, cheque, exchequer."
+      },
+      {
+        "t": "check:检查，核对；阻碍，制止；抑制",
+        "d": "来源于拉丁语和古法语。"
+      }
+    ]
+  },
+  {
+    "id": 55,
+    "word": "cycling",
+    "phonetic0": "ˈsaɪklɪŋ",
+    "phonetic1": "ˈsaɪklɪŋ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "骑自行车运动"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "For example, you can go cycling or play football more.",
+        "cn": "例如，你可以多骑自行车或踢足球。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "骑自行车运动",
+        "ws": [
+          "bike riding",
+          "bicycling"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "cycling:",
+        "d": "由 cycle（骑自行车；循环）加名词后缀 -ing 构成，此处表示“骑自行车运动”。"
+      }
+    ]
+  },
+  {
+    "id": 56,
+    "word": "patient",
+    "phonetic0": "ˈpeɪʃ(ə)nt",
+    "phonetic1": "ˈpeɪʃ(ə)nt",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "病人"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "One day, Hua Tuo had a patient with a broken leg.",
+        "cn": "一天，华佗接诊了一位腿骨折的病人。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "有耐性的，能容忍的",
+        "ws": [
+          "indefatigable"
+        ]
+      },
+      {
+        "pos": "n.",
+        "cn": "[医]病人；患者",
+        "ws": [
+          "sick",
+          "sufferer"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "patient:病人，患者",
+        "d": "词根词缀： -pati-痛苦 + -ent形容词词尾"
+      },
+      {
+        "t": "patient:病人，忍耐的",
+        "d": "来自拉丁语pati,忍受，承受，词源同passion,passive.-ent,现在分词后缀。即正在忍受的，正在遭受痛苦的，引申词义病人。"
+      }
+    ]
+  },
+  {
+    "id": 57,
+    "word": "reduce",
+    "phonetic0": "rɪˈdjuːs",
+    "phonetic1": "rɪˈduːs",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "减少"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "How can I reduce his pain during the treatment?",
+        "cn": "在治疗过程中，我怎样才能减轻他的疼痛呢？"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vt.",
+        "cn": "减少；降低；使处于；把…分解",
+        "ws": [
+          "shorten",
+          "weaken"
+        ]
+      },
+      {
+        "pos": "vi.",
+        "cn": "减少；缩小；归纳为",
+        "ws": [
+          "to cut down",
+          "fall off"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "reduce:减小，缩小；简化；还原",
+        "d": "词根词缀： re-回 + + -duc-引导 + -e → 向后引导 → 缩退,还原"
+      },
+      {
+        "t": "reduce:减少，缩小，简化",
+        "d": "re-,向后，往回，-duc,拉，词源同 deduce,deduct.即拉回，引申词义减少，缩小。"
+      }
+    ]
+  },
+  {
+    "id": 58,
+    "word": "pain",
+    "phonetic0": "peɪn",
+    "phonetic1": "peɪn",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "疼痛"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "How can I reduce his pain during the treatment?",
+        "cn": "在治疗过程中，我怎样才能减轻他的疼痛呢？"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[临床]疼痛；努力",
+        "ws": [
+          "effort",
+          "trial",
+          "struggle",
+          "try"
+        ]
+      },
+      {
+        "pos": "vt.",
+        "cn": "使…痛苦；使…烦恼",
+        "ws": [
+          "cark"
+        ]
+      },
+      {
+        "pos": "vi.",
+        "cn": "感到疼痛；引起疼痛",
+        "ws": [
+          "hurt"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "pain:疼痛，痛苦",
+        "d": "来自拉丁语poena,折磨，惩罚，来自PIE*kwei,支付，代价，弥补，词源同penal,punish.后引申词义疼痛，痛苦。"
+      }
+    ]
+  },
+  {
+    "id": 59,
+    "word": "treatment",
+    "phonetic0": "ˈtriːtmənt",
+    "phonetic1": "ˈtriːtmənt",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "治疗"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "During the whole treatment, the man stayed asleep.",
+        "cn": "在整个治疗过程中，那个人一直处于睡眠状态。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[临床]治疗，疗法；处理；对待",
+        "ws": [
+          "therapy",
+          "transactions",
+          "settlement",
+          "disposal",
+          "computing"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "treatment:处理；对待，待遇；治疗；疗法",
+        "d": "词根词缀： treat(-tract-)拉,引 + -ment名词词尾"
+      },
+      {
+        "t": "treatment:对待，处理",
+        "d": "treat,对待，处理，ment,名词后缀。"
+      }
+    ]
+  },
+  {
+    "id": 60,
+    "word": "operation",
+    "phonetic0": "ˌɒpəˈreɪʃ(ə)n",
+    "phonetic1": "ˌɑːpəˈreɪʃ(ə)n",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "手术"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "It helped many patients in need of operation.",
+        "cn": "它帮助了许多需要手术的病人。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "操作；[贸易]经营；[外科]手术；[数][计]运算",
+        "ws": [
+          "work",
+          "manipulation"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "operation:操作；管理；手术",
+        "d": "词根词缀： -oper-工作 + -ation名词词尾"
+      },
+      {
+        "t": "operation:运行，业务",
+        "d": "来自operate,运作，操作。引申词义运行，业务。"
+      }
+    ]
+  },
+  {
+    "id": 61,
+    "word": "challenge",
+    "phonetic0": "ˈtʃælɪndʒ",
+    "phonetic1": "ˈtʃælɪndʒ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "挑战"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Talk about what you did to challenge yourself.",
+        "cn": "说说你为了挑战自己做过什么。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "挑战；怀疑",
+        "ws": [
+          "dare",
+          "doubt"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "challenge:挑战",
+        "d": "来自PIE*kel, 欺骗，挑刺，词源同calumny, cavil.词义褒义化，由贬义的挑刺到褒义的挑战。"
+      },
+      {
+        "t": "challenge:向…挑战；引起，激励",
+        "d": "来源于拉丁语名词calumni.a, -ae, f(恶意指控,欺诈);challenge最初的词义是\"指控\",到14世纪早期这个单词开始出现\"邀请参赛\"的词义,到17世纪,\"指控\"的词义已不再使用。"
+      }
+    ]
+  },
+  {
+    "id": 62,
+    "word": "impossible",
+    "phonetic0": "ɪmˈpɒsəb(ə)l",
+    "phonetic1": "ɪmˈpɑːsəb(ə)l",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "不可能的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Nothing is impossible to a willing mind.",
+        "cn": "世上无难事，只怕有心人。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "不可能的；不可能存在的；难以忍受的；不真实的",
+        "ws": [
+          "incorrect",
+          "unbearable"
+        ]
+      },
+      {
+        "pos": "n.",
+        "cn": "不可能；不可能的事",
+        "ws": [
+          "a blue moon"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "impossible:不可能的",
+        "d": "im-,不，非，possible,可能的。"
+      },
+      {
+        "t": "impossible:不可能的，办不到的",
+        "d": "词根词缀： im-不,无,非 + -poss- (能,能够) + -ible 形容词词尾"
+      }
+    ]
+  },
+  {
+    "id": 63,
+    "word": "willing",
+    "phonetic0": "ˈwɪlɪŋ",
+    "phonetic1": "ˈwɪlɪŋ",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "积极肯干的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Nothing is impossible to a willing mind.",
+        "cn": "世上无难事，只怕有心人。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "乐意的；自愿的；心甘情愿的",
+        "ws": [
+          "glad",
+          "voluntary"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "willing:愿意，乐意",
+        "d": "来自will,意愿。"
+      },
+      {
+        "t": "willing:乐意的，情愿的",
+        "d": "词根词缀： will(-vol-)自愿,意愿 + -ing"
+      }
+    ]
+  },
+  {
+    "id": 64,
+    "word": "will",
+    "phonetic0": "wɪl",
+    "phonetic1": "wɪl",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "意志；毅力"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Where there is a will, there is a way.",
+        "cn": "有志者，事竟成。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "意志；情感；[法]遗嘱；意图；心愿",
+        "ws": [
+          "emotion",
+          "intention",
+          "purpose",
+          "meaning",
+          "wish"
+        ]
+      },
+      {
+        "pos": "vt.",
+        "cn": "决心要；遗赠；用意志力使",
+        "ws": [
+          "bequeath"
+        ]
+      },
+      {
+        "pos": "vi.",
+        "cn": "愿意；下决心",
+        "ws": [
+          "prefer",
+          "decide"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "will:意志，决心，意向，遗嘱",
+        "d": "缩写'll,否定缩写won't 来源于拉丁语动词volo, velle, volui(愿意,想要)。  \n -vol-自愿,意愿 → will"
+      },
+      {
+        "t": "will:将要，意志，遗嘱",
+        "d": "来自 PIE*wel,希望，意愿，词源同 volunteer,voluptuous.用于法律名词遗嘱。"
+      }
+    ]
+  },
+  {
+    "id": 65,
+    "word": "succeed",
+    "phonetic0": "səkˈsiːd",
+    "phonetic1": "səkˈsiːd",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "成功"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Those who keep themselves strong will succeed.",
+        "cn": "自强不息者终会成功。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vi.",
+        "cn": "成功；继承；继任；兴旺",
+        "ws": [
+          "arrive",
+          "win",
+          "make good"
+        ]
+      },
+      {
+        "pos": "vt.",
+        "cn": "继承；接替；继…之后",
+        "ws": [
+          "to inherit",
+          "take sth over"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "succeed:成功",
+        "d": "词根词缀： suc-下,低 + -ceed-行走 → 走到底"
+      },
+      {
+        "t": "succeed:达到目的，成功，接替，继任",
+        "d": "suc-,在下，在后，-ceed,走，词源同 accede,proceed.即跟在后面走，引申词义接替，继任，达 成目的，成功。"
+      }
+    ]
+  },
+  {
+    "id": 66,
+    "word": "confident",
+    "phonetic0": "ˈkɒnfɪdənt",
+    "phonetic1": "ˈkɑːnfɪdənt",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "自信的；有自信心的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "But you are so confident today.",
+        "cn": "但你今天非常自信。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "自信的；确信的",
+        "ws": [
+          "sure",
+          "convinced",
+          "assured"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "confident:",
+        "d": "源自拉丁语 confidentem，由 con-（共同、加强）和 fidere（信任）组成，表示“有信心的”。"
+      }
+    ]
+  },
+  {
+    "id": 67,
+    "word": "front",
+    "phonetic0": "frʌnt",
+    "phonetic1": "frʌnt",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "前面"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I used to be very nervous to speak in front of my schoolmates.",
+        "cn": "我过去在同学面前讲话时非常紧张。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "前面；正面；[军]前线",
+        "ws": [
+          "frente",
+          "facade"
+        ]
+      },
+      {
+        "pos": "vt.",
+        "cn": "面对；朝向；对付",
+        "ws": [
+          "meet",
+          "confront"
+        ]
+      },
+      {
+        "pos": "vi.",
+        "cn": "朝向",
+        "ws": [
+          "give upon",
+          "look out upon"
+        ]
+      },
+      {
+        "pos": "adj.",
+        "cn": "前面的；正面的",
+        "ws": [
+          "anterior",
+          "full-face"
+        ]
+      },
+      {
+        "pos": "adv.",
+        "cn": "在前面；向前",
+        "ws": [
+          "forth",
+          "to",
+          "ahead",
+          "along",
+          "forwards"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "front:前部",
+        "d": "来自PIE*bhren, 伸出，突出，词源同brink."
+      },
+      {
+        "t": "front:前面，正面；前线，前方",
+        "d": "来源于拉丁语名词fons, fontis, m(前)"
+      }
+    ]
+  },
+  {
+    "id": 68,
+    "word": "practice",
+    "phonetic0": "ˈpræktɪs",
+    "phonetic1": "ˈpræktɪs",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "训练；练习"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I learned from videos and did a lot of practice.",
+        "cn": "我通过视频学习，并进行了大量练习。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "实践；练习；惯例",
+        "ws": [
+          "tradition",
+          "convention",
+          "usage",
+          "exercise"
+        ]
+      },
+      {
+        "pos": "vi.",
+        "cn": "练习；[劳经]实习；实行",
+        "ws": [
+          "exercise",
+          "bring to pass"
+        ]
+      },
+      {
+        "pos": "vt.",
+        "cn": "练习；[劳经]实习；实行",
+        "ws": [
+          "execute",
+          "exercise"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "practice:实践，实际行动；实习，练习；业务；惯例，常规做法",
+        "d": "希腊语中动词prassein(做,从事)派生了名词praxis(做,行动)和形容词praktikos(与行动相关的)。在拉丁语中派生了动词practicare。拉丁语动词practicare经古法语practiser在英语中派生了practice和practise。  \n 词根词缀： pract做,从事 + -ice名词词尾   \n 同源词：practical, practice, praxis"
+      },
+      {
+        "t": "practice:实践，练习，训练，从业，工作",
+        "d": "来自拉丁语practicare,去做，实践，履行，来自希腊语prassein,去做，行动，可能来自PIE*per,向前，前行，尝试，词源同experiment,peril.引申诸相关词义。"
+      }
+    ]
+  },
+  {
+    "id": 69,
+    "word": "better",
+    "phonetic0": "ˈbetə(r)",
+    "phonetic1": "ˈbetər",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "更好的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Love and practice make a better you.",
+        "cn": "热爱和练习让你成为更好的自己。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "长辈；较好者；打赌的人（等于bettor）",
+        "ws": [
+          "elder",
+          "seniority"
+        ]
+      },
+      {
+        "pos": "vt.",
+        "cn": "改善；胜过",
+        "ws": [
+          "improve",
+          "overcome",
+          "exceed",
+          "cap"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "better:更好",
+        "d": "单词boot的比较级，后用作good的比较级。"
+      }
+    ]
+  },
+  {
+    "id": 70,
+    "word": "give up",
+    "phonetic0": "ɡɪv ʌp",
+    "phonetic1": "ɡɪv ʌp",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "放弃"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Don’t give up.",
+        "cn": "不要放弃。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "放弃；交出",
+        "ws": [
+          "desert",
+          "quit"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "give up:",
+        "d": "由 give 和表示“完全、结束”的 up 构成，表示停止尝试，即“放弃”。"
+      }
+    ]
+  },
+  {
+    "id": 71,
+    "word": "scientist",
+    "phonetic0": "ˈsaɪəntɪst",
+    "phonetic1": "ˈsaɪəntɪst",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "科学家"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "It’s really cool to be a scientist!",
+        "cn": "成为一名科学家真的很酷！"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "科学家",
+        "ws": [
+          "researcher",
+          "scientific worker"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "scientist:",
+        "d": "由 science（科学）加表示人的后缀 -ist 构成，表示“科学家”。"
+      }
+    ]
+  },
+  {
+    "id": 72,
+    "word": "human",
+    "phonetic0": "ˈhjuːmən",
+    "phonetic1": "ˈhjuːmən",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "人"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Science opens a window for humans.",
+        "cn": "科学为人类打开了一扇窗。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "人的；[人类]人类的",
+        "ws": [
+          "demic",
+          "hominine"
+        ]
+      },
+      {
+        "pos": "n.",
+        "cn": "[人类]人；人类",
+        "ws": [
+          "person",
+          "mankind",
+          "man",
+          "creature",
+          "homo"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "human:（人类）：“泥土造人”的神话传说",
+        "d": "关于人类的起源，全世界都有很多“泥土造人”的神话传说。比如，在中国神话中，人类 是女娲用黄土捏成的。《圣经》上说，上帝用地上的尘土造人，将生气吹进他的鼻孔里，他就成了有生气的人，名字叫Adam，源自希伯来语adamah（地 面）。在希腊神话中，人类是普罗米修斯用泥土造成的。英语中表示“人类”的单词human就与此类神话传说相关。很多人认为，human的前一部分来自拉 丁语humus（泥土），表示“泥土所造的、地球上的生物”，与“神灵”相对。英语词根hum-也来自拉丁语humus（泥土），表示“泥土、潮湿”，含 有该词根的单词有：humble（谦卑的）、humid（潮湿的）、inhume（埋葬）。\nhuman：['hjuːmən] n.人，人类adj.人的，人类的"
+      },
+      {
+        "t": "human:人，人的，人类的",
+        "d": "来自拉丁语homo,人，来自homus,土，词源同humus,humble.比喻用法，即相比于神的永恒而言，人类如同尘土一般卑微的存在。参照《圣经》上帝造人或中国神话女娲造人的传说。该词本身为形容词，其名词词义人缩写自human being."
+      },
+      {
+        "t": "human:人的，人类的",
+        "d": "来源于拉丁语形容词human.us(人类的)。  \n 词根词缀： -hum-人类 + -an名词词尾"
+      }
+    ]
+  },
+  {
+    "id": 73,
+    "word": "explore",
+    "phonetic0": "ɪkˈsplɔː(r)",
+    "phonetic1": "ɪkˈsplɔːr",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "探索"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Science helps us explore outer space.",
+        "cn": "科学帮助我们探索外太空。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vt.",
+        "cn": "探索；探测；探险",
+        "ws": [
+          "detect",
+          "probe into"
+        ]
+      },
+      {
+        "pos": "vi.",
+        "cn": "探索；探测；探险",
+        "ws": [
+          "probe into",
+          "search after"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "explore:探索",
+        "d": "ex-, 向外。-plor, 大叫，哭喊，词源同deplore. 原指猎人在打猎时通过叫声把鸟赶出山林，后词义引申为探索。"
+      }
+    ]
+  },
+  {
+    "id": 74,
+    "word": "outer space",
+    "phonetic0": "ˌaʊtə ˈspeɪs",
+    "phonetic1": "ˌaʊtə ˈspeɪs",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "外层空间；太空"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Science helps us explore outer space.",
+        "cn": "科学帮助我们探索外太空。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "外层空间；太空",
+        "ws": [
+          "space"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "outer space:",
+        "d": "由 outer（外部的）和 space（空间）组成，表示地球大气层以外的空间。"
+      }
+    ]
+  },
+  {
+    "id": 75,
+    "word": "discover",
+    "phonetic0": "dɪˈskʌvə(r)",
+    "phonetic1": "dɪˈskʌvər",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "（第一个）发现"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She discovered qinghaosu and has saved many lives.",
+        "cn": "她发现了青蒿素，挽救了许多人的生命。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vt.",
+        "cn": "发现；发觉",
+        "ws": [
+          "detect",
+          "sniff out"
+        ]
+      },
+      {
+        "pos": "vi.",
+        "cn": "发现",
+        "ws": [
+          "sniff out",
+          "to find"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "discover:发现",
+        "d": "dis-, 不，非，使相反。cover, 覆盖。"
+      },
+      {
+        "t": "discover:发现，显示",
+        "d": "词根词缀： dis-除去 + cover盖 → 去掉盖子 → 发现  \n 词义辨异：discover 客观存在,被发现invent 客观没有,人发明"
+      }
+    ]
+  },
+  {
+    "id": 76,
+    "word": "gravity",
+    "phonetic0": "ˈɡrævəti",
+    "phonetic1": "ˈɡrævəti",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "重力；地球引力"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "And later he discovered the Law of Gravity.",
+        "cn": "后来，他发现了万有引力定律。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[力]重力，地心引力；严重性；庄严",
+        "ws": [
+          "weight",
+          "seriousness"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "gravity:重力",
+        "d": "来自词根grav, 重，词源同barometer, guru, gravity. 用于科学术语。"
+      },
+      {
+        "t": "gravity:重力，引力；严重(性)；庄重",
+        "d": "词根词缀： -grav-重;重要 + -ity"
+      }
+    ]
+  },
+  {
+    "id": 77,
+    "word": "rocket",
+    "phonetic0": "ˈrɒkɪt",
+    "phonetic1": "ˈrɑːkɪt",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "火箭"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Look, Qian Xuesen, a rocket scientist.",
+        "cn": "看，火箭科学家钱学森。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vi.",
+        "cn": "飞驰，飞快地移动；迅速增加",
+        "ws": [
+          "hell",
+          "spur on"
+        ]
+      },
+      {
+        "pos": "n.",
+        "cn": "[航]火箭",
+        "ws": [
+          "roquette"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "rocket:烟花，火箭",
+        "d": "来自意大利语 rocchetto,纺纱轴，纺锤，烟花，火箭，来自 Proto-Germanic*rukkon,摇晃，纺 纱，来自 PIE*rug,纺纱，词源同 rock.-etto,小词后缀。比喻用法，因烟花，火箭形似纺锤体 而得名。"
+      }
+    ]
+  },
+  {
+    "id": 78,
+    "word": "fan",
+    "phonetic0": "fæn",
+    "phonetic1": "fæn",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "迷；狂热爱好者"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I’m a big fan of him.",
+        "cn": "我是他的忠实粉丝。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vt.",
+        "cn": "煽动；刺激；吹拂",
+        "ws": [
+          "stimulate",
+          "egg"
+        ]
+      },
+      {
+        "pos": "vi.",
+        "cn": "成扇形散开；飘动",
+        "ws": [
+          "float",
+          "flutter"
+        ]
+      },
+      {
+        "pos": "n.",
+        "cn": "迷；[电]风扇；爱好者",
+        "ws": [
+          "lover",
+          "aficionado"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "fan:风扇",
+        "d": "来自PIE*we, 吹，拟声词，词源同wind."
+      },
+      {
+        "t": "fan:狂热者，粉丝",
+        "d": "缩写自fanatic, 狂热的，着迷的。俗词源认为来自fan,扇子，来自棒球比赛俚语，形容冒着酷暑天气摇着风扇看比赛的人。"
+      }
+    ]
+  },
+  {
+    "id": 79,
+    "word": "research",
+    "phonetic0": "rɪˈsɜːtʃ",
+    "phonetic1": "ˈriːsɜːrtʃ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "研究"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Mr Yuan began to do research on hybrid rice.",
+        "cn": "袁先生开始研究杂交水稻。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "研究；调查",
+        "ws": [
+          "investigation",
+          "study",
+          "probe",
+          "indagation"
+        ]
+      },
+      {
+        "pos": "vi.",
+        "cn": "研究；调查",
+        "ws": [
+          "probe",
+          "examine"
+        ]
+      },
+      {
+        "pos": "vt.",
+        "cn": "研究；调查",
+        "ws": [
+          "examine",
+          "survey"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "research:研究，探索",
+        "d": "re-,表强调，search,搜寻。引申词义研究，探索。"
+      }
+    ]
+  },
+  {
+    "id": 80,
+    "word": "hybrid rice",
+    "phonetic0": "ˈhaɪbrɪd raɪs",
+    "phonetic1": "ˈhaɪbrɪd raɪs",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "杂交水稻"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "His hybrid rice has fed many people.",
+        "cn": "他的杂交水稻养活了许多人。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "杂交水稻",
+        "ws": [
+          "crossbred rice"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "hybrid rice:",
+        "d": "由 hybrid（杂交的）和 rice（水稻）组成，表示“杂交水稻”。"
+      }
+    ]
+  },
+  {
+    "id": 81,
+    "word": "creative",
+    "phonetic0": "kriˈeɪtɪv",
+    "phonetic1": "kriˈeɪtɪv",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "创造（性）的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He was creative and hard-working.",
+        "cn": "他富有创造力，而且勤奋努力。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "创造（性）的",
+        "ws": [
+          "inventive",
+          "innovative"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "creative:",
+        "d": "由 create（创造）加形容词后缀 -ive 构成，表示“有创造力的”。"
+      }
+    ]
+  },
+  {
+    "id": 82,
+    "word": "hard-working",
+    "phonetic0": "ˌhɑːd ˈwɜːkɪŋ",
+    "phonetic1": "ˌhɑːrd ˈwɜːrkɪŋ",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "工作努力的；勤勉的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He was creative and hard-working.",
+        "cn": "他富有创造力，而且勤奋努力。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "勤勉的",
+        "ws": [
+          "diligent",
+          "industrious"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "hard-working:",
+        "d": "由 hard（努力地）和 working（工作的）组成，表示“勤奋的”。"
+      }
+    ]
+  },
+  {
+    "id": 83,
+    "word": "be known as",
+    "phonetic0": "bi nəʊn æz",
+    "phonetic1": "bi nəʊn æz",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "被认为是"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Mr Yuan is known as the “Father of Hybrid Rice”.",
+        "cn": "袁先生被誉为“杂交水稻之父”。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "被称为；被认为是；以…著称",
+        "ws": [
+          "be taken as",
+          "be regarded as"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "be known as:",
+        "d": "由 be known（为人所知）和 as（作为）组成，表示“被称为、被认为是”。"
+      }
+    ]
+  },
+  {
+    "id": 84,
+    "word": "invent",
+    "phonetic0": "ɪnˈvent",
+    "phonetic1": "ɪnˈvent",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "发明"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He invented a lot of techniques to help the deaf.",
+        "cn": "他发明了许多帮助聋人的技术。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vt.",
+        "cn": "发明；创造；虚构",
+        "ws": [
+          "father",
+          "coin",
+          "create"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "invent:发明，创造",
+        "d": "in-,进入，使，-vent,来，来到，词源同advent,venture.即来到，到达，引申词义找到，发现，后来进一步指发明，创造。"
+      },
+      {
+        "t": "invent:发明，创造；编造",
+        "d": "词根词缀： in-入,向内 + -vent-来"
+      }
+    ]
+  },
+  {
+    "id": 85,
+    "word": "practical",
+    "phonetic0": "ˈpræktɪkl",
+    "phonetic1": "ˈpræktɪk(ə)l",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "有用的；实用的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He and his assistant Thomas Watson invented the world’s first practical telephone.",
+        "cn": "他和助手托马斯·沃森发明了世界上第一部实用电话。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "实际的；实用性的",
+        "ws": [
+          "actual",
+          "effective",
+          "real",
+          "pragmatic",
+          "positive"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "practical:(物)实际的，实用的；(人)注重实际的，有实践经验的",
+        "d": "词源解释见practice词条。  \n 词根词缀： pract做,从事 + -ical形容词词尾"
+      },
+      {
+        "t": "practical:可行的，实际的",
+        "d": "来自practice,实践。"
+      }
+    ]
+  },
+  {
+    "id": 86,
+    "word": "by mistake",
+    "phonetic0": "baɪ mɪˈsteɪk",
+    "phonetic1": "baɪ mɪˈsteɪk",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "错误地"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The child ate some white flowers by mistake and his mother couldn’t wake him up.",
+        "cn": "这个孩子误食了一些白花，他的母亲怎么也叫不醒他。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "错误地；由于差错",
+        "ws": [
+          "by error"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "by mistake:",
+        "d": "介词短语；mistake 表示“错误”，by mistake 表示行为因错误而发生。"
+      }
+    ]
+  },
+  {
+    "id": 87,
+    "word": "technique",
+    "phonetic0": "tekˈniːk",
+    "phonetic1": "tekˈniːk",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "技术"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He invented a lot of techniques to help the deaf.",
+        "cn": "他发明了许多帮助聋人的技术。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "技巧，技术；手法",
+        "ws": [
+          "skill",
+          "science",
+          "mechanics",
+          "tips"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "technique:技术，技能；工艺",
+        "d": "= technic, technique的拼法来源于法语。  \n 词根词缀： -techn-技术 + -ique(-ic)...学"
+      },
+      {
+        "t": "technique:技术，技能，技巧",
+        "d": "techn-,技术，科技，-ique,形容词后缀，词源同 unique.后词性由形容词作名词使用，引申诸 相关词义。"
+      }
+    ]
+  },
+  {
+    "id": 88,
+    "word": "the deaf",
+    "phonetic0": "ðə def",
+    "phonetic1": "ðə def",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "耳聋的人"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He invented a lot of techniques to help the deaf.",
+        "cn": "他发明了许多帮助聋人的技术。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "耳聋的人",
+        "ws": [
+          "deaf people"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "the deaf:",
+        "d": "定冠词 the 加形容词 deaf，使形容词名词化，泛指“耳聋的人”。"
+      }
+    ]
+  },
+  {
+    "id": 89,
+    "word": "invention",
+    "phonetic0": "ɪnˈvenʃ(ə)n",
+    "phonetic1": "ɪnˈvenʃ(ə)n",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "发明；创造"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The wheel is an old invention.",
+        "cn": "轮子是一项古老的发明。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[专利]发明；发明物；虚构；发明才能",
+        "ws": [
+          "fiction",
+          "contrivance"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "invention:发明，创造",
+        "d": "来自invent,发明，创造。"
+      },
+      {
+        "t": "invention:发明，创造；发明物；捏造，虚构",
+        "d": "词根词缀： in-入,向内 + -vent-来 + -ion名词词尾"
+      }
+    ]
+  },
+  {
+    "id": 90,
+    "word": "problem",
+    "phonetic0": "ˈprɒbləm",
+    "phonetic1": "ˈprɑːbləm",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "难题"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "People invent things to solve problems.",
+        "cn": "人们发明物品来解决问题。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "难题；引起麻烦的人",
+        "ws": [
+          "conundrum",
+          "puzzler"
+        ]
+      },
+      {
+        "pos": "adj.",
+        "cn": "成问题的；难处理的",
+        "ws": [
+          "debatable",
+          "stubborn"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "problem:问题，疑难问题；思考题，讨论题",
+        "d": "来源于希腊语中由前缀pro-(前)和动词ballein(扔,抛)组成的复合动词proballein(向前投掷)派生的problema,经拉丁语problema和古法语probleme进入英语,因此其原始意义是“被向前扔的东西”。东西被扔到前方必然会形成阻碍，成为一个“问题”。希腊语动词ballein(扔,抛)在英语中还派生了ballistic,emblem和parable。  \n 词根词缀： pro-前 + blem扔,抛   \n 同源词：ballistic, emblem, parable"
+      },
+      {
+        "t": "problem:难题，问题",
+        "d": "来自希腊语problema,难题，问题，来自proballein,扔在前面，提出难题，来自pro-,向前，-ball,扔，投掷，词源同ballistic,parable."
+      }
+    ]
+  },
+  {
+    "id": 91,
+    "word": "wheel",
+    "phonetic0": "wiːl",
+    "phonetic1": "wiːl",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "轮；车轮；机轮"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Ancient people invented wheels.",
+        "cn": "古人发明了轮子。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[车辆]车轮；方向盘；转动",
+        "ws": [
+          "cartwheel",
+          "steering control"
+        ]
+      },
+      {
+        "pos": "vt.",
+        "cn": "转动；使变换方向；给…装轮子",
+        "ws": [
+          "turn",
+          "roll"
+        ]
+      },
+      {
+        "pos": "vi.",
+        "cn": "旋转；突然转变方向；盘旋飞行",
+        "ws": [
+          "circle",
+          "spin"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "wheel:轮子",
+        "d": "来自古英语hweol,轮子，来自PIE*kwel,转，圈，词源同cycle,collar。引申义轮子。"
+      }
+    ]
+  },
+  {
+    "id": 92,
+    "word": "ancient times",
+    "phonetic0": "ˈeɪnʃənt taɪmz",
+    "phonetic1": "ˈeɪnʃənt taɪmz",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "古代"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "In ancient times, it was hard to carry heavy things or travel around.",
+        "cn": "在古代，搬运重物或四处出行都很困难。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "古代",
+        "ws": [
+          "antiquity",
+          "olden times"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "ancient times:",
+        "d": "由 ancient（古代的）和 times（时代）组成，表示“古代”。"
+      }
+    ]
+  },
+  {
+    "id": 93,
+    "word": "printing",
+    "phonetic0": "ˈprɪntɪŋ",
+    "phonetic1": "ˈprɪntɪŋ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "印刷术"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Around 1041, Bi Sheng invented movable-type printing.",
+        "cn": "大约在1041年，毕昇发明了活字印刷术。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[印刷]印刷；印刷术",
+        "ws": [
+          "presswork"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "printing:",
+        "d": "由 print（印刷）加名词后缀 -ing 构成，表示“印刷或印刷术”。"
+      }
+    ]
+  },
+  {
+    "id": 94,
+    "word": "television",
+    "phonetic0": "ˈtelɪvɪʒ(ə)n",
+    "phonetic1": "ˈtelɪvɪʒ(ə)n",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "电视机"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "In our everyday life, there are many other great inventions, such as televisions and robots.",
+        "cn": "在日常生活中，还有许多其他伟大的发明，例如电视机和机器人。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[电视]电视，电视机；电视业",
+        "ws": [
+          "video",
+          "tube"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "television:电视，电视机，电机学，电视广播事业",
+        "d": "词根词缀： -tele-远 + -vis-看见 + -ion名词词尾"
+      },
+      {
+        "t": "television:电视，电视机",
+        "d": "tele-,远的，vision,看，视野。"
+      }
+    ]
+  },
+  {
+    "id": 95,
+    "word": "robot",
+    "phonetic0": "ˈrəʊbɒt",
+    "phonetic1": "ˈroʊbɑːt",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "机器人"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "In our everyday life, there are many other great inventions, such as televisions and robots.",
+        "cn": "在日常生活中，还有许多其他伟大的发明，例如电视机和机器人。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[自]机器人；遥控设备，自动机械；机械般工作的人",
+        "ws": [
+          "droid",
+          "golem"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "robot:",
+        "d": "来自捷克语 robota，原意为“强制劳动”；后经戏剧作品用于指人造劳动者。"
+      }
+    ]
+  },
+  {
+    "id": 96,
+    "word": "useful",
+    "phonetic0": "ˈjuːsf(ə)l",
+    "phonetic1": "ˈjuːsf(ə)l",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "有用的；有帮助的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Look, this invention is very useful.",
+        "cn": "看，这项发明非常实用。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "有用的，有益的；有帮助的",
+        "ws": [
+          "helpful",
+          "beneficial",
+          "advantageous",
+          "conducive",
+          "assistant"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "useful:",
+        "d": "由 use（使用、用途）加形容词后缀 -ful（充满……的）构成，表示“有用的”。"
+      }
+    ]
+  },
+  {
+    "id": 97,
+    "word": "fresh water",
+    "phonetic0": "freʃ ˈwɔːtə(r)",
+    "phonetic1": "freʃ ˈwɔːtə(r)",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "淡水"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Then you have clean fresh water!",
+        "cn": "然后你就能得到干净的淡水！"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "湖水，[地质]淡水",
+        "ws": [
+          "plain water",
+          "sweet water"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "fresh water:",
+        "d": "由 fresh（非咸水的）和 water（水）组成，与 salt water（咸水）相对。"
+      }
+    ]
+  },
+  {
+    "id": 98,
+    "word": "electric fan",
+    "phonetic0": "ɪˈlektrɪk fæn",
+    "phonetic1": "ɪˈlektrɪk fæn",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "电风扇"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We can find wheels in a clock, an electric fan, a juicer and a washing machine.",
+        "cn": "我们可以在钟表、电风扇、榨汁机和洗衣机中找到轮子。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "电风扇",
+        "ws": [
+          "electrical fan"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "electric fan:",
+        "d": "由 electric（电动的）和 fan（风扇）组成，表示“电风扇”。"
+      }
+    ]
+  },
+  {
+    "id": 99,
+    "word": "juicer",
+    "phonetic0": "ˈdʒuːsə(r)",
+    "phonetic1": "ˈdʒuːsə(r)",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "榨汁机"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We can find wheels in a clock, an electric fan, a juicer and a washing machine.",
+        "cn": "我们可以在钟表、电风扇、榨汁机和洗衣机中找到轮子。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "榨汁机",
+        "ws": [
+          "juice extractor"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "juicer:",
+        "d": "由 juice（果汁）加表示工具的后缀 -er 构成，指榨取果汁的机器。"
+      }
+    ]
+  },
+  {
+    "id": 100,
+    "word": "washing machine",
+    "phonetic0": "ˈwɒʃɪŋ məʃiːn",
+    "phonetic1": "ˈwɒʃɪŋ məʃiːn",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "洗衣机"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We can find wheels in a clock, an electric fan, a juicer and a washing machine.",
+        "cn": "我们可以在钟表、电风扇、榨汁机和洗衣机中找到轮子。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "[电]洗衣机，洗涤机",
+        "ws": [
+          "laundry machine",
+          "rinsing machine"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "washing machine:",
+        "d": "由 washing（洗涤）和 machine（机器）组成，表示“洗衣机”。"
+      }
+    ]
+  },
+  {
+    "id": 101,
+    "word": "housework",
+    "phonetic0": "ˈhaʊswɜːk",
+    "phonetic1": "ˈhaʊswɜːrk",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "家务劳动"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Wheels make housework much easier.",
+        "cn": "轮子让家务劳动变得容易得多。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "家务劳动",
+        "ws": [
+          "household chores",
+          "domestic work"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "housework:",
+        "d": "由 house（房屋、家庭）和 work（工作）组成，表示“家务劳动”。"
+      }
+    ]
+  },
+  {
+    "id": 102,
+    "word": "comfortably",
+    "phonetic0": "ˈkʌmftəbli; ˈkʌmfətəbli",
+    "phonetic1": "ˈkʌmftəbliˌˈkʌmfərtəbli",
+    "trans": [
+      {
+        "pos": "adv.",
+        "cn": "舒服地"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Wheels help people travel around easily and comfortably.",
+        "cn": "轮子帮助人们轻松舒适地四处出行。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adv.",
+        "cn": "舒服地；安乐地；充裕地",
+        "ws": [
+          "copiously",
+          "cozily"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "comfortably:",
+        "d": "由 comfortable（舒服的）加副词后缀 -ly 构成，表示“舒服地”。"
+      }
+    ]
+  },
+  {
+    "id": 103,
+    "word": "enemy",
+    "phonetic0": "ˈenəmi",
+    "phonetic1": "ˈenəmi",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "敌人；大敌"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Heat is a computer’s enemy.",
+        "cn": "热量是电脑的大敌。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "敌人；大敌",
+        "ws": [
+          "foe",
+          "adversary"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "enemy:",
+        "d": "经古法语 enemi 进入英语，源自拉丁语 inimicus，由 in-（不）和 amicus（朋友）组成。"
+      }
+    ]
+  },
+  {
+    "id": 104,
+    "word": "laptop",
+    "phonetic0": "ˈlæptɒp",
+    "phonetic1": "ˈlæptɑːp",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "便携式电脑；笔记本电脑"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A laptop should be used on a person’s lap.",
+        "cn": "笔记本电脑应该放在人的大腿上使用。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "便携式电脑；笔记本电脑",
+        "ws": [
+          "notebook computer",
+          "portable computer"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "laptop:",
+        "d": "由 lap（大腿上部）和 top（上面）组成，因这种电脑可放在腿上使用而得名。"
+      }
+    ]
+  },
+  {
+    "id": 105,
+    "word": "password",
+    "phonetic0": "ˈpɑːswɜːd",
+    "phonetic1": "ˈpæswɜːrd",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "口令；密码"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "It’s safe to use your birth date to create your password.",
+        "cn": "用你的出生日期设置密码是安全的。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "密码；[计][军]口令",
+        "ws": [
+          "cryptogram",
+          "secret code"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "password:口令，密码",
+        "d": "pass,通过，word,字，词。"
+      }
+    ]
+  },
+  {
+    "id": 106,
+    "word": "click",
+    "phonetic0": "klɪk",
+    "phonetic1": "klɪk",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "（用鼠标或在触摸板上）点击"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "People click the right mouse button to store information.",
+        "cn": "人们点击鼠标右键来储存信息。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "单击；滴答声",
+        "ws": [
+          "ticktack",
+          "tictac"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "click:",
+        "d": "拟声词，模仿短促清脆的咔哒声，后来引申为按动鼠标。"
+      }
+    ]
+  },
+  {
+    "id": 107,
+    "word": "mouse",
+    "phonetic0": "maʊs",
+    "phonetic1": "maʊs",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "鼠标"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The first computer did not have a mouse or keyboard.",
+        "cn": "第一台电脑没有鼠标或键盘。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[计]鼠标；老鼠；胆小羞怯的人",
+        "ws": [
+          "ratton"
+        ]
+      },
+      {
+        "pos": "vi.",
+        "cn": "捕鼠；窥探",
+        "ws": [
+          "rat",
+          "pry about"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "mouse:老鼠，鼠标",
+        "d": "来自PIE*mus,老鼠，词源同muscle,mussel.引申词义鼠标。"
+      }
+    ]
+  },
+  {
+    "id": 108,
+    "word": "store",
+    "phonetic0": "stɔː(r)",
+    "phonetic1": "stɔːr",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "（在计算机里）储存"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "People click the right mouse button to store information.",
+        "cn": "人们点击鼠标右键来储存信息。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "商店；[贸易][金融]储备，贮藏；[建][经]仓库",
+        "ws": [
+          "shop",
+          "reserve",
+          "warehouse",
+          "market"
+        ]
+      },
+      {
+        "pos": "vt.",
+        "cn": "贮藏，[贸易]储存",
+        "ws": [
+          "reposit",
+          "put away"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "store:",
+        "d": "中世纪英语, 来自古法语, 来自拉丁语[[instaurare]]"
+      },
+      {
+        "t": "store:商店，店铺；贮藏，贮备品",
+        "d": "来源于拉丁语instaurare(重建),经古法语estor(重建)而进入英语为store。"
+      },
+      {
+        "t": "store:贮存，贮藏，存储，商店，店铺，仓库",
+        "d": "来自古法语 estorer,建造，修复，储存，贮藏，来自拉丁语 instaurare,修复，安装，存储，来 自 in-,进入，-staur,放置，来自 PIE*sta,站立，建立，词源同 stand,stall.引申诸相关词义。"
+      }
+    ]
+  },
+  {
+    "id": 109,
+    "word": "delete",
+    "phonetic0": "dɪˈliːt",
+    "phonetic1": "dɪˈliːt",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "删去；删除"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "When you delete a file, it usually moves to the computer’s Recycle Bin.",
+        "cn": "删除文件时，它通常会被移到电脑的回收站。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vt.",
+        "cn": "[计]删除",
+        "ws": [
+          "expurgate",
+          "prune away"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "delete:删除",
+        "d": "de-, 向下，离开。-let, 涂抹，抹掉，词源同liniment, obliterate. -t, 过去分词后缀。"
+      }
+    ]
+  },
+  {
+    "id": 110,
+    "word": "Recycle Bin",
+    "phonetic0": "ˌriːˈsaɪkl bɪn",
+    "phonetic1": "ˌriːˈsaɪkl bɪn",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "回收站"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "When you delete a file, it usually moves to the computer’s Recycle Bin.",
+        "cn": "删除文件时，它通常会被移到电脑的回收站。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "回收站",
+        "ws": [
+          "Trash",
+          "wastebasket"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "Recycle Bin:",
+        "d": "由 recycle（回收利用）和 bin（箱、桶）组成，是操作系统中暂存已删除文件的位置。"
+      }
+    ]
+  },
+  {
+    "id": 111,
+    "word": "best-known",
+    "phonetic0": "ˌbest ˈnəʊn",
+    "phonetic1": "ˌbest ˈnəʊn",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "最有名的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "It is ENIAC, the best-known early computer.",
+        "cn": "它是埃尼阿克，最著名的早期计算机。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "最有名的",
+        "ws": [
+          "most famous",
+          "renowned"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "best-known:",
+        "d": "由 best（最）和 known（知名的）组成，表示“最著名的”。"
+      }
+    ]
+  },
+  {
+    "id": 112,
+    "word": "keyboard",
+    "phonetic0": "ˈkiːbɔːd",
+    "phonetic1": "ˈkiːbɔːrd",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "键盘"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The first computer did not have a mouse or keyboard.",
+        "cn": "第一台电脑没有鼠标或键盘。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[计]键盘",
+        "ws": [
+          "keyset",
+          "key panel",
+          "klavier"
+        ]
+      },
+      {
+        "pos": "vt.",
+        "cn": "键入；用键盘式排字机排字",
+        "ws": [
+          "key in"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "keyboard:键盘",
+        "d": "key,键，board,板。"
+      },
+      {
+        "t": "keyboard:键盘",
+        "d": "词根词缀： key键 + board板"
+      }
+    ]
+  },
+  {
+    "id": 113,
+    "word": "microchip",
+    "phonetic0": "ˈmaɪkrəʊtʃɪp",
+    "phonetic1": "ˈmaɪkroʊtʃɪp",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "微芯片；芯片"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Microchips are very important to computers.",
+        "cn": "微芯片对电脑非常重要。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "微芯片；芯片",
+        "ws": [
+          "chip",
+          "integrated circuit"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "microchip:微芯片",
+        "d": "micro-,微小的，chip,芯片。"
+      }
+    ]
+  },
+  {
+    "id": 114,
+    "word": "a grain of salt",
+    "phonetic0": "ə ɡreɪn əv sɔːlt",
+    "phonetic1": "ə ɡreɪn əv sɔːlt",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "一粒盐"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "They were as small as a grain of salt.",
+        "cn": "它们像一粒盐那么小。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "一粒盐",
+        "ws": [
+          "a salt grain"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "a grain of salt:",
+        "d": "grain 表示“一粒”，a grain of salt 字面义为“一粒盐”。"
+      }
+    ]
+  },
+  {
+    "id": 115,
+    "word": "email",
+    "phonetic0": "ˈiːmeɪl",
+    "phonetic1": "ˈiːmeɪl",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "电子邮件"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "My classmates and I can send emails, search for information and do our homework better.",
+        "cn": "我和同学们可以发送电子邮件、搜索信息，并更好地完成作业。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "电子邮件",
+        "ws": [
+          "electronic mail"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "email:电子邮件",
+        "d": "全称electronic mail."
+      }
+    ]
+  },
+  {
+    "id": 116,
+    "word": "search for information",
+    "phonetic0": "sɜːtʃ fər ˌɪnfəˈmeɪʃn",
+    "phonetic1": "sɜːtʃ fər ˌɪnfəˈmeɪʃn",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "搜索信息"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "My classmates and I can send emails, search for information and do our homework better.",
+        "cn": "我和同学们可以发送电子邮件、搜索信息，并更好地完成作业。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "搜索信息",
+        "ws": [
+          "look up information"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "search for information:",
+        "d": "由 search for（搜索、寻找）和 information（信息）组成。"
+      }
+    ]
+  },
+  {
+    "id": 117,
+    "word": "symbol",
+    "phonetic0": "ˈsɪmb(ə)l",
+    "phonetic1": "ˈsɪmb(ə)l",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "符号"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "You can set a password by using eight different letters, numbers and symbols.",
+        "cn": "你可以使用八个不同的字母、数字和符号来设置密码。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "象征；符号；标志",
+        "ws": [
+          "significant",
+          "seal",
+          "indication",
+          "flag"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "symbol:",
+        "d": "File:Religious syms.png|thumb|upright|Symbols of various religions.来自法语symbole, 来自拉丁语symbolus, symbolum, 来自古希腊语σύμβολον(\"a sign by which one infers something; a mark, token, badge, ticket, tally, check, a signal, watchword, outward sign\"), 来自συμβάλλω(\"I throw together, dash together, compare, correspond, tally, come to a conclusion\"), 来自σύν(\"with, together\") + βάλλω(\"I throw, put\")."
+      },
+      {
+        "t": "symbol:象征；符号，标志",
+        "d": "来源于希腊语中由前缀sun-(共同)和ballein(投,掷)组成的复合词sumballein(一起扔→比较→识别→象征/符号)。  \n 词根词缀： sym-共同 + bol投,掷"
+      },
+      {
+        "t": "symbol:象征；符号；标志",
+        "d": "前缀sym-指“共同”，如symphony（交响乐），sym-是syn-在字母b前的变形，如synthesis（合成）；词根-bol-指“扔，投”，同于problem（问题）中的-ble-；字面义“扔在一块”。音似sample（样品），“样品”是一类事物的“标志”，可作为它们的代表。"
+      },
+      {
+        "t": "symbol:象征，符号",
+        "d": "sym-,一起，一致，-bol,扔，投掷，词源同 ballistic,problem,parabolic.引申词义象征，符号。"
+      }
+    ]
+  },
+  {
+    "id": 118,
+    "word": "desktop",
+    "phonetic0": "ˈdesktɒp",
+    "phonetic1": "ˈdesktɑːp",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "桌面（显示应用程序图标的计算机屏幕）；台式电脑"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Luckily, the desktop comes back.",
+        "cn": "幸运的是，桌面恢复了。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "桌面；台式机",
+        "ws": [
+          "tabletop",
+          "table tops"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "desktop:",
+        "d": "由 desk（书桌）和 top（表面）组成；计算机义比喻屏幕上的虚拟桌面。"
+      }
+    ]
+  },
+  {
+    "id": 119,
+    "word": "reuse",
+    "phonetic0": "ˌriːˈjuːz",
+    "phonetic1": "ˌriːˈjuːz",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "再次使用"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "It’s a great way to reuse.",
+        "cn": "这是再次利用物品的好方法。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "重新使用，再用",
+        "ws": [
+          "reemployment"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "reuse:重复使用",
+        "d": "re-,再，重新，use,使用。"
+      }
+    ]
+  },
+  {
+    "id": 120,
+    "word": "recycle",
+    "phonetic0": "ˌriːˈsaɪkl",
+    "phonetic1": "ˌriːˈsaɪk(ə)l",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "回收利用"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "It’s a great way to recycle.",
+        "cn": "这是回收利用物品的好方法。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "再生；再循环；重复利用",
+        "ws": [
+          "regeneration",
+          "breeding",
+          "rebirth"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "recycle:循环利用，回收利用(废物)等",
+        "d": "词根词缀： re-再 + -cycl-圆 + -e动词词尾"
+      },
+      {
+        "t": "recycle:再利用",
+        "d": "re-,再，重新，cycle,圈，循环。引申词义再利用。"
+      }
+    ]
+  },
+  {
+    "id": 121,
+    "word": "throw away",
+    "phonetic0": "θrəʊ əˈweɪ",
+    "phonetic1": "θrəʊ əˈweɪ",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "扔掉；丢弃"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I don’t throw the gift boxes away.",
+        "cn": "我不会把礼品盒扔掉。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "扔掉，丢弃",
+        "ws": [
+          "throw by",
+          "throw out"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "throw away:",
+        "d": "由 throw（扔）和表示离开的 away 构成，表示“扔掉”。"
+      }
+    ]
+  },
+  {
+    "id": 122,
+    "word": "plastic",
+    "phonetic0": "ˈplæstɪk",
+    "phonetic1": "ˈplæstɪk",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "塑料制的；塑料的"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Baggie is a plastic bag.",
+        "cn": "袋袋是一个塑料袋。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "adj.",
+        "cn": "[塑料][力]塑料的；（外科）造型的；可塑的",
+        "ws": [
+          "mouldable",
+          "malleable"
+        ]
+      },
+      {
+        "pos": "n.",
+        "cn": "[塑料]塑料制品；整形；[力]可塑体",
+        "ws": [
+          "restricting",
+          "true-up"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "plastic:塑料的，可塑的",
+        "d": "来自拉丁语plasticus,形成的，可塑的，来自希腊语plastos,形成的，铺开的，来自plassein,形成，铺开，来自PIE*pele,展开，放平，词源同plan,plain.引申词义塑料的。"
+      }
+    ]
+  },
+  {
+    "id": 123,
+    "word": "cloth",
+    "phonetic0": "klɒθ",
+    "phonetic1": "klɔːθ",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "织物；布料"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A cloth bag or a paper one is also okay.",
+        "cn": "布袋或纸袋也可以。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[纺]布，织物；餐巾",
+        "ws": [
+          "web",
+          "woven fabric"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "cloth:",
+        "d": "源自古英语 clāþ，表示布料或织物，与 clothing（衣物）同源。"
+      }
+    ]
+  },
+  {
+    "id": 124,
+    "word": "turn off",
+    "phonetic0": "tɜːn ɒf",
+    "phonetic1": "tɜːn ɒf",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "关掉"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Turn off the lights when we go out.",
+        "cn": "我们外出时要关灯。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "关掉，关闭；拐弯，使转变方向",
+        "ws": [
+          "tune out",
+          "shut off"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "turn off:",
+        "d": "由 turn 和表示关闭状态的 off 构成，表示关闭设备或切断供应。"
+      }
+    ]
+  },
+  {
+    "id": 125,
+    "word": "tap",
+    "phonetic0": "tæp",
+    "phonetic1": "tæp",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "水龙头"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I turn off the tap when I brush my teeth.",
+        "cn": "我刷牙时会关掉水龙头。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vt.",
+        "cn": "轻敲；轻打；装上嘴子",
+        "ws": [
+          "percuss"
+        ]
+      },
+      {
+        "pos": "vi.",
+        "cn": "轻拍；轻击；轻叩",
+        "ws": [
+          "pat"
+        ]
+      },
+      {
+        "pos": "n.",
+        "cn": "水龙头；轻打",
+        "ws": [
+          "water faucet",
+          "rotary swivel"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "tap:轻拍，轻击，轻扣",
+        "d": "拟声词。"
+      },
+      {
+        "t": "tap:水龙头，开发，利用",
+        "d": "来自古英语 taeppa,水龙头，塞子，来自 Proto-Germanic*tappon,塞子，词源同 tamp,tampon. 引申词义开发，利用。"
+      }
+    ]
+  },
+  {
+    "id": 126,
+    "word": "wood",
+    "phonetic0": "wʊd",
+    "phonetic1": "wʊd",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "木头"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Paper is made from wood.",
+        "cn": "纸是由木材制成的。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "木材；木制品；树林",
+        "ws": [
+          "timber",
+          "lignum"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "wood:木头，木材",
+        "d": "来源于日耳曼语、古英语。"
+      },
+      {
+        "t": "wood:树木，木头",
+        "d": "来自 PIE*widhu,树，木柱，来自 PIE*wi 的扩大格，分开，词源同 wide,with.可能来自其原义 劈开的木材，柴火，或者来自树林在古代隔开文明与野蛮的比喻义。参考 forest 词源。"
+      },
+      {
+        "t": "wood:失去理智的",
+        "d": "来自古英语 wod,发狂的，来自 PIE*wet,吹，启迪，唤醒灵魂，词源同 vatic,Woden.引申词义 着魔的，发狂的，失去理智的。"
+      }
+    ]
+  },
+  {
+    "id": 127,
+    "word": "unplug",
+    "phonetic0": "ˌʌnˈplʌɡ",
+    "phonetic1": "ˌʌnˈplʌɡ",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "拔掉……电源插头"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Always unplug your TV after watching.",
+        "cn": "看完电视后一定要拔掉电视机的电源插头。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "v.",
+        "cn": "拔掉……电源插头",
+        "ws": [
+          "disconnect"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "unplug:",
+        "d": "由否定或反向前缀 un- 加 plug（插上插头）构成，表示“拔掉插头”。"
+      }
+    ]
+  },
+  {
+    "id": 128,
+    "word": "pollution",
+    "phonetic0": "pəˈluːʃ(ə)n",
+    "phonetic1": "pəˈluːʃ(ə)n",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "污染"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "It is a good way to reduce air pollution.",
+        "cn": "这是减少空气污染的好方法。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "n.",
+        "cn": "[环境]污染",
+        "ws": [
+          "contamination",
+          "impureness"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "pollution:污染",
+        "d": "词根词缀： -pollut-弄脏 + -ion名词词尾"
+      },
+      {
+        "t": "pollution:污染，弄脏",
+        "d": "来自pollute,浸染，弄脏。"
+      }
+    ]
+  },
+  {
+    "id": 129,
+    "word": "swim by",
+    "phonetic0": "swɪm baɪ",
+    "phonetic1": "swɪm baɪ",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "游过"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Suddenly, a big whale swims by and eats it up.",
+        "cn": "突然，一头大鲸游过来，把它吞了下去。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "游过",
+        "ws": [
+          "swim past"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "swim by:",
+        "d": "由 swim（游泳）和表示经过的 by 构成，表示“游过”。"
+      }
+    ]
+  },
+  {
+    "id": 130,
+    "word": "swallow",
+    "phonetic0": "ˈswɒləʊ",
+    "phonetic1": "ˈswɑːloʊ",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "吞下"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A moment later, a sea turtle spots Baggie and swallows it.",
+        "cn": "过了一会儿，一只海龟发现了袋袋并把它吞了下去。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "vt.",
+        "cn": "忍受；吞没",
+        "ws": [
+          "stomach",
+          "go",
+          "stand",
+          "abide",
+          "tough"
+        ]
+      },
+      {
+        "pos": "vi.",
+        "cn": "吞下；咽下",
+        "ws": [
+          "get sth down",
+          "get down"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "swallow:",
+        "d": "源自古英语 swelgan，意为“吞咽、吞下”。"
+      }
+    ]
+  },
+  {
+    "id": 131,
+    "word": "lie around",
+    "phonetic0": "laɪ əˈraʊnd",
+    "phonetic1": "laɪ əˈraʊnd",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "到处乱放"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Plastic bags should not lie around.",
+        "cn": "塑料袋不应该到处乱放。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "到处乱放",
+        "ws": [
+          "be left around",
+          "be scattered about"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "lie around:",
+        "d": "由 lie（躺、放置）和 around（到处）构成，表示“到处乱放”。"
+      }
+    ]
+  },
+  {
+    "id": 132,
+    "word": "pick up",
+    "phonetic0": "pɪk ʌp",
+    "phonetic1": "pɪk ʌp",
+    "trans": [
+      {
+        "pos": "",
+        "cn": "拿起"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He picks Baggie up and makes it into a kite.",
+        "cn": "他捡起袋袋，把它做成了一只风筝。"
+      }
+    ],
+    "phrases": [],
+    "synos": [
+      {
+        "pos": "",
+        "cn": "捡起；获得；收拾",
+        "ws": [
+          "acquire",
+          "earn",
+          "buy",
+          "find",
+          "make"
+        ]
+      }
+    ],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": [
+      {
+        "t": "pick up:",
+        "d": "由 pick（拿取）和 up（向上）构成，基本义为“拿起、捡起”。"
+      }
+    ]
+  }
+]
