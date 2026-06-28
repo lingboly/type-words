@@ -60,11 +60,15 @@ function goHome() {
 }
 
 function adoptStarter(photoKey: string) {
-  const result = catStore.adoptStarterCat(photoKey)
-  adoptionMessage = result.success ? `欢迎 ${result.cat?.name} 加入猫咖！` : result.reason ?? '领养失败'
-  if (result.cat) {
-    activeSection = 'cats'
-    openDetail(result.cat)
+  try {
+    const result = catStore.adoptStarterCat(photoKey)
+    adoptionMessage = result.success ? `欢迎 ${result.cat?.name} 加入猫咖！` : result.reason ?? '领养失败'
+    if (result.cat) {
+      activeSection = 'cats'
+      openDetail(result.cat)
+    }
+  } catch {
+    adoptionMessage = '领养没有完成，请刷新页面后重试'
   }
 }
 

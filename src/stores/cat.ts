@@ -12,7 +12,6 @@
 
 import { defineStore } from 'pinia'
 import { get as idbGet, set as idbSet } from 'idb-keyval'
-import { nanoid } from 'nanoid'
 import type { Cat, CatPhotoEntry, CatSupplyTier, CatTuning } from '@/types/cat'
 import {
   CAT_PHOTOS,
@@ -46,6 +45,26 @@ function daysBetween(from: string, to: string): number {
   return Math.round((toTime - fromTime) / 86_400_000)
 }
 
+/** Local record IDs do not require cryptographic randomness. */
+function createCatId(): string {
+  const bytes = new Uint8Array(16)
+  const getRandomValues = globalThis.crypto?.getRandomValues?.bind(globalThis.crypto)
+  if (getRandomValues) {
+    try {
+      getRandomValues(bytes)
+    } catch {
+      // Fall through for embedded browsers that expose but reject Web Crypto.
+    }
+  }
+  if (bytes.every(byte => byte === 0)) {
+    for (let index = 0; index < bytes.length; index++) {
+      bytes[index] = Math.floor(Math.random() * 256)
+    }
+  }
+  const randomPart = Array.from(bytes, byte => byte.toString(16).padStart(2, '0')).join('')
+  return `cat-${Date.now().toString(36)}-${randomPart}`
+}
+
 function migrateCat(cat: Cat): Cat {
   return {
     ...cat,
@@ -60,7 +79,7 @@ function migrateCat(cat: Cat): Cat {
 
 function createCatRecord(photo: CatPhotoEntry): Cat {
   return {
-    id: nanoid(),
+    id: createCatId(),
     photoKey: photo.key,
     name: photo.name,
     adoptedAt: Date.now(),
