@@ -13,6 +13,28 @@ export type CatRarity = 'common' | 'rare' | 'premium'
 
 export type CatSupplyTier = 'basic' | 'premium'
 
+/** Parent-managed balancing values from the Cat Café design documents. */
+export interface CatTuning {
+  hungerDecayPerHour: number
+  affectionDecayPerHour: number
+  healthDrainThreshold: number
+  sickHealthThreshold: number
+  runawayAffectionThreshold: number
+  runawayMaxProbability: number
+  icuDailyCost: number
+  icuFailedDaysLimit: number
+  runawayRecallDays: number
+  communityHealStreak: number
+  dailyPetLimit: number
+  dailyPlayLimit: number
+  basicFoodPrice: number
+  premiumFoodPrice: number
+  basicToyPrice: number
+  luxuryToyPrice: number
+  medicinePrice: number
+  premiumMedicinePrice: number
+}
+
 /** A single adopted cat */
 export interface Cat {
   /** Unique ID (nanoid) */
@@ -117,6 +139,35 @@ export const MAX_DAILY_PET_POINTS = 40
 export const MAX_DAILY_PLAYS = 5
 export const RUNAWAY_RECALL_DAYS = 7
 export const COMMUNITY_HEAL_STREAK = 5
+
+export const DEFAULT_CAT_TUNING: CatTuning = {
+  hungerDecayPerHour: 25,
+  affectionDecayPerHour: 1,
+  healthDrainThreshold: HUNGER_HEALTH_DRAIN_THRESHOLD,
+  sickHealthThreshold: SICK_HEALTH_THRESHOLD,
+  runawayAffectionThreshold: RUNAWAY_AFFECTION_THRESHOLD,
+  runawayMaxProbability: 30,
+  icuDailyCost: ICU_DAILY_COST,
+  icuFailedDaysLimit: 7,
+  runawayRecallDays: RUNAWAY_RECALL_DAYS,
+  communityHealStreak: COMMUNITY_HEAL_STREAK,
+  dailyPetLimit: MAX_DAILY_PET_POINTS,
+  dailyPlayLimit: MAX_DAILY_PLAYS,
+  basicFoodPrice: CAT_FOOD_PRICE,
+  premiumFoodPrice: PREMIUM_CAT_FOOD_PRICE,
+  basicToyPrice: CAT_TOY_PRICE,
+  luxuryToyPrice: LUXURY_CAT_TOY_PRICE,
+  medicinePrice: CAT_MEDICINE_PRICE,
+  premiumMedicinePrice: PREMIUM_CAT_MEDICINE_PRICE,
+}
+
+/** SHA-256 of the initial local-only parent password, 1234. */
+export const DEFAULT_PARENT_PASSWORD_HASH = '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'
+
+export async function hashParentPassword(password: string): Promise<string> {
+  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(password))
+  return Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('')
+}
 
 /** Persistence key in idb-keyval */
 export const CAT_STORE_DB_KEY = 'cat-cafe-data'

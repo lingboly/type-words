@@ -33,6 +33,7 @@ import { useRuntimeStore } from "@/stores/runtime.ts";
 import CatDecorator from "@/components/CatDecorator.vue";
 import { useCatStore } from "@/stores/cat.ts";
 import { onMounted } from "vue";
+import type { CatTuning } from '@/types/cat'
 
 const emit = defineEmits<{
   toggleDisabledDialogEscKey: [val: boolean]
@@ -55,13 +56,55 @@ let passwordError = $ref('')
 let passwordAttempts = $ref(0)
 let passwordLocked = $ref(false)
 let passwordLockTimer = $ref<ReturnType<typeof setTimeout> | null>(null)
-const PARENT_PASSWORD = '1234'  // 默认家长密码
+let currentPassword = $ref('')
+let nextPassword = $ref('')
+let confirmPassword = $ref('')
+let testPoints = $ref(catStore.points)
 const MAX_PASSWORD_ATTEMPTS = 5
 const PASSWORD_LOCK_DURATION = 30000  // 30秒锁定
 
-function checkPassword() {
+const tuningGroups: Array<{ title: string; description: string; fields: Array<{ key: keyof CatTuning; label: string; unit: string; min: number; max: number; step?: number }> }> = [
+  {
+    title: '状态与安全线',
+    description: '控制离线衰减、生病和离家出走的触发节奏。设置为 0 可关闭对应衰减。',
+    fields: [
+      { key: 'hungerDecayPerHour', label: '饥饿衰减', unit: '/小时', min: 0, max: 50 },
+      { key: 'affectionDecayPerHour', label: '亲昵衰减', unit: '/小时', min: 0, max: 5 },
+      { key: 'healthDrainThreshold', label: '健康衰减触发线', unit: '饥饿', min: 30, max: 80 },
+      { key: 'sickHealthThreshold', label: '生病健康线', unit: '健康', min: 1, max: 80 },
+      { key: 'runawayAffectionThreshold', label: '离家亲昵线', unit: '亲昵', min: 0, max: 100 },
+      { key: 'runawayMaxProbability', label: '最高离家概率', unit: '%', min: 0, max: 100 },
+    ],
+  },
+  {
+    title: '照护规则',
+    description: '控制 ICU、召回、全员恢复和每日互动上限。',
+    fields: [
+      { key: 'icuDailyCost', label: 'ICU 每日费用', unit: '分', min: 0, max: 100 },
+      { key: 'icuFailedDaysLimit', label: 'ICU 欠费宽限', unit: '天', min: 1, max: 30 },
+      { key: 'runawayRecallDays', label: '召回连续照护', unit: '天', min: 1, max: 30 },
+      { key: 'communityHealStreak', label: '普天同庆阈值', unit: '次全对', min: 2, max: 15 },
+      { key: 'dailyPetLimit', label: '每日抚摸增益上限', unit: '点', min: 1, max: 100 },
+      { key: 'dailyPlayLimit', label: '每日玩耍上限', unit: '次', min: 1, max: 20 },
+    ],
+  },
+  {
+    title: '猫咪商店价格',
+    description: '价格即时生效。过低价格可能让积分失去激励作用。',
+    fields: [
+      { key: 'basicFoodPrice', label: '基础猫粮', unit: '分', min: 0, max: 100 },
+      { key: 'premiumFoodPrice', label: '高级猫粮', unit: '分', min: 0, max: 200 },
+      { key: 'basicToyPrice', label: '普通玩具', unit: '分', min: 0, max: 200 },
+      { key: 'luxuryToyPrice', label: '豪华玩具', unit: '分', min: 0, max: 500 },
+      { key: 'medicinePrice', label: '普通药品', unit: '分', min: 0, max: 200 },
+      { key: 'premiumMedicinePrice', label: '高级治疗', unit: '分', min: 0, max: 500 },
+    ],
+  },
+]
+
+async function checkPassword() {
   if (passwordLocked) return
-  if (passwordInput === PARENT_PASSWORD) {
+  if (await catStore.verifyParentPassword(passwordInput)) {
     showPasswordGate = false
     passwordError = ''
     passwordAttempts = 0
@@ -80,6 +123,35 @@ function checkPassword() {
         passwordLockTimer = null
       }, PASSWORD_LOCK_DURATION)
     }
+  }
+}
+
+async function changePassword() {
+  if (!/^\d{4,8}$/.test(nextPassword)) return Toast.warning('新密码需要 4–8 位数字')
+  if (nextPassword !== confirmPassword) return Toast.warning('两次输入的新密码不一致')
+  if (!await catStore.changeParentPassword(currentPassword, nextPassword)) return Toast.error('当前密码不正确')
+  currentPassword = ''
+  nextPassword = ''
+  confirmPassword = ''
+  Toast.success('家长密码已更新')
+}
+
+function updateTuning(key: keyof CatTuning, event: Event) {
+  const input = event.target as HTMLInputElement
+  const value = Number(input.value)
+  if (!Number.isFinite(value)) return
+  catStore.updateTuning(key, value)
+}
+
+function toggleTestMode(enabled: boolean) {
+  catStore.setTestMode(enabled)
+  testPoints = catStore.points
+}
+
+function applyTestPoints() {
+  if (catStore.setTestPoints(testPoints)) {
+    testPoints = catStore.points
+    Toast.success(`测试积分已设为 ${catStore.points}`)
   }
 }
 
@@ -103,6 +175,7 @@ watch(() => tabIndex, async (newVal) => {
     catEnabled = catStore.catEnabled
     showPracticeCompanion = catStore.showPracticeCompanion
     showAnimations = catStore.showAnimations
+    testPoints = catStore.points
     showPasswordGate = true
     passwordInput = ''
     passwordError = ''
@@ -114,6 +187,7 @@ onMounted(async () => {
   catEnabled = catStore.catEnabled
   showPracticeCompanion = catStore.showPracticeCompanion
   showAnimations = catStore.showAnimations
+  testPoints = catStore.points
 })
 //@ts-ignore
 const gitLastCommitHash = ref(LATEST_COMMIT_HASH);
@@ -751,8 +825,9 @@ function importOldData() {
                 <input
                   v-model="passwordInput"
                   type="password"
-                  maxlength="4"
-                  placeholder="输入4位数字密码"
+                  inputmode="numeric"
+                  maxlength="8"
+                  placeholder="输入4–8位数字密码"
                   class="password-input"
                   :disabled="passwordLocked"
                   @keyup.enter="checkPassword"
@@ -762,7 +837,7 @@ function importOldData() {
                 </BaseButton>
               </div>
               <div v-if="passwordError" class="password-error">{{ passwordError }}</div>
-              <p class="password-hint">默认密码: 1234</p>
+              <p class="password-hint">初始密码: 1234（解锁后请及时修改）</p>
             </div>
           </div>
 
@@ -784,6 +859,77 @@ function importOldData() {
             <SettingItem title="猫咪动画" desc="开启动画效果（呼吸、尾巴摇摆、眨眼等）。关掉可减少视觉干扰">
               <Switch v-model="showAnimations" />
             </SettingItem>
+
+            <div class="line"></div>
+
+            <section class="parent-section" aria-labelledby="cat-tuning-title">
+              <div class="section-heading">
+                <div>
+                  <h3 id="cat-tuning-title">猫咪参数</h3>
+                  <p>依据猫咖设计文档开放的家长调节项，修改后即时保存并用于下一次计算。</p>
+                </div>
+                <button type="button" class="text-action" @click="catStore.resetTuning()">恢复默认</button>
+              </div>
+              <div v-if="catStore.tuning.hungerDecayPerHour === 0 && catStore.tuning.affectionDecayPerHour === 0" class="setting-notice">
+                猫咪的饥饿与亲昵将保持不变。
+              </div>
+              <div v-for="group in tuningGroups" :key="group.title" class="tuning-group">
+                <h4>{{ group.title }}</h4>
+                <p>{{ group.description }}</p>
+                <div class="tuning-grid">
+                  <label v-for="field in group.fields" :key="field.key" class="tuning-field">
+                    <span>{{ field.label }}</span>
+                    <span class="number-control">
+                      <input
+                        type="number"
+                        :value="catStore.tuning[field.key]"
+                        :min="field.min"
+                        :max="field.max"
+                        :step="field.step || 1"
+                        :aria-label="field.label"
+                        @change="updateTuning(field.key, $event)"
+                      />
+                      <small>{{ field.unit }}</small>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </section>
+
+            <section class="parent-section test-mode-section" aria-labelledby="test-mode-title">
+              <div class="section-heading">
+                <div>
+                  <h3 id="test-mode-title">测试模式</h3>
+                  <p>仅供家长验证猫咪购买和状态流程。关闭后保留最后设置的积分。</p>
+                </div>
+                <Switch :model-value="catStore.testMode" @update:model-value="toggleTestMode" />
+              </div>
+              <div v-if="catStore.testMode" class="test-controls">
+                <span class="test-badge">TEST</span>
+                <label>
+                  当前测试积分
+                  <input v-model.number="testPoints" type="number" min="0" max="1000000" aria-label="当前测试积分" />
+                </label>
+                <BaseButton @click="applyTestPoints">应用积分</BaseButton>
+                <button type="button" class="point-preset" @click="testPoints = 0; applyTestPoints()">清零</button>
+                <button type="button" class="point-preset" @click="testPoints = 1000; applyTestPoints()">设为 1000</button>
+              </div>
+            </section>
+
+            <section class="parent-section" aria-labelledby="password-change-title">
+              <div class="section-heading">
+                <div>
+                  <h3 id="password-change-title">修改家长密码</h3>
+                  <p>密码仅保存在当前浏览器中，并以摘要形式存储。</p>
+                </div>
+              </div>
+              <div class="password-change-grid">
+                <input v-model="currentPassword" type="password" inputmode="numeric" maxlength="8" placeholder="当前密码" aria-label="当前密码" />
+                <input v-model="nextPassword" type="password" inputmode="numeric" maxlength="8" placeholder="新密码（4–8位数字）" aria-label="新密码" />
+                <input v-model="confirmPassword" type="password" inputmode="numeric" maxlength="8" placeholder="再次输入新密码" aria-label="确认新密码" @keyup.enter="changePassword" />
+                <BaseButton @click="changePassword">更新密码</BaseButton>
+              </div>
+            </section>
 
             <div class="line"></div>
 
@@ -1153,5 +1299,101 @@ function importOldData() {
     font-weight: 600;
     text-decoration: underline;
   }
+}
+
+.parent-section {
+  margin: 1.25rem 0;
+  padding: 1.1rem;
+  border: 1px solid rgba(126, 87, 194, 0.2);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+
+  h3 { margin: 0; font-size: 1.1rem; color: var(--color-cat-dark, #4e342e); }
+  p { margin: .3rem 0 0; color: var(--color-sub-text, #756b68); font-size: .82rem; line-height: 1.5; }
+}
+
+.text-action, .point-preset {
+  border: 0;
+  background: transparent;
+  color: var(--color-cat-primary, #7e57c2);
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: underline;
+}
+
+.setting-notice {
+  margin-top: .8rem;
+  padding: .65rem .8rem;
+  border-radius: 8px;
+  background: #fff4d7;
+  color: #795a16;
+  font-size: .82rem;
+}
+
+.tuning-group {
+  margin-top: 1rem;
+  h4 { margin: 0; font-size: .95rem; }
+  > p { margin: .25rem 0 .6rem; color: var(--color-sub-text, #756b68); font-size: .76rem; }
+}
+
+.tuning-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .55rem .9rem;
+}
+
+.tuning-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  font-size: .82rem;
+}
+
+.number-control {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  input { width: 74px; padding: .35rem .45rem; border: 1px solid #d8d1ce; border-radius: 7px; }
+  small { min-width: 2.5rem; color: var(--color-sub-text, #756b68); }
+}
+
+.test-mode-section {
+  border-color: rgba(245, 158, 11, .45);
+}
+
+.test-controls, .password-change-grid {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .6rem;
+  margin-top: .9rem;
+
+  input { box-sizing: border-box; min-width: 150px; padding: .5rem .65rem; border: 1px solid #d8d1ce; border-radius: 8px; }
+  label { display: flex; align-items: center; gap: .5rem; font-size: .82rem; }
+}
+
+.test-badge {
+  padding: .22rem .45rem;
+  border-radius: 5px;
+  background: #f59e0b;
+  color: white;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+@media (max-width: 640px) {
+  .tuning-grid { grid-template-columns: 1fr; }
+  .section-heading { align-items: center; }
+  .password-change-grid { align-items: stretch; flex-direction: column; }
+  .password-change-grid input { width: 100%; }
 }
 </style>

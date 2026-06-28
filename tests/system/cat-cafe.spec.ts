@@ -56,7 +56,7 @@ test.describe('cat cafe UI', () => {
     await page.goto('./setting')
     await page.getByText('猫咪设置', { exact: true }).click()
 
-    const password = page.getByPlaceholder('输入4位数字密码')
+    const password = page.getByPlaceholder('输入4–8位数字密码')
     await password.fill('0000')
     await page.getByRole('button', { name: '确认' }).click()
     await expect(page.getByText('密码错误！剩余尝试次数: 4')).toBeVisible()
@@ -65,6 +65,32 @@ test.describe('cat cafe UI', () => {
     await page.getByRole('button', { name: '确认' }).click()
     await expect(page.getByText('已解锁', { exact: false })).toBeVisible()
     await expect(page.getByText('启用猫咖功能')).toBeVisible()
+  })
+
+  test('parent can tune cat rules, enable test mode, and change the password', async ({ page }) => {
+    await page.goto('./setting')
+    await page.getByText('猫咪设置', { exact: true }).click()
+    await page.getByPlaceholder('输入4–8位数字密码').fill('1234')
+    await page.getByRole('button', { name: '确认' }).click()
+
+    await expect(page.getByRole('heading', { name: '猫咪参数' })).toBeVisible()
+    await page.getByLabel('基础猫粮').fill('9')
+    await page.getByLabel('基础猫粮').blur()
+
+    await page.getByRole('switch').last().click()
+    await expect(page.getByText('TEST', { exact: true })).toBeVisible()
+    await page.getByLabel('当前测试积分').fill('777')
+    await page.getByRole('button', { name: '应用积分' }).click()
+    await expect(page.getByText('777', { exact: true }).first()).toBeVisible()
+
+    await page.getByLabel('当前密码').fill('1234')
+    await page.getByLabel('新密码', { exact: true }).fill('5678')
+    await page.getByLabel('确认新密码').fill('5678')
+    await page.getByRole('button', { name: '更新密码' }).click()
+    await page.getByText('重新锁定').click()
+    await page.getByPlaceholder('输入4–8位数字密码').fill('5678')
+    await page.getByRole('button', { name: '确认' }).click()
+    await expect(page.getByText('已解锁', { exact: false })).toBeVisible()
   })
 
   test('home exposes cat status and room navigation', async ({ page }) => {

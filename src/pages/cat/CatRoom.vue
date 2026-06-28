@@ -13,7 +13,6 @@ import { CAT_PHOTOS, type Cat } from '@/types/cat'
 import CatCard from '@/components/CatCard.vue'
 import CatAvatar from '@/components/CatAvatar.vue'
 import CatHud from '@/components/CatHud.vue'
-import { RUNAWAY_RECALL_DAYS } from '@/types/cat'
 
 const CatDetailDialog = defineAsyncComponent(() => import('@/components/CatDetailDialog.vue'))
 
@@ -103,7 +102,7 @@ function goHome() {
       <div>
         <span class="eyebrow">远程照护站</span>
         <h2>有 {{ runawayCats.length }} 只猫咪正在等你召回</h2>
-        <p>每天远程喂食一次，连续 {{ RUNAWAY_RECALL_DAYS }} 天就会回到猫咖。</p>
+        <p>每天远程喂食一次，连续 {{ catStore.tuning.runawayRecallDays }} 天就会回到猫咖。</p>
       </div>
       <button
         v-for="cat in runawayCats"
@@ -113,7 +112,7 @@ function goHome() {
         @click="openDetail(cat)"
       >
         <span>{{ cat.name }}</span>
-        <strong>{{ cat.runawayFeedStreak || 0 }}/{{ RUNAWAY_RECALL_DAYS }} 天</strong>
+        <strong>{{ cat.runawayFeedStreak || 0 }}/{{ catStore.tuning.runawayRecallDays }} 天</strong>
       </button>
     </section>
 
@@ -124,7 +123,9 @@ function goHome() {
         :key="cat.id"
         :cat="cat"
         :photo-url="getPhotoUrl(cat.photoKey)"
-        :breed="getBreed(cat.photoKey)"
+          :breed="getBreed(cat.photoKey)"
+          :daily-pet-limit="catStore.tuning.dailyPetLimit"
+          :daily-play-limit="catStore.tuning.dailyPlayLimit"
         :is-new="cat.id === catStore.newAdoptedCatId"
         @click="openDetail(cat)"
       />
