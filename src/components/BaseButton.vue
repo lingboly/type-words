@@ -21,7 +21,10 @@ defineEmits(['click'])
 
 <template>
   <Tooltip :disabled="!keyboard" :title="`${keyboard}`">
-    <div class="base-button"
+    <button class="base-button"
+         type="button"
+         :disabled="disabled || loading"
+         :aria-busy="loading || undefined"
          v-bind="$attrs"
          @click="e => (!disabled && !loading) && $emit('click',e)"
          :class="[
@@ -37,13 +40,15 @@ defineEmits(['click'])
           width="18"
           :color="type === 'info'?'#000000':'#ffffff'"
       />
-    </div>
+    </button>
   </Tooltip>
 </template>
 
 <style scoped lang="scss">
 
 .base-button {
+  border: 0;
+  font-family: inherit;
   cursor: pointer;
   box-sizing: border-box;
   display: inline-flex;
@@ -73,6 +78,11 @@ defineEmits(['click'])
     opacity: .6;
     cursor: not-allowed;
     user-select: none;
+  }
+
+  &:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--color-select-bg) 45%, transparent);
+    outline-offset: 2px;
   }
 
   &.small {

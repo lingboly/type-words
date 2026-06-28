@@ -89,18 +89,18 @@ export const useCatStore = defineStore('cat', {
     },
 
     /** Number of deceased cats */
-    deceasedCatCount(): number {
+    deceasedCatCount(state): number {
       return state.cats.filter(c => c.status === 'deceased').length
     },
 
     /** Newly adopted cat (for notification/anim) */
-    newAdoptedCat(): Cat | null {
+    newAdoptedCat(state): Cat | null {
       if (!state.newAdoptedCatId) return null
       return state.cats.find(c => c.id === state.newAdoptedCatId) ?? null
     },
 
     /** Can afford a specific amount */
-    canAfford(): (amount: number) => boolean {
+    canAfford(state): (amount: number) => boolean {
       return (amount: number) => state.points >= amount
     },
 

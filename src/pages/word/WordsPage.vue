@@ -172,7 +172,7 @@ const {
 
 <template>
   <BasePage>
-    <div class="card flex gap-10">
+    <div class="card overview-card flex gap-10">
       <div class="flex-1 flex flex-col gap-2">
         <div class="flex">
           <div class="bg-third px-3 h-14 rounded-md flex items-center ">
@@ -310,4 +310,16 @@ const {
 </template>
 
 <style scoped lang="scss">
+@media (max-width: 768px) {
+  .overview-card {
+    flex-direction: column;
+    gap: 1rem;
+
+    > * {
+      width: 100%;
+      min-width: 0;
+      align-items: stretch;
+    }
+  }
+}
 </style>

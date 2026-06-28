@@ -167,7 +167,7 @@ const {data: recommendBookList, isFetching} = useFetch(resourceWrap(DICT_LIST.AR
 
 <template>
   <BasePage>
-    <div class="card flex justify-between gap-space">
+    <div class="card overview-card flex justify-between gap-space">
       <div>
         <Book
             v-if="base.sbook.id"
@@ -288,6 +288,27 @@ const {data: recommendBookList, isFetching} = useFetch(resourceWrap(DICT_LIST.AR
 
   .txt {
     @apply color-gray-500;
+  }
+}
+
+@media (max-width: 768px) {
+  .overview-card {
+    flex-direction: column;
+    gap: 1rem;
+
+    > * {
+      width: 100%;
+      min-width: 0;
+      align-items: stretch;
+    }
+
+    .flex {
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      min-width: 8rem;
+    }
   }
 }
 </style>

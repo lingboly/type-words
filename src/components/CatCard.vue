@@ -36,7 +36,8 @@ const statusClass = $computed(() => `status-${props.cat.status}`)
 </script>
 
 <template>
-  <div
+  <button
+    type="button"
     class="cat-card"
     :class="[statusClass, { 'is-new': isNew }]"
   >
@@ -92,11 +93,16 @@ const statusClass = $computed(() => `status-${props.cat.status}`)
         </div>
       </div>
     </div>
-  </div>
+  </button>
 </template>
 
 <style scoped lang="scss">
 .cat-card {
+  width: 100%;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  font: inherit;
   background: #fff;
   border-radius: 16px;
   overflow: hidden;
@@ -108,6 +114,11 @@ const statusClass = $computed(() => `status-${props.cat.status}`)
   &:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(93, 64, 55, 0.15);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--color-cat-success, #5CC9A7);
+    outline-offset: 3px;
   }
 
   &.is-new {
