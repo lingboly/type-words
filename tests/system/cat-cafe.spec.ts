@@ -44,12 +44,16 @@ async function seedCat(page, overrides: Record<string, unknown> = {}) {
 }
 
 test.describe('cat cafe UI', () => {
-  test('empty room guides the user back to study', async ({ page }) => {
+  test('empty room lets the user adopt a starter cat and open its care controls', async ({ page }) => {
     await page.goto('./cat-room')
 
-    await expect(page.getByRole('heading', { name: '还没有猫咪...' })).toBeVisible()
-    await page.getByRole('link', { name: '开始学习' }).click()
-    await expect(page).toHaveURL(/\/words$/)
+    await expect(page.getByRole('heading', { name: '选择你的第一只猫咪伙伴' })).toBeVisible()
+    await page.getByRole('button', { name: '免费领养 二妹' }).click()
+    await expect(page.getByRole('heading', { name: '二妹' })).toBeVisible()
+    await expect(page.getByRole('button', { name: /基础猫粮/ })).toBeVisible()
+    await expect(page.getByRole('button', { name: /普通药品/ })).toBeDisabled()
+    await page.getByRole('button', { name: '关闭猫咪详情' }).click()
+    await expect(page.getByRole('button', { name: /二妹/ })).toBeVisible()
   })
 
   test('parent gate rejects an invalid password and accepts the default password', async ({ page }) => {
@@ -139,5 +143,18 @@ test.describe('cat cafe UI', () => {
 
     await expect(page.getByRole('heading', { name: /正在等你召回/ })).toBeVisible()
     await expect(page.getByRole('button', { name: /花奴 3\/7 天/ })).toBeVisible()
+  })
+
+  test('care center exposes treatment for a sick cat on the same page', async ({ page }) => {
+    await seedCat(page, { status: 'sick', health: 20, hunger: 75 })
+    await page.goto('./cat-room')
+
+    await page.getByRole('button', { name: /照护中心/ }).click()
+    await expect(page.getByRole('heading', { name: '所有猫咪操作都在这里' })).toBeVisible()
+    await page.getByRole('button', { name: /花奴.*前往救治/ }).click()
+    await page.getByRole('button', { name: /普通药品/ }).click()
+    await expect(page.getByRole('alert')).toContainText('确认花费 30 积分')
+    await page.getByRole('button', { name: '确认消费' }).click()
+    await expect(page.getByText('治疗完成，健康 +20')).toBeVisible()
   })
 })

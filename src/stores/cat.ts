@@ -58,6 +58,28 @@ function migrateCat(cat: Cat): Cat {
   }
 }
 
+function createCatRecord(photo: CatPhotoEntry): Cat {
+  return {
+    id: nanoid(),
+    photoKey: photo.key,
+    name: photo.name,
+    adoptedAt: Date.now(),
+    status: 'healthy',
+    rarity: photo.rarity,
+    health: MAX_HEALTH,
+    affection: MAX_AFFECTION,
+    hunger: 0,
+    feedCount: 0,
+    playCount: 0,
+    lastLoginCheck: Date.now(),
+    interactionDate: dateKey(),
+    dailyPetPoints: 0,
+    dailyPlayCount: 0,
+    runawayFeedStreak: 0,
+    icuFailedDays: 0,
+  }
+}
+
 export interface CatStoreState {
   /** All adopted cats (alive or dead) */
   cats: Cat[]
@@ -266,31 +288,26 @@ export const useCatStore = defineStore('cat', {
       const pool = available.length > 0 ? available : rarityPool.length > 0 ? rarityPool : CAT_PHOTOS
       const chosen: CatPhotoEntry = pool[Math.floor(Math.random() * pool.length)]
 
-      const cat: Cat = {
-        id: nanoid(),
-        photoKey: chosen.key,
-        name: chosen.name,
-        adoptedAt: Date.now(),
-        status: 'healthy',
-        rarity: chosen.rarity,
-        health: MAX_HEALTH,
-        affection: MAX_AFFECTION,
-        hunger: 0,
-        feedCount: 0,
-        playCount: 0,
-        lastLoginCheck: Date.now(),
-        interactionDate: dateKey(),
-        dailyPetPoints: 0,
-        dailyPlayCount: 0,
-        runawayFeedStreak: 0,
-        icuFailedDays: 0,
-      }
+      const cat = createCatRecord(chosen)
 
       this.cats.push(cat)
       this.perfectGames++
       this.newAdoptedCatId = cat.id
       this.persist()
       return cat
+    },
+
+    /** Allow a new family to choose one free common cat before the learning loop starts. */
+    adoptStarterCat(photoKey: string): { success: boolean; cat?: Cat; reason?: string } {
+      if (this.cats.length > 0) return { success: false, reason: '初始领养机会已经使用' }
+      const photo = CAT_PHOTOS.find(item => item.key === photoKey && item.rarity === 'common')
+      if (!photo) return { success: false, reason: '这只猫咪暂时不能作为初始伙伴' }
+
+      const cat = createCatRecord(photo)
+      this.cats.push(cat)
+      this.newAdoptedCatId = cat.id
+      this.persist()
+      return { success: true, cat }
     },
 
     /** Clear the new-adopted notification marker */

@@ -79,6 +79,30 @@ describe('cat store', () => {
     expect(store.newAdoptedCatId).toBe(adopted?.id)
   })
 
+  it('allows exactly one free common starter cat without changing study stats', () => {
+    const store = useCatStore()
+
+    const first = store.adoptStarterCat('2妹-三花猫.jpg')
+
+    expect(first.success).toBe(true)
+    expect(first.cat).toMatchObject({ name: '二妹', rarity: 'common', health: 100 })
+    expect(store.perfectGames).toBe(0)
+    expect(store.adoptStarterCat('一妹-三花猫.jpg')).toEqual({
+      success: false,
+      reason: '初始领养机会已经使用',
+    })
+  })
+
+  it('rejects rare cats from the free starter flow', () => {
+    const store = useCatStore()
+
+    expect(store.adoptStarterCat('二弟-蓝短猫.jpg')).toEqual({
+      success: false,
+      reason: '这只猫咪暂时不能作为初始伙伴',
+    })
+    expect(store.cats).toHaveLength(0)
+  })
+
   it('feeds a cat, spends points, and improves its state', () => {
     const store = useCatStore()
     store.cats = [makeCat({ status: 'sick', health: 29, hunger: 60 })]
