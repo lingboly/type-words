@@ -3,10 +3,19 @@ import { ProjectName } from "@/config/env.ts";
 import BaseButton from "@/components/BaseButton.vue";
 import BaseIcon from "@/components/BaseIcon.vue";
 import { defineAsyncComponent } from "vue";
+import CatDecorator from "@/components/CatDecorator.vue";
+import { useCatStore } from "@/stores/cat.ts";
+import { onMounted } from "vue";
 
 const Dialog = defineAsyncComponent(() => import('@/components/dialog/Dialog.vue'))
 let showWechatDialog = $ref(false)
 let showXhsDialog = $ref(false)
+
+const catStore = useCatStore()
+
+onMounted(() => {
+  catStore.loadFromStorage()
+})
 </script>
 
 <template>
@@ -22,6 +31,45 @@ let showXhsDialog = $ref(false)
         <BaseButton size="large" @click="$router.push('/articles')">文章练习</BaseButton>
       </div>
 
+      <!-- Cat Café: 猫咖入口 -->
+      <div v-if="catStore.catEnabled" class="cat-cafe-section">
+        <div class="cat-cafe-header">
+          <CatDecorator pose="happy" size="lg" />
+          <h2>🐾 知识猫咖</h2>
+          <p class="cat-cafe-subtitle">背单词赚积分，全对领猫咪，积分买猫粮养猫</p>
+        </div>
+
+        <!-- Warning: cats need care -->
+        <div v-if="catStore.warningCatCount > 0" class="cat-warning">
+          ⚠️ {{ catStore.warningCatCount }} 只猫咪需要照顾！
+          <router-link to="/cat-room" class="warning-link">去看看</router-link>
+        </div>
+
+        <div v-if="catStore.runawayCatCount > 0" class="cat-runaway-warning">
+          🏃 {{ catStore.runawayCatCount }} 只猫咪离家出走了...
+        </div>
+
+        <div class="cat-stats">
+          <div class="stat-item">
+            <span class="stat-icon">🐱</span>
+            <span class="stat-value">{{ catStore.catCount }}</span>
+            <span class="stat-label">已领养猫咪</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon">⭐</span>
+            <span class="stat-value">{{ catStore.points }}</span>
+            <span class="stat-label">当前积分</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon">🎉</span>
+            <span class="stat-value">{{ catStore.perfectGames }}</span>
+            <span class="stat-label">全对次数</span>
+          </div>
+        </div>
+        <BaseButton class="cat-cafe-btn" @click="$router.push('/cat-room')">
+          去看看猫咪们
+        </BaseButton>
+      </div>
 
       <div class="w-60vw">
         <div class="flex mb-5 gap-space">
@@ -163,6 +211,127 @@ h3:first-child {
   width: 100%;
   padding-top: 2rem;
   border-top: 1px solid #c4c4c4;
+}
+
+// ===== Cat Café: 猫咖区域 =====
+.cat-cafe-section {
+  margin: 2rem 0;
+  padding: 2rem;
+  background: var(--color-cat-cream);
+  border-radius: 16px;
+  border: 2px solid var(--color-cat-primary);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 80%, rgba(255, 107, 107, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(92, 201, 167, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .cat-cafe-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 1;
+
+    h2 {
+      font-size: 1.8rem;
+      color: var(--color-cat-dark);
+      margin: 0;
+    }
+
+    .cat-cafe-subtitle {
+      font-size: 0.95rem;
+      color: var(--color-cat-neutral);
+      margin: 0;
+      font-style: italic;
+    }
+  }
+
+  .cat-warning {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 152, 0, 0.15);
+    border: 1px solid #FF9800;
+    border-radius: 8px;
+    color: #E65100;
+    font-size: 0.9rem;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+
+    .warning-link {
+      color: var(--color-cat-primary);
+      margin-left: 0.5rem;
+      font-weight: 700;
+    }
+  }
+
+  .cat-runaway-warning {
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(158, 158, 158, 0.15);
+    border: 1px solid #999;
+    border-radius: 8px;
+    color: #666;
+    font-size: 0.85rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cat-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1.5rem 0;
+    position: relative;
+    z-index: 1;
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+
+      .stat-icon {
+        font-size: 1.5rem;
+      }
+
+      .stat-value {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: var(--color-cat-primary);
+      }
+
+      .stat-label {
+        font-size: 0.8rem;
+        color: var(--color-sub-text);
+      }
+    }
+  }
+
+  .cat-cafe-btn {
+    background: var(--color-cat-primary);
+    color: white;
+    border: none;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+
+    &:hover {
+      background: #e55a5a;
+    }
+  }
 }
 
 a {

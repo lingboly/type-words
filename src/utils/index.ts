@@ -449,5 +449,11 @@ export function resourceWrap(resource: string, version?: number) {
     }
     return `${resource}_v${version}.json`
   }
+  // Ensure relative paths are resolved from the Vite base URL, not the current route path
+  if (!resource.startsWith('http') && !resource.startsWith('/')) {
+    const baseUrl = import.meta.env.BASE_URL
+    const prefix = baseUrl.endsWith('/') ? baseUrl : baseUrl + '/'
+    resource = prefix + resource
+  }
   return resource;
 }

@@ -264,6 +264,8 @@ function onTypeWrong() {
   if (!data.wrongWords.find((v: Word) => v.word.toLowerCase() === temp)) {
     data.wrongWords.push(word)
   }
+  // Cat Café: 猫咪温柔摇头鼓励
+  typingRef?.onWordWrong?.()
   savePracticeData()
 }
 

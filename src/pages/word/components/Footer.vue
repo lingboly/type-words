@@ -7,6 +7,7 @@ import { ShortcutKey, PracticeData } from "@/types/types.ts";
 import BaseIcon from "@/components/BaseIcon.vue";
 import Tooltip from "@/components/base/Tooltip.vue";
 import Progress from '@/components/base/Progress.vue'
+import CatDecorator from "@/components/CatDecorator.vue";
 
 const statisticsStore = usePracticeStore()
 const settingStore = useSettingStore()
@@ -57,6 +58,15 @@ const progress = $computed(() => {
   return ((practiceData.index / practiceData.words.length) * 100)
 })
 
+// ===== Cat Café: 猫咪表情随进度变化 =====
+const catMood = $computed(() => {
+  const p = progress
+  if (p < 20) return 'sleeping' as const
+  if (p < 50) return 'curious' as const
+  if (p < 80) return 'idle' as const
+  return 'happy' as const
+})
+
 </script>
 
 <template>
@@ -70,10 +80,21 @@ const progress = $computed(() => {
     </Tooltip>
 
     <div class="bottom">
-      <Progress
-          :percentage="progress"
-          :stroke-width="8"
-          :show-text="false"/>
+      <!-- Cat Café: 进度条使用猫主题色 -->
+      <div class="progress-wrapper">
+        <Progress
+            :percentage="progress"
+            :stroke-width="8"
+            :show-text="false"
+            class="cat-progress"/>
+      </div>
+
+      <!-- Cat Café: 猫咪表情随进度变化 -->
+      <div class="cat-mood-bar">
+        <CatDecorator :pose="catMood" size="sm" :show-animation="true" />
+        <span class="mood-text">{{ progress.toFixed(0) }}%</span>
+      </div>
+
       <div class="flex justify-between items-center">
         <div class="stat">
           <div class="row">
@@ -178,6 +199,34 @@ const progress = $computed(() => {
     z-index: 2;
     border: 1px solid var(--color-item-border);
     box-shadow: var(--shadow);
+
+    // ===== Cat Café: 进度条样式 =====
+    .progress-wrapper {
+      margin-bottom: 0.5rem;
+    }
+
+    .cat-progress :deep(.progress-bar-inner) {
+      background: linear-gradient(90deg, var(--color-cat-success), var(--color-cat-primary));
+      border-radius: 4px;
+    }
+
+    // ===== Cat Café: 猫咪表情栏 =====
+    .cat-mood-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      padding: 0.3rem;
+      background: var(--color-cat-cream);
+      border-radius: 8px;
+
+      .mood-text {
+        font-size: 0.8rem;
+        color: var(--color-cat-dark);
+        font-weight: bold;
+      }
+    }
 
     .stat {
       margin-top: .5rem;

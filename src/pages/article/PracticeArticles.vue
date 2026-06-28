@@ -36,6 +36,7 @@ import VolumeSetting from "@/pages/article/components/VolumeSetting.vue";
 import { CAN_REQUEST, DICT_LIST, PracticeSaveArticleKey } from "@/config/env.ts";
 import { addStat, setDictProp } from "@/apis";
 import { useRuntimeStore } from "@/stores/runtime.ts";
+import CatDecorator from "@/components/CatDecorator.vue";
 
 const store = useBaseStore()
 const runtimeStore = useRuntimeStore()
@@ -436,16 +437,22 @@ provide('currentPractice', currentPractice)
       v-loading="loading"
       panelLeft="var(--article-panel-margin-left)">
     <template v-slot:practice>
-      <TypingArticle
-          ref="typingArticleRef"
-          @wrong="wrong"
-          @next="next"
-          @nextWord="nextWord"
-          @play="play2"
-          @replay="setArticle(articleData.article)"
-          @complete="complete"
-          :article="articleData.article"
-      />
+      <div class="practice-article-wrapper">
+        <!-- Cat Café: 右上角猫咪装饰 -->
+        <div class="article-cat-decorator">
+          <CatDecorator pose="idle" size="sm" />
+        </div>
+        <TypingArticle
+            ref="typingArticleRef"
+            @wrong="wrong"
+            @next="next"
+            @nextWord="nextWord"
+            @play="play2"
+            @replay="setArticle(articleData.article)"
+            @complete="complete"
+            :article="articleData.article"
+        />
+      </div>
     </template>
     <template v-slot:panel>
       <Panel :style="{width:'var(--article-panel-width)'}">
@@ -574,6 +581,21 @@ provide('currentPractice', currentPractice)
 </template>
 
 <style scoped lang="scss">
+
+// ===== Cat Café: 文章练习页猫咪装饰 =====
+.practice-article-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.article-cat-decorator {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  pointer-events: none;
+}
 
 .footer {
   width: var(--article-toolbar-width);
