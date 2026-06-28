@@ -85,7 +85,13 @@ describe('cat store', () => {
     const first = store.adoptStarterCat('2妹-三花猫.jpg')
 
     expect(first.success).toBe(true)
-    expect(first.cat).toMatchObject({ name: '二妹', rarity: 'common', health: 100 })
+    expect(first.cat).toMatchObject({
+      name: '二妹',
+      rarity: 'common',
+      health: 50,
+      hunger: 50,
+      affection: 50,
+    })
     expect(store.perfectGames).toBe(0)
     expect(store.adoptStarterCat('一妹-三花猫.jpg')).toEqual({
       success: false,

@@ -50,6 +50,7 @@ test.describe('cat cafe UI', () => {
     await expect(page.getByRole('heading', { name: '选择你的第一只猫咪伙伴' })).toBeVisible()
     await page.getByRole('button', { name: '免费领养 二妹' }).click()
     await expect(page.getByRole('heading', { name: '二妹', level: 2 })).toBeVisible()
+    await expect(page.getByText('50/100')).toHaveCount(3)
     await expect(page.getByRole('button', { name: /基础猫粮/ })).toBeVisible()
     await expect(page.getByRole('button', { name: /普通药品/ })).toBeDisabled()
     await page.getByRole('button', { name: '关闭猫咪详情' }).click()

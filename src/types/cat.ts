@@ -117,6 +117,8 @@ export const DECEASED_HEALTH_THRESHOLD = 0
 export const MAX_HEALTH = 100
 export const MAX_AFFECTION = 100
 export const MAX_HUNGER = 100
+/** Initial health, satiety, and affection shown for every newly adopted cat. */
+export const INITIAL_CAT_STAT = 50
 
 /** Affection threshold for runaway check */
 export const RUNAWAY_AFFECTION_THRESHOLD = 60
