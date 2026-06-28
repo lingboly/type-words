@@ -100,7 +100,7 @@ test.describe('cat cafe UI', () => {
     await expect(page.getByText('已解锁', { exact: false })).toBeVisible()
   })
 
-  test('parent can tune cat rules, enable test mode, and change the password', async ({ page }) => {
+  test('parent can tune cat rules and enable test mode', async ({ page }) => {
     await page.goto('./setting')
     await page.getByText('猫咪设置', { exact: true }).click()
     await page.getByPlaceholder('输入4–8位数字密码').fill('1234')
@@ -116,10 +116,20 @@ test.describe('cat cafe UI', () => {
     await page.getByRole('button', { name: '应用积分' }).click()
     await expect(page.getByText('777', { exact: true }).first()).toBeVisible()
 
-    await page.getByLabel('当前密码').fill('1234')
+  })
+
+  test('parent can change the password and unlock again', async ({ page }) => {
+    await page.goto('./setting')
+    await page.getByText('猫咪设置', { exact: true }).click()
+    await page.getByPlaceholder('输入4–8位数字密码').fill('1234')
+    await page.getByRole('button', { name: '确认' }).click()
+    await expect(page.getByText('已解锁', { exact: false })).toBeVisible()
+
+    await page.getByLabel('当前密码', { exact: true }).fill('1234')
     await page.getByLabel('新密码', { exact: true }).fill('5678')
-    await page.getByLabel('确认新密码').fill('5678')
+    await page.getByLabel('确认新密码', { exact: true }).fill('5678')
     await page.getByRole('button', { name: '更新密码' }).click()
+    await expect(page.getByLabel('当前密码', { exact: true })).toHaveValue('')
     await page.getByText('重新锁定').click()
     await page.getByPlaceholder('输入4–8位数字密码').fill('5678')
     await page.getByRole('button', { name: '确认' }).click()
