@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 report.html
 .gstack/
+test-results/
+playwright-report/
