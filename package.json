@@ -5,7 +5,12 @@
   "scripts": {
     "start": "vite",
     "dev": "vite",
-    "test": "",
+    "test": "npm run test:unit && npm run test:ui",
+    "test:unit": "vitest run --project unit",
+    "test:ui": "vitest run --project ui",
+    "test:system": "playwright test",
+    "test:system:update": "playwright test --update-snapshots",
+    "test:all": "npm run test && npm run test:system",
     "build": "vite build && node scripts/generate-sitemap.js",
     "build-nocdn": "vite build",
     "build-tsc": "vue-tsc && vite build",
