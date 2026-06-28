@@ -30,7 +30,7 @@ describe('CatDetailDialog UI', () => {
       },
     })
 
-    wrapper.findAllComponents(BaseButton)[0].vm.$emit('click')
+    wrapper.findAllComponents(BaseButton).find(button => button.text().includes('基础猫粮'))?.vm.$emit('click')
     await wrapper.vm.$nextTick()
     expect(store.points).toBe(CAT_FOOD_PRICE)
     expect(wrapper.text()).toContain('确认花费')
@@ -38,6 +38,31 @@ describe('CatDetailDialog UI', () => {
     await wrapper.get('.purchase-confirm .confirm').trigger('click')
     expect(store.points).toBe(0)
     expect(store.cats[0].hunger).toBe(30)
+  })
+
+  it('plays for free and updates the daily interaction summary', async () => {
+    const store = useCatStore()
+    store.cats = [{ ...cat, health: 90, affection: 70, dailyPlayCount: 0 }]
+    store.points = 0
+    const wrapper = mount(CatDetailDialog, {
+      props: { cat: store.cats[0] },
+      global: {
+        stubs: {
+          Teleport: true,
+          Tooltip: { template: '<div><slot /></div>' },
+          IconEosIconsLoading: true,
+        },
+      },
+    })
+
+    wrapper.findAllComponents(BaseButton).find(button => button.text().includes('开始玩耍'))?.vm.$emit('click')
+    await wrapper.vm.$nextTick()
+
+    expect(store.points).toBe(0)
+    expect(store.cats[0]).toMatchObject({ health: 91, affection: 75, dailyPlayCount: 1, playCount: 1 })
+    expect(wrapper.text()).toContain('玩得真开心！亲昵 +5，健康 +1')
+    expect(wrapper.classes()).not.toContain('is-playing')
+    expect(wrapper.get('.dialog-content').classes()).toContain('is-playing')
   })
 
   it('explains ICU care and disables play supplies', () => {

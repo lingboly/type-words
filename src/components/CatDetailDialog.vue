@@ -29,6 +29,7 @@ const catStore = useCatStore()
 
 let showHeart = $ref(false)
 let showPawPrint = $ref(false)
+let showPlay = $ref(false)
 let feedResult = $ref<string | null>(null)
 let playResult = $ref<string | null>(null)
 type PurchaseKind = 'feed' | 'play' | 'heal'
@@ -80,7 +81,9 @@ function handleFeed(tier: CatSupplyTier) {
   }
 }
 
-function handlePlay(tier: CatSupplyTier) {
+function handlePlay(tier: CatSupplyTier | 'free' = 'free') {
+  showPlay = true
+  setTimeout(() => { showPlay = false }, 1200)
   const result = catStore.playWithCat(props.cat.id, tier)
   if (result.success) {
     showFeedback(`玩得真开心！亲昵 +${result.affectionGain}，健康 +${result.healthGain}`, 'heart')
@@ -120,7 +123,7 @@ const diedDate = $computed(() => {
 <template>
   <Teleport to="body">
     <div class="dialog-overlay" @click.self="close">
-      <div class="dialog-content" :class="'status-' + cat.status">
+      <div class="dialog-content" :class="['status-' + cat.status, { 'is-playing': showPlay }]">
         <!-- Header -->
         <div class="dialog-header">
           <div>
@@ -147,6 +150,9 @@ const diedDate = $computed(() => {
           </Transition>
           <Transition name="float-up">
             <div v-if="showPawPrint" class="float-effect paw">🐾</div>
+          </Transition>
+          <Transition name="toy-bounce">
+            <div v-if="showPlay" class="play-effect" aria-hidden="true">🧶</div>
           </Transition>
         </button>
 
@@ -196,7 +202,16 @@ const diedDate = $computed(() => {
         <!-- Actions -->
         <div class="care-shop" v-if="cat.status !== 'deceased'">
           <h3>{{ cat.status === 'runaway' ? '远程照护' : '今日照护' }}</h3>
-          <p>积分全部来自学习。消费前会再次确认。</p>
+          <div class="free-play-card" v-if="cat.status !== 'runaway'">
+            <div>
+              <strong>🪶 和 {{ cat.name }} 玩耍</strong>
+              <small>免费 · 今日 {{ cat.dailyPlayCount || 0 }}/{{ catStore.tuning.dailyPlayLimit }} 次</small>
+            </div>
+            <BaseButton class="free-play-btn" :disabled="cat.status !== 'healthy'" @click="handlePlay('free')">
+              {{ cat.status === 'healthy' ? '开始玩耍' : '身体虚弱，暂不能玩' }}
+            </BaseButton>
+          </div>
+          <p>猫粮、玩具和医疗用品使用学习积分，消费前会再次确认。</p>
           <div class="supply-grid">
           <BaseButton class="action-btn feed" @click="requestPurchase('feed', 'basic', catStore.tuning.basicFoodPrice, '基础猫粮')">
             🥫 基础猫粮 <small>{{ catStore.tuning.basicFoodPrice }}分</small>
@@ -287,6 +302,54 @@ const diedDate = $computed(() => {
     opacity: 0.9;
     filter: grayscale(0.1);
   }
+}
+
+.is-playing .detail-photo {
+  animation: catPlay 0.4s ease-in-out 3;
+}
+
+@keyframes catPlay {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  35% { transform: translateX(-8px) rotate(-2deg); }
+  70% { transform: translateX(8px) rotate(2deg); }
+}
+
+.play-effect {
+  position: absolute;
+  right: 12%;
+  bottom: 14%;
+  z-index: 3;
+  font-size: 2.5rem;
+  animation: toyPlay 0.45s ease-in-out infinite alternate;
+}
+
+@keyframes toyPlay {
+  from { transform: translate(-5rem, -1rem) rotate(-20deg); }
+  to { transform: translate(0, -4rem) rotate(25deg); }
+}
+
+.toy-bounce-enter-active, .toy-bounce-leave-active { transition: opacity 0.2s; }
+.toy-bounce-enter-from, .toy-bounce-leave-to { opacity: 0; }
+
+.free-play-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 0.7rem 0;
+  padding: 0.75rem;
+  border: 1px solid rgba(92, 201, 167, 0.45);
+  border-radius: 12px;
+  background: rgba(92, 201, 167, 0.08);
+
+  > div { display: flex; flex-direction: column; }
+  strong { color: var(--color-cat-dark); font-size: 0.88rem; }
+  small { color: var(--color-cat-neutral); font-size: 0.72rem; }
+  .free-play-btn { flex: none; background: var(--color-cat-success); color: #fff; }
+}
+
+@media (max-width: 420px) {
+  .free-play-card { align-items: stretch; flex-direction: column; }
 }
 
 .dialog-header {

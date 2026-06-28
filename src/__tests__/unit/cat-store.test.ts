@@ -143,6 +143,16 @@ describe('cat store', () => {
     expect(store.petCat('cat-1')).toEqual({ success: false, affectionGain: 0 })
   })
 
+  it('allows free play without spending points', () => {
+    const store = useCatStore()
+    store.cats = [makeCat({ health: 80, affection: 70 })]
+    store.points = 0
+
+    expect(store.playWithCat('cat-1')).toEqual({ success: true, affectionGain: 5, healthGain: 1 })
+    expect(store.points).toBe(0)
+    expect(store.cats[0]).toMatchObject({ health: 81, affection: 75, dailyPlayCount: 1, playCount: 1 })
+  })
+
   it('applies offline hunger and health decay', () => {
     const store = useCatStore()
     const now = new Date('2026-06-28T08:00:00Z').getTime()
@@ -282,7 +292,7 @@ describe('cat store', () => {
 
   it('persists and applies parent-managed prices and interaction limits', () => {
     const store = useCatStore()
-    store.cats = [makeCat({ dailyPlayCount: 1 })]
+    store.cats = [makeCat({ interactionDate: new Date().toISOString().slice(0, 10), dailyPlayCount: 1 })]
     store.points = 12
 
     store.updateTuning('basicFoodPrice', 12)

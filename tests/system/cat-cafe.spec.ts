@@ -151,6 +151,18 @@ test.describe('cat cafe UI', () => {
     await expect(page.getByText('当前积分 ⭐ 100')).toBeVisible()
   })
 
+  test('healthy cats can play for free with visible feedback and no point charge', async ({ page }) => {
+    await seedCat(page, { health: 80, affection: 70 })
+    await page.goto('./cat-room')
+    await page.getByRole('button', { name: /花奴/ }).click()
+
+    await page.getByRole('button', { name: '开始玩耍' }).click()
+
+    await expect(page.getByText('玩得真开心！亲昵 +5，健康 +1')).toBeVisible()
+    await expect(page.locator('.daily-summary')).toContainText('今日抚摸 0/40 · 玩耍 1/5')
+    await expect(page.getByText('当前积分 ⭐ 120')).toBeVisible()
+  })
+
   test('runaway cats move to the remote-care station', async ({ page }) => {
     await seedCat(page, { status: 'runaway', runawayFeedStreak: 3 })
     await page.goto('./cat-room')
