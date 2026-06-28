@@ -947,6 +947,48 @@ function importOldData() {
   }
 }
 
+@media (max-width: 768px) {
+  .setting {
+    flex-direction: column;
+
+    .left {
+      align-items: stretch;
+      border-right: 0;
+      border-bottom: 1px solid var(--color-item-border);
+      margin-top: 0;
+
+      .tabs {
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 0.5rem 0;
+
+        .tab {
+          flex: 0 0 auto;
+          min-height: 44px;
+        }
+      }
+    }
+
+    .content {
+      box-sizing: border-box;
+      min-width: 0;
+      width: 100%;
+      padding: 0.75rem 0.25rem;
+
+      .row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .wrapper {
+          width: 100%;
+          justify-content: flex-start;
+        }
+      }
+    }
+  }
+}
+
 .import {
   display: inline-flex;
   position: relative;
@@ -1005,6 +1047,7 @@ function importOldData() {
 }
 
 .password-card {
+  box-sizing: border-box;
   background: var(--color-cat-cream);
   border: 2px solid var(--color-cat-primary);
   border-radius: 16px;
@@ -1034,9 +1077,11 @@ function importOldData() {
     display: flex;
     gap: 0.5rem;
     justify-content: center;
+    flex-wrap: wrap;
 
     .password-input {
       width: 160px;
+      max-width: 100%;
       padding: 0.5rem 0.8rem;
       border: 1px solid #ccc;
       border-radius: 8px;

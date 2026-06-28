@@ -9,6 +9,8 @@
  *   showAnimation: boolean — 是否启用呼吸/尾巴/眨眼等持续动画
  */
 
+import { getCurrentInstance } from 'vue'
+
 interface IProps {
   pose?: 'idle' | 'happy' | 'sleeping' | 'purring' | 'curious' | 'annoyed' | 'sick'
   size?: 'sm' | 'md' | 'lg' | 'xl'
@@ -20,6 +22,8 @@ const props = withDefaults(defineProps<IProps>(), {
   size: 'md',
   showAnimation: true,
 })
+
+const catId = `cat-${getCurrentInstance()?.uid ?? 'decorator'}`
 
 // 表情映射
 const exprMap: Record<string, string> = {
@@ -49,7 +53,7 @@ const animClass = $computed(() => {
 // 对外暴露触发动作的方法
 function triggerHappy() {
   // 通过 DOM 操作添加一次性的 happy 动画 class
-  const el = document.querySelector(`[data-cat-id="${props._uid}"]`) as HTMLElement
+  const el = document.querySelector(`[data-cat-id="${catId}"]`) as HTMLElement
   if (el) {
     el.classList.add('anim-cat-happy')
     setTimeout(() => el.classList.remove('anim-cat-happy'), 600)
@@ -57,7 +61,7 @@ function triggerHappy() {
 }
 
 function triggerShake() {
-  const el = document.querySelector(`[data-cat-id="${props._uid}"]`) as HTMLElement
+  const el = document.querySelector(`[data-cat-id="${catId}"]`) as HTMLElement
   if (el) {
     el.classList.add('anim-cat-shake')
     setTimeout(() => el.classList.remove('anim-cat-shake'), 800)
@@ -71,7 +75,7 @@ defineExpose({ triggerHappy, triggerShake })
   <span
     class="cat-decorator"
     :class="animClass"
-    :data-cat-id="props._uid"
+    :data-cat-id="catId"
     :title="pose"
   >
     {{ emoji }}

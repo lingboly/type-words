@@ -24,24 +24,24 @@ const {toggleTheme} = useTheme()
     <div class="aside anim fixed" :class="{'expand':settingStore.sideExpand}">
       <div class="top">
         <Logo v-if="settingStore.sideExpand"/>
-        <div class="row" @click="router.push('/')">
+        <button type="button" class="row" aria-label="主页" @click="router.push('/')">
           <IconFluentHome20Regular/>
           <span v-if="settingStore.sideExpand">主页</span>
-        </div>
-        <div class="row" @click="router.push('/words')">
+        </button>
+        <button type="button" class="row" aria-label="单词" @click="router.push('/words')">
           <IconFluentTextUnderlineDouble20Regular/>
           <span v-if="settingStore.sideExpand">单词</span>
-        </div>
-        <div class="row" @click="router.push('/articles')">
+        </button>
+        <button type="button" class="row" aria-label="文章" @click="router.push('/articles')">
           <!--          <IconPhArticleNyTimes/>-->
           <IconFluentBookLetter20Regular/>
           <span v-if="settingStore.sideExpand">文章</span>
-        </div>
-        <div class="row" @click="router.push('/setting')">
+        </button>
+        <button type="button" class="row" aria-label="设置" @click="router.push('/setting')">
           <IconFluentSettings20Regular/>
           <span v-if="settingStore.sideExpand">设置</span>
           <div class="red-point" :class="!settingStore.sideExpand && 'top-1 right-0'" v-if="runtimeStore.isNew"></div>
-        </div>
+        </button>
 <!--        <div class="row" @click="router.push('/user')">-->
 <!--          <IconFluentPerson20Regular/>-->
 <!--          <span v-if="settingStore.sideExpand">用户</span>-->
@@ -63,7 +63,7 @@ const {toggleTheme} = useTheme()
         </BaseIcon>
       </div>
     </div>
-    <div class="flex-1 z-1 relative">
+    <div class="content-shell flex-1 z-1 relative">
       <router-view></router-view>
     </div>
   </div>
@@ -75,6 +75,11 @@ const {toggleTheme} = useTheme()
   height: 100%;
   display: flex;
   background: var(--color-primary);
+}
+
+.content-shell {
+  min-width: 0;
+  overflow-x: hidden;
 }
 
 .aside {
@@ -92,6 +97,11 @@ const {toggleTheme} = useTheme()
   .row {
     @apply cursor-pointer rounded-md  text p-2 my-2 flex items-center gap-2 relative shrink-0;
     transition: all .5s;
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
 
     &:hover {
       background: var(--color-select-bg);

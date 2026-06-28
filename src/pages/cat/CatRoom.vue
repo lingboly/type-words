@@ -224,4 +224,28 @@ function goHome() {
     color: #bbb;
   }
 }
+
+@media (max-width: 600px) {
+  .cat-room {
+    padding: 1rem;
+  }
+
+  .cat-room-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    .header-stats {
+      flex-wrap: wrap;
+    }
+  }
+
+  .empty-state {
+    min-height: 55vh;
+  }
+}
 </style>

@@ -71,8 +71,8 @@ onMounted(() => {
         </BaseButton>
       </div>
 
-      <div class="w-60vw">
-        <div class="flex mb-5 gap-space">
+      <div class="feature-grid-wrap">
+        <div class="feature-grid mb-5">
           <div class="card">
             <div class="emoji">📚</div>
             <div class="title">单词练习</div>
@@ -115,7 +115,7 @@ onMounted(() => {
           </div>
 
         </div>
-        <div class="flex gap-space">
+        <div class="feature-grid">
           <div class="card">
             <div class="emoji">🆓</div>
             <div class="title">免费开源</div>
@@ -187,7 +187,8 @@ h3:first-child {
 }
 
 .card {
-  @apply flex flex-col items-start gap-2 mb-0 w-25%;
+  @apply flex flex-col items-start gap-2 mb-0;
+  width: auto;
 
   .emoji {
     display: inline-block;
@@ -204,6 +205,49 @@ h3:first-child {
   ul {
     margin: 0;
     padding-left: 1.2rem;
+  }
+}
+
+.feature-grid-wrap {
+  width: min(60vw, 60rem);
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space);
+}
+
+@media (max-width: 900px) {
+  .center {
+    padding-inline: 1rem;
+  }
+
+  h1 {
+    font-size: clamp(3rem, 15vw, 5rem);
+    text-align: center;
+  }
+
+  .feature-grid-wrap {
+    width: 100%;
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cat-cafe-section {
+    padding: 1.25rem;
+  }
+
+  .cat-stats {
+    gap: 1rem;
   }
 }
 
