@@ -9,7 +9,6 @@
 import type { Cat, CatSupplyTier } from '@/types/cat'
 import {
   CAT_PHOTOS,
-  CAT_RARITY_LABELS,
 } from '@/types/cat'
 import { useCatStore } from '@/stores/cat.ts'
 import BaseButton from '@/components/BaseButton.vue'
@@ -134,7 +133,6 @@ const diedDate = $computed(() => {
         <!-- Header -->
         <div class="dialog-header">
           <div>
-            <span class="rarity-pill" :class="`rarity-${cat.rarity || 'common'}`">{{ CAT_RARITY_LABELS[cat.rarity || 'common'] }}</span>
             <h2>{{ cat.name }}</h2>
           </div>
           <button class="close-btn" aria-label="关闭猫咪详情" @click="close">✕</button>
@@ -404,20 +402,6 @@ const diedDate = $computed(() => {
     font-size: 1.4rem;
     color: var(--color-cat-dark, #4E342E);
     margin: 0;
-  }
-
-  .rarity-pill {
-    display: inline-block;
-    margin-bottom: 0.2rem;
-    padding: 2px 8px;
-    border-radius: 999px;
-    color: #fff;
-    background: var(--color-cat-neutral);
-    font-size: 0.68rem;
-    font-weight: 800;
-
-    &.rarity-rare { background: var(--color-cat-premium); }
-    &.rarity-premium { background: linear-gradient(135deg, #9b88cc, #ffb347); }
   }
 
   .close-btn {

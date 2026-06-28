@@ -6,7 +6,6 @@ import {emitter, EventKey, useEvents} from "@/utils/eventBus.ts";
 import {useSettingStore} from "@/stores/setting.ts";
 import {usePracticeStore} from "@/stores/practice.ts";
 import {useCatStore} from "@/stores/cat.ts";
-import { CAT_PHOTOS } from '@/types/cat'
 import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
 import {defineAsyncComponent, nextTick, watch} from "vue";
@@ -95,13 +94,8 @@ watch(model, async (newVal) => {
     await nextTick()
     if (perfectAccuracy) {
       showCelebration = true
-      // Adopt a cat (handles random selection + persistence)
-      const newCat = catStore.recordGameSession(accuracy, statStore.total - statStore.wrong, statStore.total)
-      if (newCat) {
-        newCatPhotoKey = newCat.photoKey
-        newCatName = newCat.name
-        newCatBreed = CAT_PHOTOS.find(p => p.key === newCat.photoKey)?.breed ?? ''
-      }
+      // Perfect sessions unlock the next sequential adoption slot.
+      catStore.recordGameSession(accuracy, statStore.total - statStore.wrong, statStore.total)
       totalEarnedPoints = catStore.points
       celebrationRef?.trigger?.()
     }

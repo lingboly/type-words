@@ -68,6 +68,7 @@ describe('calculatePointsEarned', () => {
 describe('Cat type constants', () => {
   it('CAT_PHOTOS has 7 entries', () => {
     expect(CAT_PHOTOS).toHaveLength(7)
+    expect(CAT_PHOTOS.map(cat => cat.name)).toEqual(['三弟', '二弟', '一弟', '一妹', '二妹', '三妹', '花奴'])
   })
 
   it('each CAT_PHOTOS entry has key, name, breed', () => {

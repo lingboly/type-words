@@ -27,6 +27,8 @@ export interface CatTuning {
   communityHealStreak: number
   dailyPetLimit: number
   dailyPlayLimit: number
+  adoptionBasePrice: number
+  adoptionPerfectRequirement: number
   basicFoodPrice: number
   premiumFoodPrice: number
   basicToyPrice: number
@@ -86,13 +88,13 @@ export interface CatPhotoEntry {
 
 /** All available cat photos */
 export const CAT_PHOTOS: CatPhotoEntry[] = [
-  { key: '2妹-三花猫.jpg', name: '二妹', breed: '三花猫 · Calico', rarity: 'common' },
-  { key: '一妹-三花猫.jpg', name: '一妹', breed: '三花猫 · Calico', rarity: 'common' },
+  { key: '三弟-穿绿衣服的粽子狸花猫.jpg', name: '三弟', breed: '狸花猫(穿绿衣服) · Tabby in Green Outfit', rarity: 'common' },
+  { key: '二弟-蓝短猫.jpg', name: '二弟', breed: '英国短毛猫（蓝色）· British Shorthair Blue', rarity: 'common' },
   { key: '一弟-猫头鹰.jpg', name: '一弟', breed: '昵称"猫头鹰" · Owl', rarity: 'common' },
+  { key: '一妹-三花猫.jpg', name: '一妹', breed: '三花猫 · Calico', rarity: 'common' },
+  { key: '2妹-三花猫.jpg', name: '二妹', breed: '三花猫 · Calico', rarity: 'common' },
   { key: '三妹-三花猫.jpg', name: '三妹', breed: '三花猫 · Calico', rarity: 'common' },
-  { key: '二弟-蓝短猫.jpg', name: '二弟', breed: '英国短毛猫（蓝色）· British Shorthair Blue', rarity: 'rare' },
-  { key: '三弟-穿绿衣服的粽子狸花猫.jpg', name: '三弟', breed: '狸花猫(穿绿衣服) · Tabby in Green Outfit', rarity: 'rare' },
-  { key: '花奴-三花猫.jpg', name: '花奴', breed: '三花猫 · Calico', rarity: 'premium' },
+  { key: '花奴-三花猫.jpg', name: '花奴', breed: '三花猫 · Calico', rarity: 'common' },
 ]
 
 /** Cat food price in points */
@@ -155,6 +157,8 @@ export const DEFAULT_CAT_TUNING: CatTuning = {
   communityHealStreak: COMMUNITY_HEAL_STREAK,
   dailyPetLimit: MAX_DAILY_PET_POINTS,
   dailyPlayLimit: MAX_DAILY_PLAYS,
+  adoptionBasePrice: 1000,
+  adoptionPerfectRequirement: 1,
   basicFoodPrice: CAT_FOOD_PRICE,
   premiumFoodPrice: PREMIUM_CAT_FOOD_PRICE,
   basicToyPrice: CAT_TOY_PRICE,

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 /**
- * CatCelebration — 结算页猫咪领养庆祝动画
- * 全对时显示猫咪入场 + 积分滚动 + 烟花效果
+ * CatCelebration — perfect-session celebration and adoption unlock notice
  *
  * Props:
  *   isPerfect: boolean — 是否全对（决定是否显示猫咪领养）
@@ -124,20 +123,20 @@ defineExpose({ trigger })
           <div class="cat-info">
             <h3>{{ displayCatInfo.name }}</h3>
             <p class="breed">{{ displayCatInfo.breed }}</p>
-            <span class="rarity-badge">New!</span>
+            <span class="unlock-badge">New!</span>
           </div>
         </div>
 
-        <!-- Emoji 模式 （fallback when no photo） -->
+        <!-- Unlock notice when no cat is auto-adopted. -->
         <div v-else class="cat-emoji-card">
           <div class="cat-emoji-wrap anim-cat-entrance">
             <span class="cat-emoji cat-xl">🐱</span>
             <div class="pulse-ring"></div>
           </div>
           <div class="cat-info">
-            <h3>{{ displayCatInfo.name }}</h3>
-            <p class="breed">{{ displayCatInfo.breed }}</p>
-            <span class="rarity-badge">New!</span>
+            <h3>新的猫咪领取资格已解锁！</h3>
+            <p class="breed">前往领养中心，按顺序领取下一只猫咪</p>
+            <span class="unlock-badge">已解锁</span>
           </div>
         </div>
 
@@ -294,7 +293,7 @@ defineExpose({ trigger })
   }
 }
 
-.rarity-badge {
+.unlock-badge {
   display: inline-block;
   padding: 2px 10px;
   border-radius: 12px;
@@ -302,21 +301,7 @@ defineExpose({ trigger })
   font-weight: 700;
   color: #fff;
 
-  &.anim-rarity-shimmer {
-    background: linear-gradient(90deg, var(--color-cat-primary), var(--color-cat-premium), var(--color-cat-primary));
-    background-size: 200% 100%;
-    animation: rarityShimmer 2s infinite;
-  }
-
-  // Common 默认灰色
-  &:not(.anim-rarity-shimmer) {
-    background: var(--color-cat-neutral);
-  }
-}
-
-@keyframes rarityShimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  background: var(--color-cat-success);
 }
 
 .cat-count {

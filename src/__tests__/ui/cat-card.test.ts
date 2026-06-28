@@ -31,7 +31,7 @@ describe('CatCard UI', () => {
     expect(wrapper.element.tagName).toBe('BUTTON')
     expect(wrapper.get('img').attributes('alt')).toBe('二妹')
     expect(wrapper.text()).toContain('😺 健康')
-    expect(wrapper.text()).toContain('稀有')
+    expect(wrapper.text()).not.toContain('稀有')
     expect(wrapper.text()).toContain('Calico')
     expect(wrapper.find('.health').attributes('style')).toContain('82%')
     expect(wrapper.find('.hunger').attributes('style')).toContain('65%')

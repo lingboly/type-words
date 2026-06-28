@@ -65,7 +65,7 @@ describe('cat store', () => {
     expect(store.loaded).toBe(true)
   })
 
-  it('adopts a cat only after a perfect non-empty session', () => {
+  it('uses perfect sessions to unlock, without auto-adopting a cat', () => {
     const store = useCatStore()
     vi.spyOn(Math, 'random').mockReturnValue(0)
 
@@ -73,40 +73,51 @@ describe('cat store', () => {
     expect(store.recordGameSession(1, 0, 0)).toBeNull()
 
     const adopted = store.recordGameSession(1, 10, 10)
-    expect(adopted?.name).toBe('二妹')
-    expect(store.catCount).toBe(1)
+    expect(adopted).toBeNull()
+    expect(store.catCount).toBe(0)
     expect(store.perfectGames).toBe(1)
-    expect(store.newAdoptedCatId).toBe(adopted?.id)
+    expect(store.adoptionUnlockedCount).toBe(2)
   })
 
-  it('allows exactly one free common starter cat without changing study stats', () => {
+  it('claims cats in order with a doubling point cost', () => {
     const store = useCatStore()
 
-    const first = store.adoptStarterCat('2妹-三花猫.jpg')
+    expect(store.points).toBe(1000)
+    expect(store.claimNextCat('二弟-蓝短猫.jpg')).toEqual({ success: false, reason: '请先领取 三弟' })
+    const first = store.claimNextCat('三弟-穿绿衣服的粽子狸花猫.jpg')
 
     expect(first.success).toBe(true)
     expect(first.cat).toMatchObject({
-      name: '二妹',
-      rarity: 'common',
+      name: '三弟',
       health: 50,
       hunger: 50,
       affection: 50,
     })
+    expect(first.price).toBe(1000)
+    expect(store.points).toBe(0)
     expect(store.perfectGames).toBe(0)
-    expect(store.adoptStarterCat('一妹-三花猫.jpg')).toEqual({
-      success: false,
-      reason: '初始领养机会已经使用',
-    })
+    expect(store.claimNextCat('二弟-蓝短猫.jpg')).toMatchObject({ success: false })
+
+    store.recordGameSession(1, 10, 10)
+    store.addPoints(2000)
+    const second = store.claimNextCat('二弟-蓝短猫.jpg')
+    expect(second).toMatchObject({ success: true, price: 2000, cat: { name: '二弟' } })
+    expect(store.points).toBe(0)
   })
 
-  it('rejects rare cats from the free starter flow', () => {
+  it('applies parent-configured adoption price and perfect requirement', () => {
     const store = useCatStore()
 
-    expect(store.adoptStarterCat('二弟-蓝短猫.jpg')).toEqual({
-      success: false,
-      reason: '这只猫咪暂时不能作为初始伙伴',
-    })
-    expect(store.cats).toHaveLength(0)
+    store.updateTuning('adoptionBasePrice', 1500)
+    store.updateTuning('adoptionPerfectRequirement', 2)
+    expect(store.points).toBe(1500)
+    expect(store.nextAdoptionPrice).toBe(1500)
+    expect(store.adoptionUnlockedCount).toBe(1)
+
+    store.recordGameSession(1, 10, 10)
+    expect(store.adoptionUnlockedCount).toBe(1)
+    store.recordGameSession(1, 10, 10)
+    expect(store.adoptionUnlockedCount).toBe(2)
   })
 
   it('feeds a cat, spends points, and improves its state', () => {
@@ -186,7 +197,7 @@ describe('cat store', () => {
     store.resetAllData()
 
     expect(store.cats).toEqual([])
-    expect(store.points).toBe(0)
+    expect(store.points).toBe(1000)
     expect(store.perfectGames).toBe(0)
     expect(store.catEnabled).toBe(false)
   })
