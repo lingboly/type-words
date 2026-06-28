@@ -14,6 +14,8 @@ import {
   CAT_PHOTOS,
   CAT_FOOD_PRICE,
   CAT_TOY_PRICE,
+  DEFAULT_PARENT_PASSWORD_HASH,
+  hashParentPasswordLocally,
   FEED_HUNGER_REDUCTION,
   PLAY_AFFECTION_GAIN,
   PLAY_HEALTH_GAIN,
@@ -99,6 +101,13 @@ describe('Cat type constants', () => {
   it('runaway threshold is in valid range', () => {
     expect(RUNAWAY_AFFECTION_THRESHOLD).toBeGreaterThan(0)
     expect(RUNAWAY_AFFECTION_THRESHOLD).toBeLessThanOrEqual(MAX_AFFECTION)
+  })
+})
+
+describe('parent password hashing', () => {
+  it('matches the persisted SHA-256 format without Web Crypto', () => {
+    expect(hashParentPasswordLocally('1234')).toBe(DEFAULT_PARENT_PASSWORD_HASH)
+    expect(hashParentPasswordLocally('5678')).toBe('f8638b979b2f4f793ddb6dbd197e0ee25a7a6ea32b0ae22f5e3c5d119d839e75')
   })
 })
 
