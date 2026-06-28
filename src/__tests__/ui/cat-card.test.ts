@@ -9,6 +9,7 @@ const cat: Cat = {
   name: '二妹',
   adoptedAt: 0,
   status: 'healthy',
+  rarity: 'rare',
   health: 82,
   affection: 74,
   hunger: 35,
@@ -30,6 +31,7 @@ describe('CatCard UI', () => {
     expect(wrapper.element.tagName).toBe('BUTTON')
     expect(wrapper.get('img').attributes('alt')).toBe('二妹')
     expect(wrapper.text()).toContain('😺 健康')
+    expect(wrapper.text()).toContain('稀有')
     expect(wrapper.text()).toContain('Calico')
     expect(wrapper.find('.health').attributes('style')).toContain('82%')
     expect(wrapper.find('.hunger').attributes('style')).toContain('65%')
@@ -51,5 +53,18 @@ describe('CatCard UI', () => {
     expect(wrapper.text()).toContain('🆕 新伙伴！')
     expect(wrapper.text()).toContain('🤒 生病')
     expect(wrapper.get('img').classes()).toContain('grayscale')
+  })
+
+  it('shows ICU state with a visible non-color label', () => {
+    const wrapper = mount(CatCard, {
+      props: {
+        cat: { ...cat, status: 'icu', health: 0 },
+        photoUrl: '/cat.jpg',
+        breed: 'Calico',
+      },
+    })
+
+    expect(wrapper.classes()).toContain('status-icu')
+    expect(wrapper.text()).toContain('🏥 抢救中')
   })
 })

@@ -2,8 +2,15 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { createPinia, setActivePinia } from 'pinia'
 import { useCatStore } from '@/stores/cat'
 import {
+  CAT_MEDICINE_PRICE,
   CAT_FOOD_PRICE,
   CAT_TOY_PRICE,
+  COMMUNITY_HEAL_STREAK,
+  ICU_DAILY_COST,
+  MAX_DAILY_PLAYS,
+  PREMIUM_CAT_FOOD_PRICE,
+  RUNAWAY_RECALL_DAYS,
+  rollCatRarity,
   type Cat,
 } from '@/types/cat'
 
@@ -36,6 +43,7 @@ function makeCat(overrides: Partial<Cat> = {}): Cat {
 
 describe('cat store', () => {
   beforeEach(() => {
+    vi.restoreAllMocks()
     setActivePinia(createPinia())
     storage.get.mockReset()
     storage.set.mockReset()
@@ -93,7 +101,7 @@ describe('cat store', () => {
 
     expect(store.playWithCat('cat-1')).toEqual({
       success: false,
-      reason: 'Cat is too weak to play',
+      reason: '猫咪身体虚弱，暂时不能玩耍',
     })
     expect(store.points).toBe(CAT_TOY_PRICE)
   })
@@ -103,7 +111,7 @@ describe('cat store', () => {
     store.cats = [makeCat({ affection: 99, health: 100 })]
     store.points = CAT_TOY_PRICE
 
-    expect(store.playWithCat('cat-1')).toEqual({ success: true })
+    expect(store.playWithCat('cat-1')).toMatchObject({ success: true, affectionGain: 5, healthGain: 1 })
     expect(store.cats[0].affection).toBe(100)
     expect(store.cats[0].health).toBe(100)
 
@@ -156,5 +164,95 @@ describe('cat store', () => {
     expect(store.newAdoptedCat?.id).toBe('alive')
     expect(store.canAfford(30)).toBe(true)
     expect(store.canAfford(31)).toBe(false)
+  })
+
+  it('rolls only unlocked rarity tiers', () => {
+    expect(rollCatRarity(0, 0)).toBe('common')
+    expect(rollCatRarity(3, 0.1)).toBe('rare')
+    expect(rollCatRarity(10, 0.01)).toBe('premium')
+    expect(rollCatRarity(10, 0.2)).toBe('rare')
+    expect(rollCatRarity(10, 0.9)).toBe('common')
+  })
+
+  it('applies premium food effects and rejects unaffordable care', () => {
+    const store = useCatStore()
+    store.cats = [makeCat({ affection: 70, hunger: 50 })]
+    store.points = PREMIUM_CAT_FOOD_PRICE
+
+    expect(store.feedCat('cat-1', 'premium')).toEqual({ success: true })
+    expect(store.cats[0]).toMatchObject({ hunger: 30, affection: 72, feedCount: 1 })
+    expect(store.points).toBe(0)
+    expect(store.feedCat('cat-1')).toMatchObject({ success: false })
+  })
+
+  it('enforces the daily play limit without charging rejected attempts', () => {
+    const store = useCatStore()
+    store.cats = [makeCat({
+      interactionDate: new Date().toISOString().slice(0, 10),
+      dailyPlayCount: MAX_DAILY_PLAYS,
+    })]
+    store.points = CAT_TOY_PRICE
+
+    expect(store.playWithCat('cat-1')).toMatchObject({ success: false })
+    expect(store.points).toBe(CAT_TOY_PRICE)
+  })
+
+  it('heals sick and ICU cats with medicine', () => {
+    const store = useCatStore()
+    store.cats = [makeCat({ status: 'icu', health: 0 })]
+    store.points = CAT_MEDICINE_PRICE
+
+    expect(store.healCat('cat-1')).toEqual({ success: true, healthGain: 20 })
+    expect(store.cats[0]).toMatchObject({ status: 'healthy', health: 20, icuFailedDays: 0 })
+  })
+
+  it('charges ICU care by elapsed day and records failed rescue days', () => {
+    const store = useCatStore()
+    store.points = ICU_DAILY_COST
+    store.cats = [makeCat({
+      status: 'icu',
+      health: 0,
+      icuLastChargeDate: '2026-06-26',
+      icuFailedDays: 0,
+    })]
+
+    store.processIcuCharges(store.cats[0], new Date('2026-06-28T08:00:00Z').getTime())
+
+    expect(store.points).toBe(0)
+    expect(store.cats[0].icuFailedDays).toBe(1)
+    expect(store.cats[0].status).toBe('icu')
+  })
+
+  it('recalls a runaway cat after seven consecutive remote-care days', () => {
+    const store = useCatStore()
+    store.points = CAT_FOOD_PRICE
+    store.cats = [makeCat({
+      status: 'runaway',
+      runawayFeedDate: '2026-06-27',
+      runawayFeedStreak: RUNAWAY_RECALL_DAYS - 1,
+    })]
+    vi.spyOn(Date, 'now').mockReturnValue(new Date('2026-06-28T08:00:00Z').getTime())
+
+    expect(store.feedCat('cat-1')).toEqual({ success: true, recalled: true })
+    expect(store.cats[0]).toMatchObject({ status: 'healthy', affection: 50, runawayFeedStreak: 0 })
+  })
+
+  it('heals eligible cats after five consecutive perfect sessions', () => {
+    const store = useCatStore()
+    store.cats = [
+      makeCat({ id: 'sick', status: 'sick', health: 12 }),
+      makeCat({ id: 'icu', status: 'icu', health: 0 }),
+      makeCat({ id: 'away', status: 'runaway', health: 50 }),
+    ]
+    store.perfectStreak = COMMUNITY_HEAL_STREAK - 1
+    vi.spyOn(Math, 'random').mockReturnValue(0.9)
+
+    store.recordGameSession(1, 10, 10)
+
+    expect(store.getCatById('sick')).toMatchObject({ status: 'healthy', health: 100 })
+    expect(store.getCatById('icu')).toMatchObject({ status: 'icu', health: 0 })
+    expect(store.getCatById('away')).toMatchObject({ status: 'runaway', health: 50 })
+    expect(store.perfectStreak).toBe(0)
+    expect(store.communityHealCount).toBe(1)
   })
 })

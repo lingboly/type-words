@@ -1,5 +1,48 @@
 import { expect, test } from '@playwright/test'
 
+async function seedCat(page, overrides: Record<string, unknown> = {}) {
+  await page.goto('./')
+  await page.evaluate(async data => {
+    await new Promise<void>((resolve, reject) => {
+      const request = indexedDB.open('keyval-store', 1)
+      request.onupgradeneeded = () => request.result.createObjectStore('keyval')
+      request.onerror = () => reject(request.error)
+      request.onsuccess = () => {
+        const transaction = request.result.transaction('keyval', 'readwrite')
+        transaction.objectStore('keyval').put(data, 'cat-cafe-data')
+        transaction.oncomplete = () => resolve()
+        transaction.onerror = () => reject(transaction.error)
+      }
+    })
+  }, {
+    cats: [{
+      id: 'huanu-test',
+      photoKey: '花奴-三花猫.jpg',
+      name: '花奴',
+      adoptedAt: Date.now(),
+      status: 'healthy',
+      rarity: 'premium',
+      health: 100,
+      affection: 80,
+      hunger: 40,
+      feedCount: 0,
+      playCount: 0,
+      lastLoginCheck: Date.now(),
+      interactionDate: new Date().toISOString().slice(0, 10),
+      dailyPetPoints: 0,
+      dailyPlayCount: 0,
+      ...overrides,
+    }],
+    points: 120,
+    perfectGames: 4,
+    perfectStreak: 2,
+    communityHealCount: 1,
+    catEnabled: true,
+    showPracticeCompanion: true,
+    showAnimations: false,
+  })
+}
+
 test.describe('cat cafe UI', () => {
   test('empty room guides the user back to study', async ({ page }) => {
     await page.goto('./cat-room')
@@ -28,8 +71,32 @@ test.describe('cat cafe UI', () => {
     await page.goto('./')
 
     await expect(page.getByRole('heading', { name: /知识猫咖/ })).toBeVisible()
-    await expect(page.getByText('当前积分')).toBeVisible()
+    const avatar = page.getByRole('img', { name: /花奴，知识猫咖向导/ }).first()
+    await expect(avatar).toBeVisible()
+    await expect(avatar).toHaveAttribute('src', /cat-avatar-huanu/)
+    await expect(page.getByLabel('猫咖状态')).toContainText('积分')
     await page.getByRole('button', { name: '去看看猫咪们' }).click()
     await expect(page).toHaveURL(/\/cat-room$/)
+  })
+
+  test('cat room exposes collection HUD, rarity, and confirmed care spending', async ({ page }) => {
+    await seedCat(page)
+    await page.goto('./cat-room')
+
+    await expect(page.getByLabel('猫咖状态')).toContainText('120')
+    await expect(page.getByRole('button', { name: /花奴/ })).toContainText('珍藏')
+    await page.getByRole('button', { name: /花奴/ }).click()
+    await page.getByRole('button', { name: /基础猫粮/ }).click()
+    await expect(page.getByRole('alert')).toContainText('确认花费 20 积分')
+    await page.getByRole('button', { name: '确认消费' }).click()
+    await expect(page.getByText('当前积分 ⭐ 100')).toBeVisible()
+  })
+
+  test('runaway cats move to the remote-care station', async ({ page }) => {
+    await seedCat(page, { status: 'runaway', runawayFeedStreak: 3 })
+    await page.goto('./cat-room')
+
+    await expect(page.getByRole('heading', { name: /正在等你召回/ })).toBeVisible()
+    await expect(page.getByRole('button', { name: /花奴 3\/7 天/ })).toBeVisible()
   })
 })
