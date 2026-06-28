@@ -8,8 +8,11 @@ import {nextTick, onMounted, onUnmounted, watch} from "vue";
 import Tooltip from "@/components/base/Tooltip.vue";
 import SentenceHightLightWord from "@/pages/word/components/SentenceHightLightWord.vue";
 import {usePracticeStore} from "@/stores/practice.ts";
+import {useCatStore} from "@/stores/cat.ts";
+import {calculatePointsEarned, BASE_POINTS_PER_WORD, MAX_TIME_MS, SPEED_BONUS_CAP} from "@/types/cat";
 import {getDefaultWord} from "@/types/func.ts";
 import {_nextTick, sleep} from "@/utils";
+import CatDecorator from "@/components/CatDecorator.vue";
 
 interface IProps {
   word: Word,
@@ -24,6 +27,12 @@ const emit = defineEmits<{
   wrong: []
 }>()
 
+// ===== Cat Café: 积分计算 (F1 from points-economy.md) =====
+// Uses shared types from @/types/cat.ts
+
+// 记录单词开始输入时间
+let wordStartTime = $ref(Date.now())
+
 let input = $ref('')
 let wrong = $ref('')
 let showFullWord = $ref(false)
@@ -34,8 +43,16 @@ let cursor = $ref({
   top: 0,
   left: 0,
 })
+// ===== Cat Café: 猫咪反馈状态 =====
+let catPose = $ref<'idle' | 'happy' | 'sleeping' | 'purring' | 'curious' | 'annoyed' | 'sick'>('idle')
+let showPointsGain = $ref(false)
+let pointsGainValue = $ref(0)
+let catAnimClass = $ref('')
+let totalWordTime = $ref(0)
+
 const settingStore = useSettingStore()
 const statStore = usePracticeStore()
+const catStore = useCatStore()
 
 const playBeep = usePlayBeep()
 const playCorrect = usePlayCorrect()
@@ -64,6 +81,9 @@ watch(() => props.word, () => {
   wrong = input = ''
   wordRepeatCount = 0
   inputLock = false
+  wordStartTime = Date.now()
+  catPose = 'idle'
+  catAnimClass = ''
   if (settingStore.wordSound) {
     volumeIconRef?.play(400, true)
   }
@@ -159,6 +179,7 @@ async function onTyping(e: KeyboardEvent) {
 
   if (input.toLowerCase() === props.word.word.toLowerCase()) {
     playCorrect()
+    onWordCorrect() // Cat Café: 猫咪开心 + 积分
     //不需要把inputLock设为false，输入完成不能再输入了，只能删除，删除会打开锁
     if (settingStore.autoNextWord) {
       if (settingStore.repeatCount == 100) {
@@ -217,7 +238,43 @@ function play() {
   volumeIconRef?.play()
 }
 
-defineExpose({del, showWord, hideWord, play})
+// ===== Cat Café: 猫咪反馈 =====
+function onWordCorrect() {
+  // 计算积分
+  const elapsed = Date.now() - wordStartTime
+  const pts = calculatePointsEarned(elapsed)
+  totalWordTime = elapsed
+
+  // 猫咪开心
+  catPose = 'happy'
+  catAnimClass = 'anim-cat-happy'
+  showPointsGain = true
+  pointsGainValue = pts
+  catStore.addPoints(pts)
+
+  // 300ms 后重置猫咪状态
+  setTimeout(() => {
+    catPose = 'idle'
+    catAnimClass = ''
+  }, 600)
+
+  // 积分动画 1s 后消失
+  setTimeout(() => {
+    showPointsGain = false
+  }, 1000)
+}
+
+function onWordWrong() {
+  // 猫咪温柔摇头（鼓励）
+  catPose = 'annoyed'
+  catAnimClass = 'anim-cat-shake'
+  setTimeout(() => {
+    catPose = 'idle'
+    catAnimClass = ''
+  }, 800)
+}
+
+defineExpose({del, showWord, hideWord, play, onWordCorrect, onWordWrong})
 
 function mouseleave() {
   setTimeout(() => {
@@ -286,6 +343,16 @@ function checkCursorPosition() {
 
 <template>
   <div class="typing-word" ref="typingWordRef" v-if="props.word.word.length">
+    <!-- Cat Café: 猫咪装饰 + 积分反馈 -->
+    <div class="cat-feedback-zone">
+      <CatDecorator :pose="catPose" :size="'sm'" :show-animation="false" :class="catAnimClass" />
+      <Transition name="points-fade">
+        <div v-if="showPointsGain" class="points-gain-badge anim-points-gain">
+          +{{ pointsGainValue }} ⭐
+        </div>
+      </Transition>
+    </div>
+
     <div class="flex flex-col items-center">
       <div class="flex gap-1 mt-26">
         <div class="phonetic" v-if="settingStore.soundType === 'us' && word.phonetic0">[{{
@@ -426,6 +493,28 @@ function checkCursorPosition() {
   word-break: break-word;
   position: relative;
   color: var(--color-font-2);
+
+  // ===== Cat Café: 反馈区域 =====
+  .cat-feedback-zone {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.3rem;
+    z-index: 10;
+    pointer-events: none;
+
+    .points-gain-badge {
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: var(--color-cat-success);
+      background: rgba(92, 201, 167, 0.1);
+      padding: 2px 8px;
+      border-radius: 12px;
+    }
+  }
 
   .phonetic, .translate {
     font-size: 1.2rem;

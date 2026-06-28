@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import './assets/css/style.scss'
+import './assets/css/cat-animations.scss'
 import 'virtual:uno.css';
 import App from './App.vue'
 import { createPinia } from "pinia"

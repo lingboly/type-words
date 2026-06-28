@@ -30,6 +30,9 @@ import Textarea from "@/components/base/Textarea.vue";
 import SettingItem from "@/pages/setting/SettingItem.vue";
 import { get, set } from "idb-keyval";
 import { useRuntimeStore } from "@/stores/runtime.ts";
+import CatDecorator from "@/components/CatDecorator.vue";
+import { useCatStore } from "@/stores/cat.ts";
+import { onMounted } from "vue";
 
 const emit = defineEmits<{
   toggleDisabledDialogEscKey: [val: boolean]
@@ -39,6 +42,79 @@ const tabIndex = $ref(0)
 const settingStore = useSettingStore()
 const runtimeStore = useRuntimeStore()
 const store = useBaseStore()
+const catStore = useCatStore()
+
+// ===== Cat Café: 猫咪设置本地状态 =====
+let catEnabled = $ref(catStore.catEnabled)
+let showPracticeCompanion = $ref(catStore.showPracticeCompanion)
+let showAnimations = $ref(catStore.showAnimations)
+// ===== Cat Café: 家长密码门控 =====
+let showPasswordGate = $ref(true)  // 默认要求密码
+let passwordInput = $ref('')
+let passwordError = $ref('')
+let passwordAttempts = $ref(0)
+let passwordLocked = $ref(false)
+let passwordLockTimer = $ref<ReturnType<typeof setTimeout> | null>(null)
+const PARENT_PASSWORD = '1234'  // 默认家长密码
+const MAX_PASSWORD_ATTEMPTS = 5
+const PASSWORD_LOCK_DURATION = 30000  // 30秒锁定
+
+function checkPassword() {
+  if (passwordLocked) return
+  if (passwordInput === PARENT_PASSWORD) {
+    showPasswordGate = false
+    passwordError = ''
+    passwordAttempts = 0
+    passwordInput = ''
+  } else {
+    passwordAttempts++
+    passwordError = `密码错误！剩余尝试次数: ${MAX_PASSWORD_ATTEMPTS - passwordAttempts}`
+    passwordInput = ''
+    if (passwordAttempts >= MAX_PASSWORD_ATTEMPTS) {
+      passwordLocked = true
+      passwordError = '尝试次数过多，已锁定 30 秒'
+      passwordLockTimer = setTimeout(() => {
+        passwordLocked = false
+        passwordAttempts = 0
+        passwordError = ''
+        passwordLockTimer = null
+      }, PASSWORD_LOCK_DURATION)
+    }
+  }
+}
+
+// 应用设置：从本地状态同步到 store
+function applyCatSettings() {
+  catStore.catEnabled = catEnabled
+  catStore.showPracticeCompanion = showPracticeCompanion
+  catStore.showAnimations = showAnimations
+  catStore.persist()
+}
+
+// 监听本地开关变化，自动同步
+watch(() => catEnabled, () => applyCatSettings())
+watch(() => showPracticeCompanion, () => applyCatSettings())
+watch(() => showAnimations, () => applyCatSettings())
+
+// 回到猫咪设置标签时重新加载本地状态
+watch(() => tabIndex, async (newVal) => {
+  if (newVal === 7) {
+    await catStore.loadFromStorage()
+    catEnabled = catStore.catEnabled
+    showPracticeCompanion = catStore.showPracticeCompanion
+    showAnimations = catStore.showAnimations
+    showPasswordGate = true
+    passwordInput = ''
+    passwordError = ''
+  }
+})
+
+onMounted(async () => {
+  await catStore.loadFromStorage()
+  catEnabled = catStore.catEnabled
+  showPracticeCompanion = catStore.showPracticeCompanion
+  showAnimations = catStore.showAnimations
+})
 //@ts-ignore
 const gitLastCommitHash = ref(LATEST_COMMIT_HASH);
 const simpleWords = $computed({
@@ -389,6 +465,10 @@ function importOldData() {
             <IconFluentPerson20Regular width="20" />
             <span>关于</span>
           </div>
+          <div class="tab" :class="tabIndex === 7 && 'active'" @click="tabIndex = 7">
+            🐱
+            <span>猫咪设置</span>
+          </div>
         </div>
       </div>
       <div class="content">
@@ -641,6 +721,10 @@ function importOldData() {
         </div>
 
         <div v-if="tabIndex === 6" class="center flex-col">
+          <!-- Cat Café: 猫咪装饰 -->
+          <div class="mb-4">
+            <CatDecorator pose="happy" size="lg" />
+          </div>
           <h1>Type Words</h1>
           <p class=" text-xl">
             基于 https://github.com/zyronon/TypeWords 修改,删了一些收集隐私数据内容
@@ -649,8 +733,92 @@ function importOldData() {
             GitHub地址：<a href="https://github.com/pingnas/type-words"
               target="_blank">https://github.com/pingnas/type-words</a>
           </p>
+
           <div class="text-md color-gray mt-10">
             Build {{ gitLastCommitHash }}
+          </div>
+        </div>
+
+        <!-- Cat Café: 猫咪设置 -->
+        <div v-if="tabIndex === 7">
+          <!-- 家长密码门控 -->
+          <div v-if="showPasswordGate" class="password-gate">
+            <div class="password-card">
+              <div class="password-icon">🔐</div>
+              <h3>家长控制面板</h3>
+              <p class="password-desc">请输入密码以访问猫咪设置</p>
+              <div class="password-input-wrap">
+                <input
+                  v-model="passwordInput"
+                  type="password"
+                  maxlength="4"
+                  placeholder="输入4位数字密码"
+                  class="password-input"
+                  :disabled="passwordLocked"
+                  @keyup.enter="checkPassword"
+                />
+                <BaseButton class="password-btn" @click="checkPassword" :disabled="passwordLocked">
+                  确认
+                </BaseButton>
+              </div>
+              <div v-if="passwordError" class="password-error">{{ passwordError }}</div>
+              <p class="password-hint">默认密码: 1234</p>
+            </div>
+          </div>
+
+          <!-- 猫咪设置（密码解锁后可见） -->
+          <div v-else>
+            <div class="password-unlocked-bar">
+              ✅ 已解锁 —
+              <span class="relock-link" @click="showPasswordGate = true">重新锁定</span>
+            </div>
+
+            <SettingItem title="启用猫咖功能" desc="关闭后，所有猫咪元素将不显示，应用恢复为原始模式">
+              <Switch v-model="catEnabled" />
+            </SettingItem>
+
+            <SettingItem title="练习页猫咪陪伴" desc="在练习页面角落显示猫咪装饰和积分反馈">
+              <Switch v-model="showPracticeCompanion" />
+            </SettingItem>
+
+            <SettingItem title="猫咪动画" desc="开启动画效果（呼吸、尾巴摇摆、眨眼等）。关掉可减少视觉干扰">
+              <Switch v-model="showAnimations" />
+            </SettingItem>
+
+            <div class="line"></div>
+
+            <!-- Statistics -->
+            <div class="cat-stats-summary mt-6">
+              <div class="stat-row">
+                <span class="cat-icon">🐱</span>
+                <span>已领养猫咪:</span>
+                <span class="stat-value">{{ catStore.catCount }}</span>
+              </div>
+              <div class="stat-row">
+                <span class="cat-icon">⭐</span>
+                <span>总积分:</span>
+                <span class="stat-value">{{ catStore.points }}</span>
+              </div>
+              <div class="stat-row">
+                <span class="cat-icon">🎉</span>
+                <span>全对次数:</span>
+                <span class="stat-value">{{ catStore.perfectGames }}</span>
+              </div>
+              <div class="stat-row" v-if="catStore.deceasedCatCount > 0">
+                <span class="cat-icon">🌈</span>
+                <span>已离开猫咪:</span>
+                <span class="stat-value">{{ catStore.deceasedCatCount }}</span>
+              </div>
+            </div>
+
+            <div class="line mt-6"></div>
+
+            <!-- Reset -->
+            <SettingItem title="重置猫咪数据" desc="清除所有猫咪数据、积分、全对记录。此操作不可撤销！">
+              <PopConfirm @confirm="catStore.resetAllData()">
+                <BaseButton class="bg-red-500! color-white!">重置数据</BaseButton>
+              </PopConfirm>
+            </SettingItem>
           </div>
         </div>
 
@@ -788,6 +956,142 @@ function importOldData() {
     height: 100%;
     width: 100%;
     opacity: 0;
+  }
+}
+
+// ===== Cat Café: About 页猫咖统计 =====
+.cat-stats-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1rem;
+  background: var(--color-cat-cream);
+  border-radius: 12px;
+  border: 1px solid var(--color-cat-primary);
+
+  .stat-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: var(--color-cat-dark);
+
+    .cat-icon {
+      font-size: 1.3rem;
+      animation: catBreathe 3s ease-in-out infinite;
+    }
+
+    .stat-value {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--color-cat-primary);
+      min-width: 2rem;
+      text-align: center;
+    }
+  }
+}
+
+@keyframes catBreathe {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-3px); }
+}
+
+// ===== Cat Café: 家长密码门控 =====
+.password-gate {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.password-card {
+  background: var(--color-cat-cream);
+  border: 2px solid var(--color-cat-primary);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  max-width: 360px;
+  width: 100%;
+
+  .password-icon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    color: var(--color-cat-dark, #4E342E);
+    margin: 0 0 0.3rem;
+  }
+
+  .password-desc {
+    font-size: 0.9rem;
+    color: var(--color-sub-text, #8D6E63);
+    margin: 0 0 1.2rem;
+  }
+
+  .password-input-wrap {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+
+    .password-input {
+      width: 160px;
+      padding: 0.5rem 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      text-align: center;
+      letter-spacing: 0.2rem;
+      outline: none;
+
+      &:focus {
+        border-color: var(--color-cat-primary);
+      }
+
+      &:disabled {
+        background: #eee;
+        cursor: not-allowed;
+      }
+    }
+
+    .password-btn {
+      background: var(--color-cat-primary);
+      color: white;
+      border: none;
+      font-weight: 600;
+    }
+  }
+
+  .password-error {
+    margin-top: 0.8rem;
+    color: #E53935;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .password-hint {
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: #bbb;
+  }
+}
+
+.password-unlocked-bar {
+  padding: 0.5rem 1rem;
+  background: rgba(92, 201, 167, 0.1);
+  border: 1px solid var(--color-cat-success, #5CC9A7);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--color-cat-success, #5CC9A7);
+  text-align: center;
+  margin-bottom: 1rem;
+
+  .relock-link {
+    cursor: pointer;
+    color: var(--color-cat-primary);
+    font-weight: 600;
+    text-decoration: underline;
   }
 }
 </style>

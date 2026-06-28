@@ -69,6 +69,17 @@
 
   //修改的进度条底色
   --color-progress-bar: #d1d5df !important;
+
+  // ===== Cat Café Theme Colors =====
+  --color-cat-warm-bg: #FFF8F0;
+  --color-cat-primary: #FF6B6B;   // coral — cats, celebrations
+  --color-cat-success: #5CC9A7;   // mint — correct answers
+  --color-cat-encourage: #FFB347; // amber — gentle wrong answer feedback
+  --color-cat-premium: #9B88CC;   // lavender — rare items
+  --color-cat-neutral: #6B7B8D;   // cool gray — structural elements
+  --color-cat-dark: #2D2926;      // dark text — maximum contrast
+  --color-cat-cream: #FFF3E0;     // light warm background
+  --color-cat-gold: #FFB74D;      // gold accent
 }
 
 .footer {

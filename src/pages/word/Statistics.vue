@@ -5,10 +5,13 @@ import {ShortcutKey, Statistics} from "@/types/types.ts";
 import {emitter, EventKey, useEvents} from "@/utils/eventBus.ts";
 import {useSettingStore} from "@/stores/setting.ts";
 import {usePracticeStore} from "@/stores/practice.ts";
+import {useCatStore} from "@/stores/cat.ts";
+import { CAT_PHOTOS } from '@/types/cat'
 import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
-import {defineAsyncComponent, watch} from "vue";
+import {defineAsyncComponent, nextTick, watch} from "vue";
 import isoWeek from 'dayjs/plugin/isoWeek'
+import CatCelebration from "@/components/CatCelebration.vue";
 
 dayjs.extend(isoWeek)
 dayjs.extend(isBetween);
@@ -18,9 +21,17 @@ const Dialog = defineAsyncComponent(() => import('@/components/dialog/Dialog.vue
 const store = useBaseStore()
 const settingStore = useSettingStore()
 const statStore = usePracticeStore()
+const catStore = useCatStore()
 const model = defineModel({default: false})
 let list = $ref([])
 let dictIsEnd = $ref(false)
+let celebrationRef = $ref<InstanceType<typeof CatCelebration> | null>(null)
+let showCelebration = $ref(false)
+let perfectAccuracy = $ref(false)
+let totalEarnedPoints = $ref(0)
+let newCatPhotoKey = $ref('')
+let newCatName = $ref('')
+let newCatBreed = $ref('')
 
 function calcWeekList() {
   // 获取本周的起止时间
@@ -47,7 +58,7 @@ function calcWeekList() {
 }
 
 // 监听 model 弹窗打开时重新计算
-watch(model, (newVal) => {
+watch(model, async (newVal) => {
   if (newVal) {
     dictIsEnd = false;
     let data: Statistics = {
@@ -74,7 +85,26 @@ watch(model, (newVal) => {
       store.sdict.lastLearnIndex = 0
     }
     store.sdict.statistics.push(data as any)
-    calcWeekList(); // 新增：计算本周学习记录
+    calcWeekList();
+
+    // ===== Cat Café: 结算页庆祝动画 =====
+    const accuracy = statStore.total > 0 ? (statStore.total - statStore.wrong) / statStore.total : 0
+    perfectAccuracy = accuracy >= 1.0
+    totalEarnedPoints = catStore.points
+
+    await nextTick()
+    if (perfectAccuracy) {
+      showCelebration = true
+      // Adopt a cat (handles random selection + persistence)
+      const newCat = catStore.recordGameSession(accuracy, statStore.total - statStore.wrong, statStore.total)
+      if (newCat) {
+        newCatPhotoKey = newCat.photoKey
+        newCatName = newCat.name
+        newCatBreed = CAT_PHOTOS.find(p => p.key === newCat.photoKey)?.breed ?? ''
+      }
+      totalEarnedPoints = catStore.points
+      celebrationRef?.trigger?.()
+    }
   }
 })
 
@@ -102,6 +132,19 @@ function options(emitType: string) {
       :show-close="false"
       v-model="model">
     <div class="w-140 bg-white  color-black p-6 relative flex flex-col gap-6">
+      <!-- Cat Café: 全对庆祝动画 -->
+      <div v-if="showCelebration" class="celebration-zone">
+        <CatCelebration
+          ref="celebrationRef"
+          :is-perfect="perfectAccuracy"
+          :points="totalEarnedPoints"
+          :cat-count="catStore.catCount"
+          :cat-photo-key="newCatPhotoKey"
+          :cat-name="newCatName"
+          :cat-breed="newCatBreed"
+        />
+      </div>
+
       <div class="w-full flex flex-col justify-evenly">
         <div class="center text-2xl mb-2">已完成今日任务</div>
         <div class="flex">
@@ -123,6 +166,16 @@ function options(emitType: string) {
       <div class="text-xl text-center flex flex-col justify-around">
         <div>非常棒! 坚持了 <span class="color-emerald-500 font-bold text-2xl">
           {{ dayjs().diff(statStore.startDate, 'm') }}</span>分钟
+        </div>
+        <!-- Cat Café: 积分展示 -->
+        <div v-if="catStore.points > 0" class="cat-points-summary mt-2">
+          <span class="cat-icon">🐱</span>
+          <span>当前积分: </span>
+          <span class="points-value">{{ catStore.points }}</span>
+          <span class="star">⭐</span>
+          <span v-if="catStore.perfectGames > 0" class="perfect-badge">
+            🎉 全对 {{ catStore.perfectGames }} 次
+          </span>
         </div>
       </div>
       <div class="flex justify-center gap-10">
@@ -183,5 +236,57 @@ function options(emitType: string) {
   </Dialog>
 </template>
 <style scoped lang="scss">
+// ===== Cat Café: 结算页样式 =====
+.celebration-zone {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: var(--color-cat-cream);
+  border-radius: 16px;
+  border: 2px solid var(--color-cat-primary);
+}
 
+.cat-points-summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: var(--color-cat-dark);
+
+  .cat-icon {
+    font-size: 1.3rem;
+    animation: catBreathe 3s ease-in-out infinite;
+  }
+
+  .points-value {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--color-cat-primary);
+  }
+
+  .star {
+    font-size: 1.1rem;
+    animation: sparkle 1.5s ease-in-out infinite;
+  }
+
+  .perfect-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    background: var(--color-cat-success);
+    color: white;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: bold;
+  }
+}
+
+@keyframes catBreathe {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-3px); }
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.2); opacity: 0.8; }
+}
 </style>
