@@ -5,6 +5,7 @@
  */
 
 import type { Cat } from '@/types/cat'
+import { CAT_RARITY_LABELS, MAX_DAILY_PLAYS } from '@/types/cat'
 
 interface IProps {
   cat: Cat
@@ -21,6 +22,7 @@ const props = withDefaults(defineProps<IProps>(), {
 const statusEmoji: Record<string, string> = {
   healthy: '😺',
   sick: '🤒',
+  icu: '🏥',
   runaway: '🏃',
   deceased: '🌈',
 }
@@ -28,6 +30,7 @@ const statusEmoji: Record<string, string> = {
 const statusLabel: Record<string, string> = {
   healthy: '健康',
   sick: '生病',
+  icu: '抢救中',
   runaway: '离家出走',
   deceased: '已离开',
 }
@@ -61,12 +64,16 @@ const statusClass = $computed(() => `status-${props.cat.status}`)
       </div>
       <!-- Status badge -->
       <span class="status-badge">{{ statusEmoji[cat.status] }} {{ statusLabel[cat.status] }}</span>
+      <span class="rarity-badge" :class="`rarity-${cat.rarity || 'common'}`">
+        {{ CAT_RARITY_LABELS[cat.rarity || 'common'] }}
+      </span>
     </div>
 
     <!-- Info -->
     <div class="info">
       <h3>{{ cat.name }}</h3>
       <p class="breed">{{ breed }}</p>
+      <p class="adopted">领养于 {{ new Date(cat.adoptedAt).toLocaleDateString('zh-CN') }}</p>
 
       <!-- Status bars -->
       <div class="status-bars">
@@ -91,6 +98,9 @@ const statusClass = $computed(() => `status-${props.cat.status}`)
           </div>
           <span class="bar-value">{{ cat.affection }}</span>
         </div>
+      </div>
+      <div class="daily-care">
+        今日抚摸 {{ cat.dailyPetPoints || 0 }}/40 · 玩耍 {{ cat.dailyPlayCount || 0 }}/{{ MAX_DAILY_PLAYS }}
       </div>
     </div>
   </button>
@@ -128,6 +138,10 @@ const statusClass = $computed(() => `status-${props.cat.status}`)
 
   &.status-sick {
     border: 1px solid rgba(255, 152, 0, 0.3);
+  }
+
+  &.status-icu {
+    border: 2px solid rgba(239, 83, 80, 0.45);
   }
 
   &.status-runaway {
@@ -190,6 +204,21 @@ const statusClass = $computed(() => `status-${props.cat.status}`)
     font-size: 0.75rem;
     z-index: 1;
   }
+
+  .rarity-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    color: #fff;
+    background: var(--color-cat-neutral);
+    font-size: 0.72rem;
+    font-weight: 800;
+
+    &.rarity-rare { background: var(--color-cat-premium); }
+    &.rarity-premium { background: linear-gradient(135deg, #9b88cc, #ffb347); }
+  }
 }
 
 .info {
@@ -206,6 +235,18 @@ const statusClass = $computed(() => `status-${props.cat.status}`)
     color: var(--color-sub-text, #8D6E63);
     margin: 0 0 10px;
   }
+
+  .adopted {
+    margin: -6px 0 10px;
+    color: #999;
+    font-size: 0.72rem;
+  }
+}
+
+.daily-care {
+  margin-top: 0.65rem;
+  color: var(--color-cat-neutral);
+  font-size: 0.72rem;
 }
 
 .status-bars {

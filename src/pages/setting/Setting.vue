@@ -804,6 +804,21 @@ function importOldData() {
                 <span>全对次数:</span>
                 <span class="stat-value">{{ catStore.perfectGames }}</span>
               </div>
+              <div class="stat-row">
+                <span class="cat-icon">💎</span>
+                <span>稀有/珍藏:</span>
+                <span class="stat-value">{{ catStore.rarityCounts.rare + catStore.rarityCounts.premium }}</span>
+              </div>
+              <div class="stat-row">
+                <span class="cat-icon">🏥</span>
+                <span>需要医疗:</span>
+                <span class="stat-value">{{ catStore.cats.filter(cat => cat.status === 'sick' || cat.status === 'icu').length }}</span>
+              </div>
+              <div class="stat-row">
+                <span class="cat-icon">🏡</span>
+                <span>等待召回:</span>
+                <span class="stat-value">{{ catStore.runawayCatCount }}</span>
+              </div>
               <div class="stat-row" v-if="catStore.deceasedCatCount > 0">
                 <span class="cat-icon">🌈</span>
                 <span>已离开猫咪:</span>
