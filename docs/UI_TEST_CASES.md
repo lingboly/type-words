@@ -37,6 +37,11 @@ This document is the executable UI coverage map for TypeWords. Case IDs map to V
 | UI-CAT-03 | Enter the default parent password | Cat preferences and reset controls become visible | `cat-cafe.spec.ts` |
 | UI-CAT-04 | Open the home cat cafe summary | Cat count, points, perfect-game count, and room action are visible | `cat-cafe.spec.ts` |
 | UI-CAT-05 | Render healthy, sick, new, runaway, and deceased cat cards | Status text, image treatment, and progress bars match the state | `cat-card.test.ts` |
+| UI-CAT-06 | Render the shared cat guide avatar | The exact Huanu avatar asset and accessible name are present | `cat-avatar.test.ts` |
+| UI-CAT-07 | Open a populated cat room | HUD, collection progress, rarity, streak, and care counters are visible | `cat-cafe.spec.ts` |
+| UI-CAT-08 | Buy a care supply | Points remain unchanged until the explicit confirmation action | `cat-detail-dialog.test.ts`, `cat-cafe.spec.ts` |
+| UI-CAT-09 | Open a runaway cat room | The cat is removed from the café grid and appears in the seven-day remote-care station | `cat-cafe.spec.ts` |
+| UI-CAT-10 | Open an ICU cat | ICU explanation and medical actions are visible; play actions are disabled | `cat-detail-dialog.test.ts` |
 
 ## Business logic supporting the UI
 
@@ -47,6 +52,11 @@ This document is the executable UI coverage map for TypeWords. Case IDs map to V
 | UNIT-CAT-03 | Feed, play with, or pet a cat | Points and bounded health, hunger, and affection values update correctly | `cat-store.test.ts` |
 | UNIT-CAT-04 | Return after several hours | Offline hunger and health decay are applied | `cat-store.test.ts` |
 | UNIT-CAT-05 | Reset cat progress | Cat progress clears while feature preferences remain unchanged | `cat-store.test.ts` |
+| UNIT-CAT-06 | Reach daily interaction limits | Further pet/play attempts have no state or point effect | `cat-store.test.ts` |
+| UNIT-CAT-07 | Use premium food or medicine | Tier-specific costs and bounded recovery effects apply | `cat-store.test.ts` |
+| UNIT-CAT-08 | Leave a cat in ICU across days | Daily rescue points are charged and failed days are tracked | `cat-store.test.ts` |
+| UNIT-CAT-09 | Remotely care for a runaway cat for seven days | The cat returns healthy with affection reset to 50 | `cat-store.test.ts` |
+| UNIT-CAT-10 | Complete five perfect sessions consecutively | Eligible cats fully recover while ICU/runaway/deceased cats remain unchanged | `cat-store.test.ts` |
 
 ## Manual visual review checklist
 
