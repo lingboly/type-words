@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ProjectName } from "@/config/env.ts";
 import BaseButton from "@/components/BaseButton.vue";
 import BaseIcon from "@/components/BaseIcon.vue";
 import { defineAsyncComponent } from "vue";
@@ -22,7 +21,10 @@ onMounted(() => {
 <template>
   <div class="flex flex-col justify-between min-h-screen">
     <div class="center flex-col gap-8">
-      <h1>{{ ProjectName }}</h1>
+      <div class="home-brand">
+        <CatAvatar size="large" />
+        <h1>知识猫咖</h1>
+      </div>
       <div class="text-center -mt-10">
         <h2>学习英语，一次敲击，一点进步</h2>
         <h2>记忆不再盲目，学习更高效，开源单词与文章练习工具</h2>
@@ -35,8 +37,7 @@ onMounted(() => {
       <!-- Cat Café: 猫咖入口 -->
       <div v-if="catStore.catEnabled" class="cat-cafe-section">
         <div class="cat-cafe-header">
-          <CatAvatar size="large" />
-          <h2>🐾 知识猫咖</h2>
+          <h2>🐾 学习养猫两不误</h2>
           <p class="cat-cafe-subtitle">背单词赚积分，全对领猫咪，积分买猫粮养猫</p>
         </div>
 
@@ -166,6 +167,24 @@ h1 {
   margin: 2rem;
 }
 
+.home-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+
+  :deep(.cat-avatar) {
+    flex: none;
+    transform: translateY(-0.45rem);
+    box-shadow: 0 8px 24px rgba(78, 52, 46, 0.18);
+  }
+
+  h1 {
+    margin: 1rem 0;
+  }
+}
+
 h2 {
   margin: 0;
 }
@@ -214,6 +233,24 @@ h3:first-child {
   h1 {
     font-size: clamp(3rem, 15vw, 5rem);
     text-align: center;
+  }
+
+  .home-brand {
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-top: 0.35rem;
+
+    :deep(.cat-avatar-large) {
+      width: 4.8rem;
+      height: 4.8rem;
+      transform: translateY(0);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.6rem, 11vw, 3.4rem);
+      white-space: nowrap;
+    }
   }
 
   .feature-grid-wrap {
