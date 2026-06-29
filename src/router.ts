@@ -14,8 +14,10 @@ import Home from "@/pages/home/index.vue";
 import Login from "@/pages/user/login.vue";
 import User from "@/pages/user/index.vue";
 import CatRoom from "@/pages/cat/CatRoom.vue";
+import { getCurrentUsername } from '@/services/user-data'
 
 export const routes: RouteRecordRaw[] = [
+  {path: '/login', component: Login},
   {
     path: '/',
     component: PC,
@@ -36,7 +38,6 @@ export const routes: RouteRecordRaw[] = [
       {path: 'book-detail', component: BookDetail},
       {path: 'book-list', component: BookList},
       {path: 'setting', component: Setting},
-      {path: 'login', component: Login},
       {path: 'user', component: User},
       {path: 'cat-room', component: CatRoom},
     ]
@@ -61,6 +62,9 @@ const router = VueRouter.createRouter({
 })
 
 router.beforeEach((to: any, from: any) => {
+  const username = getCurrentUsername()
+  if (to.path === '/login') return username ? '/' : true
+  if (!username) return {path: '/login', query: {redirect: to.fullPath}}
   return true
   // console.log('beforeEach-to',to.path)
   // console.log('beforeEach-from',from.path)

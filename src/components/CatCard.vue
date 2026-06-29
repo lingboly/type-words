@@ -173,12 +173,12 @@ const statusClass = $computed(() => `status-${props.cat.status}`)
   position: relative;
   aspect-ratio: 1;
   overflow: hidden;
-  background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+  background: transparent;
 
   .cat-photo {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 
     &.grayscale {
       filter: grayscale(0.3);

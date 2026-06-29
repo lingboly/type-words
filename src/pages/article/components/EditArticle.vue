@@ -169,7 +169,7 @@ async function handleAudioChange(e: any) {
     file: uploadFile,
   }
   //把文件存到indexDB
-  await update(LOCAL_FILE_KEY, (val) => {
+  await update(LOCAL_FILE_KEY.key, (val) => {
     if (val) val.push(data)
     else val = [data]
     return val

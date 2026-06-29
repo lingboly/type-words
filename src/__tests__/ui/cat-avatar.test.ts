@@ -7,7 +7,7 @@ describe('CatAvatar UI', () => {
     const wrapper = mount(CatAvatar, { props: { size: 'large' } })
     const image = wrapper.get('img')
 
-    expect(image.attributes('src')).toContain('cat-avatar-huanu.jpg')
+    expect(image.attributes('src')).toContain('cat-avatar-huanu-transparent.png')
     expect(image.attributes('alt')).toContain('花奴')
     expect(wrapper.get('.cat-avatar').classes()).toContain('cat-avatar-large')
   })

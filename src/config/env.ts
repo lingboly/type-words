@@ -1,4 +1,4 @@
-import { useBaseStore } from "@/stores/base.ts";
+import { getUserDataKey } from '@/services/user-data'
 
 export const GITHUB = ''
 export const ProjectName = 'Type Words'
@@ -42,27 +42,29 @@ export const SoundFileOptions = [
   { value: '笔记本键盘', label: '笔记本键盘' },
 ]
 export const APP_VERSION = {
-  key: 'type-words-app-version',
+  get key() { return getUserDataKey('type-words-app-version') },
   version: 1
 }
 export const SAVE_DICT_KEY = {
-  key: 'typing-word-dict',
+  get key() { return getUserDataKey('typing-word-dict') },
   version: 4
 }
 export const SAVE_SETTING_KEY = {
-  key: 'typing-word-setting',
+  get key() { return getUserDataKey('typing-word-setting') },
   version: 15
 }
 export const EXPORT_DATA_KEY = {
   key: 'typing-word-export',
-  version: 4
+  version: 5
 }
-export const LOCAL_FILE_KEY = 'typing-word-files'
+export const LOCAL_FILE_KEY = {
+  get key() { return getUserDataKey('typing-word-files') }
+}
 export const PracticeSaveWordKey = {
-  key: 'PracticeSaveWord',
+  get key() { return getUserDataKey('PracticeSaveWord') },
   version: 1
 }
 export const PracticeSaveArticleKey = {
-  key: 'PracticeSaveArticle',
+  get key() { return getUserDataKey('PracticeSaveArticle') },
   version: 1
 }

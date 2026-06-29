@@ -13,6 +13,7 @@ import { CAT_PHOTOS, type Cat } from '@/types/cat'
 import CatCard from '@/components/CatCard.vue'
 import CatAvatar from '@/components/CatAvatar.vue'
 import CatHud from '@/components/CatHud.vue'
+import { getCatPhotoUrl } from '@/utils/cat-photo'
 
 const CatDetailDialog = defineAsyncComponent(() => import('@/components/CatDetailDialog.vue'))
 
@@ -36,10 +37,6 @@ const careCats = $computed(() => [
   ...catStore.aliveCats.filter(cat => cat.status === 'icu' || cat.status === 'sick' || cat.status === 'runaway'),
   ...catStore.aliveCats.filter(cat => cat.status === 'healthy'),
 ])
-
-function getPhotoUrl(photoKey: string): string {
-  return new URL(`/src/assets/img/cat-photos/${photoKey}`, import.meta.url).href
-}
 
 function getBreed(photoKey: string): string {
   return CAT_PHOTOS.find(p => p.key === photoKey)?.breed ?? ''
@@ -164,7 +161,7 @@ function isPhotoOwned(photoKey: string): boolean {
             class="starter-card"
             :class="{ locked: !isAdoptionUnlocked(index), owned: isPhotoOwned(photo.key) }"
           >
-            <img :src="getPhotoUrl(photo.key)" :alt="photo.name" />
+            <img :src="getCatPhotoUrl(photo.key)" :alt="photo.name" />
             <div>
               <div class="catalog-labels">
                 <span class="starter-label">第 {{ index + 1 }} 只</span>
@@ -235,7 +232,7 @@ function isPhotoOwned(photoKey: string): boolean {
         v-for="cat in cats"
         :key="cat.id"
         :cat="cat"
-        :photo-url="getPhotoUrl(cat.photoKey)"
+        :photo-url="getCatPhotoUrl(cat.photoKey)"
         :breed="getBreed(cat.photoKey)"
           :daily-pet-limit="catStore.tuning.dailyPetLimit"
           :daily-play-limit="catStore.tuning.dailyPlayLimit"
@@ -258,7 +255,7 @@ function isPhotoOwned(photoKey: string): boolean {
         </div>
         <div v-if="careCats.length" class="care-list">
           <button v-for="cat in careCats" :key="cat.id" type="button" class="care-row" :class="`care-${cat.status}`" @click="openDetail(cat)">
-            <img :src="getPhotoUrl(cat.photoKey)" :alt="cat.name" />
+            <img :src="getCatPhotoUrl(cat.photoKey)" :alt="cat.name" />
             <span class="care-identity"><strong>{{ cat.name }}</strong><small>{{ getBreed(cat.photoKey) }}</small></span>
             <span class="care-vitals"><small>健康 {{ cat.health }}</small><small>饱腹 {{ 100 - cat.hunger }}</small><small>亲昵 {{ cat.affection }}</small></span>
             <span class="care-action">{{ careActionLabel(cat) }} →</span>
@@ -419,7 +416,7 @@ main {
   background: #fff;
   box-shadow: 0 5px 18px rgba(93, 64, 55, 0.08);
 
-  img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+  img { width: 100%; aspect-ratio: 4 / 3; object-fit: contain; }
   > div { padding: 0.9rem; }
   h3 { margin: 0.2rem 0; color: var(--color-cat-dark); }
   p { min-height: 2.4em; margin: 0 0 0.75rem; color: var(--color-cat-neutral); font-size: 0.76rem; }
@@ -519,7 +516,7 @@ main {
   text-align: left;
   font: inherit;
 
-  img { width: 3.4rem; height: 3.4rem; border-radius: 10px; object-fit: cover; }
+  img { width: 3.4rem; height: 3.4rem; object-fit: contain; }
   &:hover { border-color: var(--color-cat-primary); }
   &:focus-visible { outline: 3px solid var(--color-cat-success); outline-offset: 2px; }
   &.care-sick, &.care-icu { border-color: rgba(239, 83, 80, 0.42); background: #fff9f8; }

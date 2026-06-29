@@ -7,18 +7,30 @@ import {useRouter} from "vue-router";
 import useTheme from "@/hooks/theme.ts";
 import BaseIcon from "@/components/BaseIcon.vue";
 import {useRuntimeStore} from "@/stores/runtime.ts";
+import { getCurrentUsername, logoutUser } from '@/services/user-data'
 
 
 const settingStore = useSettingStore()
 const runtimeStore = useRuntimeStore()
 const router = useRouter()
 const {toggleTheme} = useTheme()
+const currentUsername = getCurrentUsername()
+
+function logout() {
+  logoutUser()
+  window.location.assign(router.resolve('/login').href)
+}
 
 
 </script>
 
 <template>
   <div class="layout anim">
+    <div class="account-menu" aria-label="当前登录账户">
+      <IconFluentPerson20Regular/>
+      <span>{{ currentUsername }}</span>
+      <button type="button" @click="logout">登出</button>
+    </div>
     <!--    第一个aside 占位用-->
     <div class="aside space" :class="{'expand':settingStore.sideExpand}"></div>
     <div class="aside anim fixed" :class="{'expand':settingStore.sideExpand}">
@@ -80,6 +92,31 @@ const {toggleTheme} = useTheme()
 .content-shell {
   min-width: 0;
   overflow-x: hidden;
+}
+
+.account-menu {
+  position: fixed;
+  top: .75rem;
+  right: 1rem;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .45rem .65rem;
+  border: 1px solid var(--color-item-border);
+  border-radius: .65rem;
+  background: var(--color-second);
+  color: var(--color-font-1);
+  box-shadow: var(--shadow);
+
+  button {
+    border: 0;
+    border-left: 1px solid var(--color-item-border);
+    padding-left: .6rem;
+    background: transparent;
+    color: var(--color-icon-hightlight);
+    cursor: pointer;
+  }
 }
 
 .aside {

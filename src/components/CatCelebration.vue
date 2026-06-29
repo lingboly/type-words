@@ -12,6 +12,7 @@
  */
 
 import { CAT_PHOTOS } from '@/types/cat'
+import { getCatPhotoUrl } from '@/utils/cat-photo'
 
 interface IProps {
   isPerfect: boolean
@@ -35,13 +36,6 @@ let displayedPoints = $ref(0)
 let showCat = $ref(false)
 let showFireworks = $ref(false)
 let animationDone = $ref(false)
-
-/** Get photo URL from key */
-function getPhotoUrl(key: string): string {
-  if (!key) return ''
-  // Import.meta.url based path for Vite static assets
-  return new URL(`/src/assets/img/cat-photos/${key}`, import.meta.url).href
-}
 
 const displayCatInfo = $computed(() => {
   if (props.catName && props.catBreed) {
@@ -118,7 +112,7 @@ defineExpose({ trigger })
         <!-- 真实照片模式 -->
         <div v-if="catPhotoKey" class="cat-photo-card">
           <div class="photo-frame anim-cat-pulse">
-            <img :src="getPhotoUrl(catPhotoKey)" :alt="displayCatInfo.name" />
+            <img :src="getCatPhotoUrl(catPhotoKey)" :alt="displayCatInfo.name" />
           </div>
           <div class="cat-info">
             <h3>{{ displayCatInfo.name }}</h3>
@@ -244,7 +238,7 @@ defineExpose({ trigger })
   border-radius: 16px;
   overflow: hidden;
   border: 3px solid var(--color-cat-primary);
-  background: var(--color-cat-cream);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -252,7 +246,7 @@ defineExpose({ trigger })
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 

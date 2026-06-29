@@ -12,6 +12,7 @@ import { useRoute } from "vue-router";
 import { DictId } from "@/types/types.ts";
 import { APP_VERSION, CAN_REQUEST, LOCAL_FILE_KEY, SAVE_DICT_KEY, SAVE_SETTING_KEY } from "@/config/env.ts";
 import { syncSetting } from "@/apis";
+import { getCurrentUsername, migrateExistingDataToAdmin } from '@/services/user-data'
 
 const store = useBaseStore()
 const runtimeStore = useRuntimeStore()
@@ -36,13 +37,13 @@ watch(store.$state, (n: BaseState) => {
   if (audioFileIdList.toString() !== lastAudioFileIdList.toString()) {
     let result = []
     //删除未使用到的文件
-    get(LOCAL_FILE_KEY).then((fileList: Array<{ id: string, file: Blob }>) => {
+    get(LOCAL_FILE_KEY.key).then((fileList: Array<{ id: string, file: Blob }>) => {
       if (fileList && fileList.length > 0) {
         audioFileIdList.forEach(a => {
           let item = fileList.find(b => b.id === a)
           item && result.push(item)
         })
-        set(LOCAL_FILE_KEY, result)
+        set(LOCAL_FILE_KEY.key, result)
         lastAudioFileIdList = audioFileIdList
       }
     })
@@ -57,6 +58,8 @@ watch(settingStore.$state, (n) => {
 })
 
 async function init() {
+  if (!getCurrentUsername()) return
+  await migrateExistingDataToAdmin()
   await store.init()
   await settingStore.init()
   store.load = true

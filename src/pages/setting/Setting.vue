@@ -3,7 +3,7 @@ import { nextTick, ref, watch } from "vue";
 import { useSettingStore } from "@/stores/setting.ts";
 import { getAudioFileUrl, usePlayAudio } from "@/hooks/sound.ts";
 import { getShortcutKey, useEventListener } from "@/hooks/event.ts";
-import { checkAndUpgradeSaveDict, checkAndUpgradeSaveSetting, cloneDeep, loadJsLib, shakeCommonDict } from "@/utils";
+import { cloneDeep, loadJsLib, shakeCommonDict } from "@/utils";
 import { DefaultShortcutKeyMap, ShortcutKey } from "@/types/types.ts";
 import BaseButton from "@/components/BaseButton.vue";
 import VolumeIcon from "@/components/icon/VolumeIcon.vue";
@@ -11,10 +11,7 @@ import { useBaseStore } from "@/stores/base.ts";
 import { saveAs } from "file-saver";
 import {
   APP_NAME, APP_VERSION,
-  EXPORT_DATA_KEY,
-  LOCAL_FILE_KEY,
-  PracticeSaveArticleKey,
-  PracticeSaveWordKey, SAVE_DICT_KEY, SAVE_SETTING_KEY, SoundFileOptions
+  SAVE_DICT_KEY, SAVE_SETTING_KEY, SoundFileOptions
 } from "@/config/env.ts";
 import dayjs from "dayjs";
 import BasePage from "@/components/BasePage.vue";
@@ -34,6 +31,18 @@ import CatDecorator from "@/components/CatDecorator.vue";
 import { useCatStore } from "@/stores/cat.ts";
 import { onMounted } from "vue";
 import type { CatTuning } from '@/types/cat'
+import {
+  ADMIN_USERNAME,
+  addUser,
+  createBackup,
+  deleteUser,
+  getCurrentUsername,
+  getUserDataKey,
+  getUsers,
+  restoreBackup,
+  type LocalUser,
+  type UserBackup,
+} from '@/services/user-data'
 
 const emit = defineEmits<{
   toggleDisabledDialogEscKey: [val: boolean]
@@ -49,19 +58,7 @@ const catStore = useCatStore()
 let catEnabled = $ref(catStore.catEnabled)
 let showPracticeCompanion = $ref(catStore.showPracticeCompanion)
 let showAnimations = $ref(catStore.showAnimations)
-// ===== Cat Café: 家长密码门控 =====
-let showPasswordGate = $ref(true)  // 默认要求密码
-let passwordInput = $ref('')
-let passwordError = $ref('')
-let passwordAttempts = $ref(0)
-let passwordLocked = $ref(false)
-let passwordLockTimer = $ref<ReturnType<typeof setTimeout> | null>(null)
-let currentPassword = $ref('')
-let nextPassword = $ref('')
-let confirmPassword = $ref('')
 let testPoints = $ref(catStore.points)
-const MAX_PASSWORD_ATTEMPTS = 5
-const PASSWORD_LOCK_DURATION = 30000  // 30秒锁定
 
 const tuningGroups: Array<{ title: string; description: string; fields: Array<{ key: keyof CatTuning; label: string; unit: string; min: number; max: number; step?: number }> }> = [
   {
@@ -110,40 +107,6 @@ const tuningGroups: Array<{ title: string; description: string; fields: Array<{ 
   },
 ]
 
-async function checkPassword() {
-  if (passwordLocked) return
-  if (await catStore.verifyParentPassword(passwordInput)) {
-    showPasswordGate = false
-    passwordError = ''
-    passwordAttempts = 0
-    passwordInput = ''
-  } else {
-    passwordAttempts++
-    passwordError = `密码错误！剩余尝试次数: ${MAX_PASSWORD_ATTEMPTS - passwordAttempts}`
-    passwordInput = ''
-    if (passwordAttempts >= MAX_PASSWORD_ATTEMPTS) {
-      passwordLocked = true
-      passwordError = '尝试次数过多，已锁定 30 秒'
-      passwordLockTimer = setTimeout(() => {
-        passwordLocked = false
-        passwordAttempts = 0
-        passwordError = ''
-        passwordLockTimer = null
-      }, PASSWORD_LOCK_DURATION)
-    }
-  }
-}
-
-async function changePassword() {
-  if (!/^\d{4,8}$/.test(nextPassword)) return Toast.warning('新密码需要 4–8 位数字')
-  if (nextPassword !== confirmPassword) return Toast.warning('两次输入的新密码不一致')
-  if (!await catStore.changeParentPassword(currentPassword, nextPassword)) return Toast.error('当前密码不正确')
-  currentPassword = ''
-  nextPassword = ''
-  confirmPassword = ''
-  Toast.success('家长密码已更新')
-}
-
 function updateTuning(key: keyof CatTuning, event: Event) {
   const input = event.target as HTMLInputElement
   const value = Number(input.value)
@@ -184,9 +147,6 @@ watch(() => tabIndex, async (newVal) => {
     showPracticeCompanion = catStore.showPracticeCompanion
     showAnimations = catStore.showAnimations
     testPoints = catStore.points
-    showPasswordGate = true
-    passwordInput = ''
-    passwordError = ''
   }
 })
 
@@ -322,190 +282,112 @@ function resetShortcutKeyMap() {
 
 let exportLoading = $ref(false)
 let importLoading = $ref(false)
+let managedUsers = $ref<LocalUser[]>(getUsers())
+let newUsername = $ref('')
+let newUserPassword = $ref('')
+let confirmNewUserPassword = $ref('')
+const currentUsername = getCurrentUsername() || ADMIN_USERNAME
+const isAdmin = currentUsername === ADMIN_USERNAME
+
+async function createManagedUser() {
+  if (!isAdmin) return Toast.error('仅管理员可以新增用户')
+  if (newUserPassword !== confirmNewUserPassword) return Toast.error('两次输入的密码不一致')
+  const result = await addUser(newUsername, newUserPassword)
+  if (!result.success) return Toast.error(result.reason || '新增用户失败')
+  managedUsers = getUsers()
+  newUsername = ''
+  newUserPassword = ''
+  confirmNewUserPassword = ''
+  Toast.success('用户已新增')
+}
+
+async function removeManagedUser(username: string) {
+  if (!isAdmin) return Toast.error('仅管理员可以删除用户')
+  const result = await deleteUser(username)
+  if (!result.success) return Toast.error(result.reason || '删除用户失败')
+  managedUsers = getUsers()
+  Toast.success('用户及其全部数据已删除')
+}
 
 async function exportData(notice = '导出成功！') {
-  exportLoading = true
-  const JSZip = await loadJsLib('JSZip', `jszip.min.js`);
-  let data = {
-    version: EXPORT_DATA_KEY.version,
-    val: {
-      setting: {
-        version: SAVE_SETTING_KEY.version,
-        val: settingStore.$state
-      },
-      dict: {
-        version: SAVE_DICT_KEY.version,
-        val: shakeCommonDict(store.$state)
-      },
-      [PracticeSaveWordKey.key]: {
-        version: PracticeSaveWordKey.version,
-        val: {}
-      },
-      [PracticeSaveArticleKey.key]: {
-        version: PracticeSaveArticleKey.version,
-        val: {}
-      },
-      [APP_VERSION.key]: -1
+  if (!isAdmin) return Toast.error('仅管理员可以导出全部用户数据')
+  try {
+    exportLoading = true
+    await set(SAVE_SETTING_KEY.key, JSON.stringify({version: SAVE_SETTING_KEY.version, val: settingStore.$state}))
+    await set(SAVE_DICT_KEY.key, JSON.stringify({version: SAVE_DICT_KEY.version, val: shakeCommonDict(store.$state)}))
+    await catStore.loadFromStorage()
+    await catStore.persist()
+    const backup = await createBackup()
+    const JSZip = await loadJsLib('JSZip', 'jszip.min.js')
+    const zip = new JSZip()
+    zip.file('data.json', JSON.stringify(backup))
+    for (const user of backup.users) {
+      const records = await get(getUserDataKey('typing-word-files', user.username)) as Array<{id: string; file: Blob}> | undefined
+      const folder = zip.folder(`mp3/${encodeURIComponent(user.username)}`)
+      for (const record of records ?? []) folder.file(`${record.id}.mp3`, record.file)
     }
+    const content = await zip.generateAsync({type: 'blob'})
+    saveAs(content, `${APP_NAME}-All-Users-${dayjs().format('YYYY-MM-DD HH-mm-ss')}.zip`)
+    Toast.success(notice)
+  } catch {
+    Toast.error('导出失败！')
+  } finally {
+    exportLoading = false
   }
-  let d = localStorage.getItem(PracticeSaveWordKey.key)
-  if (d) {
-    try {
-      data.val[PracticeSaveWordKey.key] = JSON.parse(d)
-    } catch (e) {
-    }
-  }
-  let d1 = localStorage.getItem(PracticeSaveArticleKey.key)
-  if (d1) {
-    try {
-      data.val[PracticeSaveArticleKey.key] = JSON.parse(d1)
-    } catch (e) {
-    }
-  }
-  let r = await get(APP_VERSION.key)
-  data.val[APP_VERSION.key] = r
-
-  const zip = new JSZip();
-  zip.file("data.json", JSON.stringify(data));
-
-  const mp3 = zip.folder("mp3");
-  const allRecords = await get(LOCAL_FILE_KEY);
-  for (const rec of allRecords ?? []) {
-    mp3.file(rec.id + ".mp3", rec.file);
-  }
-  exportLoading = false
-  zip.generateAsync({ type: "blob" }).then(function (content) {
-    saveAs(content, `${APP_NAME}-User-Data-${dayjs().format('YYYY-MM-DD HH-mm-ss')}.zip`);
-  });
-  Toast.success(notice)
 }
 
-function importJson(str: string, notice: boolean = true) {
-  let obj = {
-    version: -1,
-    val: {
-      setting: {},
-      dict: {},
-      [PracticeSaveWordKey.key]: {},
-      [PracticeSaveArticleKey.key]: {},
-      [APP_VERSION.key]: {},
+async function applyImportedBackup(backup: UserBackup, zip?: any) {
+  await catStore.flushPersistence()
+  await restoreBackup(backup)
+  if (zip) {
+    for (const user of getUsers()) {
+      const records: Array<{id: string; file: Blob}> = []
+      const prefix = `mp3/${encodeURIComponent(user.username)}/`
+      for (const filename in zip.files) {
+        if (!filename.startsWith(prefix) || !filename.endsWith('.mp3')) continue
+        const entry = zip.file(filename)
+        if (!entry) continue
+        records.push({
+          id: filename.slice(prefix.length).replace(/\.mp3$/, ''),
+          file: await entry.async('blob'),
+        })
+      }
+      await set(getUserDataKey('typing-word-files', user.username), records)
     }
+  }
+  catStore.$reset()
+  await catStore.loadFromStorage()
+}
+
+async function importData(e: Event) {
+  const input = e.target as HTMLInputElement
+  const file = input.files?.[0]
+  if (!file) return
+  if (!isAdmin) {
+    input.value = ''
+    return Toast.error('仅管理员可以导入全部用户数据')
   }
   try {
-    obj = JSON.parse(str)
-    let data = obj.val
-    let settingState = checkAndUpgradeSaveSetting(data.setting)
-    settingState.load = true
-    settingStore.setState(settingState)
-    let baseState = checkAndUpgradeSaveDict(data.dict)
-    baseState.load = true
-    store.setState(baseState)
-    if (obj.version >= 3) {
-      try {
-        let save: any = obj.val[PracticeSaveWordKey.key] || {}
-        if (save.val && Object.keys(save.val).length > 0) {
-          localStorage.setItem(PracticeSaveWordKey.key, JSON.stringify(obj.val[PracticeSaveWordKey.key]))
-        }
-      } catch (e) {
-        //todo 上报
-      }
-    }
-    if (obj.version >= 4) {
-      try {
-        let save: any = obj.val[PracticeSaveArticleKey.key] || {}
-        if (save.val && Object.keys(save.val).length > 0) {
-          localStorage.setItem(PracticeSaveArticleKey.key, JSON.stringify(obj.val[PracticeSaveArticleKey.key]))
-        }
-      } catch (e) {
-        //todo 上报
-      }
-      try {
-        let r: any = obj.val[APP_VERSION.key] || -1
-        set(APP_VERSION.key, r)
-        runtimeStore.isNew = r ? (APP_VERSION.version > Number(r)) : true
-      } catch (e) {
-        //todo 上报
-      }
-    }
-    notice && Toast.success('导入成功！')
-  } catch (err) {
-    return Toast.error('导入失败！')
-  }
-}
-
-async function importData(e) {
-  let file = e.target.files[0]
-  if (!file) return
-  if (file.name.endsWith(".json")) {
-    let reader = new FileReader();
-    reader.onload = function (v) {
-      let str: any = v.target.result;
-      if (str) {
-        importJson(str)
-      }
-    }
-    reader.readAsText(file);
-  } else if (file.name.endsWith(".zip")) {
-    try {
-      importLoading = true
-      const JSZip = await loadJsLib('JSZip', `jszip.min.js`);
-      const zip = await JSZip.loadAsync(file);
-
-      const dataFile = zip.file("data.json");
-      if (!dataFile) {
-        return Toast.error("缺少 data.json，导入失败");
-      }
-
-      const mp3Folder = zip.folder("mp3");
-      if (mp3Folder) {
-        const records: { id: string; file: Blob }[] = [];
-        for (const filename in zip.files) {
-          if (filename.startsWith("mp3/") && filename.endsWith(".mp3")) {
-            const entry = zip.file(filename);
-            if (!entry) continue;
-            const blob = await entry.async("blob");
-            const id = filename.replace(/^mp3\//, "").replace(/\.mp3$/, "");
-            records.push({ id, file: blob });
-          }
-        }
-        await set(LOCAL_FILE_KEY, records);
-      }
-
-      const str = await dataFile.async("string");
-      importJson(str, false)
-
-      Toast.success("导入成功！");
-    } catch (e) {
-      Toast.error("导入失败！");
-    } finally {
-      importLoading = false
-    }
-  } else {
-    Toast.error("不支持的文件类型");
-  }
-}
-
-function importOldData() {
-  exportData('已为您自动保存当前数据！稍后将进行老数据导入操作')
-  setTimeout(() => {
-    let oldDataStr = localStorage.getItem('type-word-dict-v3')
-    if (oldDataStr) {
-      try {
-        let obj = JSON.parse(oldDataStr)
-        let data = {
-          version: 3,
-          val: obj
-        }
-        let baseState = checkAndUpgradeSaveDict(data)
-        store.setState(baseState)
-        Toast.success('导入成功')
-      } catch (err) {
-        Toast.error('导入失败')
-      }
+    importLoading = true
+    if (file.name.endsWith('.json')) {
+      await applyImportedBackup(JSON.parse(await file.text()) as UserBackup)
+    } else if (file.name.endsWith('.zip')) {
+      const JSZip = await loadJsLib('JSZip', 'jszip.min.js')
+      const zip = await JSZip.loadAsync(file)
+      const dataFile = zip.file('data.json')
+      if (!dataFile) throw new Error('缺少 data.json')
+      await applyImportedBackup(JSON.parse(await dataFile.async('string')) as UserBackup, zip)
     } else {
-      Toast.error('导入失败！原因：本地无老数据备份')
+      throw new Error('不支持的文件类型')
     }
-  }, 1000)
+    Toast.success('全部用户数据导入成功，页面即将重新加载')
+    setTimeout(() => window.location.reload(), 500)
+  } catch (error) {
+    Toast.error(error instanceof Error ? error.message : '导入失败！')
+  } finally {
+    input.value = ''
+    importLoading = false
+  }
 }
 </script>
 
@@ -547,7 +429,7 @@ function importOldData() {
             <IconFluentPerson20Regular width="20" />
             <span>关于</span>
           </div>
-          <div class="tab" :class="tabIndex === 7 && 'active'" @click="tabIndex = 7">
+          <div v-if="isAdmin" class="tab" :class="tabIndex === 7 && 'active'" @click="tabIndex = 7">
             🐱
             <span>猫咪设置</span>
           </div>
@@ -764,25 +646,47 @@ function importOldData() {
 
         <div v-if="tabIndex === 4">
           <div>
-            目前用户的所有数据
+            所有用户的数据
             <b class="text-red">仅保存在本地</b>。如果您需要在不同的设备、浏览器或者其他非官方部署上使用 {{ APP_NAME }}，
             您需要手动进行数据同步和保存。
           </div>
-          <BaseButton :loading="exportLoading" class="mt-3" @click="exportData()">导出数据</BaseButton>
+          <BaseButton v-if="isAdmin" :loading="exportLoading" class="mt-3" @click="exportData()">导出全部用户数据</BaseButton>
 
           <div class="line my-3"></div>
 
-          <div>请注意，导入数据后将<b class="text-red"> 完全覆盖 </b>当前所有数据，请谨慎操作。
+          <div>请注意，导入数据后将<b class="text-red"> 完全覆盖 </b>全部用户及其单词本、学习记录、猫咪、积分、设置和音频，请谨慎操作。
           </div>
-          <div class="flex gap-space mt-3">
+          <div v-if="isAdmin" class="flex gap-space mt-3">
             <div class="import hvr-grow">
-              <BaseButton :loading="importLoading">导入数据</BaseButton>
+              <BaseButton :loading="importLoading">导入全部用户数据</BaseButton>
               <input type="file" accept="application/json,.zip,application/zip" @change="importData">
             </div>
-            <PopConfirm title="导入老版本数据前，请先备份当前数据，确定要导入老版本数据吗？" @confirm="importOldData">
-              <BaseButton>老版本数据导入</BaseButton>
-            </PopConfirm>
           </div>
+          <p v-else class="text-red mt-3">仅 admin 管理员可以导入、导出和管理全部用户数据。</p>
+
+          <div class="line my-3"></div>
+          <section class="user-management">
+            <h3>用户管理</h3>
+            <p>当前登录：{{ currentUsername }}。新用户只能由管理员在此创建。</p>
+            <div v-if="isAdmin" class="new-user-form my-3">
+              <BaseInput v-model="newUsername" type="text" placeholder="新用户名" @keyup.enter="createManagedUser" />
+              <BaseInput v-model="newUserPassword" type="password" placeholder="初始密码（4–64 个字符）" />
+              <BaseInput v-model="confirmNewUserPassword" type="password" placeholder="确认初始密码" @keyup.enter="createManagedUser" />
+              <BaseButton @click="createManagedUser">增加用户</BaseButton>
+            </div>
+            <p v-else class="text-red">仅 admin 管理员可以增加或删除用户。</p>
+            <div class="managed-user" v-for="user in managedUsers" :key="user.username">
+              <span>{{ user.username }}</span>
+              <small>{{ new Date(user.createdAt).toLocaleDateString('zh-CN') }}</small>
+              <PopConfirm
+                v-if="isAdmin && user.username !== ADMIN_USERNAME && user.username !== currentUsername"
+                title="删除用户会同时删除其全部学习、猫咪和积分数据，确定继续吗？"
+                @confirm="removeManagedUser(user.username)"
+              >
+                <BaseButton class="bg-red-500! color-white!">删除用户</BaseButton>
+              </PopConfirm>
+            </div>
+          </section>
         </div>
 
         <div v-if="tabIndex === 5">
@@ -825,39 +729,10 @@ function importOldData() {
         </div>
 
         <!-- Cat Café: 猫咪设置 -->
-        <div v-if="tabIndex === 7">
-          <!-- 家长密码门控 -->
-          <div v-if="showPasswordGate" class="password-gate">
-            <div class="password-card">
-              <div class="password-icon">🔐</div>
-              <h3>家长控制面板</h3>
-              <p class="password-desc">请输入密码以访问猫咪设置</p>
-              <div class="password-input-wrap">
-                <input
-                  v-model="passwordInput"
-                  type="password"
-                  inputmode="numeric"
-                  maxlength="8"
-                  placeholder="输入4–8位数字密码"
-                  class="password-input"
-                  :disabled="passwordLocked"
-                  @keyup.enter="checkPassword"
-                />
-                <BaseButton class="password-btn" @click="checkPassword" :disabled="passwordLocked">
-                  确认
-                </BaseButton>
-              </div>
-              <div v-if="passwordError" class="password-error">{{ passwordError }}</div>
-              <p class="password-hint">初始密码: 1234（解锁后请及时修改）</p>
-            </div>
-          </div>
-
-          <!-- 猫咪设置（密码解锁后可见） -->
-          <div v-else>
-            <div class="password-unlocked-bar">
-              ✅ 已解锁 —
-              <span class="relock-link" @click="showPasswordGate = true">重新锁定</span>
-            </div>
+        <div v-if="tabIndex === 7 && isAdmin">
+          <div>
+            <h3>家长控制面板</h3>
+            <p>当前管理员：{{ currentUsername }}</p>
 
             <SettingItem title="启用猫咖功能" desc="关闭后，所有猫咪元素将不显示，应用恢复为原始模式">
               <Switch v-model="catEnabled" />
@@ -924,21 +799,6 @@ function importOldData() {
                 <BaseButton @click="applyTestPoints">应用积分</BaseButton>
                 <button type="button" class="point-preset" @click="testPoints = 0; applyTestPoints()">清零</button>
                 <button type="button" class="point-preset" @click="testPoints = 1000; applyTestPoints()">设为 1000</button>
-              </div>
-            </section>
-
-            <section class="parent-section" aria-labelledby="password-change-title">
-              <div class="section-heading">
-                <div>
-                  <h3 id="password-change-title">修改家长密码</h3>
-                  <p>密码仅保存在当前浏览器中，并以摘要形式存储。</p>
-                </div>
-              </div>
-              <div class="password-change-grid">
-                <input v-model="currentPassword" type="password" inputmode="numeric" maxlength="8" placeholder="当前密码" aria-label="当前密码" />
-                <input v-model="nextPassword" type="password" inputmode="numeric" maxlength="8" placeholder="新密码（4–8位数字）" aria-label="新密码" />
-                <input v-model="confirmPassword" type="password" inputmode="numeric" maxlength="8" placeholder="再次输入新密码" aria-label="确认新密码" @keyup.enter="changePassword" />
-                <BaseButton @click="changePassword">更新密码</BaseButton>
               </div>
             </section>
 
@@ -1119,6 +979,28 @@ function importOldData() {
   }
 }
 
+.user-management {
+  .new-user-form {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(9rem, 1fr)) auto;
+    gap: .75rem;
+    align-items: center;
+  }
+
+  .managed-user {
+    display: grid;
+    grid-template-columns: minmax(8rem, 1fr) auto auto;
+    align-items: center;
+    gap: 1rem;
+    padding: .75rem 0;
+    border-bottom: 1px solid var(--color-item-border);
+  }
+
+  @media (max-width: 900px) {
+    .new-user-form { grid-template-columns: 1fr; }
+  }
+}
+
 @media (max-width: 768px) {
   .setting {
     flex-direction: column;
@@ -1211,107 +1093,6 @@ function importOldData() {
   50%      { transform: translateY(-3px); }
 }
 
-// ===== Cat Café: 家长密码门控 =====
-.password-gate {
-  display: flex;
-  justify-content: center;
-  padding: 2rem 0;
-}
-
-.password-card {
-  box-sizing: border-box;
-  background: var(--color-cat-cream);
-  border: 2px solid var(--color-cat-primary);
-  border-radius: 16px;
-  padding: 2rem;
-  text-align: center;
-  max-width: 360px;
-  width: 100%;
-
-  .password-icon {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-  }
-
-  h3 {
-    font-size: 1.3rem;
-    color: var(--color-cat-dark, #4E342E);
-    margin: 0 0 0.3rem;
-  }
-
-  .password-desc {
-    font-size: 0.9rem;
-    color: var(--color-sub-text, #8D6E63);
-    margin: 0 0 1.2rem;
-  }
-
-  .password-input-wrap {
-    display: flex;
-    gap: 0.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-
-    .password-input {
-      width: 160px;
-      max-width: 100%;
-      padding: 0.5rem 0.8rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      text-align: center;
-      letter-spacing: 0.2rem;
-      outline: none;
-
-      &:focus {
-        border-color: var(--color-cat-primary);
-      }
-
-      &:disabled {
-        background: #eee;
-        cursor: not-allowed;
-      }
-    }
-
-    .password-btn {
-      background: var(--color-cat-primary);
-      color: white;
-      border: none;
-      font-weight: 600;
-    }
-  }
-
-  .password-error {
-    margin-top: 0.8rem;
-    color: #E53935;
-    font-size: 0.85rem;
-    font-weight: 600;
-  }
-
-  .password-hint {
-    margin-top: 1rem;
-    font-size: 0.75rem;
-    color: #bbb;
-  }
-}
-
-.password-unlocked-bar {
-  padding: 0.5rem 1rem;
-  background: rgba(92, 201, 167, 0.1);
-  border: 1px solid var(--color-cat-success, #5CC9A7);
-  border-radius: 8px;
-  font-size: 0.9rem;
-  color: var(--color-cat-success, #5CC9A7);
-  text-align: center;
-  margin-bottom: 1rem;
-
-  .relock-link {
-    cursor: pointer;
-    color: var(--color-cat-primary);
-    font-weight: 600;
-    text-decoration: underline;
-  }
-}
-
 .parent-section {
   margin: 1.25rem 0;
   padding: 1.1rem;
@@ -1380,7 +1161,7 @@ function importOldData() {
   border-color: rgba(245, 158, 11, .45);
 }
 
-.test-controls, .password-change-grid {
+.test-controls {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -1404,7 +1185,5 @@ function importOldData() {
 @media (max-width: 640px) {
   .tuning-grid { grid-template-columns: 1fr; }
   .section-heading { align-items: center; }
-  .password-change-grid { align-items: stretch; flex-direction: column; }
-  .password-change-grid input { width: 100%; }
 }
 </style>

@@ -12,6 +12,7 @@
 
 import { defineStore } from 'pinia'
 import { get as idbGet, set as idbSet } from 'idb-keyval'
+import { getUserDataKey } from '@/services/user-data'
 import type { Cat, CatPhotoEntry, CatSupplyTier, CatTuning } from '@/types/cat'
 import {
   CAT_PHOTOS,
@@ -32,6 +33,8 @@ import {
   DEFAULT_PARENT_PASSWORD_HASH,
   hashParentPassword,
 } from '@/types/cat'
+
+let pendingCatPersistence: Promise<void> = Promise.resolve()
 
 function dateKey(timestamp = Date.now()): string {
   return new Date(timestamp).toISOString().slice(0, 10)
@@ -230,7 +233,7 @@ export const useCatStore = defineStore('cat', {
     async loadFromStorage() {
       if (this.loaded) return // already loaded
       try {
-        const raw = await idbGet(CAT_STORE_DB_KEY)
+        const raw = await idbGet(getUserDataKey(CAT_STORE_DB_KEY))
         if (raw && typeof raw === 'object') {
           const data = raw as Partial<CatStoreState>
           if (Array.isArray(data.cats)) this.cats = data.cats.map(migrateCat)
@@ -264,25 +267,29 @@ export const useCatStore = defineStore('cat', {
 
     /** Persist current state to IndexedDB */
     async persist() {
-      try {
-        const data: Partial<CatStoreState> = {
-          cats: this.cats,
-          points: this.points,
-          perfectGames: this.perfectGames,
-          perfectStreak: this.perfectStreak,
-          communityHealCount: this.communityHealCount,
-          lastGameAccuracy: this.lastGameAccuracy,
-          catEnabled: this.catEnabled,
-          showPracticeCompanion: this.showPracticeCompanion,
-          showAnimations: this.showAnimations,
-          tuning: this.tuning,
-          parentPasswordHash: this.parentPasswordHash,
-          testMode: this.testMode,
-        }
-        await idbSet(CAT_STORE_DB_KEY, data)
-      } catch {
-        // IndexedDB write failed — data stays in memory
+      const key = getUserDataKey(CAT_STORE_DB_KEY)
+      const data: Partial<CatStoreState> = {
+        cats: this.cats.map(cat => ({ ...cat })),
+        points: this.points,
+        perfectGames: this.perfectGames,
+        perfectStreak: this.perfectStreak,
+        communityHealCount: this.communityHealCount,
+        lastGameAccuracy: this.lastGameAccuracy,
+        catEnabled: this.catEnabled,
+        showPracticeCompanion: this.showPracticeCompanion,
+        showAnimations: this.showAnimations,
+        tuning: { ...this.tuning },
+        parentPasswordHash: this.parentPasswordHash,
+        testMode: this.testMode,
       }
+      const write = pendingCatPersistence.then(() => idbSet(key, data))
+      pendingCatPersistence = write.catch(() => undefined)
+      await pendingCatPersistence
+    },
+
+    /** Wait until every previously requested cat write has reached IndexedDB. */
+    async flushPersistence() {
+      await pendingCatPersistence
     },
 
     // ===== Points =====

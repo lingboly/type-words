@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import huanuAvatar from '@/assets/img/cat-avatar-huanu.jpg'
+import huanuAvatar from '@/assets/img/cat-avatar-huanu-transparent.png'
 
 withDefaults(defineProps<{
   size?: 'small' | 'medium' | 'large'
@@ -19,18 +19,13 @@ withDefaults(defineProps<{
 <style scoped lang="scss">
 .cat-avatar {
   display: inline-flex;
-  overflow: hidden;
   flex: 0 0 auto;
-  border: 3px solid rgba(255, 255, 255, 0.9);
-  border-radius: 50%;
-  background: var(--color-cat-cream);
-  box-shadow: 0 6px 18px rgba(78, 52, 46, 0.18);
+  background: transparent;
 
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: 50% 34%;
+    object-fit: contain;
   }
 }
 

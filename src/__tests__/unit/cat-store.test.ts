@@ -350,7 +350,7 @@ describe('cat store', () => {
     expect(store.communityHealCount).toBe(1)
   })
 
-  it('persists and applies parent-managed prices and interaction limits', () => {
+  it('persists and applies parent-managed prices and interaction limits', async () => {
     const store = useCatStore()
     store.cats = [makeCat({ interactionDate: new Date().toISOString().slice(0, 10), dailyPlayCount: 1 })]
     store.points = 12
@@ -361,6 +361,7 @@ describe('cat store', () => {
     expect(store.feedCat('cat-1')).toEqual({ success: true })
     expect(store.points).toBe(0)
     expect(store.playWithCat('cat-1')).toMatchObject({ success: false })
+    await store.flushPersistence()
     expect(storage.set).toHaveBeenCalled()
   })
 

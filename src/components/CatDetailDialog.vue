@@ -12,6 +12,7 @@ import {
 } from '@/types/cat'
 import { useCatStore } from '@/stores/cat.ts'
 import BaseButton from '@/components/BaseButton.vue'
+import { getCatPhotoUrl } from '@/utils/cat-photo'
 
 interface IProps {
   cat: Cat
@@ -40,10 +41,6 @@ let pendingPurchase = $ref<{
   price: number
   label: string
 } | null>(null)
-
-function getPhotoUrl(photoKey: string): string {
-  return new URL(`/src/assets/img/cat-photos/${photoKey}`, import.meta.url).href
-}
 
 function getBreed(photoKey: string): string {
   return CAT_PHOTOS.find(p => p.key === photoKey)?.breed ?? ''
@@ -141,7 +138,7 @@ const diedDate = $computed(() => {
         <!-- Photo -->
         <button type="button" class="photo-section" :disabled="cat.status === 'deceased' || cat.status === 'runaway'" aria-label="抚摸猫咪" @click="handlePet">
           <img
-            :src="getPhotoUrl(cat.photoKey)"
+            :src="getCatPhotoUrl(cat.photoKey)"
             :alt="cat.name"
             class="detail-photo anim-cat-breathe"
             :class="{
@@ -437,7 +434,7 @@ const diedDate = $computed(() => {
   .detail-photo {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 
     &.grayscale {
       filter: grayscale(0.4);
