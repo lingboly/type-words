@@ -3,8 +3,8 @@ import { expect, test } from '@playwright/test'
 test('restores adopted cats after export, cat reset, and import', async ({ page }, testInfo) => {
   await page.goto('./login')
   await page.getByRole('button', { name: 'admin' }).click()
-  await page.getByLabel('首次登录，请设置密码').fill('admin-pass')
-  await page.getByLabel('确认密码').fill('admin-pass')
+  await page.getByLabel('首次登录，请设置密码').fill('AdminPass')
+  await page.getByLabel('确认密码').fill('AdminPass')
   await page.getByRole('button', { name: '设置密码并登录' }).click()
   await expect(page).toHaveURL(/\/type-words\/$/)
 

@@ -1,4 +1,4 @@
-import {beforeEach, describe, expect, it, vi} from 'vitest'
+import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest'
 import {createPinia, setActivePinia} from 'pinia'
 
 const idbState = vi.hoisted(() => ({
@@ -27,6 +27,7 @@ import {
   getUserDataKey,
   getUsers,
   loginUser,
+  logoutUser,
   migrateExistingDataToAdmin,
   restoreBackup,
   setInitialPassword,
@@ -41,26 +42,72 @@ describe('multi-user data isolation', () => {
     idbState.setHook = null
   })
 
+  afterEach(() => {
+    vi.restoreAllMocks()
+  })
+
   it('requires admin to set a password on first login', async () => {
     expect(getUsers().map(user => user.username)).toEqual([ADMIN_USERNAME])
     expect(await loginUser('missing', 'pass')).toMatchObject({success: false})
     expect(getCurrentUsername()).toBeNull()
     expect(await loginUser(ADMIN_USERNAME, 'pass')).toEqual({success: false, needsPasswordSetup: true})
-    expect(await setInitialPassword(ADMIN_USERNAME, 'admin-pass')).toEqual({success: true})
+    expect(await setInitialPassword(ADMIN_USERNAME, 'AdminPass')).toEqual({success: true})
     expect(await loginUser(ADMIN_USERNAME, 'wrong')).toMatchObject({success: false})
-    expect(await loginUser(ADMIN_USERNAME, 'admin-pass')).toEqual({success: true})
+    expect(await loginUser(ADMIN_USERNAME, 'AdminPass')).toEqual({success: true})
     expect(getCurrentUsername()).toBe(ADMIN_USERNAME)
   })
 
+  it('requires passwords of at least eight characters with uppercase and lowercase letters', async () => {
+    expect(await setInitialPassword(ADMIN_USERNAME, 'short')).toEqual({
+      success: false,
+      reason: '密码需要为 8–64 个字符，并同时包含大写和小写字母',
+    })
+    expect(await setInitialPassword(ADMIN_USERNAME, 'lowercase')).toMatchObject({success: false})
+    expect(await setInitialPassword(ADMIN_USERNAME, 'UPPERCASE')).toMatchObject({success: false})
+    expect(await setInitialPassword(ADMIN_USERNAME, 'ValidPass')).toEqual({success: true})
+
+    expect(await addUser('weak-user', 'alllowercase')).toMatchObject({success: false})
+    expect(await addUser('valid-user', 'UserPass')).toMatchObject({success: true})
+  })
+
+  it('warns after two failed passwords and locks the account for one hour after the third', async () => {
+    await setInitialPassword(ADMIN_USERNAME, 'AdminPass')
+    logoutUser()
+    const now = 1_780_000_000_000
+    vi.spyOn(Date, 'now').mockReturnValue(now)
+
+    expect(await loginUser(ADMIN_USERNAME, 'WrongPass')).toEqual({
+      success: false,
+      reason: '用户名或密码错误，还有 2 次机会',
+    })
+    expect(await loginUser(ADMIN_USERNAME, 'WrongPass')).toEqual({
+      success: false,
+      reason: '用户名或密码错误，还有 1 次机会',
+    })
+    expect(await loginUser(ADMIN_USERNAME, 'WrongPass')).toEqual({
+      success: false,
+      reason: '密码错误次数过多，已拒绝尝试 1 个小时',
+    })
+    expect(await loginUser(ADMIN_USERNAME, 'AdminPass')).toEqual({
+      success: false,
+      reason: '密码错误次数过多，已拒绝尝试 1 个小时',
+    })
+
+    vi.mocked(Date.now).mockReturnValue(now + 60 * 60 * 1000 + 1)
+    expect(await loginUser(ADMIN_USERNAME, 'AdminPass')).toEqual({success: true})
+    expect(getUsers()[0]).not.toHaveProperty('failedLoginAttempts')
+    expect(getUsers()[0]).not.toHaveProperty('lockedUntil')
+  })
+
   it('only lets admin create password-protected users and gives each user separate keys', async () => {
-    expect(await addUser('alice', 'alice-pass')).toMatchObject({success: false})
-    await setInitialPassword(ADMIN_USERNAME, 'admin-pass')
-    expect(await addUser('alice', 'alice-pass')).toMatchObject({success: true, user: {username: 'alice'}})
+    expect(await addUser('alice', 'AlicePass')).toMatchObject({success: false})
+    await setInitialPassword(ADMIN_USERNAME, 'AdminPass')
+    expect(await addUser('alice', 'AlicePass')).toMatchObject({success: true, user: {username: 'alice'}})
     expect(getUsers().find(user => user.username === 'alice')?.passwordHash).toBeTruthy()
     expect(getUserDataKey('typing-word-dict', 'alice')).not.toBe(getUserDataKey('typing-word-dict', ADMIN_USERNAME))
 
     sessionStorage.setItem(ACTIVE_USER_KEY, 'alice')
-    expect(await addUser('bob', 'bob-pass')).toMatchObject({success: false})
+    expect(await addUser('bob', 'BobPasswd')).toMatchObject({success: false})
   })
 
   it('migrates existing unscoped data to admin without resetting it', async () => {
@@ -76,8 +123,8 @@ describe('multi-user data isolation', () => {
   })
 
   it('backs up and restores every user independently', async () => {
-    await setInitialPassword(ADMIN_USERNAME, 'admin-pass')
-    await addUser('alice', 'alice-pass')
+    await setInitialPassword(ADMIN_USERNAME, 'AdminPass')
+    await addUser('alice', 'AlicePass')
     database.set(getUserDataKey('typing-word-dict', ADMIN_USERNAME), 'admin words')
     database.set(getUserDataKey('cat-cafe-data', 'alice'), {points: 99})
     localStorage.setItem(getUserDataKey('PracticeSaveArticle', 'alice'), 'alice progress')
@@ -94,8 +141,8 @@ describe('multi-user data isolation', () => {
   })
 
   it('exports and restores word memorization records and complete cat data after all current data is cleared', async () => {
-    await setInitialPassword(ADMIN_USERNAME, 'admin-pass')
-    await addUser('alice', 'alice-pass')
+    await setInitialPassword(ADMIN_USERNAME, 'AdminPass')
+    await addUser('alice', 'AlicePass')
     sessionStorage.setItem(ACTIVE_USER_KEY, 'alice')
 
     const wordDictionary = {
@@ -179,7 +226,7 @@ describe('multi-user data isolation', () => {
   })
 
   it('does not let a pending cat reset overwrite an imported backup', async () => {
-    await setInitialPassword(ADMIN_USERNAME, 'admin-pass')
+    await setInitialPassword(ADMIN_USERNAME, 'AdminPass')
     setActivePinia(createPinia())
     const catStore = useCatStore()
     catStore.cats = [{
@@ -230,8 +277,8 @@ describe('multi-user data isolation', () => {
   })
 
   it('deletes another user and all of their data', async () => {
-    await setInitialPassword(ADMIN_USERNAME, 'admin-pass')
-    await addUser('alice', 'alice-pass')
+    await setInitialPassword(ADMIN_USERNAME, 'AdminPass')
+    await addUser('alice', 'AlicePass')
     database.set(getUserDataKey('cat-cafe-data', 'alice'), {points: 99})
 
     expect(await deleteUser('alice')).toEqual({success: true})

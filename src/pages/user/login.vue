@@ -17,6 +17,7 @@ const selectedUser = $computed(() => users.find(user => user.username.toLowerCas
 const needsPasswordSetup = $computed(() => Boolean(selectedUser && !selectedUser.passwordHash))
 
 async function login() {
+  if (loggingIn) return
   if (!username.trim()) return Toast.warning('请输入用户名')
   loggingIn = true
   try {
@@ -54,6 +55,7 @@ async function login() {
         <span>确认密码</span>
         <BaseInput v-model="confirmPassword" type="password" autocomplete="new-password" @keyup.enter="login" />
       </label>
+      <p v-if="needsPasswordSetup" class="password-rule">密码至少 8 位，并同时包含大写和小写字母。</p>
       <BaseButton class="w-full" :loading="loggingIn" @click="login">{{ needsPasswordSetup ? '设置密码并登录' : '登录' }}</BaseButton>
       <div class="known-users" v-if="users.length">
         <small>可登录用户</small>
@@ -90,4 +92,5 @@ async function login() {
   button { border: 1px solid var(--color-item-border); border-radius: .4rem; padding: .35rem .65rem; cursor: pointer; }
 }
 .hint { color: gray; font-size: .85rem; }
+.password-rule { color: gray; font-size: .8rem; }
 </style>

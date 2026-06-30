@@ -670,7 +670,7 @@ async function importData(e: Event) {
             <p>当前登录：{{ currentUsername }}。新用户只能由管理员在此创建。</p>
             <div v-if="isAdmin" class="new-user-form my-3">
               <BaseInput v-model="newUsername" type="text" placeholder="新用户名" @keyup.enter="createManagedUser" />
-              <BaseInput v-model="newUserPassword" type="password" placeholder="初始密码（4–64 个字符）" />
+              <BaseInput v-model="newUserPassword" type="password" placeholder="初始密码（8–64 位，含大小写字母）" />
               <BaseInput v-model="confirmNewUserPassword" type="password" placeholder="确认初始密码" @keyup.enter="createManagedUser" />
               <BaseButton @click="createManagedUser">增加用户</BaseButton>
             </div>

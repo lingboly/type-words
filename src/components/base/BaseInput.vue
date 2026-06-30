@@ -3,6 +3,8 @@ import { ref, useAttrs, watch } from 'vue';
 import Close from "@/components/icon/Close.vue";
 import { useDisableEventListener } from "@/hooks/event.ts";
 
+defineOptions({ inheritAttrs: false })
+
 const props = defineProps({
   modelValue: [String, Number],
   placeholder: String,

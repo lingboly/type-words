@@ -5,6 +5,8 @@ export interface LocalUser {
   username: string
   createdAt: number
   passwordHash?: string
+  failedLoginAttempts?: number
+  lockedUntil?: number
 }
 
 export interface UserBackup {
@@ -23,6 +25,8 @@ export const USER_BACKUP_VERSION = 5
 export const USER_REGISTRY_KEY = 'type-words-users-v1'
 export const ACTIVE_USER_KEY = 'type-words-active-user-v1'
 const USER_MIGRATION_KEY = 'type-words-user-migration-v1'
+const MAX_LOGIN_ATTEMPTS = 3
+const LOGIN_LOCK_DURATION = 60 * 60 * 1000
 
 export const USER_INDEXED_DB_KEYS = [
   'typing-word-dict',
@@ -59,6 +63,8 @@ export function replaceUsers(users: LocalUser[]): LocalUser[] {
       username: normalizeUsername(user.username),
       createdAt: Number(user.createdAt) || Date.now(),
       passwordHash: typeof user.passwordHash === 'string' ? user.passwordHash : undefined,
+      failedLoginAttempts: Number(user.failedLoginAttempts) || undefined,
+      lockedUntil: Number(user.lockedUntil) || undefined,
     }))
     .filter((user, index, list) => user.username && list.findIndex(item => item.username === user.username) === index)
   if (!normalized.some(user => user.username === ADMIN_USERNAME)) {
@@ -69,7 +75,9 @@ export function replaceUsers(users: LocalUser[]): LocalUser[] {
 }
 
 function validatePassword(password: string): string | null {
-  if (password.length < 4 || password.length > 64) return '密码长度需要为 4–64 个字符'
+  if (password.length < 8 || password.length > 64 || !/[a-z]/.test(password) || !/[A-Z]/.test(password)) {
+    return '密码需要为 8–64 个字符，并同时包含大写和小写字母'
+  }
   return null
 }
 
@@ -97,10 +105,32 @@ export function getCurrentUsername(): string | null {
 
 export async function loginUser(username: string, password: string): Promise<{success: boolean; needsPasswordSetup?: boolean; reason?: string}> {
   const normalized = normalizeUsername(username)
-  const user = getUsers().find(item => item.username.toLowerCase() === normalized.toLowerCase())
+  const users = getUsers()
+  const user = users.find(item => item.username.toLowerCase() === normalized.toLowerCase())
   if (!user) return {success: false, reason: '用户不存在，请联系管理员添加'}
   if (!user.passwordHash) return {success: false, needsPasswordSetup: true}
-  if (await hashParentPassword(password) !== user.passwordHash) return {success: false, reason: '用户名或密码错误'}
+  const now = Date.now()
+  if ((user.lockedUntil ?? 0) > now) {
+    return {success: false, reason: '密码错误次数过多，已拒绝尝试 1 个小时'}
+  }
+  if (user.lockedUntil) {
+    user.lockedUntil = undefined
+    user.failedLoginAttempts = undefined
+  }
+  if (await hashParentPassword(password) !== user.passwordHash) {
+    const failedAttempts = (user.failedLoginAttempts ?? 0) + 1
+    user.failedLoginAttempts = failedAttempts
+    if (failedAttempts >= MAX_LOGIN_ATTEMPTS) {
+      user.lockedUntil = now + LOGIN_LOCK_DURATION
+      replaceUsers(users)
+      return {success: false, reason: '密码错误次数过多，已拒绝尝试 1 个小时'}
+    }
+    replaceUsers(users)
+    return {success: false, reason: `用户名或密码错误，还有 ${MAX_LOGIN_ATTEMPTS - failedAttempts} 次机会`}
+  }
+  user.failedLoginAttempts = undefined
+  user.lockedUntil = undefined
+  replaceUsers(users)
   sessionStorage.setItem(ACTIVE_USER_KEY, user.username)
   return {success: true}
 }
