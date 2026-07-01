@@ -35,7 +35,7 @@ function logout() {
     <div class="aside space" :class="{'expand':settingStore.sideExpand}"></div>
     <div class="aside anim fixed" :class="{'expand':settingStore.sideExpand}">
       <div class="top">
-        <Logo v-if="settingStore.sideExpand"/>
+        <Logo class="sidebar-logo" v-if="settingStore.sideExpand"/>
         <button type="button" class="row" aria-label="主页" @click="router.push('/')">
           <IconFluentHome20Regular/>
           <span v-if="settingStore.sideExpand">主页</span>
@@ -157,6 +157,69 @@ function logout() {
 
   &.expand {
     width: var(--aside-width);
+  }
+}
+
+@media (max-width: 768px) {
+  .layout {
+    box-sizing: border-box;
+    min-height: 100dvh;
+    height: 100dvh;
+    padding-bottom: calc(4.25rem + env(safe-area-inset-bottom));
+    flex-direction: column;
+  }
+
+  .content-shell {
+    width: 100%;
+    min-height: 0;
+  }
+
+  .account-menu {
+    position: relative;
+    top: auto;
+    right: auto;
+    flex-shrink: 0;
+    align-self: flex-end;
+    margin: .4rem .6rem .2rem;
+    padding: .35rem .55rem;
+    box-shadow: none;
+  }
+
+  .aside.space {
+    display: none;
+  }
+
+  .aside.fixed,
+  .aside.fixed.expand {
+    position: fixed;
+    inset: auto 0 0;
+    width: 100%;
+    height: calc(4.25rem + env(safe-area-inset-bottom));
+    padding: .35rem .75rem env(safe-area-inset-bottom);
+    flex-direction: row;
+    align-items: center;
+    z-index: 100;
+
+    .top {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    .sidebar-logo,
+    .bottom,
+    .row span {
+      display: none;
+    }
+
+    .row {
+      width: auto;
+      min-width: 2.75rem;
+      min-height: 2.75rem;
+      margin: 0;
+      justify-content: center;
+    }
   }
 }
 </style>

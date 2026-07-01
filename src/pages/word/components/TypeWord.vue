@@ -578,4 +578,37 @@ function checkCursorPosition() {
   }
 
 }
+
+@media (max-width: 768px) {
+  .typing-word {
+    box-sizing: border-box;
+    padding: 0 .25rem;
+
+    > .flex {
+      min-width: 0;
+    }
+
+    .phonetic {
+      font-size: clamp(1.1rem, 6vw, 1.6rem);
+    }
+
+    .word {
+      max-width: 100%;
+      font-size: clamp(2rem, 15vw, 4rem) !important;
+      letter-spacing: .12rem;
+      overflow-wrap: anywhere;
+      text-align: center;
+    }
+
+    .translate {
+      width: 100%;
+      font-size: clamp(1rem, 5vw, 1.4rem) !important;
+    }
+
+    .other {
+      width: 100%;
+      font-size: .95rem;
+    }
+  }
+}
 </style>

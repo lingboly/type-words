@@ -95,7 +95,7 @@ const catMood = $computed(() => {
         <span class="mood-text">{{ progress.toFixed(0) }}%</span>
       </div>
 
-      <div class="flex justify-between items-center">
+      <div class="footer-content flex justify-between items-center">
         <div class="stat">
           <div class="row">
             <div class="num">{{ `${practiceData.index}/${practiceData.words.length}` }}</div>
@@ -118,7 +118,7 @@ const catMood = $computed(() => {
             <div class="name">总错误数</div>
           </div>
         </div>
-        <div class="flex  gap-2  justify-center items-center">
+        <div class="footer-actions flex gap-2 justify-center items-center">
           <BaseIcon
               :class="!isSimple?'collect':'fill'"
               @click="$emit('toggleSimple')"
@@ -273,6 +273,53 @@ const catMood = $computed(() => {
     &.down {
       top: -90%;
       transform: rotate(90deg);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    width: 100%;
+
+    .bottom {
+      padding: .3rem .5rem .4rem;
+
+      .progress-wrapper,
+      .cat-mood-bar {
+        margin-bottom: .25rem;
+      }
+
+      .cat-mood-bar {
+        padding: .1rem;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        gap: .35rem;
+      }
+
+      .stat {
+        width: 100%;
+        margin-top: 0;
+        gap: .25rem;
+
+        .row {
+          width: auto;
+          min-width: 0;
+          flex: 1;
+          gap: .1rem;
+          font-size: .72rem;
+        }
+      }
+
+      .footer-actions {
+        width: 100%;
+        justify-content: space-around;
+      }
+    }
+
+    .progress-wrap {
+      display: none;
     }
   }
 }

@@ -650,4 +650,30 @@ provide('currentPractice', currentPractice)
     }
   }
 }
+
+@media (max-width: 768px) {
+  .footer {
+    width: 100%;
+
+    .bottom {
+      padding: .4rem;
+
+      > .flex {
+        flex-direction: column;
+      }
+
+      .stat {
+        width: 100%;
+        gap: .25rem;
+
+        .row {
+          width: auto;
+          min-width: 0;
+          flex: 1;
+          font-size: .75rem;
+        }
+      }
+    }
+  }
+}
 </style>

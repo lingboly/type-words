@@ -592,4 +592,23 @@ useEvents([
   z-index: 1;
   height: calc(100% - 1.5rem);
 }
+
+@media (max-width: 768px) {
+  .practice-word {
+    width: 100%;
+    min-width: 0;
+
+    > .absolute {
+      box-sizing: border-box;
+      padding: 0 .25rem;
+
+      .word {
+        max-width: 32vw;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+}
 </style>

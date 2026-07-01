@@ -5,6 +5,8 @@ import { useSettingStore } from "@/stores/setting.ts";
 import { ShortcutKey } from "@/types/types.ts";
 import { isMobile } from "@/utils";
 
+let mobileInputUsers = 0
+
 export function useWindowClick(cb: (e: PointerEvent) => void) {
   onMounted(() => {
     emitter.on(EventKey.closeOther, cb)
@@ -16,51 +18,70 @@ export function useWindowClick(cb: (e: PointerEvent) => void) {
 }
 
 export function useEventListener(type: string, listener: EventListenerOrEventListenerObject) {
-  onMounted(() => {
-    if (isMobile()) {
-      let tx: HTMLInputElement = document.querySelector('#typing-listener')
-      if (!tx) {
-        tx = document.createElement('input')
-        tx.id = 'typing-listener'
-        tx.type = 'text'
-      }
-      tx.addEventListener('input', (e: any) => {
-        if (e.data === ' ') e.code = 'Space'
-        if (e.data === null) {
-          e.key = 'Backspace'
-          e.keyCode = 1
-        } else {
-          e.keyCode = 66
-          e.key = e.data
-        }
+  let mobileInput: HTMLInputElement | null = null
+  let mobileInputListener: ((event: InputEvent) => void) | null = null
+  let refocusMobileInput: (() => void) | null = null
+  let active = false
 
-        e.ctrlKey = false
-        e.altKey = false
-        e.shiftKey = false
-        //@ts-ignore
-        listener(e)
-        e.target.value = '1'
-      })
-      const ss = () => {
-        setTimeout(() => tx.focus(), 100)
+  onMounted(() => {
+    active = true
+    if (isMobile()) {
+      mobileInput = document.querySelector('#typing-listener')
+      if (!mobileInput) {
+        mobileInput = document.createElement('input')
+        mobileInput.id = 'typing-listener'
+        mobileInput.type = 'text'
+        mobileInput.tabIndex = -1
+        mobileInput.autocomplete = 'off'
+        mobileInput.autocapitalize = 'off'
+        mobileInput.spellcheck = false
+        mobileInput.setAttribute('aria-label', '练习输入')
+        document.body.appendChild(mobileInput)
       }
-      window.removeEventListener('click', ss)
-      window.addEventListener('click', ss)
+
+      mobileInputUsers++
+      mobileInput.value = '1'
+      mobileInputListener = (event: InputEvent) => {
+        const values = event.data === null ? [null] : Array.from(event.data || '')
+        for (const value of values) {
+          const keyboardEvent = event as any
+          if (value === null) {
+            keyboardEvent.key = 'Backspace'
+            keyboardEvent.code = 'Backspace'
+            keyboardEvent.keyCode = 8
+          } else {
+            keyboardEvent.key = value
+            keyboardEvent.code = value === ' ' ? 'Space' : `Key${value.toUpperCase()}`
+            keyboardEvent.keyCode = value === ' ' ? 32 : value.toUpperCase().charCodeAt(0)
+          }
+          keyboardEvent.ctrlKey = false
+          keyboardEvent.altKey = false
+          keyboardEvent.shiftKey = false
+          listener instanceof Function ? listener(keyboardEvent) : listener.handleEvent(keyboardEvent)
+        }
+        mobileInput!.value = '1'
+      }
+      mobileInput.addEventListener('input', mobileInputListener)
+      refocusMobileInput = () => {
+        setTimeout(() => mobileInput?.focus({preventScroll: true}), 100)
+      }
+      window.addEventListener('click', refocusMobileInput)
       window.addEventListener(type, listener)
-      document.body.appendChild(tx)
-      tx.focus()
+      mobileInput.focus({preventScroll: true})
     } else {
       window.addEventListener(type, listener)
     }
   })
   const remove = () => {
+    if (!active) return
+    active = false
     if (isMobile()) {
-      let s = document.querySelector('#typing-listener')
-      if (s) {
-        s.removeEventListener(type, listener)
-        s.parentNode.removeChild(s)
-      }
+      if (mobileInput && mobileInputListener) mobileInput.removeEventListener('input', mobileInputListener)
+      if (refocusMobileInput) window.removeEventListener('click', refocusMobileInput)
       window.removeEventListener(type, listener)
+      mobileInputUsers = Math.max(0, mobileInputUsers - 1)
+      if (mobileInputUsers === 0) mobileInput?.remove()
+      mobileInput = null
     } else {
       window.removeEventListener(type, listener)
     }
