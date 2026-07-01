@@ -189,6 +189,14 @@ test.describe('responsive UI', () => {
     expect(focusedAfterTap).toBe('typing-listener')
 
     await input.evaluate(element => {
+      const imeKeydown = new KeyboardEvent('keydown', {
+        key: 'Unidentified',
+        code: '',
+        bubbles: true,
+      })
+      Object.defineProperty(imeKeydown, 'keyCode', {value: 229})
+      window.dispatchEvent(imeKeydown)
+
       const keyboardProxy = element as HTMLInputElement
       keyboardProxy.value = '1m'
       keyboardProxy.dispatchEvent(new InputEvent('input', {

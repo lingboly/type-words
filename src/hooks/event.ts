@@ -146,6 +146,9 @@ export function useStartKeyboardEventListener() {
 
   useEventListener('keydown', (e: KeyboardEvent) => {
     if (!runtimeStore.disableEventListener) {
+      // Android IMEs send keyCode 229 before the real input event. Processing
+      // this placeholder would lock the word and discard the following letter.
+      if (isMobile() && e.keyCode === 229) return
 
       // 检查当前单词是否包含空格，如果包含，则空格键应该被视为输入
       if (e.code === 'Space') {
