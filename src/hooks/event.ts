@@ -6,6 +6,24 @@ import { ShortcutKey } from "@/types/types.ts";
 import { isMobile } from "@/utils";
 
 let mobileInputUsers = 0
+const mobileInputEventValues = new WeakMap<InputEvent, Array<string | null>>()
+
+function focusMobileInput(input: HTMLInputElement | null) {
+  if (!input) return
+  input.focus({preventScroll: true})
+  input.setSelectionRange(input.value.length, input.value.length)
+}
+
+function getMobileInputValues(event: InputEvent, input: HTMLInputElement): Array<string | null> {
+  const cached = mobileInputEventValues.get(event)
+  if (cached) return cached
+
+  const isDeletion = event.inputType.startsWith('delete') || (event.data === null && input.value === '')
+  const inputValue = input.value.startsWith('1') ? input.value.slice(1) : input.value
+  const values = isDeletion ? [null] : Array.from(event.data ?? inputValue)
+  mobileInputEventValues.set(event, values)
+  return values
+}
 
 export function useWindowClick(cb: (e: PointerEvent) => void) {
   onMounted(() => {
@@ -35,6 +53,9 @@ export function useEventListener(type: string, listener: EventListenerOrEventLis
         mobileInput.autocomplete = 'off'
         mobileInput.autocapitalize = 'off'
         mobileInput.spellcheck = false
+        mobileInput.inputMode = 'text'
+        mobileInput.lang = 'en'
+        mobileInput.setAttribute('autocorrect', 'off')
         mobileInput.setAttribute('aria-label', '练习输入')
         document.body.appendChild(mobileInput)
       }
@@ -42,7 +63,7 @@ export function useEventListener(type: string, listener: EventListenerOrEventLis
       mobileInputUsers++
       mobileInput.value = '1'
       mobileInputListener = (event: InputEvent) => {
-        const values = event.data === null ? [null] : Array.from(event.data || '')
+        const values = getMobileInputValues(event, mobileInput!)
         for (const value of values) {
           const keyboardEvent = event as any
           if (value === null) {
@@ -60,14 +81,15 @@ export function useEventListener(type: string, listener: EventListenerOrEventLis
           listener instanceof Function ? listener(keyboardEvent) : listener.handleEvent(keyboardEvent)
         }
         mobileInput!.value = '1'
+        mobileInput!.setSelectionRange(1, 1)
       }
       mobileInput.addEventListener('input', mobileInputListener)
       refocusMobileInput = () => {
-        setTimeout(() => mobileInput?.focus({preventScroll: true}), 100)
+        focusMobileInput(mobileInput)
       }
       window.addEventListener('click', refocusMobileInput)
       window.addEventListener(type, listener)
-      mobileInput.focus({preventScroll: true})
+      focusMobileInput(mobileInput)
     } else {
       window.addEventListener(type, listener)
     }

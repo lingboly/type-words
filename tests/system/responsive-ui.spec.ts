@@ -180,8 +180,22 @@ test.describe('responsive UI', () => {
     expect(practiceContent!.height).toBeGreaterThan(practiceLayout!.height * 0.8)
     await expect(page.locator('.panel-wrap .panel')).not.toBeVisible()
 
+    const focusedAfterTap = await page.locator('.typing-word').evaluate(element => {
+      const keyboardProxy = document.querySelector<HTMLInputElement>('#typing-listener')!
+      keyboardProxy.blur()
+      element.click()
+      return document.activeElement?.id
+    })
+    expect(focusedAfterTap).toBe('typing-listener')
+
     await input.evaluate(element => {
-      element.dispatchEvent(new InputEvent('input', {data: 'm', inputType: 'insertText', bubbles: true}))
+      const keyboardProxy = element as HTMLInputElement
+      keyboardProxy.value = '1m'
+      keyboardProxy.dispatchEvent(new InputEvent('input', {
+        data: null,
+        inputType: 'insertCompositionText',
+        bubbles: true,
+      }))
     })
     await expect(page.locator('.typing-word .word .input')).toHaveText('m')
 
