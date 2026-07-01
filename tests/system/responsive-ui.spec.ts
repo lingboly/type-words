@@ -169,6 +169,7 @@ test.describe('responsive UI', () => {
     const inputBox = await input.boundingBox()
     expect(inputBox!.width).toBeLessThanOrEqual(1)
     expect(inputBox!.height).toBeLessThanOrEqual(1)
+    await expect(input).toHaveCSS('top', '0px')
 
     const practice = await page.locator('.practice-word').boundingBox()
     const practiceLayout = await page.locator('.practice-layout').boundingBox()
@@ -211,6 +212,14 @@ test.describe('responsive UI', () => {
       element.dispatchEvent(new InputEvent('input', {data: null, inputType: 'deleteContentBackward', bubbles: true}))
     })
     await expect(page.locator('.typing-word .word .input')).toHaveCount(0)
+
+    await page.locator('.layout').evaluate(element => element.classList.add('keyboard-open'))
+    await expect(page.locator('.account-menu')).not.toBeVisible()
+    await expect(page.locator('.aside.fixed')).not.toBeVisible()
+    await expect(page.locator('.footer-wrap')).not.toBeVisible()
+    await expect(page.locator('.typing-word .translate')).not.toBeVisible()
+    await expect(page.locator('.typing-word .word')).toBeInViewport()
+    await page.locator('.layout').evaluate(element => element.classList.remove('keyboard-open'))
 
     const nextButton = page.getByRole('button', {name: '下一个单词'})
     await expect(nextButton).toBeVisible()

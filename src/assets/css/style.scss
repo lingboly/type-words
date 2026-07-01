@@ -455,7 +455,7 @@ a {
 #typing-listener {
   position: fixed;
   left: 0;
-  bottom: 0;
+  top: 0;
   z-index: 9999;
   width: 1px;
   height: 1px;
@@ -464,6 +464,12 @@ a {
   opacity: 0;
   pointer-events: none;
   font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .layout.keyboard-open .practice-word > .absolute {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {

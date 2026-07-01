@@ -105,6 +105,23 @@ defineProps<{
     z-index: 90;
     height: auto;
   }
+
 }
 
+</style>
+
+<style lang="scss">
+@media (max-width: 768px) {
+  .layout.keyboard-open {
+    .practice-layout,
+    .practice-layout .wrap {
+      height: 100% !important;
+    }
+
+    .practice-layout .panel-wrap,
+    .practice-layout .footer-wrap {
+      display: none;
+    }
+  }
+}
 </style>

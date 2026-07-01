@@ -4,6 +4,7 @@ import {ShortcutKey} from "@/types/types.ts";
 import Logo from "@/components/Logo.vue";
 import {useSettingStore} from "@/stores/setting.ts";
 import {useRouter} from "vue-router";
+import {onMounted, onUnmounted, ref} from 'vue'
 import useTheme from "@/hooks/theme.ts";
 import BaseIcon from "@/components/BaseIcon.vue";
 import {useRuntimeStore} from "@/stores/runtime.ts";
@@ -15,6 +16,23 @@ const runtimeStore = useRuntimeStore()
 const router = useRouter()
 const {toggleTheme} = useTheme()
 const currentUsername = getCurrentUsername()
+const keyboardOpen = ref(false)
+
+function updateKeyboardState() {
+  const viewport = window.visualViewport
+  keyboardOpen.value = Boolean(viewport && viewport.height < window.innerHeight * 0.75)
+}
+
+onMounted(() => {
+  updateKeyboardState()
+  window.visualViewport?.addEventListener('resize', updateKeyboardState)
+  window.addEventListener('resize', updateKeyboardState)
+})
+
+onUnmounted(() => {
+  window.visualViewport?.removeEventListener('resize', updateKeyboardState)
+  window.removeEventListener('resize', updateKeyboardState)
+})
 
 function logout() {
   logoutUser()
@@ -25,7 +43,7 @@ function logout() {
 </script>
 
 <template>
-  <div class="layout anim">
+  <div class="layout anim" :class="{'keyboard-open': keyboardOpen}">
     <div class="account-menu" aria-label="当前登录账户">
       <IconFluentPerson20Regular/>
       <span>{{ currentUsername }}</span>
@@ -219,6 +237,19 @@ function logout() {
       min-height: 2.75rem;
       margin: 0;
       justify-content: center;
+    }
+  }
+
+  .layout.keyboard-open {
+    padding-bottom: 0;
+
+    .account-menu,
+    .aside.fixed {
+      display: none;
+    }
+
+    .content-shell {
+      height: 100%;
     }
   }
 }

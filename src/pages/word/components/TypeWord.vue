@@ -348,7 +348,7 @@ function checkCursorPosition() {
     </div>
 
     <div class="flex flex-col items-center">
-      <div class="flex gap-1 mt-26">
+      <div class="word-heading flex gap-1 mt-26">
         <div class="phonetic" v-if="settingStore.soundType === 'us' && word.phonetic0">[{{
             (settingStore.dictation && !showFullWord) ? '_'.repeat(word.phonetic0.length) : word.phonetic0
           }}]
@@ -608,6 +608,30 @@ function checkCursorPosition() {
     .other {
       width: 100%;
       font-size: .95rem;
+    }
+  }
+
+}
+</style>
+
+<style lang="scss">
+@media (max-width: 768px) {
+  .layout.keyboard-open .typing-word {
+    overflow: hidden;
+
+    .cat-feedback-zone,
+    .translate,
+    .other {
+      display: none;
+    }
+
+    .word-heading {
+      margin-top: .25rem;
+    }
+
+    .word {
+      font-size: clamp(2rem, 14vw, 3.25rem) !important;
+      line-height: 1;
     }
   }
 }
