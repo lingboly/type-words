@@ -438,26 +438,30 @@ useEvents([
     <template v-slot:practice>
       <div class="practice-word">
         <div class="absolute z-1 top-4   w-full" v-if="settingStore.showNearWord">
-          <div class="center gap-2 cursor-pointer float-left"
-               @click="prev"
-               v-if="prevWord">
+          <button type="button"
+                  class="near-word-button center gap-2 cursor-pointer float-left"
+                  aria-label="上一个单词"
+                  @click="prev"
+                  v-if="prevWord">
             <IconFluentArrowLeft16Regular class="arrow" width="22"/>
             <Tooltip
                 :title="`上一个(${settingStore.shortcutKeyMap[ShortcutKey.Previous]})`"
             >
               <div class="word">{{ prevWord.word }}</div>
             </Tooltip>
-          </div>
-          <div class="center gap-2 cursor-pointer float-right "
-               @click="next(false)"
-               v-if="nextWord">
+          </button>
+          <button type="button"
+                  class="near-word-button center gap-2 cursor-pointer float-right"
+                  aria-label="下一个单词"
+                  @click="next(false)"
+                  v-if="nextWord">
             <Tooltip
                 :title="`下一个(${settingStore.shortcutKeyMap[ShortcutKey.Next]})`"
             >
               <div class="word" :class="settingStore.dictation && 'word-shadow'">{{ nextWord.word }}</div>
             </Tooltip>
             <IconFluentArrowRight16Regular class="arrow" width="22"/>
-          </div>
+          </button>
           <button
               v-else-if="isLastWord"
               type="button"
@@ -581,6 +585,21 @@ useEvents([
   &:focus-visible {
     outline: 3px solid color-mix(in srgb, var(--color-icon-hightlight) 35%, transparent);
     outline-offset: 2px;
+  }
+}
+
+.near-word-button {
+  min-height: 2.75rem;
+  padding: .45rem .6rem;
+  border: 0;
+  border-radius: .5rem;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  touch-action: manipulation;
+
+  &:active {
+    background: var(--color-item-bg);
   }
 }
 

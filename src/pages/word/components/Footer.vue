@@ -5,7 +5,6 @@ import { usePracticeStore } from "@/stores/practice.ts";
 import { useSettingStore } from "@/stores/setting.ts";
 import { ShortcutKey, PracticeData } from "@/types/types.ts";
 import BaseIcon from "@/components/BaseIcon.vue";
-import Tooltip from "@/components/base/Tooltip.vue";
 import Progress from '@/components/base/Progress.vue'
 import CatDecorator from "@/components/CatDecorator.vue";
 
@@ -70,21 +69,26 @@ const catMood = $computed(() => {
 </script>
 
 <template>
-  <div class="footer">
-    <Tooltip :title="settingStore.showToolbar?'收起':'展开'">
+  <div class="footer" :class="{collapsed: !settingStore.showToolbar}">
+    <button
+        type="button"
+        class="toolbar-toggle"
+        :aria-label="settingStore.showToolbar ? '收起学习工具栏' : '展开学习工具栏'"
+        :title="settingStore.showToolbar ? '收起' : '展开'"
+        @click="settingStore.showToolbar = !settingStore.showToolbar"
+    >
       <IconFluentChevronLeft20Filled
-          @click="settingStore.showToolbar = !settingStore.showToolbar"
           class="arrow"
           :class="!settingStore.showToolbar && 'down'"
           color="#999"/>
-    </Tooltip>
+    </button>
 
     <div class="bottom">
       <!-- Cat Café: 进度条使用猫主题色 -->
       <div class="progress-wrapper">
         <Progress
             :percentage="progress"
-            :stroke-width="8"
+            :stroke-width="4"
             :show-text="false"
             class="cat-progress"/>
       </div>
@@ -261,19 +265,32 @@ const catMood = $computed(() => {
   }
 
   .arrow {
-    position: absolute;
-    top: -40%;
-    left: 50%;
-    cursor: pointer;
     transition: all .5s;
     transform: rotate(-90deg);
-    padding: .5rem;
     font-size: 1.2rem;
 
     &.down {
-      top: -90%;
       transform: rotate(90deg);
     }
+  }
+
+  .toolbar-toggle {
+    position: absolute;
+    top: -2.8rem;
+    left: 50%;
+    z-index: 3;
+    width: 2.75rem;
+    height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid var(--color-item-border);
+    border-radius: 50%;
+    background: var(--color-second);
+    cursor: pointer;
+    transform: translateX(-50%);
+    touch-action: manipulation;
   }
 }
 
@@ -282,15 +299,25 @@ const catMood = $computed(() => {
     width: 100%;
 
     .bottom {
+      transition: transform var(--anim-time), opacity var(--anim-time);
+    }
+
+    &.collapsed .bottom {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(calc(100% + 1rem));
+      visibility: hidden;
+    }
+
+    .bottom {
       padding: .3rem .5rem .4rem;
 
-      .progress-wrapper,
-      .cat-mood-bar {
+      .progress-wrapper {
         margin-bottom: .25rem;
       }
 
       .cat-mood-bar {
-        padding: .1rem;
+        display: none;
       }
 
       .footer-content {
@@ -315,6 +342,11 @@ const catMood = $computed(() => {
       .footer-actions {
         width: 100%;
         justify-content: space-around;
+
+        :deep(.icon-wrapper) {
+          width: 2.5rem;
+          height: 2.5rem;
+        }
       }
     }
 

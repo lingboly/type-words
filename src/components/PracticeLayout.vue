@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import {useSettingStore} from "@/stores/setting.ts";
-import {onMounted} from 'vue'
+import {watch} from 'vue'
 
 const settingStore = useSettingStore()
-onMounted(() => {
-  if (window.matchMedia('(max-width: 768px)').matches) settingStore.showPanel = false
-})
+watch(() => settingStore.load, (loaded) => {
+  if (loaded && window.matchMedia('(max-width: 768px)').matches) {
+    settingStore.showPanel = false
+    settingStore.showToolbar = false
+  }
+}, {immediate: true})
 defineProps<{
   panelLeft: string
 }>()
@@ -17,7 +20,7 @@ defineProps<{
     <div class="wrap">
       <slot name="practice"></slot>
     </div>
-    <div class="panel-wrap" :style="{left:panelLeft}">
+    <div class="panel-wrap" :class="{'is-open': settingStore.showPanel}" :style="{left:panelLeft}">
       <slot name="panel"></slot>
     </div>
     <div class="footer-wrap">
@@ -59,6 +62,11 @@ defineProps<{
   top: .8rem;
   z-index: 1;
   height: calc(100vh - 1.8rem);
+  pointer-events: none;
+
+  &.is-open {
+    pointer-events: auto;
+  }
 }
 
 @media (max-width: 768px) {
@@ -69,13 +77,17 @@ defineProps<{
 
   .wrap {
     width: 100%;
-    height: calc(100% - 9.5rem);
+    height: calc(100% - 6.5rem);
     padding: 0 1rem;
     box-sizing: border-box;
   }
 
   .footer-hide .wrap {
-    height: calc(100% - 2rem) !important;
+    height: calc(100% - 3rem) !important;
+  }
+
+  .footer-hide .footer-wrap {
+    bottom: calc(4.75rem + env(safe-area-inset-bottom));
   }
 
   .footer-wrap {

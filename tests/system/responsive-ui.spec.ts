@@ -25,6 +25,15 @@ async function seedMobilePractice(page) {
     relWords: {root: '', rels: []},
     etymology: [],
   }
+  const nextWord = {
+    ...word,
+    id: 'screen',
+    word: 'screen',
+    phonetic0: 'skriːn',
+    phonetic1: 'skriːn',
+    trans: [{pos: 'n.', cn: '屏幕'}],
+    sentences: [{c: 'The content fits the screen.', cn: '内容适应屏幕。'}],
+  }
   const emptyDict = (id, name) => ({
     id,
     name,
@@ -50,10 +59,10 @@ async function seedMobilePractice(page) {
   })
   const practiceDict = {
     ...emptyDict('mobile-test', 'Mobile test'),
-    length: 1,
-    perDayStudyNumber: 1,
+    length: 2,
+    perDayStudyNumber: 2,
     custom: true,
-    words: [word],
+    words: [word, nextWord],
   }
   const state = {
     simpleWords: [],
@@ -162,14 +171,13 @@ test.describe('responsive UI', () => {
     expect(inputBox!.height).toBeLessThanOrEqual(1)
 
     const practice = await page.locator('.practice-word').boundingBox()
-    const footer = await page.locator('.footer-wrap').boundingBox()
+    const practiceLayout = await page.locator('.practice-layout').boundingBox()
+    const practiceContent = await page.locator('.practice-layout .wrap').boundingBox()
     const navigation = await page.locator('.aside.fixed').boundingBox()
     const viewport = page.viewportSize()!
     expect(practice!.x).toBeGreaterThanOrEqual(0)
     expect(practice!.x + practice!.width).toBeLessThanOrEqual(viewport.width + 1)
-    expect(footer!.x).toBeGreaterThanOrEqual(0)
-    expect(footer!.x + footer!.width).toBeLessThanOrEqual(viewport.width + 1)
-    expect(footer!.y + footer!.height).toBeLessThanOrEqual(navigation!.y + 1)
+    expect(practiceContent!.height).toBeGreaterThan(practiceLayout!.height * 0.8)
     await expect(page.locator('.panel-wrap .panel')).not.toBeVisible()
 
     await input.evaluate(element => {
@@ -181,6 +189,27 @@ test.describe('responsive UI', () => {
       element.dispatchEvent(new InputEvent('input', {data: null, inputType: 'deleteContentBackward', bubbles: true}))
     })
     await expect(page.locator('.typing-word .word .input')).toHaveCount(0)
+
+    const nextButton = page.getByRole('button', {name: '下一个单词'})
+    await expect(nextButton).toBeVisible()
+    await nextButton.click()
+    await expect(page.locator('.typing-word .word.my-1')).toContainText('screen')
+
+    const completeButton = page.getByRole('button', {name: '完成本组'})
+    await expect(completeButton).toBeVisible()
+    await completeButton.click()
+    await expect(page.locator('.footer .stat')).toContainText('正在默写新词')
+
+    const toolbar = page.locator('.footer .bottom')
+    const toolbarToggle = page.getByRole('button', {name: '展开学习工具栏'})
+    await expect(toolbarToggle).toBeVisible()
+    await expect(toolbar).not.toBeVisible()
+    await toolbarToggle.click()
+    await expect(toolbar).toBeInViewport()
+    await expect.poll(async () => {
+      const toolbarBox = await toolbar.boundingBox()
+      return toolbarBox!.y + toolbarBox!.height
+    }).toBeLessThanOrEqual(navigation!.y + 1)
 
     await page.goto('./words')
     await expect(page.locator('#typing-listener')).toHaveCount(0)
